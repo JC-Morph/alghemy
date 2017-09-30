@@ -28,12 +28,16 @@ The gem version of the library is currently offline by intention, but can easily
 
 Alghemy uses the following programs to process files, and expects them to be installed:
 
-- [ffmpeg](https://ffmpeg.org) \- Video-based processes.
-- [imagemagick](www.imagemagick.org/script/index.php) \- Image-based processes.
-  - Alghemy currently uses the deprecated `convert` utility from imagemagick 6.9 or lower.
-  If you are installing imagemagick 7.0 or above, make sure to include legacy utilities.
-- [sox](sox.sourceforge.net) \- Sound-based processes.
-- [mrswatson](https://github.com/teragonaudio/MrsWatson) \- VST-related processes.
+- Video-based processes
+  - [ffmpeg](https://ffmpeg.org)
+- Image-based processes
+  - [imagemagick](www.imagemagick.org/script/index.php)
+    - Alghemy currently uses the deprecated `convert` utility from imagemagick 6.9 or lower.
+    If you are installing imagemagick 7.0 or above, make sure to include legacy utilities.
+- Sound-based processes   
+  - [sox](sox.sourceforge.net)
+- VST-related processes
+  - [mrswatson](https://github.com/teragonaudio/MrsWatson)
 
 NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.
 To check for this functionality, run `convert --version` and look for `fftw` in the `Delegates (built-in):` section.
