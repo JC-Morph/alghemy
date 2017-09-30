@@ -5,7 +5,7 @@
 
 Alghemy is a Ruby library built to facilitate the manipulation of data for artistic purpose.
 It is intended for use as a mini [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language).
-It can recognise multiple sound, video, and image formats, convert between them, and automate intensive processes.
+It can recognise multiple sound, video, and image formats, convert between them, and automate unpredictable processes.
 
 
 ## Installation
@@ -15,8 +15,10 @@ The gem version of the library is currently offline by intention, but can easily
 
 1. Clone this repository or download as zip and extract. Then, you may optionally:
    1. `cd` to directory and run:
-       gem build alghemy.gemspec
-       gem install alghemy-0.1.0.gem
+   ```
+   gem build alghemy.gemspec
+   gem install alghemy-0.1.0.gem
+   ```
    1. add alghemy/bin to your system path.
 
 
@@ -33,7 +35,8 @@ Alghemy uses the following programs to process files, and expects them to be ins
 - [sox](sox.sourceforge.net) \- Sound-based processes.
 - [mrswatson](https://github.com/teragonaudio/MrsWatson) \- VST-related processes.
 
-NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must inlucde support for the [fftw](www.fftw.org) delegate.
+NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.
+To check for this functionality, run `convert --version` and look for `fftw` in `Delegates (built-in):`.
 
 ### Gems
 
@@ -126,4 +129,4 @@ Alghemy is under very active development, and all code should be considered vola
 
 ## License
 
-The gem and all related code is available as open source under the terms of the [GPLv3 License](https://www.gnu.org/licenses/gpl.html).
+The entirety of this library is available as open source under the terms of the [GPLv3 License](https://www.gnu.org/licenses/gpl.html).
