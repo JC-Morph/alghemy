@@ -14,7 +14,7 @@ All functionality is available through your Ruby REPL once you download/clone th
 The gem version of the library is currently offline by intention, but can easily be built natively.
 
 - Clone this repository or download as zip and extract. Then, you may optionally:
-   - `cd` to directory and run:
+   - `cd` into directory and run:
    ```
    gem build alghemy.gemspec
    gem install alghemy-0.1.0.gem
