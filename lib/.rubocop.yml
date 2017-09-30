@@ -1,0 +1,13 @@
+require: rubocop/cop/internal_affairs
+
+Layout/EndOfLine:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideParens:
+  Enabled: false
