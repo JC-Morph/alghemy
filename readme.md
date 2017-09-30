@@ -13,13 +13,13 @@ It can recognise multiple sound, video, and image formats, convert between them,
 All functionality is available through your Ruby REPL once you download/clone this repository.
 The gem version of the library is currently offline by intention, but can easily be built natively.
 
-1. Clone this repository or download as zip and extract. Then, you may optionally:
-   1. `cd` to directory and run:
+- Clone this repository or download as zip and extract. Then, you may optionally:
+   - `cd` to directory and run:
    ```
    gem build alghemy.gemspec
    gem install alghemy-0.1.0.gem
    ```
-   1. add alghemy/bin to your system path.
+   - add alghemy/bin to your system path.
 
 
 ## Requirements
