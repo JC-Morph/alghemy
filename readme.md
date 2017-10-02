@@ -3,8 +3,8 @@
 
 ## Synopsis
 
-Alghemy is a Ruby library built to facilitate the manipulation of data for artistic purpose.  
-It is intended for use as a mini [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language).  
+Alghemy is a Ruby library built to facilitate the manipulation of data for artistic purpose.
+It is intended for use as a mini [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language).
 It can recognise multiple sound, video, and image formats, convert between them, and automate unpredictable processes.
 
 
@@ -34,12 +34,12 @@ Alghemy uses the following programs to process files, and expects them to be ins
   - [imagemagick](www.imagemagick.org/script/index.php)
     - Alghemy intentionally uses the deprecated `convert` utility from imagemagick 6.9 or lower.
     If you are installing imagemagick 7.0 or above, make sure to include legacy utilities.
-- Sound-based processes   
+- Sound-based processes
   - [sox](sox.sourceforge.net)
 - VST-related processes
   - [mrswatson](https://github.com/teragonaudio/MrsWatson)
 
-NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.  
+NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.
 To check for this functionality, run `convert --version` and look for `fftw` in the `Delegates (built-in):` section.
 
 ### Gems
@@ -60,20 +60,41 @@ Alghemy is intended to be used in a REPL environment. There are a couple of ways
   This is only available if you built the gem or added bin to your path.
 
 
-## Examples
-
 ### Initalising Matter
 In Alghemy, the Matter class is a base representation of a file or files.
 To alter a file, you should evoke a Matter object to represent it.
 
-In this example we will use a typical image file.
+In this example a typical image file is used.
 ```ruby
 fire = Matter.evoke 'ouroboros.png'
 => #<Image:0x0000000ff2df50 @sijil="ouroboros.png">
 ```
 
+### Aspects
+
+Sounds, images, and videos can have different aspects depending on their format.
+Broadly speaking, these are the typical aspects that are available for these affinities. All relevant aspects are defined as accessor methods on Matter of that affinity.
+
+#### Image and Video
+`space` - spacial dimension ("horizontal x vertical")
+
+#### Video and Sound
+`time` - temporal dimension (in seconds)
+
+Because Video and Sound elements are perceivable in the temporal dimension,
+they necessarily possess two other related aspects:
+
+`freq` - rate (Video:framerate || Sound:samplerate)
+`lifespan` - total (Video:frames || Sound:samples)
+
+#### Sound and Image
+`depth` - bitdepth (Integer)
+
+#### All affinities
+`arcana` - (Video:pixel-format || Sound:encoding || Image:colorspace)
+
 ### Viewing Matter
-We can try and open the file to have a look at it. There are two ways of doing this: `behold` opens the file via a terminal-accessible executable, defaults being `ffplay`, `play` (provided by sox), and `xnview` (Windows specific).  `open` will open the file with the default application your computer has linked to the extension.
+There are two methods with which to view Matter: `behold` opens the file via a terminal-accessible executable, defaults being `ffplay` (ffmpeg), `play` (sox), and `xnview` (Windows specific).  `open` will open the file with the default application your computer has linked to the extension.
 
 ![Ouroboros](example/example_01.jpg)
 
