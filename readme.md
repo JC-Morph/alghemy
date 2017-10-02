@@ -73,7 +73,7 @@ fire = Matter.evoke 'ouroboros.png'
 ### Aspects
 
 Sounds, images, and videos can have different aspects depending on their format.
-Broadly speaking, these are the typical aspects that are available for these affinities. All relevant aspects are defined as accessor methods on Matter of that affinity.
+Broadly speaking, these are the typical aspects that are available for them. All relevant aspects are defined as accessor methods on Matter of that affinity. Use the `aspects` method to return a list of these aspects.
 
 #### Image and Video
 `space` - spacial dimension ("horizontal x vertical")
