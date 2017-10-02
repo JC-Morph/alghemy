@@ -82,9 +82,9 @@ Broadly speaking, these are the typical aspects that are available for these aff
 `time` - temporal dimension (in seconds)
 
 Because Video and Sound elements are perceivable in the temporal dimension,
-they necessarily possess two other related aspects:
+they possess two other related aspects:
 
-`freq` - rate (Video:framerate || Sound:samplerate)
+`freq` - rate (Video:framerate || Sound:samplerate)  
 `lifespan` - total (Video:frames || Sound:samples)
 
 #### Sound and Image
