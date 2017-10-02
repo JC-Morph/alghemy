@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.author      = 'Mervin Reinhardt'
   s.email       = 'm.reinahrdt@gmx.co.uk'
 
-  s.homepage    = ''
+  s.homepage    = 'https://github.com/JC-Morph/alghemy'
   s.summary     = %q{Transmute your data with ease.}
   s.description = %q{A Ruby library for manipulating data with artistic purpose.}
   s.license     = 'GPL-3.0'
