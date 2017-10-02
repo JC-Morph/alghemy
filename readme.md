@@ -59,17 +59,24 @@ Alghemy is intended to be used in a REPL environment. There are a couple of ways
 - Run `alghemy` to open irb with library functionality enabled.
   This is only available if you built the gem or added bin to your path.
 
-To demonstrate the capabilities of Alghemy, here are some examples:
+
+## Examples
 
 ### Initalising Matter
 In Alghemy, the Matter class is a base representation of a file or files.
 To alter a file, you should evoke a Matter object to represent it.
 
-In this example we will use a typical image file with the name "ouroboros.png".
+In this example we will use a typical image file.
 ```ruby
 fire = Matter.evoke 'ouroboros.png'
 => #<Image:0x0000000ff2df50 @sijil="ouroboros.png">
 ```
+
+### Viewing Matter
+We can try and open the file to have a look at it. There are two ways of doing this: `behold` opens the file via a terminal-accessible executable, defaults being `ffplay`, `play` (provided by sox), and `xnview` (Windows specific).  `open` will open the file with the default application your computer has linked to the extension.
+
+![Ouroboros](example/example_01.jpg)
+
 
 ### Sonification
 One of the primary features of Alghemy is the sonification of data. This is the process of converting arbitrary data - in this case an image - into sound. This allows you to manipulate data in unpredictable ways. To do this, we can use the sonify method:
@@ -123,14 +130,19 @@ Here is our processed sound file. We didn't explicity choose which effect to use
 ```ruby
 fire = air.revert
 => #<Image:0x000000117c1ff8 @sijil="Alghemy/ouroboros/sub-son-(M)(R2).png">
+fire.behold
 ```
+![Reveroboros](example/example_02.jpg)
+
 
 ### Chaining Transmutations
 The above steps can all be accomplished with a single command, as Transmutations always return new Matter:
 ```ruby
-fire.sublimate.sonify.mutate.revert
+fire.sublimate.sonify.mutate.revert.open
 => #<Image:0x0000001188b9c0 @sijil="Alghemy/ouroboros/sub-son-(M)(R2).png">
 ```
+![Chairoboros](example/example_03.jpg)
+
 
 ## Development
 
