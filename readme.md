@@ -3,8 +3,8 @@
 
 ## Synopsis
 
-Alghemy is a Ruby library built to facilitate the manipulation of data for artistic purpose.
-It is intended for use as a mini [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language).
+Alghemy is a Ruby library built to facilitate the manipulation of data for artistic purpose.  
+It is intended for use as a mini [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language).  
 It can recognise multiple sound, video, and image formats, convert between them, and automate unpredictable processes.
 
 
@@ -28,14 +28,18 @@ The gem version of the library is currently offline by intention, but can easily
 
 Alghemy uses the following programs to process files, and expects them to be installed:
 
-- [ffmpeg](https://ffmpeg.org) \- Video-based processes.
-- [imagemagick](www.imagemagick.org/script/index.php) \- Image-based processes.
-  - Alghemy currently uses the deprecated `convert` utility from imagemagick 6.9 or lower.
-  If you are installing imagemagick 7.0 or above, make sure to include legacy utilities.
-- [sox](sox.sourceforge.net) \- Sound-based processes.
-- [mrswatson](https://github.com/teragonaudio/MrsWatson) \- VST-related processes.
+- Video-based processes
+  - [ffmpeg](https://ffmpeg.org)
+- Image-based processes
+  - [imagemagick](www.imagemagick.org/script/index.php)
+    - Alghemy intentionally uses the deprecated `convert` utility from imagemagick 6.9 or lower.
+    If you are installing imagemagick 7.0 or above, make sure to include legacy utilities.
+- Sound-based processes   
+  - [sox](sox.sourceforge.net)
+- VST-related processes
+  - [mrswatson](https://github.com/teragonaudio/MrsWatson)
 
-NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.
+NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.  
 To check for this functionality, run `convert --version` and look for `fftw` in the `Delegates (built-in):` section.
 
 ### Gems
@@ -59,7 +63,7 @@ To demonstrate the capabilities of Alghemy, here are some examples:
 
 ### Initalising Matter
 In Alghemy, the Matter class is a base representation of a file or files.
-To manipulate a file, you should evoke Matter with the file to represent.
+To alter a file, you should evoke a Matter object to represent it.
 
 In this example we will use a typical image file with the name "ouroboros.png".
 ```ruby
@@ -79,7 +83,7 @@ air = fire.sonify
 ```
 
 ### Sublimation
-Now we have a sound representation of our image. We could try and alter this data, but as it represents a compressed image format (png), the integrity of the image is at risk.  Instead, let's try converting our image to a raw format. We can do this with the sublimate method:
+Now we have the data of our image encoded as a sound file. We could try and alter this data, but as it represents a compressed image format (png), we'd have to be careful about how we do it. For now, let's step back and convert our image to a raw format. This will transmute the data into a much more robust representation. We can do this with the sublimate method:
 ```ruby
 earth = fire.sublimate
 => #<Element:0x00000010a18ff0
@@ -88,7 +92,7 @@ earth = fire.sublimate
  @sijil="Alghemt/ouroboros/sub.rgb">
 ```
 
-Notice the class of Matter is now Element; this signifies data that is unidentifiable, and includes all raw formatted data. Since we didn't pass any options, the default raw image format of rgb was used. The transform recorded the dimensions and bitdepth of the image for us; this will come in handy later.  For now, let's sonify our raw image.
+Notice the class of Object we got is named Element; this signifies data that is unidentifiable, and includes all raw formatted data. Since we didn't pass any options, the default raw image format of rgb was used. The transform recorded the dimensions and bitdepth of the image for us; this will come in handy later.  For now, let's sonify our raw image.
 ```ruby
 air = earth.sonify
 => #{Sound:0x000000107c5910
@@ -100,7 +104,7 @@ air = earth.sonify
 ```
 
 ### Mutation
-Great, now we have a robust representation of our image in the sound domain. Let's mutate it with a VST effect plugin. This requires that you install your own VST effects as required by [mrswatson](https://github.com/teragonaudio/MrsWatson).
+This is a much more robust representation of our image in the sound domain. A great way to change sound data is with effects such as reverb and delay.  Many such effects are distributed digitally as VST effect plugins. If we apply such an effect to the sound of our image, the data will change, and so therefore the image must also change. What will it look like? Using this method requires that you install your own VST effects as required by [mrswatson](https://github.com/teragonaudio/MrsWatson).
 ```ruby
 air = air.mutate
 => #<Sound:0x0000000f8c9ec0
@@ -115,14 +119,14 @@ air = air.mutate
 ```
 
 ### Reversion
-Here is our mutated sound file, hot off the press. We didn't explicity choose which effect to use, so alghemy selected one at random for us. Now we're going to revert any transpositions made to give us back an image.
+Here is our processed sound file. We didn't explicity choose which effect to use, so alghemy selected one at random for us. Now we're going to use the information stored in `@mems` to revert any transpositions (Transmutations that do not irreversibly alter data), and give us back an image.
 ```ruby
 fire = air.revert
 => #<Image:0x000000117c1ff8 @sijil="Alghemy/ouroboros/sub-son-(M)(R2).png">
 ```
 
-### Tips
-Transmutations always return new Matter:
+### Chaining Transmutations
+The above steps can all be accomplished with a single command, as Transmutations always return new Matter:
 ```ruby
 fire.sublimate.sonify.mutate.revert
 => #<Image:0x0000001188b9c0 @sijil="Alghemy/ouroboros/sub-son-(M)(R2).png">
