@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'FileUtils'
 require 'alghemy'
-require "irb"
+require 'irb'
 
 IRB.start(__FILE__)

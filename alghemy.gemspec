@@ -1,4 +1,4 @@
-require_relative 'lib/alghemy/version'
+require './lib/alghemy/version'
 
 Gem::Specification.new do |s|
   s.name        = "alghemy"
@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.homepage    = 'https://github.com/JC-Morph/alghemy'
   s.summary     = %q{Transmute your data with ease.}
-  s.description = %q{A Ruby library for manipulating data with artistic purpose.}
+  s.description = %q{A Ruby DSL for manipulating data with artistic purpose.}
   s.license     = 'GPL-3.0'
 
   # Included files
@@ -17,10 +17,9 @@ Gem::Specification.new do |s|
   s.executables << 'alghemy'
 
   # Gem dependencies
+  s.add_runtime_dependency 'dry-container'
   s.add_runtime_dependency 'listen', '~> 3.0'
 
   # Prevent pushing to RubyGems.org
-  if s.respond_to?(:metadata)
-    s.metadata["allowed_push_host"] = ''
-  end
+  s.metadata["allowed_push_host"] = '' if s.respond_to?(:metadata)
 end

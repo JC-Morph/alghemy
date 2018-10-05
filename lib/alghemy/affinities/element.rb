@@ -1,5 +1,9 @@
-require_relative '../matter'
+require 'alghemy/ancestors'
 
-# Public: Embodies a single file.
-class Element < Matter
+module Alghemy
+  module Affinities
+    # Public: Embodies a Raw file.
+    class Element < Ancestors[:matter]
+    end
+  end
 end

@@ -1,6 +1,12 @@
-require_relative 'alghemy/version'
+# Extend $LOAD_PATH until gem release.
+dir = File.dirname(__FILE__)
+$LOAD_PATH << dir unless $LOAD_PATH.include?(dir || File.expand_path(dir))
 
-# Public: Encapsulates all functionality.
-module Alghemy
-  require_relative 'alghemy/affinities'
-end
+require 'alghemy/affinities'
+require 'alghemy/ancestors'
+require 'alghemy/version'
+
+include Alghemy
+include Affinities
+
+Matter = Ancestors[:matter]
