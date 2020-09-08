@@ -22,7 +22,8 @@ class Vst
 
   def initialize( plugin )
     @sijil = plugin
-    match_error unless self.class.list.include? sijil
+    match  = self.class.list.map(&:downcase).include? sijil.downcase
+    match_error unless match
   end
 
   def info
