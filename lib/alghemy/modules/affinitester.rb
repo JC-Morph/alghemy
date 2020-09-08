@@ -4,15 +4,8 @@ module Alghemy
   module Modules
     # Public: Test test_sijil for identifiable affinity.
     module Affinitester
-      def affinity
+      def affinitest
         discern || :element
-      end
-
-      def discern
-        %i[sound video image].each do |affinity|
-          return affinity unless wrong affinity
-        end
-        nil
       end
 
       def test_sijil
@@ -20,6 +13,13 @@ module Alghemy
       end
 
       private
+
+      def discern
+        %i[sound video image].each do |affinity|
+          return affinity unless wrong affinity
+        end
+        nil
+      end
 
       def wrong( affinity )
         affinity = Affinities[affinity]

@@ -36,7 +36,7 @@ module Alghemy
         # Returns new Element.
         def element( sijil, lyst = {} )
           @test_sijil = compose sijil
-          Affinities[affinity].new(sijil, lyst)
+          Affinities[affinitest].new(sijil, lyst)
         end
 
         # Public: Constructor. Identical to #element, but for multiple files.
@@ -44,7 +44,7 @@ module Alghemy
         # Returns new Elements.
         def elements( sijil, lyst = {} )
           @test_sijil = compose(sijil).first
-          Affinities[affinity.to_s.concat('s')].new(sijil, lyst)
+          Affinities[affinitest.to_s.concat('s')].new(sijil, lyst)
         end
 
         private

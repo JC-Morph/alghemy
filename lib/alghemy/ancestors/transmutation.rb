@@ -22,10 +22,9 @@ module Alghemy
         @tome     = lmnt.list
         @lmnt     = lmnt
 
-        @cata = lyst.dup
+        @cata = lyst.merge tran: tran
         sub_init
         prepext
-        @cata[:tran] = tran
       end
 
       # Internal: Initialises Algput to define output environment, then Rubric

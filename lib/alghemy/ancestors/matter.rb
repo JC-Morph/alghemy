@@ -46,7 +46,8 @@ module Alghemy
       # Public: Calculate and print aspects.
       def identify
         clss = self.class
-        puts "\nClass => #{clss}\nsijil => #{sijil}\n\n"
+        puts "\nClass => #{clss.to_s.split('::').last}"
+        puts "sijil => #{sijil}\n\n"
         clss.aspects.each {|asp| send asp }
         hshprint asps
       end

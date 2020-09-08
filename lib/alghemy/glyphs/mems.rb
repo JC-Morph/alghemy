@@ -31,7 +31,7 @@ module Alghemy
         memories = self.class.deepclone self
         levels.times do
           @tran, @lvl = memories.shift
-          transform   = alget(:REVERTABLE)[tran.to_sym]
+          transform  = alget(:REVERTABLE)[tran.to_sym]
           next if transform.nil?
           puts "reverting #{transform}"
           cata = revert_catalysts memories, matter
@@ -44,7 +44,7 @@ module Alghemy
 
       private
 
-      # Internal: Find first mem which does not exhibit type `except`.
+      # Internal: Find first mem which is not of type `except`.
       def mem_index( except )
         index do |mem|
           !type(mem).to_s[/#{except.to_s}/]

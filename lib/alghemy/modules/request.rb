@@ -20,10 +20,12 @@ module Alghemy
         moniker << sub_process
       end
 
+      # Public: Duck for name of executable.
       def moniker
         raise NotImplementedError
       end
 
+      # Public: String or Array to append to #moniker.
       def sub_process
         input
       end

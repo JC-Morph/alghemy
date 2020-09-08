@@ -9,7 +9,7 @@ module Alghemy
       #
       # Returns String.
       def []( idx )
-        return slice(idx) if n.class == Regexp
+        return slice(idx) if idx.class == Regexp
         num_index[idx.to_s]
       end
 

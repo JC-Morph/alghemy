@@ -18,7 +18,7 @@ module Alghemy
       end
 
       def report( sijil )
-        Apparatus[:invoker].engage [moniker, sijil, '2>&1']
+        Apparatus[:invoker].engage [moniker, "\"#{sijil}\"", '2>&1']
       end
 
       def process

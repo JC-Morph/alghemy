@@ -56,7 +56,7 @@ module Alghemy
       #
       # Returns element in Array.
       def []( idx )
-        dims.slice({x: 0, y: 1}[idx.to_sym] || idx)
+        dims.slice({x: 0, y: 1}[idx.to_s.to_sym] || idx)
       end
 
       # Public: Comparison method. Compares reducable by product of elements,

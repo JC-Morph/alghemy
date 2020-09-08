@@ -15,7 +15,7 @@ module Alghemy
             ['pix_fmt', :pf],
             *stream_option('c', %w[libx264 aac]),
             *stream_option('q', [5, 3]),
-            ['crf', :constant, 8],
+            ['crf', :constant, 12],
             ['video_size', :space],
             ['framerate', :freq, 25]
           ]
