@@ -116,7 +116,7 @@ module Alghemy
       end
 
       def tome_error
-        msg = 'No created files found! Increase Alghemy.ear_sleep if problem' \
+        msg = 'No created files found! Increase Alghemy.ear_sleep if problem ' \
           'persists.'
         raise msg
       end
