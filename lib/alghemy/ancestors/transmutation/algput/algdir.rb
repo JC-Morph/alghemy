@@ -3,7 +3,8 @@ module Alghemy
   class Algdir < String
     # Public: Prepend and create directory.
     def self.open( dir )
-      dir = File.join(LEADR, dir.to_s) unless dir.to_s[/^#{LEADR}/]
+      dir = dir.to_s
+      dir = File.join(LEADR, dir) unless dir[/^#{LEADR}/]
       FileUtils.makedirs dir
       new dir
     end

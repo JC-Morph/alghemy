@@ -1,7 +1,9 @@
 require_relative 'automation'
+require_relative 'paramtest'
 
 # Public: Represents a VST plugin.
 class Vst
+  include Paramtest
   attr_reader :sijil, :automatons
 
   def self.list
@@ -20,7 +22,8 @@ class Vst
 
   def initialize( plugin )
     @sijil = plugin
-    match_error unless self.class.list.include? sijil
+    match  = self.class.list.map(&:downcase).include? sijil.downcase
+    match_error unless match
   end
 
   def info
@@ -52,21 +55,20 @@ class Vst
   def find( target )
     hook = /#{target}(?= \(.+\):)/
     data = info
-    data[range(hook, data)]
+    data[scan(hook, data)]
   end
 
-  def range( hook, data )
+  def scan( hook, data )
     line = data.index {|v| v[hook] }
     size = data[line][regx.size]
     line.succ..(line + size.to_i)
   end
 
   def regx
-    brace = '(?<=\()'
     Regx.new(
-      /#{brace}\d+(?= \w+\):)/,
+      /(?<=\()\d+(?= \w+\):)/,
       /(?<=').+(?=')/,
-      /#{brace}\d\.\d+(?=\))/
+      /(?<=\()-?\d\.\d+(?=\))/
     )
   end
   Regx = Struct.new(:size, :name, :dflt)

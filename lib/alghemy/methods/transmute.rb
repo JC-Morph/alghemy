@@ -14,7 +14,7 @@ module Alghemy
       def transmute( lyst = {} )
         Transmutations[__callee__].new(self, lyst).implement
       end
-      # Public: Transmutations become named methods.
+      # Public: Meta, Transmutations become named methods.
       Transmutations.equipped.each do |vial|
         alias_method vial, :transmute
       end
