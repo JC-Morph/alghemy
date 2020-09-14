@@ -6,6 +6,6 @@ module Alghemy
   module Rubrics
     extend Modules[:bandoleer]
 
-    equip_constants %i[ffell fock mrs sock spell]
+    equip_constants %i[fock fourier mrs sock spell]
   end
 end

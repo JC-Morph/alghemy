@@ -7,7 +7,7 @@ module Alghemy
     # Public: Perform a fast fourier transform with image magick.
     class Fft < Ancestors[:transmutation]
       def rubriclass
-        Rubrics[:ffell]
+        Rubrics[:fourier]
       end
 
       def tran_init

@@ -7,7 +7,7 @@ module Alghemy
     # Public: Perform an inverse fourier transform with image magick.
     class Ift < Ancestors[:transmutation]
       def rubriclass
-        Rubrics[:ffell]
+        Rubrics[:fourier]
       end
 
       def tran_init
@@ -18,11 +18,12 @@ module Alghemy
 
       private
 
-      # Public: Define Tome to be used.
+      # Public: Define Tome (list of inputs) to be used. Parses inputs, which
+      # may include explicit :magnitude or :phase images.
       def sub_tome
-        tome = %i[magni phase].collect do |lmnt|
-          lmnt = cata[lmnt] || cata[:tome]
-          lmnt.is_a?(Array) ? lmnt : lmnt.list
+        tome = %i[magni phase].collect do |part|
+          part = cata[part] || cata[:tome]
+          part.is_a?(Array) ? part : part.list
         end.transpose
         tome.flatten! if tome.size == 1
         list tome

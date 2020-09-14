@@ -3,7 +3,7 @@ require 'alghemy/ancestors'
 module Alghemy
   module Rubrics
     # Define an Array for a command passed to fftw-compiled ImageMagick.
-    class Ffell < Ancestors[:rubric]
+    class Fourier < Ancestors[:rubric]
       def self.moniker
         ['ffconvert']
       end
