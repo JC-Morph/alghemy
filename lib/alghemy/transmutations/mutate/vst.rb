@@ -1,8 +1,11 @@
 require_relative 'automation'
 require_relative 'paramtest'
+require_relative 'vstinfo'
 
 # Public: Represents a VST plugin.
 class Vst
+  extend Forwardable
+  include VstInfo
   include Paramtest
   attr_reader :sijil, :automatons
 
@@ -21,23 +24,9 @@ class Vst
   end
 
   def initialize( plugin )
-    @sijil = plugin
-    match  = self.class.list.map(&:downcase).include? sijil.downcase
+    match = self.class.list.map(&:downcase).include? plugin.downcase
     match_error unless match
-  end
-
-  def info
-    `mrswatson -p #{sijil} --display-info 2>&1`.split("\n")
-  end
-
-  def params
-    data = find 'Parameters'
-    data.collect {|line| {line[regx.name] => line[regx.dflt]} }
-  end
-
-  def presets
-    data = find 'Programs'
-    data.collect {|line| line[regx.name] }
+    @sijil = plugin
   end
 
   def automate( lyst = {} )
@@ -51,25 +40,4 @@ class Vst
     msg = "Cannot find Vst with name: #{sijil}\nCheck Vst.list"
     raise IOError, msg
   end
-
-  def find( target )
-    hook = /#{target}(?= \(.+\):)/
-    data = info
-    data[scan(hook, data)]
-  end
-
-  def scan( hook, data )
-    line = data.index {|v| v[hook] }
-    size = data[line][regx.size]
-    line.succ..(line + size.to_i)
-  end
-
-  def regx
-    Regx.new(
-      /(?<=\()\d+(?= \w+\):)/,
-      /(?<=').+(?=')/,
-      /(?<=\()-?\d\.\d+(?=\))/
-    )
-  end
-  Regx = Struct.new(:size, :name, :dflt)
 end
