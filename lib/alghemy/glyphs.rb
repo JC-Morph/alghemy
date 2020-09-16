@@ -1,10 +1,10 @@
-require 'alghemy/modules'
+require 'alghemy/bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain classes representing a specific format of
   # data. Used to make information more context-specific.
   module Glyphs
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     equip_constants %i[mems sijil switch]
 

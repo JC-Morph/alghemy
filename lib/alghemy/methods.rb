@@ -1,27 +1,18 @@
-require 'canister'
-require 'alghemy/options'
+require 'alghemy/bandoleer'
 
 module Alghemy
-  # Public: Bandoleer. Vials contain modules containing a single method.
+  # Public: Bandoleer. Vials contain modules that wrap a single method that is
+  # useful in multiple places.
   module Methods
-    def self.bandoleer
-      @bandoleer ||= Canister.new
-    end
+    extend Bandoleer
 
-    def self.[]( key )
-      bandoleer[key]
-    end
+    vials = %i[alget
+               array_merge
+               deepclone
+               hshprint
+               retrieve
+               transmute]
 
-    dir   = name.sub('::', SEP).downcase
-    vials = %w[alget array_merge deepclone hshprint retrieve transmute]
-
-    vials.each do |vial|
-      const = vial.split('_').map(&:capitalize).join.to_sym
-
-      bandoleer.register vial do
-        require File.join(dir, vial) unless const_defined?(const)
-        const_get const
-      end
-    end
+    equip_constants vials
   end
 end

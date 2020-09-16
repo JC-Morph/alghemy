@@ -1,11 +1,12 @@
-require 'alghemy/modules'
+require 'alghemy/bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain factory modules, used to create instances
-  # of a known superclass but unknown subclass. Expected to have one creation
-  # method, instigated with a lambda, and so responding to the #call method.
+  # of a known superclass but unknown subclass. Expected to have a separate
+  # creation method. These are easiest to represent with lambdas, which then
+  # make factories respond to #call.
   module Factories
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     evoke = lambda do |clss, sijil, lyst = {}|
       type = clss.name.split('::').last.downcase

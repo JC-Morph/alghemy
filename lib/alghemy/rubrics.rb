@@ -1,10 +1,10 @@
-require 'alghemy/modules'
+require 'alghemy/bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain modules that build commands for external
   # utilities.
   module Rubrics
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     equip_constants %i[fock fourier mrs sock spell]
   end

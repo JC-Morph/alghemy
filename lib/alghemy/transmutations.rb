@@ -1,10 +1,10 @@
-require 'alghemy/methods'
+require 'alghemy/bandoleer'
 
 module Alghemy
-  # Public: Bandoleer. Vials contain transformations that can be applied to
-  # data. Expected to create new files.
+  # Public: Bandoleer. Vials contain transformations that can be applied
+  # to data. Expected to create new files.
   module Transmutations
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     vials = %i[compile
                fft

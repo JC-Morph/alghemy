@@ -1,12 +1,13 @@
+require 'alghemy/bandoleer'
 require 'alghemy/modules'
 
 module Alghemy
   # Public: Bandoleer. Vials contain subclasses of Matter, representing
-  # different types of data. Creates a subclass for each of the specified vials.
-  # The subclass represents multiple instances of the affinity. The new constant
-  # is defined by appending an 's' to the vial.
+  # different types of data. Generates another subclass for each given class,
+  # representing multiple instances of the initial one. It is named by appending
+  # an 's' to the name of the previous class.
   module Affinities
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     vials = %i[element image sound video]
 

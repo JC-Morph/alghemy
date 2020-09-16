@@ -1,10 +1,11 @@
-require 'alghemy/modules'
+require 'alghemy/bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain abstract superclasses exclusively used by
-  # concrete subclasses. These are often not fully implemented, but templates.
+  # concrete subclasses. These are often not fully implemented classes, but
+  # templates that need to be inherited.
   module Ancestors
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     equip_constants %i[matter rubric transmutation tome]
   end

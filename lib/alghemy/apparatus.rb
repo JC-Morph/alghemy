@@ -1,10 +1,10 @@
-require 'alghemy/modules'
+require 'alghemy/bandoleer'
 
 module Alghemy
-  # Public. Bandoleer. Vials contain self-contained modules grouping relevant
+  # Public. Bandoleer. Vials contain self-contained modules that group related
   # functionality.
   module Apparatus
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
     equip_constants %i[ears invoker]
   end

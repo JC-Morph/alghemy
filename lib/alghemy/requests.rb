@@ -1,11 +1,19 @@
-require 'alghemy/modules'
+require 'alghemy/bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain modules that send external commands, but
   # do not create new files.
   module Requests
-    extend Modules[:bandoleer]
+    extend Bandoleer
 
-    equip_constants %i[display eye flay probe scry slay view]
+    vials = %i[display
+               eye
+               flay
+               probe
+               scry
+               slay
+               view]
+
+    equip_constants vials
   end
 end
