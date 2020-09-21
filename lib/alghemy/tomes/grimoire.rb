@@ -24,6 +24,16 @@ module Alghemy
         block_given? ? yield(self) : [self].to_enum
       end
 
+      # Public: Repeat current contents in order to reach a specified number of
+      # elements.
+      #
+      # Returns new Grimoire.
+      def repeat( target = size )
+        return self unless target > size
+        factor = (target.fdiv(size)).ceil
+        self.class.scribe((self * factor)[0..target - 1])
+      end
+
       # Public: Distill an appropriate output Sijil from Grimoire.
       def swap_parts( lyst = {} )
         # define abstracted Sijil and swap parts with lyst.
