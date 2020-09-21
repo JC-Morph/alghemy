@@ -1,3 +1,5 @@
+require 'alghemy/options'
+
 module Alghemy
   # Public: Directory class for alghemical processes.
   class Algdir < String

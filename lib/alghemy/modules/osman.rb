@@ -2,6 +2,8 @@ module Alghemy
   module Modules
     # Public: Writes Rubrics for transmutations.
     module Osman
+      # Public: Method that builds command line to be executed.  Can be ducked
+      # by transmutations to allow more control.
       def write_rubric
         write.send cata[:tran]
       end

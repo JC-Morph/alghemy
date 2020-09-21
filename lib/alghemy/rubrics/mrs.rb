@@ -28,8 +28,8 @@ module Alghemy
       end
 
       def parameter( *automaton )
-        index, auto = automaton.flatten
-        param = [index, operate(auto)]
+        param, auto = automaton.flatten
+        param = [param, operate(auto)]
         add ['--parameter', param * ',']
       end
       alias param parameter

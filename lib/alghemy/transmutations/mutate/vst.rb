@@ -11,10 +11,10 @@ class Vst
 
   def self.list
     name = /(?<=\\)[+\w][\w\.-]+.$/
-    plugs.collect {|p| p[name] if p[/Vst/] }.compact
+    index.map {|line| line[name] if line[/Vst/] }.compact
   end
 
-  def self.plugs
+  def self.index
     `mrswatson --list-plugins 2>&1`.split
   end
 

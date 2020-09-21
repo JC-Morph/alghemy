@@ -2,7 +2,8 @@ require 'alghemy/tomes'
 
 module Alghemy
   module Factories
-    # Public: Return Arrays as appropriate Tomes.
+    # Public: Builds Tomes from Arrays of Filenames. A Tome is a collection of
+    # Filenames that can be iterated through in various ways.
     module Scribe
       class << self
         # Public: Constructor. Returns new Tome.
@@ -17,7 +18,7 @@ module Alghemy
 
         # Public: Returns appropriate Tome from dims.
         #
-        # dims - See #initialize.
+        # dims - See #transcribe.
         def tome( dims = nil )
           dims.nil? ? Tomes[:grimoire] : Tomes[:metamoire]
         end

@@ -14,6 +14,13 @@ module Alghemy
         cata[:vst] = Vst.assert cata[:vst]
       end
 
+      def write_rubric
+        vst = cata[:vst]
+        rubric = write.input.plugin(vst.sijil)
+        rubric.automate if cata[:data]
+        rubric.output
+      end
+
       private
 
       def defaults
