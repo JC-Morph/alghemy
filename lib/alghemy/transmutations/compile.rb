@@ -1,3 +1,4 @@
+require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/rubrics'
 
@@ -12,7 +13,7 @@ module Alghemy
       def tran_init
         cata[:enum]   = :group_sijil
         cata[:format] = 'image2'
-        @solution     = Element unless lmnt.dims
+        @solution     = Affinities[:element] unless lmnt.dims
       end
 
       private

@@ -1,10 +1,11 @@
-require_relative 'transmutation'
+require 'alghemy/affinities'
+require 'alghemy/ancestors'
 
 module Alghemy
   # Public: Split data into multiple files.
-  class Split < Transmutation
+  class Split < Ancestors[:transmutation]
     def tran_init
-      @solution = Elements
+      @solution = Affinities[:elements]
     end
   end
 end
