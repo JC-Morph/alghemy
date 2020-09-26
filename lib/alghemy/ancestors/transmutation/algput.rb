@@ -64,7 +64,8 @@ module Alghemy
       lyst[:label] || lyst[:tran].to_s[0..2]
     end
 
-    # Internal: Take any existing idents from sijil and combine them with ident.
+    # Internal: Take any existing idents from sijil and combine them with the
+    # new ident.
     #
     # sijil - Filename of input.
     # ident - Short String to represent the transmutation in a Filename.

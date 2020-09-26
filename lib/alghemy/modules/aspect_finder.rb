@@ -9,7 +9,7 @@ module Alghemy
         return if aspects.all? {|aspect| method_defined? aspect }
         aspects.each do |aspect|
           define_method aspect do
-            calculate aspect
+            find aspect
           end
         end
       end

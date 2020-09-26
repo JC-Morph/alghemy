@@ -7,7 +7,7 @@ module Alghemy
     module Ears
       class << self
         include Methods[:alget]
-        attr_reader :heard, :hearing
+        attr_reader :heard, :listening
 
         def pwd
           @pwd ||= Pathname.new Dir.pwd
@@ -16,17 +16,17 @@ module Alghemy
         # Public: Start monitoring dir for modified or added files.
         def listen( dir = Dir.pwd )
           @heard = []
-          @hearing = Listen.to(dir) do |modified, added|
+          @listening = Listen.to(dir) do |modified, added|
             heard << modified << added
           end
-          hearing.start
+          listening.start
           sleep ear_sleep
         end
 
         # Public: Stop monitoring and return Array of heard files.
         def amputate
           sleep ear_sleep
-          hearing.stop
+          listening.stop
           Listen.stop
           heard.flatten.uniq.collect {|file| relate file }
         end
@@ -41,7 +41,7 @@ module Alghemy
           alget(:ear_sleep) || default
         end
 
-        # Internal: Return file path relative from working directory.
+        # Internal: Return file path relative to the working directory.
         def relate( file )
           file     = Pathname.new file
           relative = file.relative_path_from pwd

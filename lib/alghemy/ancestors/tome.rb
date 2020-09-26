@@ -5,7 +5,8 @@ require_relative 'tome/gnumbers'
 
 module Alghemy
   module Ancestors
-    # Public: Superclass for collections of sijils.
+    # Public: A Tome is a collections of Filenames. It is used to make
+    # iterating over files easier and more intuitive.
     class Tome < Array
       include Gnumbers
       alias _collect collect
@@ -35,21 +36,22 @@ module Alghemy
         ears.amputate
       end
 
-      # TODO: Refactor.
       def each_group_sijil( &block )
         group_sijils = each_group.collect(&:globvert)
+        binding.pry
         group_sijils = Factories[:scribe].call group_sijils
-        # binding.pry
         block_given? ? group_sijils.each_lmnt(&block) : group_sijils.to_enum
       end
 
-      # Public: Abstract a Sijil that matches all of Tome.
+      # Public: Abstract a Filename with a wildcard that matches all of Tome
+      # when used with Dir#glob.
       def globvert
         glob_replace first_lmnt, numbers
       end
 
-      # Public: Return depth of 2-dimensional Elements, e.g Elements made of two
-      # or more split Element.
+      # Public: Return depth of 2-dimensional lists, i.e a list of lists. This
+      # is useful with fourier transforms, when you have two components
+      # representing a single file.
       def dims
         dims = e_nums(numbers).compact.size
         dims > 1 ? dims : nil
