@@ -6,6 +6,6 @@ module Alghemy
   module Apparatus
     extend Bandoleer
 
-    equip_constants %i[ears invoker]
+    equip_constants %i[alghemist ears invoker]
   end
 end

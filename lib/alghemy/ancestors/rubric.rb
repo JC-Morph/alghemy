@@ -47,6 +47,11 @@ module Alghemy
         end
       end
 
+      # Public: Look up the label for rubric's default switches.
+      def switch_label( switch )
+        switches.alias(switch).label
+      end
+
       def init( lyst )
         @cata = lyst
         sub_init
@@ -68,7 +73,7 @@ module Alghemy
       # io - Hash of filenames to use in process:
       #      :input  - String naming input file(s). Files should exist.
       #      :output - String naming output file(s). Files can exist.
-      def intone( io )
+      def invoke( io )
         Apparatus[:invoker].io(scroll, io, alget(:print_rubric))
       end
 

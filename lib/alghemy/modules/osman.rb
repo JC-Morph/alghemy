@@ -12,7 +12,7 @@ module Alghemy
         rubric.write cata.merge(raw: lmnt.raw?)
       end
 
-      # Internal: Returns appropritate Rubric class for current transmutation.
+      # Public: Returns appropritate Rubric class for current transmutation.
       def rubric
         clss = cata[:type] || lmnt.class
         clss.rubric
@@ -23,16 +23,10 @@ module Alghemy
         {}
       end
 
-      # Public: Typically an instance of Matter provided by class. Must duck the
+      # Public: Expects an instance of Matter provided by class. Must duck the
       # #raw? method, to discern whether the input will be raw data.
       def lmnt
         raise NotImplementedError
-      end
-
-      # Public: Look up the label for rubric's default switches.
-      def switch_label( switch )
-        switches = rubric.write.switches
-        switches.alias(switch).label
       end
     end
   end

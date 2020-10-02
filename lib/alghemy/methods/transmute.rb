@@ -1,3 +1,4 @@
+require 'alghemy/apparatus'
 require 'alghemy/transmutations'
 
 module Alghemy
@@ -12,7 +13,8 @@ module Alghemy
       #
       # Returns new Matter, dependent on Transmutation.
       def transmute( lyst = {} )
-        Transmutations[__callee__].new(self, lyst).implement
+        tran = Transmutations[__callee__].new(self, lyst)
+        Apparatus[:alghemist].transmute(self, tran, lyst)
       end
       # Public: All Transmutations listed become named methods.
       Transmutations.equipped.each do |vial|
