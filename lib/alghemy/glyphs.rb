@@ -6,7 +6,7 @@ module Alghemy
   module Glyphs
     extend Bandoleer
 
-    equip_constants %i[mems sijil switch]
+    equip_constants %i[mems pix_fmt sijil switch]
 
     invoke = lambda do |ent = nil|
       Ent.invoke ent
