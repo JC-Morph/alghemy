@@ -49,7 +49,7 @@ module Alghemy
         puts "\nClass => #{clss.to_s.split('::').last}"
         puts "sijil => #{sijil}\n\n"
         clss.aspects.each {|asp| send asp }
-        hshprint asps
+        hshprint aspects
       end
 
       # Public: Open Matter with designated executable.

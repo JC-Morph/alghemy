@@ -4,12 +4,13 @@ module Alghemy
     # class. Names are defined as methods on class that pass the name to
     # #find and return the result.
     module AspectFinder
-      # Public: Add aspect names as methods.
+      # Public: Meta programming method that adds aspect names as methods. When
+      # called they call #aspects on the instance, passing their name.
       def def_asps
         return if aspects.all? {|aspect| method_defined? aspect }
         aspects.each do |aspect|
           define_method aspect do
-            find aspect
+            aspects aspect
           end
         end
       end
@@ -17,11 +18,6 @@ module Alghemy
       # Public: Array of names to be passed to #find, and defined as methods.
       def aspects
         []
-      end
-
-      # Public: Empty method to define the retrieval of aspects.
-      def find( _aspect )
-        raise NotImplementedError
       end
     end
   end

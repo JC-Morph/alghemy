@@ -37,6 +37,10 @@ module Alghemy
         !(@solution.to_s =~ /s$/).nil?
       end
 
+      def anchors
+        {}
+      end
+
       private
 
       # Internal: Merges default values with @cata. Serves as duckable
@@ -60,10 +64,6 @@ module Alghemy
       # Internal: Returns String containing Transmutation class name.
       def tran
         self.class.name.split('::').last.downcase
-      end
-
-      def subasps
-        {}
       end
 
       # Internal: Prepend extension with period if not already present.

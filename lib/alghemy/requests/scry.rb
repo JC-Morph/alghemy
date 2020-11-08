@@ -24,7 +24,7 @@ module Alghemy
         end
 
         def fmtdex
-          fmts = [->(asp) { Glyphs['space'].call asp },
+          fmts = [->(asp) { Glyphs[:space].call asp },
                   ->(asp) { asp.to_i },
                   ->(asp) { asp.split[1] }]
           aspdex fmts

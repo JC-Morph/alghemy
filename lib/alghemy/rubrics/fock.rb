@@ -54,7 +54,7 @@ module Alghemy
 
       def rip
         input
-        cata[:vora][/^v/i] ? an : vn
+        cata[:exclude][/^v/i] ? vn : an
         output
       end
 

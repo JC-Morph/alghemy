@@ -4,7 +4,6 @@ require_relative 'vstinfo'
 
 # Public: Represents a VST plugin.
 class Vst
-  extend Forwardable
   include VstInfo
   include Paramtest
   attr_reader :sijil, :automatons
@@ -23,8 +22,10 @@ class Vst
     new plugin
   end
 
-  def initialize( plugin )
-    match = self.class.list.map(&:downcase).include? plugin.downcase
+  def initialize( plugin = nil )
+    list     = self.class.list
+    plugin ||= list.sample
+    match    = list.map(&:downcase).include? plugin.downcase
     match_error unless match
     @sijil = plugin
   end

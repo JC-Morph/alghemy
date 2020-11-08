@@ -22,27 +22,27 @@ module Alghemy
           tree[:ext]  = extype[0]
           cata[:type] = extype[1]
         end
-        tree.merge! lmnt.inherit(subasps)
+        tree.merge! lmnt.inherit(anchors)
         space_trace(cata, tree)
         shrink_check tree
       end
 
       def lmntree
-        subasps.each.with_object({}) do |asp, hsh|
+        anchors.each.with_object({}) do |asp, hsh|
           hsh[asp] = lmnt.send(asp)
         end
+      end
+
+      def anchors
+        rejects = /^(time|lifespan|arcana)$/
+        asps = type.aspects.reject {|k| k[rejects] }
+        asps.collect(&:to_sym)
       end
 
       private
 
       def type
         cata[:type] || lmnt.class
-      end
-
-      def subasps
-        rejects = /^(time|lifespan|arcana)$/
-        asps = type.aspects.reject {|k| k[rejects] }
-        asps.collect(&:to_sym)
       end
 
       def shrink_check( tree )

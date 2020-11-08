@@ -9,18 +9,20 @@ module Alghemy
     module Alghemist
       class << self
         include Methods[:alget]
-        include Memrec
-        attr_reader :lmnt, :tran, :rubric
+        include MemRec
+        attr_reader :lmnt, :tran, :cata, :namer, :rubric
 
         # TODO: rewrite
         # Internal: Initialises Algput to define output environment, then Rubric
-        # to define the process String. Invoke Tome with Algput & Rubric to create
-        # new files, then evoke new instance of Matter.
+        # to define the process String. Invoke Tome with Algput & Rubric to
+        # create new files, then evoke new instance of Matter.
         #
         # Returns new instance of Matter.
         def transmute( lmnt, transform, lyst = {} )
           @lmnt = lmnt
           @tran = transform
+          @cata = tran.cata
+          @namer  = Algput.new cata.merge name_options
           @rubric = tran.write_rubric
           heard   = enumerate tran.tome
           evoke list(heard)
@@ -55,29 +57,25 @@ module Alghemy
         # Internal: Evoke new Matter from Tome with memories from the
         # transmutation.
         #
-        # tome   - Tome of filenames that were heard during transmutation.
+        # tome - Tome of filenames that were heard during transmutation.
         #
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          memory = memrec(lmnt.mems, memorise)
+          memory = record_memory(lmnt.mems, memorise)
           tome.sijil.evoke memory
         end
 
         def memorise
           memory = {extype: [lmnt.sijil.ext, lmnt.class]}
-          # NOTE: no subasps here yet
-          tran.subasps.each do |aspect|
+          tran.anchors.each do |anchor|
             defunct = rubric.swist.keys.any? do |switch|
-              aspect == rubric.switch_label(switch)
+              anchor == rubric.switch_label(switch)
             end
-            memory[aspect] = tran.cata[aspect] unless defunct
+            retrieved = cata[anchor] || lmnt.send(anchor)
+            memory[anchor] = retrieved unless defunct
           end
           memory.merge rubric.swist
-        end
-
-        def namer
-          @namer ||= Algput.new tran.cata.merge name_options
         end
 
         # Internal: Returns Hash with variables specific to Algput

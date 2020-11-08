@@ -15,6 +15,12 @@ module Alghemy
         join(' ')
       end
 
+      def sijil
+        sijil = size < 2 ? first : globvert
+        sijil.limit size
+        sijil
+      end
+
       # Public: Ensure collected Tome returns Tome.
       def collect( &block )
         self.class.new _collect(&block)
@@ -42,10 +48,6 @@ module Alghemy
       end
 
       private
-
-      def sijil
-        (size < 2 ? first : globvert).limit size
-      end
 
       def numbers
         list = self[0..-(size / 2)].to_a.flatten

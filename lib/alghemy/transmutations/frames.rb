@@ -20,6 +20,10 @@ module Alghemy
         write.input.format('image2').vq.output
       end
 
+      def anchors
+        %i[freq]
+      end
+
       private
 
       def defaults
@@ -28,10 +32,6 @@ module Alghemy
 
       def frames_less_than( frames )
         lmnt.is_a?(Affinities[:video]) && lmnt.lifespan < frames
-      end
-
-      def subasps
-        %i[freq]
       end
     end
   end

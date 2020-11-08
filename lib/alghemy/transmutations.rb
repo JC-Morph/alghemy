@@ -6,7 +6,8 @@ module Alghemy
   module Transmutations
     extend Bandoleer
 
-    vials = %i[compile
+    vials = %i[amorph
+               compile
                fft
                frames
                ift

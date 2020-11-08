@@ -21,7 +21,7 @@ module Alghemy
       #
       # Returns individual aspect if specified. If no aspect is specified,
       # returns a Hash of all the aspects that have been calculated.
-      def find( aspect = nil )
+      def aspects( aspect = nil )
         @asps ||= {}
         return @asps unless aspect
         return @asps[aspect] if @asps[aspect]
