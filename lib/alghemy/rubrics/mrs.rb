@@ -16,12 +16,13 @@ module Alghemy
       def mutate
         vst = cata[:vst]
         input.plugin(vst.sijil)
-        automate if cata[:data]
+        automate
         output
       end
 
       # Public: Method for keeping track of automation iterations.
       def automate
+        return self unless cata[:data]
         @count ||= 0
         vst.automatons.each {|am| param(am) }
         @count += 1
