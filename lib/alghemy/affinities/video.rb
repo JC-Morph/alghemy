@@ -18,7 +18,7 @@ module Alghemy
         def tests
           [
             /valid data/,
-            %r{ration: N/A},
+            # %r{Duration: N/A},
             'am #\d:\d.*: Vid',
             /Input #\d, image2,/
           ]
