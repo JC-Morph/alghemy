@@ -20,7 +20,7 @@ module Alghemy
             /valid data/,
             # %r{Duration: N/A},
             'am #\d:\d.*: Vid',
-            /Input #\d, image2,/
+            /Input #\d, (image2|png_pipe),/
           ]
         end
 
