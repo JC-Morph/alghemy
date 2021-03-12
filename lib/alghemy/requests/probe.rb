@@ -9,7 +9,7 @@ module Alghemy
         include Modules[:analyse]
 
         def moniker
-          ['ffprobe']
+          ['ffprobe -hide_banner']
         end
 
         def sub_process
