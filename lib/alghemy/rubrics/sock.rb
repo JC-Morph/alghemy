@@ -10,7 +10,7 @@ module Alghemy
       include Methods[:array_merge]
 
       def self.moniker
-        # make dither optional
+        # TODO: make dither optional
         %w[sox -V1 -D]
       end
 

@@ -20,7 +20,8 @@ module Alghemy
         output
       end
 
-      # Public: Method for keeping track of automation iterations.
+      # Public: Method for keeping track of the data being used for parameter
+      # automation.
       def automate
         return self unless cata[:data]
         @count ||= 0
