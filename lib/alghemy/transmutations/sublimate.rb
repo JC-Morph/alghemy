@@ -1,12 +1,12 @@
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
-require_relative 'mutypes/space_tracer'
+require 'alghemy/methods'
 
 module Alghemy
   module Transmutations
     # Public: Transmute Matter into Raw Matter or vice-versa.
     class Sublimate < Ancestors[:transmutation]
-      include SpaceTrace
+      include Methods[:space_trace]
 
       def sub_init
         tree = lmnt.raw? ? inherit : lmntree

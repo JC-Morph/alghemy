@@ -11,6 +11,7 @@ module Alghemy
                deepclone
                hshprint
                retrieve
+               space_trace
                transmute]
 
     equip_constants vials
