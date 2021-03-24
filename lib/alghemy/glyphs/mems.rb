@@ -62,9 +62,9 @@ module Alghemy
         asp == :method ? mem[0] : mem[1][asp]
       end
 
-      # Internal: Reorder mem for passing to a Transmutant as a reversion.
+      # Internal: Reorder mem for passing to a Transmutation as a reversion.
       def revert_catalysts( memories, matter )
-        cata = {ext: lvl[:extype].first, label: '(R)'}
+        cata = {ext: lvl[:extype].first, label: 'R'}
         cata = yuv_parse(cata, matter)
         [:ents, :enc, :bit].each do |opt|
           cata[opt] = lvl[opt].reverse if lvl[opt]
