@@ -9,7 +9,7 @@ module Alghemy
       include Modules[:osman]
       attr_reader :lmnt, :tome, :cata
 
-      # Internal: Initialise a Transmutant.
+      # Internal: Initialise a Transmutation.
       #
       # lmnt - The Matter to build the transform for.  Expected to represent
       #        part of the input for the transform.

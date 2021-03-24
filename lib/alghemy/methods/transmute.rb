@@ -6,8 +6,8 @@ module Alghemy
     # Public: Enables Transmutations for an object. Defines individual
     # transformations on object as named methods.
     module Transmute
-      # Internal: Transmute method, for calling Transmutations on Matter. Writes
-      # files.
+      # Internal: Transmute method, for calling Transmutations on Matter.
+      # Writes files.
       #
       # lyst - Transmutation specific options (default: {}).
       #
