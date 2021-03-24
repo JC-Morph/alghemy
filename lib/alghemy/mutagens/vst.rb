@@ -1,6 +1,6 @@
 require_relative 'automation'
-require_relative 'paramtest'
-require_relative 'vstinfo'
+require_relative 'param_check'
+require_relative 'vst_info'
 
 # Public: Represents a VST plugin.
 class Vst

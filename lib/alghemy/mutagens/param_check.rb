@@ -1,6 +1,5 @@
-module Paramtest
-
-  def paramtest( sound, div = 10 )
+module ParamCheck
+  def param_check( sound, div = 10 )
     tot = 1.0 / div
     dir = File.join(File.dirname(sound), 'paramtest', sijil)
     FileUtils.makedirs dir
@@ -19,7 +18,7 @@ module Paramtest
     end
   end
 
-  def presetest( sound )
+  def preset_check( sound )
     dir = File.join(File.dirname(sound), 'presetest', sijil)
     FileUtils.makedirs dir
     presets.each.with_index do |preset, i|
