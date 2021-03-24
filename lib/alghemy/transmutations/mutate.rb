@@ -1,6 +1,6 @@
 require 'alghemy/ancestors'
+require 'alghemy/mutagens'
 require 'alghemy/rubrics'
-require_relative 'mutate/vst'
 
 module Alghemy
   module Transmutations
@@ -10,13 +10,17 @@ module Alghemy
         Rubrics[:mrs]
       end
 
+      def plugin
+        Mutagens[:vst]
+      end
+
       def tran_init
-        cata[:vst] = Vst.assert cata[:vst]
+        cata[:plug] = plugin.assert cata[:plug]
       end
 
       def write_rubric
-        vst = cata[:vst]
-        rubric = write.input.plugin(vst.sijil)
+        plug = cata[:plug]
+        rubric = write.input.plugin(plug.sijil)
         rubric.automate if cata[:data]
         rubric.output
       end
@@ -24,7 +28,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: lmnt.sijil.ext, label: '(M)', vst: Vst.list.sample}
+        {ext: lmnt.sijil.ext, label: 'M', plug: plugin.list.sample}
       end
     end
   end
