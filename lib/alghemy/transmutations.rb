@@ -11,6 +11,7 @@ module Alghemy
                fft
                frames
                ift
+               lad
                mutate
                sonify
                sublimate
