@@ -1,4 +1,10 @@
+# Public: Iterate over parameter values for plugins to get an idea of the
+# effect that they have.
 module ParamCheck
+  # NOTE: These values and processes are hard-coded, must be rewritten soon.
+  # Public: Iterate over all parameters in VST plugin, incrementing each
+  # parameters value div times between 0 and 1. Then revert the presumed
+  # sonification and sublimation on the input file.
   def param_check( sound, div = 10 )
     tot = 1.0 / div
     dir = File.join(File.dirname(sound), 'paramtest', sijil)
@@ -18,6 +24,9 @@ module ParamCheck
     end
   end
 
+  # NOTE: See above.
+  # Public: Iterate over all presets in VST plugin, then revert the presumed
+  # sonification and sublimation processes on the input file.
   def preset_check( sound )
     dir = File.join(File.dirname(sound), 'presetest', sijil)
     FileUtils.makedirs dir
