@@ -11,13 +11,14 @@ module Alghemy
 
       # Public: Constructor. Deepclones mems to ensure they are not accidentally
       # mutated. Preferred initialiser.
-      def self.clonefreeze( mems )
-        new(deepclone(mems))
+      def self.clonefreeze( mems = nil )
+        mems ? new(deepclone(mems)) : new
       end
 
-      # Public: Recover an aspect of a memory, with the option of disregarding
-      # specific affinities.
+      # Public: Attempt to recover an aspect of a memory, optionally
+      # disregarding memories from incarnations of specified affinities.
       def inherit( asp, except = :Raw )
+        return self if empty?
         mem = slice mem_index(except)
         return recall(asp, mem) unless asp.is_a?(Array)
         asp.each.with_object({}) do |a, hsh|
