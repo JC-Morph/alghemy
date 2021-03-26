@@ -9,11 +9,11 @@ module Alghemy
       attr_reader :mems
 
       def mem_init( mems )
-        @mems = Glyphs[:mems].clonefreeze(mems) if mems
+        @mems = Glyphs[:mems].clonefreeze(mems)
       end
 
       def inherit( asp, except = :Raw )
-        mems.inherit(asp, except) unless mems.nil?
+        mems.recall(asp, except)
       end
 
       # Public: Revert transforms on self using Mems.

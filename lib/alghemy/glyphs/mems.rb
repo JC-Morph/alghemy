@@ -15,14 +15,14 @@ module Alghemy
         mems ? new(deepclone(mems)) : new
       end
 
-      # Public: Attempt to recover an aspect of a memory, optionally
-      # disregarding memories from incarnations of specified affinities.
-      def inherit( asp, except = :Raw )
-        return self if empty?
+      # Public: Attempt to recall an aspect of a memory, optionally
+      # disregarding memories of specified affinities.
+      def recall( aspect, except = :Raw )
         mem = slice mem_index(except)
-        return recall(asp, mem) unless asp.is_a?(Array)
-        asp.each.with_object({}) do |a, hsh|
-          hsh[a] = recall(a, mem)
+        return recover(aspect, mem) unless [aspect].flatten.size > 1
+        aspect.each.with_object({}) do |asp, hsh|
+          next unless mem
+          hsh[asp] = recover(asp, mem)
         end
       end
 
@@ -47,6 +47,7 @@ module Alghemy
 
       # Internal: Find first mem which is not of type `except`.
       def mem_index( except )
+        return 0 if size == 0
         index do |mem|
           !type(mem).to_s[/#{except.to_s}/]
         end
@@ -55,11 +56,11 @@ module Alghemy
       # NOTE: STRUCTURE DEPENDENT METHODS
       # Internal: Recall type from mem.
       def type( mem )
-        recall(:extype, mem).last
+        recover(:extype, mem).last
       end
 
-      # Internal: Recall aspect from mem.
-      def recall( asp, mem )
+      # Internal: Recover aspect from mem.
+      def recover( asp, mem )
         asp == :method ? mem[0] : mem[1][asp]
       end
 
