@@ -49,15 +49,11 @@ module Alghemy
       def mem_index( except )
         return 0 if size == 0
         index do |mem|
-          !type(mem).to_s[/#{except.to_s}/]
+          !recover(:type, mem).to_s[/#{except.to_s}/]
         end
       end
 
-      # NOTE: STRUCTURE DEPENDENT METHODS
-      # Internal: Recall type from mem.
-      def type( mem )
-        recover(:extype, mem).last
-      end
+      # NOTE: STRUCTURE DEPENDENT METHODS?
 
       # Internal: Recover aspect from mem.
       def recover( asp, mem )
@@ -66,7 +62,7 @@ module Alghemy
 
       # Internal: Reorder mem for passing to a Transmutation as a reversion.
       def revert_catalysts( memories, matter )
-        cata = {ext: lvl[:extype].first, label: 'R'}
+        cata = {ext: lvl[:ext], label: 'R'}
         cata = yuv_parse(cata, matter)
         [:ents, :enc, :bit].each do |opt|
           cata[opt] = lvl[opt].reverse if lvl[opt]

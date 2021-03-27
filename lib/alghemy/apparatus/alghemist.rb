@@ -67,7 +67,7 @@ module Alghemy
         end
 
         def memorise
-          memory = {extype: [lmnt.sijil.ext, lmnt.class]}
+          memory = {ext: lmnt.sijil.ext, type: lmnt.class}
           tran.anchors.each do |anchor|
             defunct = rubric.swist.keys.any? do |switch|
               anchor == rubric.switch_label(switch)

@@ -15,7 +15,7 @@ module Alghemy
         which = :output
         if lmnt.raw?
           cata[:space] ||= lmnt.inherit(:space)
-          cata[:type]  ||= lmnt.inherit(:extype)[1]
+          cata[:type]  ||= lmnt.inherit(:type)
           which = :input
         end
         cata[:pf] ||= Glyphs[:pix_fmt].random(which)

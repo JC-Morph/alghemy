@@ -15,13 +15,8 @@ module Alghemy
       end
 
       def inherit
-        tree   = {}
-        extype = lmnt.inherit :extype
-        return tree if extype.empty?
-        unless cata[:type]
-          tree[:ext]  = extype[0]
-          cata[:type] = extype[1]
-        end
+        tree = lmnt.inherit %i[ext type]
+        cata[:type] ||= tree[:type]
         tree.merge! lmnt.inherit(anchors)
         space_trace(cata, tree)
         shrink_check tree

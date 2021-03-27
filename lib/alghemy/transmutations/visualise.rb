@@ -29,8 +29,7 @@ module Alghemy
 
       # Internal: Default extension.
       def ext_init
-        extype = lmnt.inherit(:extype, :Sound)
-        extype ? extype.first : '.raw'
+        lmnt.inherit(:ext, :Sound) || '.raw'
       end
     end
   end

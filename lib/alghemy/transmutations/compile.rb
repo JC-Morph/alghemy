@@ -19,10 +19,8 @@ module Alghemy
       private
 
       def defaults
-        asps = lmnt.inherit(%i[extype freq], :Sound)
-        return {ext: 'mp4'} unless asps[:extype]
-        asps[:ext] = asps.delete(:extype).first
-        asps
+        asps = lmnt.inherit(%i[ext freq], :Sound)
+        asps[:ext] ? asps : {ext: 'mp4'}
       end
     end
   end
