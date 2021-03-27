@@ -24,34 +24,23 @@ module Alghemy
           @cata = tran.cata
           @namer  = Algput.new cata.merge name_options
           @rubric = tran.write_rubric
-          heard   = enumerate tran.tome
-          evoke list(heard)
+          results = cast tran.tome
+          evoke list(results)
         end
 
-        def enumerate( tome )
+        def cast( tome )
           ears.listen namer.dir
           tome.send('each_' + namer.enum.to_s) do |input|
             input  = input.ffglob if ffgroup(rubric.class, namer.enum)
             output = input.swap_parts namer.parts
             io = {input: input.to_s, output: output}
-            invoke io
+            rubric.invoke io
           end
           ears.amputate
         end
 
         def ears
           @ears ||= Apparatus[:ears]
-        end
-
-
-        # Public: Executes process with input and output provided. Creates a new
-        # file.
-        #
-        # io - Hash of filenames to use in process:
-        #      :input  - String naming input file(s). Files should exist.
-        #      :output - String naming output file(s). Files can exist.
-        def invoke( io )
-          Apparatus[:invoker].io(rubric.scroll, io, alget(:print_rubric))
         end
 
         # Internal: Evoke new Matter from Tome with memories from the
@@ -67,7 +56,8 @@ module Alghemy
         end
 
         def memorise
-          memory = {ext: lmnt.sijil.ext, affinity: lmnt.class.name[/\w+$/]}
+          affinity = lmnt.class.name[/\w+$/].to_sym
+          memory   = {ext: lmnt.sijil.ext, affinity: affinity}
           tran.anchors.each do |anchor|
             defunct = rubric.swist.keys.any? do |switch|
               anchor == rubric.switch_label(switch)
