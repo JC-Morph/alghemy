@@ -14,8 +14,7 @@ module Alghemy
       def tran_init
         which = :output
         if lmnt.raw?
-          cata[:space] ||= lmnt.inherit(:space)
-          cata[:type]  ||= lmnt.inherit(:type)
+          cata  = lmnt.inherit([:affinity, :space]).merge cata
           which = :input
         end
         cata[:pf] ||= Glyphs[:pix_fmt].random(which)

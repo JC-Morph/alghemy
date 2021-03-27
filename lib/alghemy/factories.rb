@@ -9,8 +9,8 @@ module Alghemy
     extend Bandoleer
 
     evoke = lambda do |clss, sijil, lyst = {}|
-      type = clss.name.split('::').last.downcase
-      Evoker.send(type, sijil, lyst)
+      affinity = clss.name[/\w+$/].downcase
+      Evoker.send(affinity, sijil, lyst)
     end
     transcribe = lambda do |list, dims = nil|
       Scribe.transcribe(list, dims)

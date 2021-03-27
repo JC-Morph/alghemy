@@ -45,13 +45,15 @@ module Alghemy
 
       private
 
-      # Internal: Find first mem which is a memory of `transform` or not of type
-      # `except`.
-      def mem_index( except: :Raw, transform: nil )
+      # Internal: Find first mem which is either from a specified :transform,
+      # or from when element did not have the affinity :except.
+      #
+      # Returns Integer.
+      def mem_index( except: 'Raw', transform: nil )
         return 0 if size == 0
         return transpose[0].index(transform) if transform
         index do |mem|
-          !recover(:type, mem).to_s[/#{except.to_s}/]
+          !recover(:affinity, mem)[/#{except}/]
         end
       end
 

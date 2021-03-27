@@ -1,3 +1,5 @@
+require 'alghemy/affinities'
+
 module Alghemy
   module Modules
     # Public: Writes Rubrics for transmutations.
@@ -14,8 +16,8 @@ module Alghemy
 
       # Public: Returns appropritate Rubric class for current transmutation.
       def rubric
-        clss = cata[:type] || lmnt.class
-        clss.rubric
+        return lmnt.class.rubric unless cata[:affinity]
+        Affinities[cata[:affinity].downcase].rubric
       end
 
       # Public: Duckable Hash of options to initiaise Rubric with.

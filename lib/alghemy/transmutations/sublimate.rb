@@ -10,13 +10,13 @@ module Alghemy
 
       def sub_init
         tree = lmnt.raw? ? remember : hoist_anchors
-        tree[:ext] ||= type.defaults[:raw_ext]
+        tree[:ext] ||= affinity.defaults[:raw_ext]
         @cata = tree.merge cata
       end
 
       def remember
-        tree = lmnt.inherit(%i[ext type], transform: 'sublimate')
-        cata[:type] ||= tree[:type]
+        tree = lmnt.inherit(%i[ext affinity], transform: 'sublimate')
+        cata[:affinity] ||= tree[:affinity]
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
         space_trace(cata, tree)
         shrink_check tree
@@ -30,18 +30,19 @@ module Alghemy
 
       def anchors
         rejects = /^(time|lifespan|arcana)$/
-        asps = type.aspects.reject {|k| k[rejects] }
+        asps = affinity.aspects.reject {|k| k[rejects] }
         asps.collect(&:to_sym)
       end
 
       private
 
-      def type
-        cata[:type] || lmnt.class
+      def affinity
+        return lmnt.class unless cata[:affinity]
+        Affinities[cata[:affinity].downcase]
       end
 
       def shrink_check( tree )
-        return tree unless type == Affinities[:image]
+        return tree unless affinity == Affinities[:image]
         shrunk = %i[space depth].any? do |asp|
           tree[asp] > cata[asp] if tree[asp] && cata[asp]
         end
