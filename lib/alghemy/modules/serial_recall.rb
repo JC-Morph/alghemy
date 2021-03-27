@@ -12,8 +12,8 @@ module Alghemy
         @mems = Glyphs[:mems].clonefreeze(mems)
       end
 
-      def inherit( asp, except = :Raw )
-        mems.recall(asp, except)
+      def inherit(...)
+        mems.recall(...)
       end
 
       # Public: Revert transforms on self using Mems.

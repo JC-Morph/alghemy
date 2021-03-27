@@ -17,8 +17,8 @@ module Alghemy
 
       # Public: Attempt to recall an aspect of a memory, optionally
       # disregarding memories of specified affinities.
-      def recall( aspect, except = :Raw )
-        mem = slice mem_index(except)
+      def recall( aspect, **kwargs )
+        mem = slice mem_index(**kwargs)
         return recover(aspect, mem) unless [aspect].flatten.size > 1
         aspect.each.with_object({}) do |asp, hsh|
           next unless mem
@@ -45,9 +45,11 @@ module Alghemy
 
       private
 
-      # Internal: Find first mem which is not of type `except`.
-      def mem_index( except )
+      # Internal: Find first mem which is a memory of `transform` or not of type
+      # `except`.
+      def mem_index( except: :Raw, transform: nil )
         return 0 if size == 0
+        return transpose[0].index(transform) if transform
         index do |mem|
           !recover(:type, mem).to_s[/#{except.to_s}/]
         end

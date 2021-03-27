@@ -9,15 +9,15 @@ module Alghemy
       include Methods[:space_trace]
 
       def sub_init
-        tree = lmnt.raw? ? inherit : hoist_anchors
+        tree = lmnt.raw? ? remember : hoist_anchors
         tree[:ext] ||= type.defaults[:raw_ext]
         @cata = tree.merge cata
       end
 
-      def inherit
-        tree = lmnt.inherit %i[ext type]
+      def remember
+        tree = lmnt.inherit(%i[ext type], transform: 'sublimate')
         cata[:type] ||= tree[:type]
-        tree.merge! lmnt.inherit(anchors)
+        tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
         space_trace(cata, tree)
         shrink_check tree
       end
