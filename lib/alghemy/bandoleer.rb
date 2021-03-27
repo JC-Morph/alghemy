@@ -21,12 +21,12 @@ module Alghemy
     end
 
     def []( vial )
-      bandoleer[vial]
+      bandoleer[vial.downcase]
     end
 
     def equip( elixirs )
       elixirs.each do |vial, contents|
-        bandoleer.register(vial) do
+        bandoleer.register(vial.downcase) do
           retrieve vial
           contents
         end

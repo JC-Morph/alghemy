@@ -38,7 +38,7 @@ module Alghemy
 
       def affinity
         return lmnt.class unless cata[:affinity]
-        Affinities[cata[:affinity].downcase]
+        Affinities[cata[:affinity]]
       end
 
       def shrink_check( tree )

@@ -17,7 +17,7 @@ module Alghemy
       # Public: Returns appropritate Rubric class for current transmutation.
       def rubric
         return lmnt.class.rubric unless cata[:affinity]
-        Affinities[cata[:affinity].downcase].rubric
+        Affinities[cata[:affinity]].rubric
       end
 
       # Public: Duckable Hash of options to initiaise Rubric with.
