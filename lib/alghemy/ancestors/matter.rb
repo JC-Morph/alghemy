@@ -16,7 +16,7 @@ module Alghemy
         Requests[:display]
       end
 
-      # Public: Constructor. Attempts to discern what type of file sijil is, and
+      # Public: Constructor. Attempts to discern what sort of file sijil is, and
       # then initialise the appropriate subclass. This is the preferred
       # initialisation method for Matter.
       #
