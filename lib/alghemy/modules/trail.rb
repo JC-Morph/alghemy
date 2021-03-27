@@ -6,11 +6,9 @@ module Alghemy
     # String oriented.
     module Trail
       # Public: Slice shortcut for Trail parts.
-      #
-      # Returns String.
       def []( idx )
-        return slice(idx) if idx.class == Regexp
-        num_index[idx.to_s]
+        return num_index[idx.to_s] if (-2..1).include?(idx.to_i)
+        slice idx
       end
 
       # Public: Convert Trail for Windows processes.
