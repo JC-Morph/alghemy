@@ -9,9 +9,9 @@ module Alghemy
       include Methods[:space_trace]
 
       def sub_init
-        tree = lmnt.raw? ? inherit : lmntree
+        tree = lmnt.raw? ? inherit : hoist_anchors
         tree[:ext] ||= type.defaults[:raw_ext]
-        @cata        = tree.merge cata
+        @cata = tree.merge cata
       end
 
       def inherit
@@ -27,7 +27,7 @@ module Alghemy
         shrink_check tree
       end
 
-      def lmntree
+      def hoist_anchors
         anchors.each.with_object({}) do |asp, hsh|
           hsh[asp] = lmnt.send(asp)
         end

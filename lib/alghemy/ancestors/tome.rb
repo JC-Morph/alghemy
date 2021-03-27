@@ -28,7 +28,6 @@ module Alghemy
 
       def each_group_sijil( &block )
         group_sijils = each_group.collect(&:globvert)
-        binding.pry
         group_sijils = Factories[:scribe].call group_sijils
         block_given? ? group_sijils.each_lmnt(&block) : group_sijils.to_enum
       end
