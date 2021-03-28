@@ -1,6 +1,5 @@
 require 'alghemy/apparatus'
 require 'alghemy/factories'
-require 'alghemy/methods'
 require_relative 'alghemist/algput'
 require_relative 'alghemist/memrec'
 
@@ -8,7 +7,6 @@ module Alghemy
   module Apparatus
     module Alghemist
       class << self
-        include Methods[:alget]
         include MemRec
         attr_reader :lmnt, :tran, :cata, :namer, :rubric
 

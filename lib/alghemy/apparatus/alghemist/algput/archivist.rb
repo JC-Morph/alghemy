@@ -1,9 +1,10 @@
-require 'alghemy/options'
+require 'alghemy/methods'
 
 module Alghemy
   # Internal: Builds transform-specific Strings to use in Sijils.
-  module Occultist
+  module Archivist
     class << self
+      include Methods[:alget]
       attr_reader :sijil, :ident, :idents
 
       # Public: Abstract any existing idents from sijil, then add new ident.
@@ -46,8 +47,8 @@ module Alghemy
 
       # Internal: Attempt to find idents in dir.
       def dir_ident_search
-        dirs  = sijil.dir.split SEP
-        index = dirs.index {|dir| dir == LEADR }
+        dirs  = sijil.dir.split alget(:SEP)
+        index = dirs.index {|dir| dir == alget(:LEADR) }
         return unless index && dirs[index..-1].size > 2
         dirs[index + 2]
       end
