@@ -37,7 +37,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: 'wav', plug: ladspa.list.sample}
+        {ext: 'wav', label: 'L', plug: ladspa.list.sample}
       end
 
       def rand_param( info )

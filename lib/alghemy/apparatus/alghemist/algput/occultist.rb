@@ -16,20 +16,20 @@ module Alghemy
         @sijil = sijil
         @ident = ident
         find_ids
-        ident[mute] ? add_mute : add_pose
+        ident[mutation] ? add_mutation : add_transposition
         idents * '-'
       end
 
       # Internal: Add transposition ident.
-      def add_pose
+      def add_transposition
         return add_number if ident == idents.last
         idents << ident
       end
 
       # Internal: Add mutation ident.
-      def add_mute
-        return add_pose unless mute_defined?
-        return add_number if mute_defined? ident
+      def add_mutation
+        return add_transposition unless consecutive_mutation?
+        return add_number if consecutive_mutation? ident
         idents.last.concat ident
       end
 
@@ -38,14 +38,14 @@ module Alghemy
       # Internal: Find prexisting idents in Sijil.
       def find_ids
         @idents = []
-        ident   = dir_ident
-        ident << sijil.base_num if ident && sijil.base_num
-        ident ||= sijil.unglob.base.sub(sijil.label, '')
-        @idents = ident.split '-' unless ident[/^\./]
+        list   = dir_ident_search
+        list  << sijil.base_num if list && sijil.base_num
+        list ||= sijil.unglob.base.sub(sijil.label, '')
+        @idents = list.split '-' unless list[/^\./]
       end
 
       # Internal: Attempt to find idents in dir.
-      def dir_ident
+      def dir_ident_search
         dirs  = sijil.dir.split SEP
         index = dirs.index {|dir| dir == LEADR }
         return unless index && dirs[index..-1].size > 2
@@ -54,30 +54,28 @@ module Alghemy
 
       # Internal: Construct a Regexp for a mutation ident.
       #
-      # id - String label for a mutation. Usually represented by an uppercase
-      #      character between round brackets.
+      # id - String label for a mutation, represented by an uppercase character.
       #
       # Returns Regexp.
-      def mute( id = nil )
+      def mutation( id = nil )
         id ||= '[A-Z]'
-        id   = id[1] if id[/^\(/]
-        /\(#{id}\d{0,2}\)$/
+        /[A-Z]*#{id}\d{0,2}$/
       end
 
       # Internal: Boolean if the last ident was a mutation. Ident must also
       # match id, if present.
       #
-      # id - See #mute. (optional)
-      def mute_defined?( id = nil )
+      # id - See #mutation. (optional)
+      def consecutive_mutation?( id = nil )
         return false unless idents.last
-        !(idents.last =~ mute(id)).nil?
+        !(idents.last =~ mutation(id)).nil?
       end
 
       # Internal: Increment a number for ident repetitions.
       def add_number
         last = idents.last
-        return last.succ! if last[/\d\)*$/]
-        last.insert(mute_defined? ? -2 : -1, '2')
+        return last.succ! if last[/\d$/]
+        last.insert(-1, '2')
       end
     end
   end
