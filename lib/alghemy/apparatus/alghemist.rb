@@ -1,13 +1,13 @@
 require 'alghemy/apparatus'
 require 'alghemy/factories'
+require 'alghemy/methods'
 require_relative 'alghemist/algput'
-require_relative 'alghemist/memrec'
 
 module Alghemy
   module Apparatus
     module Alghemist
       class << self
-        include MemRec
+        include Methods[:mem_rec]
         attr_reader :lmnt, :tran, :cata, :namer, :rubric
 
         # TODO: rewrite
@@ -49,11 +49,11 @@ module Alghemy
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          memory = record_memory(lmnt.mems, memorise)
+          memory = mem_rec(cata, lmnt.mems, short_term)
           tome.sijil.evoke memory
         end
 
-        def memorise
+        def short_term
           affinity = lmnt.class.name[/\w+$/].to_sym
           memory   = {ext: lmnt.sijil.ext, affinity: affinity}
           tran.anchors.each do |anchor|

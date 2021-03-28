@@ -10,6 +10,7 @@ module Alghemy
                array_merge
                deepclone
                hshprint
+               mem_rec
                space_trace
                transmute]
 
