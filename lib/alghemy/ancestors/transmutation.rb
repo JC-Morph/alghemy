@@ -9,7 +9,7 @@ module Alghemy
       include Modules[:osman]
       attr_reader :lmnt, :tome, :cata
 
-      # Internal: Initialise a Transmutation.
+      # Public: Initialise a Transmutation.
       #
       # lmnt - The Matter to build the transform for.  Expected to represent
       #        part of the input for the transform.
@@ -24,21 +24,24 @@ module Alghemy
         prepext
       end
 
-      # Internal: Returns a Tome of all files in Array.
+      # Public: Returns a Tome of all files in Array.
       #
       # arr - Array containing Strings of filenames.
       def list( arr )
         Factories[:scribe].call arr
       end
 
-      # Internal: Boolean if expected output Class ends with an 's'. Denotes
+      # Public: Boolean if expected output Class ends with an 's'. Denotes
       # whether output is expected to consist of more than one file.
       def plural?
         !(@solution.to_s =~ /s$/).nil?
       end
 
+      # Public: Array of attribute names used in Transmutation that should be
+      # kept in memory so they can be accessed by future Transmutations. This is
+      # where we want to put attributes that will be used to revert transforms.
       def anchors
-        {}
+        []
       end
 
       private

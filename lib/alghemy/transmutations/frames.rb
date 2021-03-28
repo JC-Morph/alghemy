@@ -21,7 +21,7 @@ module Alghemy
       end
 
       def anchors
-        %i[freq]
+        [:freq]
       end
 
       private

@@ -30,8 +30,8 @@ module Alghemy
 
       def anchors
         rejects = /^(time|lifespan|arcana)$/
-        asps = affinity.aspects.reject {|k| k[rejects] }
-        asps.collect(&:to_sym)
+        aspects = affinity.aspects.reject {|asp| asp[rejects] }
+        aspects.collect(&:to_sym)
       end
 
       private

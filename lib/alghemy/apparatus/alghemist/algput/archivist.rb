@@ -7,10 +7,11 @@ module Alghemy
       include Methods[:alget]
       attr_reader :sijil, :ident, :idents
 
-      # Public: Abstract any existing idents from sijil, then add new ident.
+      # Public: Take any existing idents from sijil and combine them with the
+      # new ident.
       #
-      # sijil - Sijil, presumed to be an input.
-      # ident - Short String, relating to a transform.
+      # sijil - Filename of input.
+      # ident - Short String to represent a Transmutation in a Filename.
       #
       # Returns idents as a String.
       def extend_id( sijil, ident )

@@ -69,7 +69,7 @@ module Alghemy
     # new ident.
     #
     # sijil - Filename of input.
-    # ident - Short String to represent the transmutation in a Filename.
+    # ident - Short String to represent a transmutation in a Filename.
     #
     # Returns new ident as String.
     def extend_id( sijil, ident )

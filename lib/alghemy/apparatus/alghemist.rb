@@ -11,7 +11,7 @@ module Alghemy
         attr_reader :lmnt, :tran, :cata, :namer, :rubric
 
         # TODO: rewrite
-        # Internal: Initialises Algput to define output environment, then Rubric
+        # Public: Initialises Algput to define output environment, then Rubric
         # to define the process String. Invoke Tome with Algput & Rubric to
         # create new files, then evoke new instance of Matter.
         #
@@ -41,7 +41,7 @@ module Alghemy
           @ears ||= Apparatus[:ears]
         end
 
-        # Internal: Evoke new Matter from Tome with memories from the
+        # Public: Evoke new Matter from Tome with memories from the
         # transmutation.
         #
         # tome - Tome of filenames that were heard during transmutation.
@@ -53,6 +53,10 @@ module Alghemy
           tome.sijil.evoke memory
         end
 
+        # Internal: Collect aspects that could be useful for future
+        # Transmutations.
+        #
+        # Returns Hash.
         def short_term
           affinity = lmnt.class.name[/\w+$/].to_sym
           memory   = {ext: lmnt.sijil.ext, affinity: affinity}
@@ -85,8 +89,12 @@ module Alghemy
         end
 
         def tome_error
-          msg = 'No created files found! Increase Alghemy.ear_sleep if ' \
-            'problem persists.'
+          msg = "No created files found! Something has gone wrong.\n" \
+                "The last Transmutation may have failed.\n" \
+                "Check the Rubric to see intended file output," \
+                "and then check if the file(s) actually exist.\n" \
+                "If they do, try increasing Alghemy.ear_sleep," \
+                "To give Listen more time to detect the files."
           raise msg
         end
       end
