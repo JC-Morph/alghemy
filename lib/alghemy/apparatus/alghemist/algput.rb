@@ -73,7 +73,7 @@ module Alghemy
     #
     # Returns new ident as String.
     def extend_id( sijil, ident )
-      Occultist.extend_id(sijil, ident)
+      Archivist.extend_id(sijil, ident)
     end
 
     def open_dir
