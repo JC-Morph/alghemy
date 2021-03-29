@@ -1,14 +1,14 @@
 module Alghemy
   # Public: Handles identifying iterative numbers in Filename Strings.
   module Gnumbers
-    def num_list( strings )
-      strings.each.with_object([]) do |string, arr|
+    def num_list( filenames )
+      filenames.each.with_object([]) do |string, arr|
         arr << num_scan(string)
       end
     end
 
-    def num_scan( string )
-      File.basename(string).scan(/\d+/)
+    def num_scan( filename )
+      File.basename(filename.to_s).scan(/\d+/)
     end
 
     # Public: Replace gnums in String with a suitable glob pattern.
