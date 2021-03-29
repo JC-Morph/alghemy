@@ -28,7 +28,6 @@ module Alghemy
         finish = start + enum.size - 1
         ranges << (start..finish)
       end
-      binding.pry
       ranges
     end
 

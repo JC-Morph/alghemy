@@ -20,7 +20,7 @@ module Alghemy
           @lmnt = lmnt
           @tran = transform
           @cata = tran.cata
-          @namer  = Algput.new cata.merge name_options
+          @namer  = Algput.new(cata.merge name_options)
           @rubric = tran.write_rubric
           results = cast tran.tome
           evoke list(results)
