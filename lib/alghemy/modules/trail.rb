@@ -1,5 +1,3 @@
-require 'alghemy/options'
-
 module Alghemy
   module Modules
     # Public: Methods used to dissect a path. Similar to Pathname, but more
@@ -47,8 +45,7 @@ module Alghemy
       # Public: Attempt to detect unique directory if present.
       def unique
         # TODO: figure out how to get actual unique label
-        unique = dir[/(?<=#{SEP})[^#{SEP}]+/]
-        unique || dir[/[^#{SEP}\.]+$/]
+        unique = dir[/[^#{File::SEPARATOR}]+$/]
       end
 
       # Public: Basename.

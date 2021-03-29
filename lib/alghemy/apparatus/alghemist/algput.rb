@@ -1,11 +1,9 @@
-require 'alghemy/methods'
 require_relative 'algput/algdir'
 require_relative 'algput/archivist'
 
 module Alghemy
   # Internal: Output class for alghemical processes.
   class Algput
-    include Methods[:alget]
     attr_reader :enum, :parts
 
     # Internal: Initialise an Algput.
@@ -48,7 +46,7 @@ module Alghemy
         # TODO: different names possible here? Mutest
         parts[:base] = sijil.label unless sijil.plural?
         parts[:base].concat('_' + lyst[:glob]) if lyst[:glob]
-        parts[:dir].concat(alget(:SEP) + ident)
+        parts[:dir].concat(File::SEPARATOR + ident)
       else
         parts[:base] = ident
       end
