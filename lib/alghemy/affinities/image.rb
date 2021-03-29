@@ -20,7 +20,7 @@ module Alghemy
         end
 
         def analyse
-          Requests[:scry]
+          Requests[:image_info]
         end
 
         def rubric

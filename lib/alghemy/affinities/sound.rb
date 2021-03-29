@@ -20,11 +20,11 @@ module Alghemy
         end
 
         def open
-          Requests[:slay]
+          Requests[:sound_open]
         end
 
         def analyse
-          Requests[:eye]
+          Requests[:sound_info]
         end
 
         def rubric

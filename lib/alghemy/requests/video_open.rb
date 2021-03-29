@@ -3,7 +3,7 @@ require 'alghemy/modules'
 module Alghemy
   module Requests
     # Public: Play video files with ffplay.
-    module Flay
+    module VideoOpen
       extend Modules[:request]
 
       def self.moniker

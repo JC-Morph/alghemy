@@ -6,13 +6,12 @@ module Alghemy
   module Requests
     extend Bandoleer
 
-    vials = %i[display
-               eye
-               flay
-               probe
-               scry
-               slay
-               view]
+    vials = %i[image_info
+               sound_info
+               video_info
+               image_open
+               sound_open
+               video_open]
 
     equip_constants vials
   end

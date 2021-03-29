@@ -25,11 +25,11 @@ module Alghemy
         end
 
         def open
-          Requests[:flay]
+          Requests[:video_open]
         end
 
         def analyse
-          Requests[:probe]
+          Requests[:video_info]
         end
 
         def rubric

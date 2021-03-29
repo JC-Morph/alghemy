@@ -3,7 +3,7 @@ require 'alghemy/modules'
 module Alghemy
   module Requests
     # Public: Play sound files with sox.
-    module Slay
+    module SoundOpen
       class << self
         include Modules[:request]
 

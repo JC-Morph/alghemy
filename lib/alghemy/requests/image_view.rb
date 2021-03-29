@@ -3,7 +3,7 @@ require 'alghemy/modules'
 module Alghemy
   module Requests
     # Public: Display image files with xnview.
-    module View
+    module ImageView
       class << self
         include Modules[:request]
 

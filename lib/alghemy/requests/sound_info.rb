@@ -3,7 +3,7 @@ require 'alghemy/modules'
 module Alghemy
   module Requests
     # Public: Analyse sound files with sox.
-    module Eye
+    module SoundInfo
       class << self
         include Modules[:analyse]
 

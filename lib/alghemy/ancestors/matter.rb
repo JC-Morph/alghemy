@@ -13,7 +13,7 @@ module Alghemy
       attr_reader :sijil, :dims
 
       def self.open
-        Requests[:display]
+        Requests[:image_open]
       end
 
       # Public: Constructor. Attempts to discern what sort of file sijil is, and

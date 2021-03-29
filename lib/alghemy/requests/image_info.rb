@@ -4,7 +4,7 @@ require 'alghemy/modules'
 module Alghemy
   module Requests
     # Public: Analyse image files with identify.
-    module Scry
+    module ImageInfo
       class << self
         include Modules[:analyse]
 

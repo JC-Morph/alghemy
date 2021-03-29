@@ -4,7 +4,7 @@ require 'alghemy/modules'
 module Alghemy
   module Requests
     # Public: Analyse video files with ffprobe.
-    module Probe
+    module VideoInfo
       class << self
         include Modules[:analyse]
 
