@@ -9,6 +9,10 @@ module Alghemy
         slice idx
       end
 
+      def slice
+        raise NotImplementedError
+      end
+
       # Public: Convert Trail for Windows processes.
       #
       # Returns String.
@@ -39,23 +43,23 @@ module Alghemy
 
       # Public: Returns Directory.
       def dir
-        File.dirname self
+        File.dirname self.to_s
       end
 
       # Public: Attempt to detect unique directory if present.
       def unique
         # TODO: figure out how to get actual unique label
-        unique = dir[/[^#{File::SEPARATOR}]+$/]
+        unique = dir[/[^#{File::SEPARATOR}\.]+$/]
       end
 
       # Public: Basename.
       def base
-        File.basename(self, '.*')
+        File.basename(self.to_s, '.*')
       end
 
       # Public: Extension.
       def ext
-        File.extname(self).to_s
+        File.extname self.to_s
       end
 
       private

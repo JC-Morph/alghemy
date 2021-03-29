@@ -1,10 +1,13 @@
+require 'forwardable'
 require 'alghemy/factories'
 require 'alghemy/modules'
 
 module Alghemy
   module Glyphs
     # Public: Represents a path referencing the location of Matter.
-    class Sijil < String
+    class Sijil
+      extend Forwardable
+      def_delegators :@sijil, :gsub, :inspect, :slice, :sub, :to_s
       include Modules[:trail]
 
       def self.compose( sijil )
@@ -16,8 +19,12 @@ module Alghemy
         raise IOError, "Cannot find any files matching: #{sijil}"
       end
 
+      def initialize( filename )
+        @sijil = filename
+      end
+
       def list
-        Dir.glob self
+        Dir.glob self.to_s
       end
 
       def first
