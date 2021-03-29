@@ -1,12 +1,15 @@
-require 'alghemy/options'
+require 'alghemy/methods'
 
 module Alghemy
   # Public: Directory class for alghemical processes.
   class Algdir < String
+    include Methods[:alget]
+
     # Public: Prepend and create directory.
     def self.open( dir )
-      dir = dir.to_s
-      dir = File.join(LEADR, dir) unless dir[/^#{LEADR}/]
+      root = alget[:LEADR]
+      dir  = dir.to_s
+      dir  = File.join(root, dir) unless dir[/^#{root}/]
       FileUtils.makedirs dir
       new dir
     end
