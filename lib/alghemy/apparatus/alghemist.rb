@@ -58,7 +58,7 @@ module Alghemy
         #
         # Returns Hash.
         def short_term
-          affinity = lmnt.class.name[/\w+$/].to_sym
+          affinity = lmnt.class.name.split('..').last
           memory   = {ext: lmnt.sijil.ext, affinity: affinity}
           tran.anchors.each do |anchor|
             defunct = rubric.swist.keys.any? do |switch|

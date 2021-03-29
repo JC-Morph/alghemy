@@ -14,7 +14,7 @@ module Alghemy
     end
 
     def aural?
-      !(lmnt.class.to_s =~ /Sounds*$/).nil?
+      !(lmnt.class.name =~ /Sounds*$/).nil?
     end
   end
 end
