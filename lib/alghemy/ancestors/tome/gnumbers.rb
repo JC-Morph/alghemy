@@ -1,9 +1,9 @@
 module Alghemy
-  # Public: Handles identifying iterative numbers in Filename Strings.
+  # Public: Handles identifying iterative numbers in filename Strings.
   module Gnumbers
     def num_list( filenames )
-      filenames.each.with_object([]) do |string, arr|
-        arr << num_scan(string)
+      filenames.each.with_object([]) do |filename, arr|
+        arr << num_scan(filename)
       end
     end
 
@@ -11,20 +11,20 @@ module Alghemy
       File.basename(filename.to_s).scan(/\d+/)
     end
 
-    # Public: Replace gnums in String with a suitable glob pattern.
-    def glob_replace( string, numbers )
-      ranges = e_ranges(string, numbers)
-      ranges.reverse_each.with_object(string.dup) do |rng, str|
+    # Public: Replace gnums in filename with a suitable glob pattern.
+    def glob_replace( filename, numbers )
+      ranges = e_ranges(filename, numbers)
+      ranges.reverse_each.with_object(filename.dup) do |rng, str|
         glob = rng.size > 2 ? '*' : ('?' * rng.size)
         str[rng] = glob
       end
     end
 
-    # Public: Returns Array of ranges for locations of gnums in String.
-    def e_ranges( string, numbers )
+    # Public: Returns Array of ranges for locations of gnums in filename.
+    def e_ranges( filename, numbers )
       ranges = []
       e_nums(numbers).each.with_index do |enum, i|
-        start  = num_index(string)[i]
+        start  = num_index(filename)[i]
         finish = start + enum.size - 1
         ranges << (start..finish)
       end
@@ -43,12 +43,12 @@ module Alghemy
 
     private
 
-    # Internal: Returns Array of indices for numbers in String.
-    def num_index( string )
+    # Internal: Returns Array of indices for numbers in filename.
+    def num_index( filename )
       arr = []
-      dir = File.dirname string
+      dir = File.dirname filename.to_s
       pad = dir == '.' ? 0 : dir.size.succ
-      File.basename(string).scan(/\d+/) do
+      File.basename(filename.to_s).scan(/\d+/) do
         index = Regexp.last_match.offset(0)[0]
         arr << index + pad
       end

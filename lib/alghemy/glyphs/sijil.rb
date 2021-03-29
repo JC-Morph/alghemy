@@ -7,7 +7,7 @@ module Alghemy
     # Public: Represents a path referencing the location of Matter.
     class Sijil
       extend Forwardable
-      def_delegators :@sijil, :gsub, :inspect, :slice, :sub, :to_s
+      def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub, :to_s
       include Modules[:trail]
 
       def self.compose( sijil )
@@ -45,18 +45,8 @@ module Alghemy
         Factories[:evoker].call(self.class, self, lyst)
       end
 
-      def base_num
-        base[/(?<=[_-])\d+$/]
-      end
-
       def unglob
         self.class.new gsub(/[_-]*(?<!\\)[\*\?]+/, '')
-      end
-
-      # TODO: Move.
-      def ffglob
-        glob = "_%0#{first.base_num.size}d"
-        swap_parts base: unglob.base.concat(glob)
       end
     end
   end

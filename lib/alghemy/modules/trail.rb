@@ -1,8 +1,11 @@
+require 'alghemy/methods'
+
 module Alghemy
   module Modules
-    # Public: Methods used to dissect a path. Similar to Pathname, but more
-    # String oriented.
+    # Public: Methods used to dissect a path. Similar to Pathname.
     module Trail
+      include Methods[:alget]
+
       # Public: Slice shortcut for Trail parts.
       def []( idx )
         return num_index[idx.to_s] if (-2..1).include?(idx.to_i)
@@ -36,20 +39,17 @@ module Alghemy
         self.class.new File.join(swap[:dir], file)
       end
 
-      # Public: Attempt to return unique part of Trail.
-      def label
-        unique || base
-      end
-
       # Public: Returns Directory.
       def dir
         File.dirname self.to_s
       end
 
-      # Public: Attempt to detect unique directory if present.
-      def unique
-        # TODO: figure out how to get actual unique label
-        unique = dir[/[^#{File::SEPARATOR}\.]+$/]
+      # Public: Attempt to detect a descriptive directory if present.
+      def dir_label
+        root = alget(:LEADR)
+        sep  = alget(:SEP)
+        child_dir  = dir[/(?<=#{root + sep})[^#{sep}]+/]
+        child_dir || dir[/[^#{sep}\.]+$/]
       end
 
       # Public: Basename.
@@ -62,16 +62,33 @@ module Alghemy
         File.extname self.to_s
       end
 
+      # Public: Attempt to return unique part of Trail.
+      def label
+        dir_label || unglob.base
+      end
+
+      def unglob
+         raise NotImplementedError
+      end
+
+      def ffglob
+        glob = "_%0#{first.base_num.size}d"
+        swap_parts base: unglob.base.concat(glob)
+      end
+
+      def base_num
+        base[/(?<=[_-])\d+$/]
+      end
+
       private
 
-      # Internal: Returns Hash containing a numerical index for #slice shortcut
-      # (#[]).
+      # Internal: Returns Hash containing a numerical index for #slice method.
       def num_index
         {'-2' => dir, '-1' => unique, '0' => base, '1' => ext}
       end
 
       # Internal: Returns Hash containing default parts of sijil used by
-      # #swap_parts.
+      # #swap_parts method.
       def parts
         {dir: dir, base: base, ext: ext}
       end
