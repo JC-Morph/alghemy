@@ -8,7 +8,7 @@ module Alghemy
         ['mrswatson']
       end
 
-      def self.switch_plates
+      def self.switch_templates
         [[:p, :plugin, 'mrs_passthru']]
       end
 

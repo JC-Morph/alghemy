@@ -8,7 +8,7 @@ module Alghemy
         ['convert']
       end
 
-      def self.switch_plates
+      def self.switch_templates
         [
           %i[size space],
           %i[depth bitdepth]

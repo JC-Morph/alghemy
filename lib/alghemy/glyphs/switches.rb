@@ -9,8 +9,8 @@ module Alghemy
       attr_accessor :defaults
 
       class << self
-        def build( plates, lyst = {} )
-          switches = new(plates.collect {|plate| switch.new plate })
+        def build( templates, lyst = {} )
+          switches = new(templates.collect {|template| switch.new template })
           switches.defaults = {}
           switches.each do |switch|
             switches.defaults[switch.alias] = switch.default
@@ -25,9 +25,9 @@ module Alghemy
           s.default = array_merge(lysted, s.default)
         end
 
-        # def new_switch( plate )
+        # def new_switch( template )
         #   clss = const(hsh[:type]) if hsh[:type]
-        #   clss.new plate
+        #   clss.new template
         # end
 
         # def const( type )

@@ -8,13 +8,13 @@ module Alghemy
       attr_reader :hist, :switches
 
       # Public: Templates for switches.
-      def self.switch_plates
+      def self.switch_templates
         raise NotImplementedError
       end
 
       def build_switches( lyst )
         @hist     = []
-        @switches = Glyphs[:switches].call self.class.switch_plates, lyst
+        @switches = Glyphs[:switches].call self.class.switch_templates, lyst
         def_switches
       end
 

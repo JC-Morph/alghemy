@@ -9,15 +9,15 @@ module Alghemy
           %w[ffmpeg -loglevel warning -stats]
         end
 
-        def switch_plates
+        def switch_templates
           [
             ['f', :format, 'rawvideo'],
             ['pix_fmt', :pf],
             *stream_option('c', %w[libx264 aac]),
             *stream_option('q', [5, 3]),
             ['crf', :constant, 12],
-            ['video_size', :space],
-            ['framerate', :freq, 25]
+            ['video_size', :size],
+            ['framerate', :rate, 25]
           ]
         end
 

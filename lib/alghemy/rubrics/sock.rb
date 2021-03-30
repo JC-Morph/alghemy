@@ -14,7 +14,7 @@ module Alghemy
         %w[sox -V1 -D]
       end
 
-      def self.switch_plates
+      def self.switch_templates
         [
           [:t, :type, 'raw'],
           [:r, :rate, 48_000],

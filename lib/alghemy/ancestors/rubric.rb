@@ -38,11 +38,11 @@ module Alghemy
         # executable.
         # def switches
         #   keys = %i[label alias default]
-        #   switch_plates.collect {|plate| keys.zip(plate).to_h }
+        #   switch_templates.collect {|plate| keys.zip(plate).to_h }
         # end
 
         # Public: Array of default templates for switches.
-        def switch_plates
+        def switch_templates
           []
         end
       end
