@@ -8,7 +8,7 @@ module Alghemy
     class Image < Ancestors[:matter]
       class << self
         def aspects
-          %i[space depth arcana]
+          %i[size depth arcana]
         end
 
         def defaults

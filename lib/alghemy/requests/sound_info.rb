@@ -18,7 +18,7 @@ module Alghemy
         private
 
         def catdex
-          # duration, rate, samples, bitdepth, encoding
+          # length, rate, total samples, bitdepth, encoding
           aspdex %w[-D -r -s -b -e]
         end
 
@@ -29,10 +29,9 @@ module Alghemy
           aspdex fmts.flatten
         end
 
-        def aspdex( arr )
-          Eyedex.new(*arr)
+        def infodex
+          %i[len rate span depth arcana]
         end
-        Eyedex = Struct.new(:time, :freq, :lifespan, :depth, :arcana)
       end
     end
   end

@@ -39,6 +39,11 @@ module Alghemy
       def windows_process?
         false
       end
+
+      def aspdex( arr )
+        index = Struct.new(*infodex)
+        index.new(*arr)
+      end
     end
   end
 end

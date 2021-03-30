@@ -48,7 +48,7 @@ module Alghemy
       end
 
       def compile
-        format.freq unless cata[:raw]
+        format.rate unless cata[:raw]
         input.output
       end
 
@@ -59,7 +59,7 @@ module Alghemy
       end
 
       def input
-        formats.space.freq if cata[:raw]
+        formats.size.rate if cata[:raw]
         add ['-i', '%<input>s']
       end
 

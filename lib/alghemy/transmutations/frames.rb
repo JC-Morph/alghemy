@@ -12,7 +12,7 @@ module Alghemy
 
       def tran_init
         cata[:glob] ||= frames_less_than(1_000) ? '%03d' : '%04d'
-        cata[:freq] = lmnt.freq if lmnt.is_a?(Video)
+        cata[:rate] = lmnt.rate if lmnt.is_a?(Video)
         @solution = Affinities[:elements] unless frames_less_than 2
       end
 
@@ -21,7 +21,7 @@ module Alghemy
       end
 
       def anchors
-        [:freq]
+        [:rate]
       end
 
       private
@@ -31,7 +31,7 @@ module Alghemy
       end
 
       def frames_less_than( frames )
-        lmnt.is_a?(Affinities[:video]) && lmnt.lifespan < frames
+        lmnt.is_a?(Affinities[:video]) && lmnt.span < frames
       end
     end
   end

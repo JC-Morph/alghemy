@@ -30,10 +30,9 @@ module Alghemy
           aspdex fmts
         end
 
-        def aspdex( arr )
-          Scrydex.new(*arr)
+        def infodex
+          %i[size depth arcana]
         end
-        Scrydex = Struct.new(:space, :depth, :arcana)
       end
     end
   end

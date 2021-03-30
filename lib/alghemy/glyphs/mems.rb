@@ -79,8 +79,8 @@ module Alghemy
       # TODO: make a place for this where it makes sense
       def yuv_parse( hsh, matter )
         return hsh unless matter.sijil.ext == '.yuv' && tran == :sublimate
-        x, y = lvl[:space].dims.collect {|n| n.odd? ? n.succ : n }
-        hsh.merge space: [x, y]
+        x, y = lvl[:size].dims.collect {|n| n.odd? ? n.succ : n }
+        hsh.merge size: [x, y]
       end
     end
   end

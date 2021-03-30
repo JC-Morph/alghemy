@@ -11,7 +11,7 @@ module Alghemy
         ents = aural? ? lmnt_ents : cata[:ents].flatten
         cata[:ents].balance ents
         cata[:ext]  ||= ext_init
-        cata[:rate] ||= lmnt.freq if aural?
+        cata[:rate] ||= lmnt.rate if aural?
       end
 
       def write_rubric

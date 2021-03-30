@@ -11,16 +11,15 @@ module Alghemy
       end
 
       def tran_init
-        cata[:enum]   = :group_sijil
-        cata[:format] = 'image2'
-        @solution     = Affinities[:element] unless lmnt.dims
+        cata[:enum] = :group_sijil
+        @solution   = Affinities[:element] unless lmnt.dims
       end
 
       private
 
       def defaults
-        asps = lmnt.inherit(%i[ext freq], except: :Sound)
-        asps[:ext] ? asps : {ext: 'mp4'}
+        rate = lmnt.inherit(:rate, except: :Sound)
+        {ext: 'mp4', format: 'image2', rate: rate}
       end
     end
   end

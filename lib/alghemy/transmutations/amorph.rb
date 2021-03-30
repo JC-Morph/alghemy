@@ -14,7 +14,7 @@ module Alghemy
       def tran_init
         which = :output
         if lmnt.raw?
-          cata  = lmnt.inherit([:affinity, :space]).merge cata
+          cata  = lmnt.inherit([:affinity, :size]).merge cata
           which = :input
         end
         cata[:pf] ||= Glyphs[:pix_fmt].random(which)
@@ -30,8 +30,8 @@ module Alghemy
 
       def anchors
         return [] if lmnt.raw?
-        anchors = [:space]
-        anchors << :freq if lmnt.is_a?(Affinities[:video])
+        anchors = [:size]
+        anchors << :rate if lmnt.is_a?(Affinities[:video])
       end
     end
   end

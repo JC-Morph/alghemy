@@ -8,7 +8,7 @@ module Alghemy
     class Video < Ancestors[:matter]
       class << self
         def aspects
-          %i[space time freq lifespan arcana]
+          %i[size len rate span arcana]
         end
 
         def defaults

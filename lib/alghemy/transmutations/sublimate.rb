@@ -29,7 +29,7 @@ module Alghemy
       end
 
       def anchors
-        rejects = /^(time|lifespan|arcana)$/
+        rejects = /^(len|span|arcana)$/
         aspects = affinity.aspects.reject {|asp| asp[rejects] }
         aspects.collect(&:to_sym)
       end
@@ -43,7 +43,7 @@ module Alghemy
 
       def shrink_check( tree )
         return tree unless affinity == Affinities[:image]
-        shrunk = %i[space depth].any? do |asp|
+        shrunk = %i[size depth].any? do |asp|
           tree[asp] > cata[asp] if tree[asp] && cata[asp]
         end
         @solution = Affinities[:elements] if shrunk

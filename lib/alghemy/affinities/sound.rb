@@ -8,7 +8,7 @@ module Alghemy
     class Sound < Ancestors[:matter]
       class << self
         def aspects
-          %i[time freq lifespan depth arcana]
+          %i[len rate span depth arcana]
         end
 
         def defaults

@@ -38,17 +38,16 @@ module Alghemy
         end
 
         def fmtdex
-          fmts = [->(asp) { Glyphs['space'].call asp.split },
+          fmts = [->(asp) { Glyphs[:space].call asp.split },
                   :to_f,
                   ->(asp) { asp[%r{/}] ? asp : asp.to_f },
                   :to_i]
           aspdex fmts
         end
 
-        def aspdex( arr )
-          Probedex.new(*arr)
+        def infodex
+          %i[size len rate span arcana]
         end
-        Probedex = Struct.new(:space, :time, :freq, :lifespan, :arcana)
       end
     end
   end
