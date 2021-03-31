@@ -84,7 +84,7 @@ module Alghemy
 
       # Internal: Returns Hash containing a numerical index for #slice method.
       def num_index
-        {'-2' => dir, '-1' => unique, '0' => base, '1' => ext}
+        {'-2' => dir, '-1' => label, '0' => base, '1' => ext}
       end
 
       # Internal: Returns Hash containing default parts of sijil used by
