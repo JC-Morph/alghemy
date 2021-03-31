@@ -1,5 +1,4 @@
 require 'canister'
-require 'alghemy/options'
 
 module Alghemy
   # Public: Bandoleer. Container used to retrieve dependencies. Contains vials
@@ -50,7 +49,7 @@ module Alghemy
       [files].flatten.each do |file|
         file = file.to_s
         next if const_defined? desnake(file)
-        require File.join(name.sub('::', SEP).downcase, file)
+        require File.join(name.sub('::', File::SEPARATOR).downcase, file)
       end
     end
 
