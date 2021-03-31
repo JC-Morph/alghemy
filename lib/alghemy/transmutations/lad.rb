@@ -10,12 +10,12 @@ module Alghemy
         Rubrics[:sock]
       end
 
-      def ladspa
+      def plugin
         Mutagens[:ladspa]
       end
 
       def tran_init
-        cata[:plug] = ladspa.assert cata[:plug]
+        cata[:plug] = plugin.assert cata[:plug]
       end
 
       def write_rubric
@@ -26,18 +26,18 @@ module Alghemy
       end
 
       def prepare( plug )
-        params   = plug.params || {}
-        prepared = params.map do |param, info|
+        params = plug.params || {}
+        values = params.map do |param, info|
           param = param.downcase.gsub(/[\s\/]/, '_').to_sym
           cata[param] || info[:default] || rand_param(info)
         end
-        ['ladspa', plug.sijil, prepared].flatten
+        ['ladspa', plug.sijil, values].flatten
       end
 
       private
 
       def defaults
-        {ext: 'wav', label: 'L', plug: ladspa.list.sample}
+        {ext: 'wav', label: 'L', plug: plugin.list.sample}
       end
 
       def rand_param( info )
