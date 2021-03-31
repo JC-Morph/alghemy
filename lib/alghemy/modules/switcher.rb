@@ -2,51 +2,59 @@ require 'alghemy/glyphs'
 
 module Alghemy
   module Modules
-    # Public: Defines switches for commandline utilities as named methods on
-    # Arrays.
+    # Public: Meta module. Defines options for commandline utilities as named
+    # methods on Arrays.
     module Switcher
-      attr_reader :hist, :switches
+      attr_reader :options, :opt_hist
 
-      # Public: Templates for switches.
-      def self.switch_templates
+      # Public: Templates for options.
+      def self.option_templates
         raise NotImplementedError
       end
 
-      def build_switches( lyst )
-        @hist     = []
-        @switches = Glyphs[:switches].call self.class.switch_templates, lyst
-        def_switches
+      def build_options( lyst )
+        @opt_hist = []
+        @options  = Glyphs[:options].call self.class.option_templates, lyst
+        def_options
       end
 
-      # Public: Define switches and their aliases as methods on class.
-      def def_switches
+      # Public: Define options and their shortcuts as methods on class.
+      def def_options
         switcher = singleton_class
-        switches.each do |s|
-          unless switcher.method_defined? s.label
-            switcher.send :define_method, s.label do |val = nil|
-              hist << s.alias
-              add s.print(val)
+        options.values.each do |opt|
+          name = opt.name
+          unless switcher.method_defined? name
+            switcher.send :define_method, name do |val = nil|
+              opt_hist << name
+              add opt.print(val)
             end
           end
-          switcher.send :alias_method, s.alias, s.label
+          def_aliases(switcher, opt)
         end
       end
 
-      # Public: Assemble pertinent memory from used switches.
-      def swist
-        hist.uniq.each.with_object({}) do |alas, hsh|
-          swist = switches.alias(alas).hist
-          next if swist.empty?
-          hsh[alas] = swist unless defunct(swist, alas)
+      def def_aliases( switcher, opt )
+        aliases = []
+        aliases << opt.flag if opt.flag != opt.name
+        aliases << opt.shortcut if opt.shortcut
+        aliases.each {|als| switcher.send(:alias_method, als, opt.name) }
+      end
+
+      # Public: Assemble pertinent memory from used options.
+      def option_memory
+        opt_hist.uniq.each.with_object({}) do |name, hsh|
+          values = options[name].hist
+          next if values.empty?
+          hsh[name] = values unless defunct(values, name)
         end
       end
 
-      # Public: Tests switch history to see if it is the same as the default
-      # switch value.
+      # Public: Boolean that confirms whether an Array of values matches the
+      # default values for a given option.
       #
       # Returns boolean.
-      def defunct( swist, alas )
-        swist == [switches.defaults[alas]].flatten(1)
+      def defunct( values, name )
+        values == [options[name].default].flatten(1)
       end
     end
   end

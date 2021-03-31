@@ -9,16 +9,16 @@ module Alghemy
           %w[ffmpeg -loglevel warning -stats]
         end
 
-        def switch_templates
-          [
-            ['f', :format, 'rawvideo'],
-            ['pix_fmt', :pf],
-            *stream_option('c', %w[libx264 aac]),
-            *stream_option('q', [5, 3]),
-            ['crf', :constant, 12],
-            ['video_size', :size],
-            ['framerate', :rate, 25]
-          ]
+        def option_templates
+          {
+            format:  {flag: 'f', default: 'rawvideo'},
+            pix_fmt: {shortcut: :pfmt},
+            **stream_option(:codec,   :c, %w[libx264 aac]),
+            **stream_option(:quality, :q, [5, 3]),
+            crf: {default: 12},
+            size: {flag: 'video_size'},
+            rate: {flag: 'framerate', default: 25}
+          }
         end
 
         # Public: Generates switch templates for options that specify a stream.
@@ -26,18 +26,18 @@ module Alghemy
         #
         # label  - String of option in command-line format.
         # values - Array of default values for each stream.
-        def stream_option( label, values )
-          %w[v a].collect.with_index do |stream, i|
-            flag = [label, stream]
-            [flag.join(':'), flag.reverse.join.to_sym, values[i]]
+        def stream_option( label, flag, defaults )
+          %w[a v].collect.with_object({}) do |stream, hsh|
+            flag = [flag, stream].join(':')
+            hsh[label] = {flag: flag, default: defaults.pop}
           end
         end
 
         def flags
-          [
-            {label: :an, alias: :video, prefix: '-'},
-            {label: :vn, alias: :audio, prefix: '-'}
-          ]
+          {
+            noaudio: {flag: :an, prefix: '-'},
+            novideo: {flag: :vn, prefix: '-'}
+          }
         end
       end
 

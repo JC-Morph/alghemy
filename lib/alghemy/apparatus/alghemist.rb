@@ -58,16 +58,16 @@ module Alghemy
         #
         # Returns Hash.
         def short_term
-          affinity = lmnt.class.name.split('::').last
-          memory   = {ext: lmnt.sijil.ext, affinity: affinity}
+          affinity = lmnt.class.name.split('::').last.to_sym
+          memory   = {affinity: affinity, ext: lmnt.sijil.ext}
           tran.anchors.each do |anchor|
-            defunct = rubric.swist.keys.any? do |switch|
-              anchor == rubric.switch_label(switch)
+            defunct = rubric.option_memory.keys.any? do |option|
+              anchor == rubric.options[option]
             end
             retrieved = cata[anchor] || lmnt.send(anchor)
             memory[anchor] = retrieved unless defunct
           end
-          memory.merge rubric.swist
+          memory.merge rubric.option_memory
         end
 
         # Internal: Returns Hash with variables specific to Algput
@@ -91,10 +91,10 @@ module Alghemy
         def tome_error
           msg = "No created files found! Something has gone wrong.\n" \
                 "The last Transmutation may have failed.\n" \
-                "Check the Rubric to see intended file output," \
+                "Check the Rubric to see intended file output, " \
                 "and then check if the file(s) actually exist.\n" \
-                "If they do, try increasing Alghemy.ear_sleep," \
-                "To give Listen more time to detect the files."
+                "If they do, try increasing Alghemy.ear_sleep, " \
+                "to give Listen more time to detect the files."
           raise msg
         end
       end

@@ -9,10 +9,10 @@ module Alghemy
       end
 
       def self.flags
-        [
-          {label: :fft, type: 'op', key: :real},
-          {label: :ift, type: 'op', key: :real}
-        ]
+        {
+          fft: {type: 'op', key: :real},
+          ift: {type: 'op', key: :real}
+        }
       end
 
       def fft

@@ -14,19 +14,19 @@ module Alghemy
         %w[sox -V1 -D]
       end
 
-      def self.switch_templates
-        [
-          [:t, :type, 'raw'],
-          [:r, :rate, 48_000],
-          [:e, :enc,  %w[unsigned float]],
-          [:b, :bit,  [8, 32]]
-        ]
+      def self.option_templates
+        {
+          type: {flag: :t, default: 'raw'},
+          rate: {flag: :r, default: 48000},
+          depth:  {flag: :b, default: [8, 32], shortcut: :bit},
+          encode: {flag: :e, default: %w[unsigned float], shortcut: :enc}
+        }
       end
 
       def self.flags
-        [
-          {label: :n, alias: :null, prefix: '-'}
-        ]
+        {
+          null: {flag: :n, prefix: '-'}
+        }
       end
 
       def concat
@@ -37,14 +37,14 @@ module Alghemy
         enc.bit
       end
 
-      def b( val = nil )
-        b = switches.alias :bit
-        if hist.last == :enc
-          ent = [switches.label(:e).hist.last, val || b.value]
+      def depth( val = nil )
+        depth = options[:depth]
+        if opt_hist.last == :encode
+          ent = [options[:e].hist.last, val || depth.increment_value]
           val = Glyphs[:ent].call(ent).bitcheck.separate[:bit]
         end
-        hist << :bit
-        add b.print(val)
+        opt_hist << :depth
+        add depth.print(val)
       end
 
       def recognise?( ext )

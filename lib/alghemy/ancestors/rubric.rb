@@ -34,28 +34,16 @@ module Alghemy
           []
         end
 
-        # Public: Returns an Array of Hashes representing switches for an
-        # executable.
-        # def switches
-        #   keys = %i[label alias default]
-        #   switch_templates.collect {|plate| keys.zip(plate).to_h }
-        # end
-
-        # Public: Array of default templates for switches.
-        def switch_templates
+        # Public: Array of default templates for options.
+        def option_templates
           []
         end
-      end
-
-      # Public: Look up the label for rubric's default switches.
-      def switch_label( switch )
-        switches.alias(switch).label
       end
 
       def init( lyst )
         @cata = lyst
         sub_init
-        build_switches cata
+        build_options cata
       end
 
       def scroll

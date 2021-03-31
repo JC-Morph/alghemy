@@ -8,17 +8,17 @@ module Alghemy
         ['convert']
       end
 
-      def self.switch_templates
-        [
-          %i[size space],
-          %i[depth bitdepth]
-        ]
+      def self.option_templates
+        {
+          size:  {shortcut: :s},
+          depth: {shortcut: :d}
+        }
       end
 
       def self.flags
-        [
-          {label: :append, alias: :app, type: 'op', key: :vertical}
-        ]
+        {
+          append: {shortcut: :a, type: 'op', key: :vertical}
+        }
       end
 
       def sublimate
