@@ -1,4 +1,4 @@
-# Public: Add constants for objects involved with Alghemy.
+# Public: Define configurable constants and variables used in Alghemy.
 module Alghemy
   class << self
     attr_accessor :ear_sleep, :ladspath, :overwrite, :print_rubric, :verbose
@@ -24,7 +24,7 @@ module Alghemy
   @verbose = false
 
   # Public: Root directory for transmuted Matter.
-  LEADR = 'Alghemy'.freeze
+  ROOT = 'Alghemy'.freeze
 
   # Public: Shortcut for file separator.
   SEP = File::SEPARATOR
