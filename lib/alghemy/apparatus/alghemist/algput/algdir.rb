@@ -7,7 +7,7 @@ module Alghemy
 
     # Public: Prepend and create directory.
     def self.open( dir )
-      root = alget(:LEADR)
+      root = alget(:ROOT)
       dir  = dir.to_s
       dir  = File.join(root, dir) unless dir[/^#{root}/]
       FileUtils.makedirs dir

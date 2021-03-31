@@ -46,7 +46,7 @@ module Alghemy
 
       # Public: Attempt to detect a descriptive directory if present.
       def dir_label
-        root = alget(:LEADR)
+        root = alget(:ROOT)
         sep  = alget(:SEP)
         child_dir  = dir[/(?<=#{root + sep})[^#{sep}]+/]
         child_dir || dir[/[^#{sep}\.]+$/]
