@@ -1,3 +1,5 @@
+require 'alghemy/glyphs'
+
 module Alghemy
   module Methods
     # Public: Memory recording module for use by an Alghemist.
@@ -12,8 +14,9 @@ module Alghemy
         record = cata.fetch(:mem_rec, true)
         return {} unless record
         if record == true
-          record = [[cata[:tran], new_mems]]
-          record += old_mems if old_mems
+          memory = {name: cata[:name].to_sym, **new_mems}
+          record = [Glyphs[:memory].new(memory)]
+          record.unshift(*old_mems.list) if old_mems
         end
         {mems: record || old_mems}
       end
