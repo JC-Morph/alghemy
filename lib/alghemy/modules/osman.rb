@@ -7,7 +7,7 @@ module Alghemy
       # Public: Method that builds command line to be executed.  Can be ducked
       # by transmutations to allow more control.
       def write_rubric
-        write.send cata[:tran]
+        write.send cata[:name]
       end
 
       def write

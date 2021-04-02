@@ -19,7 +19,7 @@ module Alghemy
         @tome     = lmnt.list
         @solution = lmnt.class
 
-        @cata = lyst.merge tran: tran
+        @cata = lyst.merge name: name
         sub_init
         prepext
       end
@@ -65,7 +65,7 @@ module Alghemy
       end
 
       # Internal: Returns String containing Transmutation class name.
-      def tran
+      def name
         self.class.name.split('::').last.downcase
       end
 

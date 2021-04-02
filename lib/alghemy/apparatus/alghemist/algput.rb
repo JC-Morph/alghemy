@@ -14,7 +14,7 @@ module Alghemy
     #        :sijil  - Filename of input.
     #        :ext    - Filename extension for output.
     #        :label  - String identifier for mutations (optional).
-    #        :tran   - The name of the current Transmutation.
+    #        :name   - The name of the current Transmutation.
     #        :plural - Boolean if the transmutation is expected to create
     #                  multiple files.
     def initialize( lyst = {} )
@@ -35,7 +35,7 @@ module Alghemy
     # lyst - Hash including relevant parameters:
     #        :sijil  - Filename of input.
     #        :label  - String identifier for mutations (optional).
-    #        :tran   - The name of the current Transmutation.
+    #        :name   - The name of the current Transmutation.
     #        :plural - Boolean if the transmutation is expected to create
     #                  multiple files.
     def tune_parts( lyst )
@@ -56,11 +56,11 @@ module Alghemy
     #
     # lyst - Hash including relevant parameters:
     #        :label  - String identifier for mutations. (optional)
-    #        :tran   - The name of the current Transmutation.
+    #        :name   - The name of the current Transmutation.
     #
     # Returns String.
     def get_id( lyst )
-      lyst[:label] || lyst[:tran].to_s[0..2]
+      lyst[:label] || lyst[:name].to_s[0..2]
     end
 
     # Internal: Take any existing idents from sijil and combine them with the
