@@ -1,13 +1,11 @@
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
-require 'alghemy/methods'
+require 'alghemy/glyphs'
 
 module Alghemy
   module Transmutations
     # Public: Transmute Matter into Raw Matter or vice-versa.
     class Sublimate < Ancestors[:transmutation]
-      include Methods[:space_trace]
-
       def sub_init
         tree = lmnt.raw? ? remember : hoist_anchors
         tree[:ext] ||= affinity.defaults[:raw_ext]
@@ -18,7 +16,7 @@ module Alghemy
         tree = lmnt.inherit(%i[ext affinity], transform: 'sublimate')
         cata[:affinity] ||= tree[:affinity]
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
-        space_trace(cata, tree)
+        cata[:size] = agree_size(cata, tree)
         shrink_check tree
       end
 
@@ -39,6 +37,10 @@ module Alghemy
       def affinity
         return lmnt.class unless cata[:affinity]
         Affinities[cata[:affinity]]
+      end
+
+      def agree_size( cata, tree )
+        Glyphs[:space].call(cata[:size], tree[:size])
       end
 
       def shrink_check( tree )

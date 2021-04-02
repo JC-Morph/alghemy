@@ -11,7 +11,6 @@ module Alghemy
                deepclone
                hshprint
                mem_rec
-               space_trace
                transmute]
 
     equip_constants vials
