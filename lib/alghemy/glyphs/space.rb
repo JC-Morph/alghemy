@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module Alghemy
   module Glyphs
     # Public: 2-dimensional aspect for visual Elements, i.e. height x width.

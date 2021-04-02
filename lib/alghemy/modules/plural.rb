@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module Alghemy
   module Modules
     # Public: Methods for Matter representing multiple files.
