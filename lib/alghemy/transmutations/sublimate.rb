@@ -8,22 +8,22 @@ module Alghemy
     class Sublimate < Ancestors[:transmutation]
       def sub_init
         tree = lmnt.raw? ? remember : hoist_anchors
-        tree[:ext] ||= affinity.defaults[:raw_ext]
         @cata = tree.merge cata
       end
 
       def remember
         tree = lmnt.inherit(%i[ext affinity], transform: 'sublimate')
-        cata[:affinity] ||= tree[:affinity]
+        cata[:affinity] ||= tree[:affinity] || :image
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
-        cata[:size] = agree_size(cata, tree)
-        shrink_check tree
+        cata[:size] = agree_size tree
+        {ext: affinity.defaults[:ext]}.merge tree
       end
 
       def hoist_anchors
-        anchors.each.with_object({}) do |asp, hsh|
+        tree = anchors.each.with_object({}) do |asp, hsh|
           hsh[asp] = lmnt.send(asp)
         end
+        {ext: affinity.defaults[:raw_ext]}.merge tree
       end
 
       def anchors
@@ -39,17 +39,18 @@ module Alghemy
         Affinities[cata[:affinity]]
       end
 
-      def agree_size( cata, tree )
-        Glyphs[:space].call(cata[:size], tree[:size])
+      def agree_size( tree )
+        size = Glyphs[:space].call(cata[:size], tree[:size])
+        @solution = Affinities[:elements] if shrunk?(tree)
+        size
       end
 
-      def shrink_check( tree )
-        return tree unless affinity == Affinities[:image]
-        shrunk = %i[size depth].any? do |asp|
-          tree[asp] > cata[asp] if tree[asp] && cata[asp]
+      def shrunk?( tree )
+        return unless cata[:affinity] == :image
+        %i[size depth].any? do |asp|
+          next unless cata[asp] && tree[asp]
+          cata[asp] < tree[asp]
         end
-        @solution = Affinities[:elements] if shrunk
-        tree
       end
     end
   end
