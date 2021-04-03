@@ -7,6 +7,10 @@ module Alghemy
       def_delegators :@aspects, :[], :select
       attr_reader :aspects
 
+      def pretty_print( pp )
+        pp.pp aspects
+      end
+
       def initialize( aspects )
         @aspects = aspects
       end

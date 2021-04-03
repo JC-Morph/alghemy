@@ -18,6 +18,10 @@ module Alghemy
         mems ? new(deepclone(mems)) : new
       end
 
+      def pretty_print( pp )
+        pp.pp list
+      end
+
       def initialize( mems = nil )
         @list = mems || []
       end
