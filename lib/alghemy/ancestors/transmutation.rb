@@ -61,7 +61,6 @@ module Alghemy
 
       # Internal: Second-tier duckable initialisation.
       def tran_init
-        raise NotImplementedError
       end
 
       # Internal: Returns String containing Transmutation class name.
