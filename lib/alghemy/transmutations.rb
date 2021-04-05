@@ -7,6 +7,7 @@ module Alghemy
     extend Bandoleer
 
     vials = %i[amorph
+               bend
                compile
                fft
                frames
@@ -15,6 +16,7 @@ module Alghemy
                mutate
                sonify
                sublimate
+               trim
                visualise]
 
     equip_constants vials
