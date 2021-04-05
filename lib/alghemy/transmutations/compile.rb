@@ -12,14 +12,14 @@ module Alghemy
 
       def tran_init
         cata[:enum] = :group_sijil
-        @solution   = Affinities[:element] unless lmnt.dims
+        cata[:rate] = lmnt.inherit(:rate, except: :Sound)
+        @solution = Affinities[:element] unless lmnt.dims
       end
 
       private
 
       def defaults
-        rate = lmnt.inherit(:rate, except: :Sound)
-        {ext: 'mp4', format: 'image2', rate: rate}
+        {ext: 'mp4', format: 'image2'}
       end
     end
   end

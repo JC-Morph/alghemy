@@ -16,9 +16,9 @@ module Alghemy
         end
 
         def index
-          index = []
-          alget(:ladspath).each {|path| index << Dir.glob(File.join(path, '*.so')) }
-          index.flatten
+          alget(:ladspath).each.with_object([]) do |path, index|
+            index << Dir.glob(File.join(path, '*.so'))
+          end.flatten
         end
 
         def assert( plugin )
@@ -30,16 +30,17 @@ module Alghemy
       def initialize( plugin = nil )
         list     = self.class.list
         plugin ||= list.sample
-        @sijil   = find plugin.downcase
+        @sijil   = find plugin
         @name    = name
         params   = controls.merge post_fx
         @params  = params unless params.empty?
       end
 
       def find( plugin )
+        plug = plugin.downcase
         found = LADS.select do |lad, info|
-          (plugin == lad) || %i[name label id].any? do |attr|
-            plugin == info[attr].downcase
+          (plug == lad) || %i[label id].any? do |attr|
+            plug == info[attr].downcase
           end
         end
         found ? found.keys.first : match_error
