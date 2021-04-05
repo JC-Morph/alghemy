@@ -13,7 +13,7 @@ module Alghemy
       end
 
       def inherit( aspect, **options )
-        mems.recall(aspect, options) || {}
+        mems.recall aspect, options
       end
 
       # Public: Revert transforms on self using Mems.
