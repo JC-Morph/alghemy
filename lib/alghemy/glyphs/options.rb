@@ -21,8 +21,10 @@ module Alghemy
         end
 
         def merge_values( lyst, option )
-          updated = %i[flag shortcut].map {|k| lyst[option.send(k)] }
-          updated = array_merge(*updated)
+          updated = %i[name flag shortcut].map do |id|
+            lyst[option.send(id)]
+          end.compact
+          updated = array_merge(*updated) if updated.size > 1
           option.value = array_merge(updated, option.default)
         end
       end
