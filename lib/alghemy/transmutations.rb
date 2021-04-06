@@ -13,6 +13,7 @@ module Alghemy
                frames
                ift
                lad
+               mint
                mutate
                sonify
                sublimate
