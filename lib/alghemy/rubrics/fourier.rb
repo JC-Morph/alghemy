@@ -8,10 +8,10 @@ module Alghemy
         ['ffconvert']
       end
 
-      def self.flags
+      def self.option_templates
         {
-          fft: {type: 'op', key: :real},
-          ift: {type: 'op', key: :real}
+          fft: {preswitch: [:imaginary, :real]},
+          ift: {preswitch: [:imaginary, :real]}
         }
       end
 

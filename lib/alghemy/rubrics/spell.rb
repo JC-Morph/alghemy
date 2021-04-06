@@ -10,14 +10,11 @@ module Alghemy
 
       def self.option_templates
         {
+          # no argument
+          append: {shortcut: :a, preswitch: [:vertical, :horizontal]},
+          # no default
           size:  {shortcut: :s},
           depth: {shortcut: :d}
-        }
-      end
-
-      def self.flags
-        {
-          append: {shortcut: :a, type: 'op', key: :vertical}
         }
       end
 

@@ -16,16 +16,13 @@ module Alghemy
 
       def self.option_templates
         {
-          type: {flag: :t, default: 'raw'},
+          # no argument
+          null: {flag: :n},
+          # with default
           rate: {flag: :r, default: 48000},
+          type: {flag: :t, default: 'raw'},
           depth:  {flag: :b, default: [8, 32], shortcut: :bit},
           encode: {flag: :e, default: %w[unsigned float], shortcut: :enc}
-        }
-      end
-
-      def self.flags
-        {
-          null: {flag: :n, prefix: '-'}
         }
       end
 

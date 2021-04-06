@@ -8,8 +8,8 @@ module Alghemy
         ['mrswatson']
       end
 
-      def self.switch_templates
-        [[:p, :plugin, 'mrs_passthru']]
+      def self.option_templates
+        {plugin: {flag: :p, default: 'mrs_passthru'}}
       end
 
       # Public: Method for processing sound with Vsts using MrsWatson utility.

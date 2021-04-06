@@ -1,23 +1,33 @@
 require 'alghemy/ancestors'
+require 'alghemy/methods'
 
 module Alghemy
   module Rubrics
     # Public: Define an Array for a command passed to ffmpeg.
     class Fock < Ancestors[:rubric]
       class << self
+        include Methods[:alget]
+
         def moniker
-          %w[ffmpeg -loglevel warning -stats]
+          moniker = %w[ffmpeg -loglevel warning -stats]
+          moniker << '-y' if alget(:overwrite)
         end
 
         def option_templates
           {
-            format:  {flag: 'f', default: 'rawvideo'},
-            pix_fmt: {shortcut: :pfmt},
-            **stream_option(:codec,   :c, %w[libx264 aac]),
-            **stream_option(:quality, :q, [5, 3]),
-            crf: {default: 12},
-            size: {flag: 'video_size'},
-            rate: {flag: 'framerate', default: 25}
+            # no argument
+            no_audio: {flag: :an},
+            no_video: {flag: :vn},
+            # no default
+            pix_fmt: {shortcut: :pf},
+            size:    {flag: 'video_size'},
+            # with default
+            crf:    {default: 12},
+            rate:   {flag: 'framerate', default: 30},
+            format: {flag: 'f', default: 'rawvideo'},
+            # options for audio and video streams
+            **stream_option(:codec,   'c', %w[libx264 aac]),
+            **stream_option(:quality, 'q', [5, 3])
           }
         end
 
@@ -31,13 +41,6 @@ module Alghemy
             flag = [flag, stream].join(':')
             hsh[label] = {flag: flag, default: defaults.pop}
           end
-        end
-
-        def flags
-          {
-            noaudio: {flag: :an, prefix: '-'},
-            novideo: {flag: :vn, prefix: '-'}
-          }
         end
       end
 
