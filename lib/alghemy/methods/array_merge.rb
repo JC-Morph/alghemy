@@ -2,7 +2,7 @@ module Alghemy
   module Methods
     # Public: Method for merging two Arrays.
     module ArrayMerge
-      # Public: Merge two Arrays. Uses 0 as a reference for substitution.
+      # Public: Merge two Arrays. Uses nil as a reference for substitution.
       #
       # arr    - A value or Array with at least one element. Nil represents an
       #          element to be substituted.
