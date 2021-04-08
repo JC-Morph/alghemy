@@ -45,6 +45,7 @@ module Alghemy
         opt_hist.uniq.each.with_object({}) do |name, hsh|
           values = options[name].hist
           next if values.empty?
+          values = values.first if values.size == 1
           hsh[name] = values unless defunct(values, name)
         end
       end
@@ -54,7 +55,7 @@ module Alghemy
       #
       # Returns boolean.
       def defunct( values, name )
-        values == [options[name].default].flatten(1)
+        values == options[name].default
       end
     end
   end

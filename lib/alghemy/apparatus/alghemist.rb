@@ -61,11 +61,10 @@ module Alghemy
           affinity = lmnt.class.name.split('::').last.to_sym
           memory   = {affinity: affinity, ext: lmnt.sijil.ext}
           tran.anchors.each do |anchor|
-            defunct = rubric.option_memory.keys.any? do |option|
-              anchor == rubric.options[option]
+            next if rubric.option_memory.keys.any? do |option|
+              anchor == option
             end
-            retrieved = cata[anchor] || lmnt.send(anchor)
-            memory[anchor] = retrieved unless defunct
+            memory[anchor] = cata[anchor] || lmnt.send(anchor)
           end
           memory.merge rubric.option_memory
         end
