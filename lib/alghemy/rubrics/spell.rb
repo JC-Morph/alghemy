@@ -14,8 +14,18 @@ module Alghemy
           append: {shortcut: :a, preswitch: [:vertical, :horizontal]},
           # no default
           size:  {shortcut: :s},
-          depth: {shortcut: :d}
+          depth: {shortcut: :d},
+          # with default
+          fuzz: {default: '22%'}
         }
+      end
+
+      def fuzz( val = nil )
+        fuzz  = options[:fuzz]
+        val ||= fuzz.increment_value
+        val   = val[/^\d+/] + '%%'
+        opt_hist << :fuzz
+        add fuzz.print(val)
       end
 
       def sublimate

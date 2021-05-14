@@ -8,6 +8,7 @@ module Alghemy
 
     vials = %i[amorph
                bend
+               color2alpha
                compile
                fft
                frames
