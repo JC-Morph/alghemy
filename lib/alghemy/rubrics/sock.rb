@@ -37,7 +37,7 @@ module Alghemy
       def depth( val = nil )
         depth = options[:depth]
         if opt_hist.last == :encode
-          ent = [options[:e].hist.last, val || depth.increment_value]
+          ent = [options[:e].hist.last, (val || depth.increment_value)]
           val = Glyphs[:ent].call(ent).bitcheck.separate[:bit]
         end
         opt_hist << :depth
