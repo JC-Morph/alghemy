@@ -23,7 +23,7 @@ module Alghemy
       def fuzz( val = nil )
         fuzz  = options[:fuzz]
         val ||= fuzz.increment_value
-        val   = val[/^\d+/] + '%%'
+        val   = val.to_s[/^\d+/] + '%%'
         opt_hist << :fuzz
         add fuzz.print(val)
       end
