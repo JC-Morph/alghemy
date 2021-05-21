@@ -51,6 +51,7 @@ module Alghemy
         clss.aspects.each {|asp| send asp }
         hshprint aspects
       end
+      alias id identify
 
       # Public: Open Matter with designated executable.
       def open
