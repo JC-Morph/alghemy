@@ -20,6 +20,7 @@ module Alghemy
         }
       end
 
+      # Unique options
       def fuzz( val = nil )
         fuzz  = options[:fuzz]
         val ||= fuzz.increment_value
@@ -28,13 +29,14 @@ module Alghemy
         add fuzz.print(val)
       end
 
+      # Shared transmutations
+      def concat
+        input.append.output
+      end
+
       def sublimate
         size.depth if cata[:raw]
         input.output
-      end
-
-      def concat
-        input.append.output
       end
     end
   end

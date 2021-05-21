@@ -15,6 +15,7 @@ module Alghemy
         }
       end
 
+      # Shared transmutations
       def fft
         [input, send(__callee__), output]
       end

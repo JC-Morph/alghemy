@@ -44,12 +44,16 @@ module Alghemy
         end
       end
 
-      def sublimate
-        input
-        cata[:raw] ? vc : format
-        output
+      def input
+        formats.size.rate if cata[:raw]
+        add ['-i', '%<input>s']
       end
 
+      def formats
+        format.pix_fmt
+      end
+
+      # Shared transmutations
       def compile
         format.rate unless cata[:raw]
         input.output
@@ -61,13 +65,10 @@ module Alghemy
         output
       end
 
-      def input
-        formats.size.rate if cata[:raw]
-        add ['-i', '%<input>s']
-      end
-
-      def formats
-        format.pix_fmt
+      def sublimate
+        input
+        cata[:raw] ? vc : format
+        output
       end
     end
   end

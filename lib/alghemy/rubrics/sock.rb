@@ -26,14 +26,17 @@ module Alghemy
         }
       end
 
-      def concat
-        input.output
-      end
-
       def ents
         enc.bit
       end
 
+      def recognise?( ext )
+        ext = ext[1..-1] if ext[/^\./]
+        raw = Apparatus[:invoker].engage "sox --help-format #{ext}"
+        (raw.split("\n")[1] =~ /^Cannot/).nil?
+      end
+
+      # Unique options
       def depth( val = nil )
         depth = options[:depth]
         if opt_hist.last == :encode
@@ -44,10 +47,9 @@ module Alghemy
         add depth.print(val)
       end
 
-      def recognise?( ext )
-        ext = ext[1..-1] if ext[/^\./]
-        raw = Apparatus[:invoker].engage "sox --help-format #{ext}"
-        (raw.split("\n")[1] =~ /^Cannot/).nil?
+      # Shared transmutations
+      def concat
+        input.output
       end
 
       private
