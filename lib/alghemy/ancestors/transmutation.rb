@@ -4,15 +4,17 @@ require 'alghemy/modules'
 module Alghemy
   module Ancestors
     # Public: Base class for processes that change Matter in some way, creating
-    # one or more new files and returning new Matter.
+    # one or more new files in the process.
+    #
+    # Returns Matter.
     class Transmutation
       include Modules[:osman]
       attr_reader :lmnt, :tome, :cata
 
       # Public: Initialise a Transmutation.
       #
-      # lmnt - The Matter to build the transform for.  Expected to represent
-      #        part of the input for the transform.
+      # lmnt - The Matter to build the transform for. Usually this is the input
+      #        file for the transform.
       # lyst - Hash of initialisation options. (default: {})
       def initialize( lmnt, lyst = {} )
         @lmnt     = lmnt
@@ -31,8 +33,8 @@ module Alghemy
         Factories[:scribe].call arr
       end
 
-      # Public: Boolean if expected output Class ends with an 's'. Denotes
-      # whether output is expected to consist of more than one file.
+      # Public: Boolean if expected output Class ends with an 's'. True if
+      # output is expected to create more than one file.
       def plural?
         !(@solution.to_s =~ /s$/).nil?
       end
