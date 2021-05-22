@@ -3,14 +3,14 @@ module Alghemy
     # Public: Extension module. Allows the definition of named methods on
     # class. Names are defined as methods on class that pass the name to
     # #find and return the result.
-    module AspectFinder
+    module AspectDefiner
       # Public: Meta programming method that adds aspect names as methods. When
       # called they call #aspects on the instance, passing their name.
       def def_asps
         return if aspects.all? {|aspect| method_defined? aspect }
         aspects.each do |aspect|
           define_method aspect do
-            aspects aspect
+            find aspect
           end
         end
       end

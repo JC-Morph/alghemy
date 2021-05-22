@@ -7,11 +7,12 @@ module Alghemy
     # attributes of Files that can be found using external utilities, like
     # image or video size, video or sound duration, etc.
     module Aspects
-      # Internal: Extends class with Clasps Module.
+      # Internal: Defines all values in #aspects as methods on klass.
+      #
       #
       # base - Class that included self.
       def self.included( base )
-        base.extend Modules[:aspect_finder]
+        base.extend Modules[:aspect_definer]
       end
 
       # Public: Aspect finder, updates Hash of aspects.
@@ -21,12 +22,13 @@ module Alghemy
       #
       # Returns individual aspect if specified. If no aspect is specified,
       # returns a Hash of all the aspects that have been calculated.
-      def aspects( aspect = nil )
+      def find( aspect = nil )
         @asps ||= {}
         return @asps unless aspect
         return @asps[aspect] if @asps[aspect]
         @asps[aspect] = perceive aspect
       end
+      alias aspects find
 
       # Public: Duck for aspect retrieval method.
       def perceive( _aspect )
