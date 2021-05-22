@@ -10,6 +10,7 @@ module Alghemy
                bend
                color2alpha
                compile
+               convert
                fft
                frames
                ift

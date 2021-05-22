@@ -72,6 +72,10 @@ module Alghemy
       # Public: Add substitute for output.
       alias output input
 
+      def convert
+        input.output
+      end
+
       private
 
       # Internal: Duckable initialisation.
