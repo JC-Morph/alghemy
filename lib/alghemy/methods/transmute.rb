@@ -12,8 +12,8 @@ module Alghemy
       # lyst - Transmutation specific options (default: {}).
       #
       # Returns new Matter, dependent on Transmutation.
-      def transmute( lyst = {} )
-        tran = Transmutations[__callee__].new(self, lyst)
+      def transmute( *focus, **lyst )
+        tran = Transmutations[__callee__].new(self, *focus, **lyst)
         Apparatus[:alghemist].transmute(self, tran, lyst)
       end
       # Public: All Transmutations listed become named methods.

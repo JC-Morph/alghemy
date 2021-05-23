@@ -17,6 +17,11 @@ module Alghemy
       def defaults
         {color: :black, ext: 'png', label: 'c2a'}
       end
+
+      def gather( focus )
+        cata[:color] = focus.first
+        cata[:fuzz]  = focus[1]
+      end
     end
   end
 end
