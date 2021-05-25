@@ -12,26 +12,26 @@ module Alghemy
       attr_reader :lmnt, :tome, :cata
 
       # Public: This method can be used by individual Transmutations to specify
-      # the key for the focus option, which can be passed before
-      # keyword arguments.
-      # For example, with the crop Transmutation, the focus is :size,
-      # as this is the option that will always want to be defined.
-      def self.focus
-        :ext
+      # the preferential order for options, followed when they are passed prior
+      # to keyword arguments.
+      # For example, with crop or scale, the priorities are [:size, :ext],
+      # as size will always want to be defined for these Transmutations.
+      def self.priorities
+        [:ext]
       end
 
       # Public: Initialise a Transmutation.
       #
       # lmnt - The Matter to build the transform for. Usually this is the input
       #        file for the transform.
-      # lyst - Hash of initialisation options. (default: {})
-      def initialize( lmnt, *focus, **lyst )
+      # dict - Hash of initialisation options. (default: {})
+      def initialize( lmnt, *priorities, **dict )
         @lmnt     = lmnt
         @tome     = lmnt.list
         @solution = lmnt.class
 
-        @cata = lyst.merge name: name
-        gather focus unless focus.empty?
+        @cata = dict.merge name: name
+        gather priorities unless priorities.empty?
         sub_init
         prepext
       end
@@ -58,9 +58,11 @@ module Alghemy
 
       private
 
-      # Internal: Defines how the focus option is passed, if present.
-      def gather( focus )
-        cata[self.class.focus] = focus.first
+      # Internal: Populate @cata with the ordered arguments provided.
+      def gather( priorities )
+        priorities.each.with_index do |option, i|
+          cata[self.class.priorities[i]] = option
+        end
       end
 
       # Internal: Merges default values with @cata. Serves as duckable
