@@ -28,7 +28,7 @@ module Alghemy
         end
 
         def rubric
-          Rubrics[:sock]
+          Rubrics[:sox]
         end
       end
     end

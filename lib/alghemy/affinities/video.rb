@@ -33,7 +33,7 @@ module Alghemy
         end
 
         def rubric
-          Rubrics[:fock]
+          Rubrics[:ffmpeg]
         end
       end
     end

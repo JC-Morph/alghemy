@@ -5,8 +5,12 @@ module Alghemy
   module Transmutations
     # Public: Process Sound with LADSPA effect plugins.
     class Bend < Ancestors[:transmutation]
+      def self.priorities
+        %i[bends framerate oversample ext]
+      end
+
       def rubric
-        Rubrics[:sock]
+        Rubrics[:sox]
       end
 
       def write_rubric

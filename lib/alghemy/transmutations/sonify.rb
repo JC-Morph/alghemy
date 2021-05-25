@@ -1,11 +1,11 @@
 require 'alghemy/ancestors'
-require_relative 'mutypes/foot'
+require_relative 'mutypes/boots'
 
 module Alghemy
   module Transmutations
     # Public: Transmute visual Matter into Sound.
     class Sonify < Ancestors[:transmutation]
-      include Foot
+      include Boots
 
       def tran_init
         cata[:ext] ||= '.wav'

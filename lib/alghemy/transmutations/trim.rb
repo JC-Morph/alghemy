@@ -3,10 +3,10 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
-    # Public: Process Sound with LADSPA effect plugins.
+    # Public: Crop a Sound.
     class Trim < Ancestors[:transmutation]
       def rubric
-        Rubrics[:sock]
+        Rubrics[:sox]
       end
 
       def write_rubric

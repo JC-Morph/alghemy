@@ -3,7 +3,7 @@ require 'alghemy/ancestors'
 module Alghemy
   module Rubrics
     # Public: Define an Array for a command passed to ImageMagick.
-    class Spell < Ancestors[:rubric]
+    class Magick < Ancestors[:rubric]
       def self.moniker
         ['convert']
       end

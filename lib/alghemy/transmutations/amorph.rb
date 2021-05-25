@@ -5,10 +5,13 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
-    # Public: Perform a fast fourier transform with image magick.
     class Amorph < Ancestors[:transmutation]
+      def self.priorities
+        %i[pf ext]
+      end
+
       def rubriclass
-        Rubrics[:fock]
+        Rubrics[:ffmpeg]
       end
 
       def tran_init

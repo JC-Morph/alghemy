@@ -24,7 +24,7 @@ module Alghemy
         end
 
         def rubric
-          Rubrics[:spell]
+          Rubrics[:magick]
         end
       end
     end

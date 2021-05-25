@@ -7,7 +7,7 @@ module Alghemy
     # Public: Extract Images from a Video.
     class Frames < Ancestors[:transmutation]
       def rubriclass
-        Rubrics[:fock]
+        Rubrics[:ffmpeg]
       end
 
       def tran_init
@@ -17,7 +17,7 @@ module Alghemy
       end
 
       def write_rubric
-        write.input.format('image2').vq.output
+        write.input.format('image2').output
       end
 
       def anchors

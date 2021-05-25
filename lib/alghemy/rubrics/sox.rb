@@ -6,7 +6,7 @@ require 'alghemy/methods'
 module Alghemy
   module Rubrics
     # Public: Define an executable process for a command passed to Sox.
-    class Sock < Ancestors[:rubric]
+    class Sox < Ancestors[:rubric]
       include Methods[:array_merge]
 
       def self.moniker

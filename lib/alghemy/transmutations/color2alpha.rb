@@ -3,13 +3,14 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
+    # Public: Replace a color in an image with an alpha channel.
     class Color2alpha < Ancestors[:transmutation]
       def self.priorities
         %i[color fuzz ext]
       end
 
       def rubric
-        Rubrics[:spell]
+        Rubrics[:magick]
       end
 
       def write_rubric

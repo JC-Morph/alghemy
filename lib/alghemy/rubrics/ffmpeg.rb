@@ -4,7 +4,7 @@ require 'alghemy/methods'
 module Alghemy
   module Rubrics
     # Public: Define an Array for a command passed to ffmpeg.
-    class Fock < Ancestors[:rubric]
+    class Ffmpeg < Ancestors[:rubric]
       class << self
         include Methods[:alget]
 

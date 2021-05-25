@@ -6,8 +6,12 @@ module Alghemy
   module Transmutations
     # Public: Compile a Video from Images.
     class Compile < Ancestors[:transmutation]
+      def self.priorities
+        [:rate, :ext]
+      end
+
       def rubric
-        Rubrics[:fock]
+        Rubrics[:ffmpeg]
       end
 
       def tran_init

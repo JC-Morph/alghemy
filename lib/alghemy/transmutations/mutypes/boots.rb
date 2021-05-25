@@ -3,9 +3,13 @@ require 'alghemy/rubrics'
 
 module Alghemy
   # Public: Sox related methods for Transmutations.
-  module Foot
+  module Boots
+    def self.priorities
+      [:ents, :ext]
+    end
+
     def rubric
-      Rubrics[:sock]
+      Rubrics[:sox]
     end
 
     def sub_init

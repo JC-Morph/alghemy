@@ -6,6 +6,10 @@ module Alghemy
   module Transmutations
     # Public: Process Sound with VST effect plugins.
     class Mutate < Ancestors[:transmutation]
+      def self.priorities
+        [:plug, :ext]
+      end
+
       def rubric
         Rubrics[:mrs]
       end

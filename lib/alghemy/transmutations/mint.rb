@@ -3,10 +3,12 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
-    # Public: Process Sound with LADSPA effect plugins.
+    # Public: Interpolate motion between frames in a Video, creating new frames.
+    # Use the pts option to determine the factor by which the video is slowed,
+    # which will dictate the number of new frames that are generated.
     class Mint < Ancestors[:transmutation]
       def rubric
-        Rubrics[:fock]
+        Rubrics[:ffmpeg]
       end
 
       def tran_init

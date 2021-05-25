@@ -1,11 +1,11 @@
 require 'alghemy/ancestors'
-require_relative 'mutypes/foot'
+require_relative 'mutypes/boots'
 
 module Alghemy
   module Transmutations
-    # Public: Transmute Sound into visual Matter.
+    # Public: Transmute Sound into Matter of a different affinity.
     class Visualise < Ancestors[:transmutation]
-      include Foot
+      include Boots
 
       def tran_init
         ents = aural? ? lmnt_ents : cata[:ents].flatten

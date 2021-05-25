@@ -6,8 +6,12 @@ module Alghemy
   module Transmutations
     # Public: Process Sound with LADSPA effect plugins.
     class Lad < Ancestors[:transmutation]
+      def self.priorities
+        [:plug, :ext]
+      end
+
       def rubric
-        Rubrics[:sock]
+        Rubrics[:sox]
       end
 
       def plugin
