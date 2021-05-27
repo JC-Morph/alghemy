@@ -2,11 +2,13 @@ require 'forwardable'
 
 module Alghemy
   module Glyphs
+    # Public: Represent information from previous Transmutations.
     class Memory
       extend Forwardable
       def_delegators :@aspects, :[], :select
       attr_reader :aspects
 
+      # Public: Override pretty_print to cleanup output in REPL.
       def pretty_print( pp )
         pp.pp aspects
       end
