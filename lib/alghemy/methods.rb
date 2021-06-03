@@ -10,7 +10,6 @@ module Alghemy
                array_merge
                deepclone
                hshprint
-               mem_rec
                transmute]
 
     equip_constants vials

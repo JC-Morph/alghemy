@@ -10,6 +10,7 @@ module Alghemy
                aspects
                aspect_definer
                laws
+               memorise
                osman
                plural
                request

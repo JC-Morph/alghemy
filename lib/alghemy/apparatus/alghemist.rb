@@ -7,7 +7,7 @@ module Alghemy
   module Apparatus
     module Alghemist
       class << self
-        include Methods[:mem_rec]
+        include Modules[:memorise]
         attr_reader :lmnt, :tran, :cata, :namer, :rubric
 
         # TODO: rewrite
@@ -49,8 +49,10 @@ module Alghemy
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          memory = mem_rec(cata, lmnt.mems, short_term)
-          tome.sijil.evoke memory
+          sijil  = tome.sijil
+          memory = record_memory(cata, lmnt.mems, short_term)
+          store_memory(sijil, memory)
+          sijil.evoke memory
         end
 
         # Internal: Collect aspects that could be useful for future
