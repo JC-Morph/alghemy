@@ -72,9 +72,9 @@ module Alghemy
       # as a reversion.
       def rebuild_args( memories, sijil )
         memory = memories.pop
-        memrec = memories.empty? ? false : memories
+        record = memories.empty? ? false : memories
         yuv_tweak(memory, sijil)
-        memory.invert.merge label: 'R', mem_rec: memrec
+        memory.invert.merge label: 'R', record: record
       end
 
       # Internal: Yuv specific alterations to dimensions during sublimation.
