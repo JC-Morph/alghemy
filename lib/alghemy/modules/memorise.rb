@@ -12,7 +12,7 @@ module Alghemy
       # transform, along with prior mems from the transmutation input.
       #
       # old_mems - Prior memories from input to transmutation. Expected to be an
-      #            Array in the same format as mems created by mem_rec.
+      #            Array in the same format as mems created by record_memory.
       # new_mems - Hash of options to keep from transform.
       def record_memory( cata, old_mems, new_mems )
         record = cata.fetch(:record, true)
