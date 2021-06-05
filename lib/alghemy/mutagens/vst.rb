@@ -7,7 +7,7 @@ module Alghemy
     # Public: Represents a VST plugin.
     class Vst
       include VstInfo
-      include Paramtest
+      include ParamCheck
       attr_reader :sijil, :automatons
 
       def self.list
