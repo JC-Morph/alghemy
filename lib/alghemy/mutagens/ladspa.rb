@@ -1,6 +1,5 @@
 require 'alghemy/methods'
 require_relative 'ladspa_info'
-require_relative 'the_lads'
 
 module Alghemy
   module Mutagens
@@ -8,7 +7,7 @@ module Alghemy
     class Ladspa
       extend  Methods[:alget]
       include LadspaInfo
-      attr_reader :sijil, :automatons, :params
+      attr_reader :sijil, :params
 
       class << self
         def list
@@ -49,7 +48,7 @@ module Alghemy
       private
 
       def match_error
-        msg = "Cannot find plugin with name: #{sijil}\nCheck [Plugin_class].list"
+        msg = "Can't find plugin with name: #{sijil}\nCheck [Plugin_class].list"
         raise IOError, msg
       end
     end

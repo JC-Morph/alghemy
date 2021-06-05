@@ -1,0 +1,2701 @@
+# Catalog of Steve Harris' ladspa plugins and their attributes. Available from http://plugin.org.uk/
+---
+alias_1407:
+  :name: Aliasing
+  :label: alias
+  :id: '1407'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Aliasing level:
+      :range:
+      - 0
+      - 1
+      :default: 0
+allpass_1895:
+  :name: Allpass delay line, noninterpolating
+  :label: allpass_n
+  :id: '1895'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Max Delay (s):
+      :range: 0 to ...
+    Delay Time (s):
+      :range: 0 to ...
+    Decay Time (s):
+      :range: 0 to ...
+am_pitchshift_1433:
+  :name: AM pitchshifter
+  :label: amPitchshift
+  :id: '1433'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Pitch shift:
+      :range:
+      - 0.25
+      - 4.0
+      :default: 1
+    Buffer size:
+      :range:
+      - 1
+      - 7
+      :default: 4
+  :post_fx:
+    latency: {}
+amp:
+  :name: Mono Amplifier
+  :label: amp_mono
+  :id: '1048'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Gain:
+      :range: 0 to ...
+      :default: 1
+amp_1181:
+  :name: Simple amplifier
+  :label: amp
+  :id: '1181'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Amps gain (dB):
+      :range:
+      - -70
+      - 70
+      :default: 0
+analogue_osc_1416:
+  :name: Analogue Oscillator
+  :label: analogueOsc
+  :id: '1416'
+  :audio:
+  - Output
+  :controls:
+    Frequency (Hz):
+      :range: 1e-06*srate to 0.499*srate
+      :default: 440
+    Warmth:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Instability:
+      :range:
+      - 0
+      - 1
+      :default: 0
+bandpass_a_iir_1893:
+  :name: Glame Bandpass Analog Filter
+  :label: bandpass_a_iir
+  :id: '1893'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Center Frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.000819036
+    Bandwidth (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.0067082
+bandpass_iir_1892:
+  :name: Glame Bandpass Filter
+  :label: bandpass_iir
+  :id: '1892'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Center Frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.0067082
+    Bandwidth (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.0067082
+    Stages(2 poles per stage):
+      :range:
+      - 1
+      - 10
+      :default: 1
+bode_shifter_1431:
+  :name: Bode frequency shifter
+  :label: bodeShifter
+  :id: '1431'
+  :audio:
+  - Input
+  - Down out
+  - Up out
+  :controls:
+    Frequency shift:
+      :range:
+      - 0
+      - 5000
+      :default: 0
+  :post_fx:
+    latency: {}
+bode_shifter_cv_1432:
+  :name: Bode frequency shifter (CV)
+  :label: bodeShifterCV
+  :id: '1432'
+  :audio:
+  - Input
+  - Shift CV
+  - Down out
+  - Up out
+  - Mix out
+  :controls:
+    Base shift:
+      :range:
+      - 0
+      - 5000
+      :default: 0
+    CV Attenuation:
+      :range:
+      - 0
+      - 1
+      :default: 1
+  :post_fx:
+    latency: {}
+butterworth_1902:
+  :name: Glame Butterworth X-over Filter
+  :label: bwxover_iir
+  :id: '1902'
+  :audio:
+  - Input
+  - LP-Output
+  - HP-Output
+  :controls:
+    Cutoff Frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.000819036
+    Resonance:
+      :range:
+      - 0.1
+      - 1.41
+      :default: 0.755
+chebstortion_1430:
+  :name: Chebyshev distortion
+  :label: chebstortion
+  :id: '1430'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Distortion:
+      :range:
+      - 0
+      - 3
+      :default: 0
+comb_1190:
+  :name: Comb Filter
+  :label: comb
+  :id: '1190'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Band separation (Hz):
+      :range:
+      - 16
+      - 640
+      :default: 172
+    Feedback:
+      :range:
+      - -0.99
+      - 0.99
+      :default: 0
+comb_1887:
+  :name: Comb delay line, noninterpolating
+  :label: comb_n
+  :id: '1889'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Max Delay (s):
+      :range: 0 to ...
+    Delay Time (s):
+      :range: 0 to ...
+    Decay Time (s):
+      :range: 0 to ...
+comb_splitter_1411:
+  :name: Comb Splitter
+  :label: combSplitter
+  :id: '1411'
+  :audio:
+  - Input
+  - Output 1
+  - Output 2
+  :controls:
+    Band separation (Hz):
+      :range:
+      - 16
+      - 640
+      :default: 172
+const_1909:
+  :name: Constant Signal Generator
+  :label: const
+  :id: '1909'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Signal amplitude:
+      :range:
+      - -1.0
+      - 1.1
+      :default: 0
+crossover_dist_1404:
+  :name: Crossover distortion
+  :label: crossoverDist
+  :id: '1404'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Crossover amplitude:
+      :range:
+      - 0.0
+      - 0.1
+      :default: 0
+    Smoothing:
+      :range:
+      - 0
+      - 1
+      :default: 1
+dc_remove_1207:
+  :name: DC Offset Remover
+  :label: dcRemove
+  :id: '1207'
+  :audio:
+  - Input
+  - Output
+decay_1886:
+  :name: Exponential signal decay
+  :label: decay
+  :id: '1886'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Decay Time (s):
+      :range: 0 to ...
+decimator_1202:
+  :name: Decimator
+  :label: decimator
+  :id: '1202'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Bit depth:
+      :range:
+      - 1
+      - 24
+      :default: 24
+    Sample rate (Hz):
+      :range:
+      - 0.001
+      - 1.0
+      :default: 1
+declip_1195:
+  :name: Declipper
+  :label: declip
+  :id: '1195'
+  :audio:
+  - Input
+  - Output
+delay:
+  :name: Simple Delay Line
+  :label: delay_5s
+  :id: '1043'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Delay (Seconds):
+      :range:
+      - 0
+      - 5
+      :default: 1
+    Dry/Wet Balance:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+delay_1898:
+  :name: Simple delay line, noninterpolating
+  :label: delay_n
+  :id: '1898'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Max Delay (s):
+      :range: 0 to ...
+    Delay Time (s):
+      :range: 0 to ...
+delayorama_1402:
+  :name: Delayorama
+  :label: delayorama
+  :id: '1402'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Random seed:
+      :range:
+      - 0
+      - 1000
+      :default: 0
+    Input gain (dB):
+      :range:
+      - -96
+      - 24
+      :default: 0
+    Feedback (%):
+      :range:
+      - 0
+      - 100
+      :default: 0
+    Number of taps:
+      :range:
+      - 2
+      - 128
+      :default: 2
+    First delay (s):
+      :range:
+      - 0
+      - 5
+      :default: 0
+    Delay range (s):
+      :range:
+      - 0.0001
+      - 6.0
+      :default: 6
+    Delay change:
+      :range:
+      - 0.2
+      - 5.0
+      :default: 1
+    Delay random (%):
+      :range:
+      - 0
+      - 100
+      :default: 0
+    Amplitude change:
+      :range:
+      - 0.2
+      - 5.0
+      :default: 1
+    Amplitude random (%):
+      :range:
+      - 0
+      - 100
+      :default: 0
+    Dry/wet mix:
+      :range:
+      - 0
+      - 1
+      :default: 1
+diode_1185:
+  :name: Diode Processor
+  :label: diode
+  :id: '1185'
+  :audio:
+  - Input
+  - Output
+divider_1186:
+  :name: Audio Divider (Suboctave Generator)
+  :label: divider
+  :id: '1186'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Denominator:
+      :range:
+      - 1
+      - 8
+      :default: 1
+dj_eq_1901:
+  :name: DJ EQ (mono)
+  :label: dj_eq_mono
+  :id: '1907'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Lo gain (dB):
+      :range:
+      - -70
+      - 6
+      :default: 0
+    Mid gain (dB):
+      :range:
+      - -70
+      - 6
+      :default: 0
+    Hi gain (dB):
+      :range:
+      - -70
+      - 6
+      :default: 0
+  :post_fx:
+    latency: {}
+dj_flanger_1438:
+  :name: DJ flanger
+  :label: djFlanger
+  :id: '1438'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    LFO sync: {}
+    LFO period (s):
+      :range:
+      - 0.1
+      - 32.0
+      :default: 1
+    LFO depth (ms):
+      :range:
+      - 1
+      - 5
+      :default: 4
+    Feedback (%):
+      :range:
+      - -100
+      - 100
+      :default: 0
+dyson_compress_1403:
+  :name: Dyson compressor
+  :label: dysonCompress
+  :id: '1403'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Peak limit (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Release time (s):
+      :range:
+      - 0
+      - 1
+      :default: 0.25
+    Fast compression ratio:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Compression ratio:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+fad_delay_1192:
+  :name: Fractionally Addressed Delay Line
+  :label: fadDelay
+  :id: '1192'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Delay (seconds):
+      :range:
+      - 0.1
+      - 10.0
+      :default: 1
+    Feedback (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+fast_lookahead_limiter_1913:
+  :name: Fast Lookahead limiter
+  :label: fastLookaheadLimiter
+  :id: '1913'
+  :audio:
+  - Input 1
+  - Input 2
+  - Output 1
+  - Output 2
+  :controls:
+    Input gain (dB):
+      :range:
+      - -20
+      - 20
+      :default: 0
+    Limit (dB):
+      :range:
+      - -20
+      - 0
+      :default: 0
+    Release time (s):
+      :range:
+      - 0.01
+      - 2.0
+      :default: 0.5075
+  :post_fx:
+    Attenuation (dB):
+      :range:
+      - 0
+      - 70
+    latency: {}
+filter:
+  :name: Simple Low Pass Filter
+  :label: lpf
+  :id: '1041'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Cutoff Frequency (Hz):
+      :range:
+      - 0.0
+      - 0.5
+      :default: 440
+flanger_1191:
+  :name: Flanger
+  :label: flanger
+  :id: '1191'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Delay base (ms):
+      :range:
+      - 0.1
+      - 25.0
+      :default: 6.325
+    Max slowdown (ms):
+      :range:
+      - 0
+      - 10
+      :default: 2.5
+    LFO frequency (Hz):
+      :range:
+      - 0.05
+      - 100.0
+      :default: 0.33437
+    Feedback:
+      :range:
+      - -1
+      - 1
+      :default: 0
+fm_osc_1415:
+  :name: FM Oscillator
+  :label: fmOsc
+  :id: '1415'
+  :audio:
+  - Frequency (Hz)
+  - Output
+foldover_1213:
+  :name: Foldover distortion
+  :label: foldover
+  :id: '1213'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Drive:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Skew:
+      :range:
+      - 0
+      - 1
+      :default: 0
+foverdrive_1196:
+  :name: Fast overdrive
+  :label: foverdrive
+  :id: '1196'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Drive level:
+      :range:
+      - 1
+      - 3
+      :default: 1
+freq_tracker_1418:
+  :name: Frequency tracker
+  :label: freqTracker
+  :id: '1418'
+  :audio:
+  - Input
+  - Frequency (Hz)
+  :controls:
+    Tracking speed:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+gate_1410:
+  :name: Gate
+  :label: gate
+  :id: '1410'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    LF key filter (Hz):
+      :range:
+      - 0.0007
+      - 0.1
+      :default: 0.0007
+    HF key filter (Hz):
+      :range:
+      - 0.005
+      - 0.49
+      :default: 0.49
+    Threshold (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    Attack (ms):
+      :range:
+      - 0.01
+      - 1000.0
+      :default: 250.008
+    Hold (ms):
+      :range:
+      - 2
+      - 2000
+      :default: 1500.5
+    Decay (ms):
+      :range:
+      - 2
+      - 4000
+      :default: 2001
+    Range (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+giant_flange_1437:
+  :name: Giant flange
+  :label: giantFlange
+  :id: '1437'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Double delay: {}
+    LFO frequency 1 (Hz):
+      :range:
+      - 0
+      - 30
+      :default: 1
+    Delay 1 range (s):
+      :range:
+      - 0.0
+      - 10.5
+      :default: 2.625
+    LFO frequency 2 (Hz):
+      :range:
+      - 0
+      - 30
+      :default: 1
+    Delay 2 range (s):
+      :range:
+      - 0.0
+      - 10.5
+      :default: 0
+    Feedback:
+      :range:
+      - -100
+      - 100
+      :default: 0
+    Dry/Wet level:
+      :range:
+      - 0
+      - 1
+      :default: 0
+gong_1424:
+  :name: Gong model
+  :label: gong
+  :id: '1424'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Inner damping:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer damping:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Mic position:
+      :range:
+      - 0
+      - 1
+      :default: 0.25
+    Inner size 1:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 1 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 1 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner size 2:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 2 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 2 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner size 3:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 3 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 3 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner size 4:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 4 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Inner stiffness 4 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer size 1:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 1 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 1 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer size 2:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 2 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 2 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer size 3:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 3 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 3 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer size 4:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 4 +:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Outer stiffness 4 -:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+gong_beater_1439:
+  :name: Gong beater
+  :label: gongBeater
+  :id: '1439'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Impulse gain (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+    Strike gain (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+    Strike duration (s):
+      :range:
+      - 0.001
+      - 0.2
+      :default: 0.1005
+gsm_1215:
+  :name: GSM simulator
+  :label: gsm
+  :id: '1215'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Dry/wet mix:
+      :range:
+      - 0
+      - 1
+      :default: 1
+    Number of passes:
+      :range:
+      - 0
+      - 10
+      :default: 1
+    Error rate (bits/block):
+      :range:
+      - 0
+      - 30
+      :default: 0
+  :post_fx:
+    latency: {}
+gverb_1216:
+  :name: GVerb
+  :label: gverb
+  :id: '1216'
+  :audio:
+  - Input
+  - Left output
+  - Right output
+  :controls:
+    Roomsize (m):
+      :range:
+      - 1
+      - 300
+      :default: 75.75
+    Reverb time (s):
+      :range:
+      - 0.1
+      - 30.0
+      :default: 7.575
+    Damping:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Input bandwidth:
+      :range:
+      - 0
+      - 1
+      :default: 0.75
+    Dry signal level (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+    Early reflection level (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+    Tail level (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0.0
+hard_limiter_1413:
+  :name: Hard Limiter
+  :label: hardLimiter
+  :id: '1413'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    dB limit:
+      :range:
+      - -50
+      - 0
+      :default: 0
+    Wet level:
+      :range:
+      - 0
+      - 1
+      :default: 1
+    Residue level:
+      :range:
+      - 0
+      - 1
+      :default: 0
+harmonic_gen_1220:
+  :name: Harmonic generator
+  :label: harmonicGen
+  :id: '1220'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Fundamental magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 1
+    2nd harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    3rd harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    4th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    5th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    6th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    7th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    8th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    9th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    10th harmonic magnitude:
+      :range:
+      - -1
+      - 1
+      :default: 0
+hermes_filter_1200:
+  :name: Hermes Filter
+  :label: hermesFilter
+  :id: '1200'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    LFO1 freq (Hz):
+      :range:
+      - 0
+      - 1000
+      :default: 250
+    LFO2 freq (Hz):
+      :range:
+      - 0
+      - 1000
+      :default: 250
+    Osc1 freq (Hz):
+      :range:
+      - 0
+      - 4000
+      :default: 440
+    Osc2 freq (Hz):
+      :range:
+      - 0
+      - 4000
+      :default: 440
+    Osc1 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    RM1 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    Osc2 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    RM2 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    Input gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    RM3 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    Xover lower freq:
+      :range:
+      - 50
+      - 6000
+      :default: 1537.5
+    Xover upper freq:
+      :range:
+      - 1000
+      - 10000
+      :default: 7750
+    Dist1 drive:
+      :range:
+      - 0
+      - 3
+      :default: 0
+    Dist2 drive:
+      :range:
+      - 0
+      - 3
+      :default: 0
+    Dist3 drive:
+      :range:
+      - 0
+      - 3
+      :default: 0
+    Filt1 freq:
+      :range:
+      - 0
+      - 8000
+      :default: 440
+    Filt1 q:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Filt1 resonance:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Filt1 LFO1 level:
+      :range:
+      - -500
+      - 500
+      :default: 0
+    Filt1 LFO2 level:
+      :range:
+      - -500
+      - 500
+      :default: 0
+    Filt2 freq:
+      :range:
+      - 0
+      - 8000
+      :default: 440
+    Filt2 q:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Filt2 resonance:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Filt2 LFO1 level:
+      :range:
+      - -500
+      - 500
+      :default: 0
+    Filt2 LFO2 level:
+      :range:
+      - -500
+      - 500
+      :default: 0
+    Filt3 freq:
+      :range:
+      - 0
+      - 8000
+      :default: 440
+    Filt3 q:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Filt3 resonance:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Filt3 LFO1 level:
+      :range:
+      - -500
+      - 500
+      :default: 0
+    Filt3 LFO2 level:
+      :range:
+      - -500
+      - 500
+      :default: 0
+    Delay1 length (s):
+      :range:
+      - 0
+      - 2
+      :default: 0
+    Delay1 feedback:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Delay1 wetness:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Delay2 length (s):
+      :range:
+      - 0
+      - 2
+      :default: 0
+    Delay2 feedback:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Delay2 wetness:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Delay3 length (s):
+      :range:
+      - 0
+      - 2
+      :default: 0
+    Delay3 feedback:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Delay3 wetness:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Band 1 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    Band 2 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+    Band 3 gain (dB):
+      :range:
+      - -70
+      - 20
+      :default: 0
+highpass_iir_1890:
+  :name: Glame Highpass Filter
+  :label: highpass_iir
+  :id: '1890'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Cutoff Frequency:
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.000819036
+    Stages(2 poles per stage):
+      :range:
+      - 1
+      - 10
+      :default: 1
+hilbert_1440:
+  :name: Hilbert transformer
+  :label: hilbert
+  :id: '1440'
+  :audio:
+  - Input
+  - 0deg output
+  - 90deg output
+  :post_fx:
+    latency: {}
+imp_1199:
+  :name: Impulse convolver
+  :label: imp
+  :id: '1199'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Impulse ID:
+      :range:
+      - 1
+      - 21
+      :default: 1
+    High latency mode:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Gain (dB):
+      :range:
+      - -90
+      - 24
+      :default: 0
+  :post_fx:
+    latency: {}
+impulse_1885:
+  :name: 'Nonbandlimited single-sample impulses (Frequency: Control)'
+  :label: impulse_fc
+  :id: '1885'
+  :audio:
+  - Output
+  :controls:
+    Frequency (Hz):
+      :range: 0 to ...
+inv_1429:
+  :name: Inverter
+  :label: inv
+  :id: '1429'
+  :audio:
+  - Input
+  - Output
+karaoke_1409:
+  :name: Karaoke
+  :label: karaoke
+  :id: '1409'
+  :audio:
+  - Left in
+  - Right in
+  - Left out
+  - Right out
+  :controls:
+    Vocal volume (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+ladspa-rubberband:
+  :name: Rubber Band Mono Pitch Shifter
+  :label: rubberband-pitchshifter-mono
+  :id: '2979'
+  :audio:
+  - Input
+  - Output
+  :post_fx:
+    latency: {}
+  :controls:
+    Cents:
+      :range:
+      - -100
+      - 100
+      :default: 0
+    Semitones:
+      :range:
+      - -12
+      - 12
+      :default: 0
+    Octaves:
+      :range:
+      - -3
+      - 3
+      :default: 0
+    Crispness:
+      :range:
+      - 0
+      - 3
+      :default: 3
+    Formant Preserving:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Faster:
+      :range:
+      - 0
+      - 1
+      :default: 0
+latency_1914:
+  :name: Artificial latency
+  :label: artificialLatency
+  :id: '1914'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Delay (ms):
+      :range:
+      - 0
+      - 10000
+      :default: 2500
+  :post_fx:
+    latency: {}
+lcr_delay_1436:
+  :name: L/C/R Delay
+  :label: lcrDelay
+  :id: '1436'
+  :audio:
+  - L input
+  - R input
+  - L output
+  - R output
+  :controls:
+    L delay (ms):
+      :range:
+      - 0
+      - 2700
+      :default: 675
+    L level:
+      :range:
+      - 0
+      - 50
+      :default: 25
+    C delay (ms):
+      :range:
+      - 0
+      - 2700
+      :default: 675
+    C level:
+      :range:
+      - 0
+      - 50
+      :default: 25
+    R delay (ms):
+      :range:
+      - 0
+      - 2700
+      :default: 675
+    R level:
+      :range:
+      - 0
+      - 50
+      :default: 25
+    Feedback:
+      :range:
+      - -100
+      - 100
+      :default: 0
+    High damp (%):
+      :range:
+      - 0
+      - 100
+      :default: 50
+    Low damp (%):
+      :range:
+      - 0
+      - 100
+      :default: 50
+    Spread:
+      :range:
+      - 0
+      - 50
+      :default: 25
+    Dry/Wet level:
+      :range:
+      - 0
+      - 1
+      :default: 0
+lowpass_iir_1891:
+  :name: Glame Lowpass Filter
+  :label: lowpass_iir
+  :id: '1891'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Cutoff Frequency:
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.0549426
+    Stages(2 poles per stage):
+      :range:
+      - 1
+      - 10
+      :default: 1
+ls_filter_1908:
+  :name: LS Filter
+  :label: lsFilter
+  :id: '1908'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Cutoff frequency (Hz):
+      :range:
+      - 0.002
+      - 0.5
+      :default: 0.0316228
+    Resonance:
+      :range:
+      - 0
+      - 1
+      :default: 0
+matrix_ms_st_1421:
+  :name: 'Matrix: MS to Stereo'
+  :label: matrixMSSt
+  :id: '1421'
+  :audio:
+  - Mid
+  - Side
+  - Left
+  - Right
+  :controls:
+    Width:
+      :range:
+      - 0
+      - 2
+      :default: 1
+matrix_spatialiser_1422:
+  :name: Matrix Spatialiser
+  :label: matrixSpatialiser
+  :id: '1422'
+  :audio:
+  - Input L
+  - Input R
+  - Output L
+  - Output R
+  :controls:
+    Width:
+      :range:
+      - -512
+      - 512
+      :default: 0
+matrix_st_ms_1420:
+  :name: 'Matrix: Stereo to MS'
+  :label: matrixStMS
+  :id: '1420'
+  :audio:
+  - Left
+  - Right
+  - Mid
+  - Side
+mbeq_1197:
+  :name: Multiband EQ
+  :label: mbeq
+  :id: '1197'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    50Hz gain (low shelving):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    100Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    156Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    220Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    311Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    440Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    622Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    880Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    1250Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    1750Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    2500Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    3500Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    5000Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    10000Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+    20000Hz gain:
+      :range:
+      - -70
+      - 30
+      :default: 0
+  :post_fx:
+    latency: {}
+mod_delay_1419:
+  :name: Modulatable delay
+  :label: modDelay
+  :id: '1419'
+  :audio:
+  - Delay (s)
+  - Input
+  - Output
+  :controls:
+    Base delay (s):
+      :range:
+      - 0
+      - 1
+      :default: 1
+multivoice_chorus_1201:
+  :name: Multivoice Chorus
+  :label: multivoiceChorus
+  :id: '1201'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Number of voices:
+      :range:
+      - 1
+      - 8
+      :default: 1
+    Delay base (ms):
+      :range:
+      - 10
+      - 40
+      :default: 10
+    Voice separation (ms):
+      :range:
+      - 0
+      - 2
+      :default: 0.5
+    Detune (%):
+      :range:
+      - 0
+      - 5
+      :default: 1
+    LFO frequency (Hz):
+      :range:
+      - 2
+      - 30
+      :default: 9
+    Output attenuation (dB):
+      :range:
+      - -20
+      - 0
+      :default: 0
+noise:
+  :name: White Noise Source
+  :label: noise_white
+  :id: '1050'
+  :audio:
+  - Output
+  :controls:
+    Amplitude:
+      :range: 0 to ...
+      :default: 1
+notch_iir_1894:
+  :name: Mag's Notch Filter
+  :label: notch_iir
+  :id: '1894'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Center Frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.0067082
+    Bandwidth (Hz):
+      :range:
+      - 0.0001
+      - 0.45
+      :default: 0.0067082
+    Stages(2 poles per stage):
+      :range:
+      - 1
+      - 10
+      :default: 1
+phasers_1217:
+  :name: LFO Phaser
+  :label: lfoPhaser
+  :id: '1217'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    LFO rate (Hz):
+      :range:
+      - 0
+      - 100
+      :default: 25
+    LFO depth:
+      :range:
+      - 0
+      - 1
+      :default: 0.25
+    Feedback:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    Spread (octaves):
+      :range:
+      - 0
+      - 2
+      :default: 1
+pitch_scale_1193:
+  :name: Pitch Scaler
+  :label: pitchScale
+  :id: '1193'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Pitch co-efficient:
+      :range:
+      - 0.5
+      - 2.0
+      :default: 1
+  :post_fx:
+    latency: {}
+pitch_scale_1194:
+  :name: Higher Quality Pitch Scaler
+  :label: pitchScaleHQ
+  :id: '1194'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Pitch co-efficient:
+      :range:
+      - 0.5
+      - 2.0
+      :default: 1
+  :post_fx:
+    latency: {}
+plate_1423:
+  :name: Plate reverb
+  :label: plate
+  :id: '1423'
+  :audio:
+  - Input
+  - Left output
+  - Right output
+  :controls:
+    Reverb time:
+      :range:
+      - 0.01
+      - 8.5
+      :default: 4.255
+    Damping:
+      :range:
+      - 0
+      - 1
+      :default: 0.25
+    Dry/wet mix:
+      :range:
+      - 0
+      - 1
+      :default: 0.25
+pointer_cast_1910:
+  :name: Pointer cast distortion
+  :label: pointerCastDistortion
+  :id: '1910'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Effect cutoff freq (Hz):
+      :range:
+      - 0.0001
+      - 0.3
+      :default: 0.000740083
+    Dry/wet mix:
+      :range:
+      - 0
+      - 1
+      :default: 0
+rate_shifter_1417:
+  :name: Rate shifter
+  :label: rateShifter
+  :id: '1417'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Rate:
+      :range:
+      - -4
+      - 4
+      :default: 1
+retro_flange_1208:
+  :name: Retro Flanger
+  :label: retroFlange
+  :id: '1208'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Average stall (ms):
+      :range:
+      - 0
+      - 10
+      :default: 2.5
+    Flange frequency (Hz):
+      :range:
+      - 0.5
+      - 8.0
+      :default: 1
+revdelay_1605:
+  :name: Reverse Delay (5s max)
+  :label: revdelay
+  :id: '1605'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Delay Time (s):
+      :range:
+      - 0
+      - 5
+      :default: 0
+    Dry Level (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+    Wet Level (dB):
+      :range:
+      - -70
+      - 0
+      :default: 0
+    Feedback:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Crossfade samples:
+      :range:
+      - 0
+      - 5000
+      :default: 1250
+ringmod_1188:
+  :name: Ringmod with two inputs
+  :label: ringmod_2i1o
+  :id: '1188'
+  :audio:
+  - Input
+  - Modulator
+  - Output
+satan_maximiser_1408:
+  :name: Barry's Satan Maximiser
+  :label: satanMaximiser
+  :id: '1408'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Decay time (samples):
+      :range:
+      - 2
+      - 30
+      :default: 30
+    Knee point (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+sc1_1425:
+  :name: SC1
+  :label: sc1
+  :id: '1425'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Attack time (ms):
+      :range:
+      - 2
+      - 400
+      :default: 101.5
+    Release time (ms):
+      :range:
+      - 2
+      - 800
+      :default: 401
+    Threshold level (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Ratio (1:n):
+      :range:
+      - 1
+      - 10
+      :default: 1
+    Knee radius (dB):
+      :range:
+      - 1
+      - 10
+      :default: 3.25
+    Makeup gain (dB):
+      :range:
+      - 0
+      - 24
+      :default: 0
+sc2_1426:
+  :name: SC2
+  :label: sc2
+  :id: '1426'
+  :audio:
+  - Sidechain
+  - Input
+  - Output
+  :controls:
+    Attack time (ms):
+      :range:
+      - 2
+      - 400
+      :default: 101.5
+    Release time (ms):
+      :range:
+      - 2
+      - 800
+      :default: 401
+    Threshold level (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Ratio (1:n):
+      :range:
+      - 1
+      - 10
+      :default: 1
+    Knee radius (dB):
+      :range:
+      - 1
+      - 10
+      :default: 3.25
+    Makeup gain (dB):
+      :range:
+      - 0
+      - 24
+      :default: 0
+sc3_1427:
+  :name: SC3
+  :label: sc3
+  :id: '1427'
+  :audio:
+  - Sidechain
+  - Left input
+  - Right input
+  - Left output
+  - Right output
+  :controls:
+    Attack time (ms):
+      :range:
+      - 2
+      - 400
+      :default: 101.5
+    Release time (ms):
+      :range:
+      - 2
+      - 800
+      :default: 401
+    Threshold level (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Ratio (1:n):
+      :range:
+      - 1
+      - 10
+      :default: 1
+    Knee radius (dB):
+      :range:
+      - 1
+      - 10
+      :default: 3.25
+    Makeup gain (dB):
+      :range:
+      - 0
+      - 24
+      :default: 0
+    Chain balance:
+      :range:
+      - 0
+      - 1
+      :default: 0
+sc4_1882:
+  :name: SC4
+  :label: sc4
+  :id: '1882'
+  :audio:
+  - Left input
+  - Right input
+  - Left output
+  - Right output
+  :controls:
+    RMS/peak:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Attack time (ms):
+      :range:
+      - 1.5
+      - 400.0
+      :default: 101.125
+    Release time (ms):
+      :range:
+      - 2
+      - 800
+      :default: 401
+    Threshold level (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Ratio (1:n):
+      :range:
+      - 1
+      - 20
+      :default: 1
+    Knee radius (dB):
+      :range:
+      - 1
+      - 10
+      :default: 3.25
+    Makeup gain (dB):
+      :range:
+      - 0
+      - 24
+      :default: 0
+  :post_fx:
+    Amplitude (dB):
+      :range:
+      - -40
+      - 12
+    Gain reduction (dB):
+      :range:
+      - -24
+      - 0
+sc4m_1916:
+  :name: SC4 mono
+  :label: sc4m
+  :id: '1916'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    RMS/peak:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Attack time (ms):
+      :range:
+      - 1.5
+      - 400.0
+      :default: 101.125
+    Release time (ms):
+      :range:
+      - 2
+      - 800
+      :default: 401
+    Threshold level (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Ratio (1:n):
+      :range:
+      - 1
+      - 20
+      :default: 1
+    Knee radius (dB):
+      :range:
+      - 1
+      - 10
+      :default: 3.25
+    Makeup gain (dB):
+      :range:
+      - 0
+      - 24
+      :default: 0
+  :post_fx:
+    Amplitude (dB):
+      :range:
+      - -40
+      - 12
+    Gain reduction (dB):
+      :range:
+      - -24
+      - 0
+se4_1883:
+  :name: SE4
+  :label: se4
+  :id: '1883'
+  :audio:
+  - Left input
+  - Right input
+  - Left output
+  - Right output
+  :controls:
+    RMS/peak:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Attack time (ms):
+      :range:
+      - 1.5
+      - 400.0
+      :default: 101.125
+    Release time (ms):
+      :range:
+      - 2
+      - 800
+      :default: 401
+    Threshold level (dB):
+      :range:
+      - -30
+      - 0
+      :default: 0
+    Ratio (1:n):
+      :range:
+      - 1
+      - 20
+      :default: 1
+    Knee radius (dB):
+      :range:
+      - 1
+      - 10
+      :default: 3.25
+    Attenuation (dB):
+      :range:
+      - -24
+      - 0
+      :default: 0
+  :post_fx:
+    Amplitude (dB):
+      :range:
+      - -40
+      - 12
+    Gain expansion (dB):
+      :range:
+      - 0
+      - 24
+shaper_1187:
+  :name: Wave shaper
+  :label: shaper
+  :id: '1187'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Waveshape:
+      :range:
+      - -10
+      - 10
+      :default: 0
+sifter_1210:
+  :name: Signal sifter
+  :label: sifter
+  :id: '1210'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Sift size:
+      :range:
+      - 1
+      - 1000
+      :default: 1
+sin_cos_1881:
+  :name: Sine + cosine oscillator
+  :label: sinCos
+  :id: '1881'
+  :audio:
+  - Sine output
+  - Cosine output
+  :controls:
+    Base frequency (Hz):
+      :range: 1e-06*srate to 0.5*srate
+      :default: 440
+    Pitch offset:
+      :range:
+      - 0
+      - 8
+      :default: 0
+sine:
+  :name: Sine Oscillator (Freq:audio, Amp:audio)
+  :label: sine_faaa
+  :id: '1044'
+  :audio:
+  - Frequency (Hz)
+  - Amplitude
+  - Output
+single_para_1203:
+  :name: Single band parametric
+  :label: singlePara
+  :id: '1203'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Gain (dB):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    Frequency (Hz):
+      :range:
+      - 0.0
+      - 0.4
+      :default: 440
+    Bandwidth (octaves):
+      :range:
+      - 0
+      - 4
+      :default: 1
+sinus_wavewrapper_1198:
+  :name: Sinus wavewrapper
+  :label: sinusWavewrapper
+  :id: '1198'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Wrap degree:
+      :range:
+      - 0
+      - 10
+      :default: 0
+smooth_decimate_1414:
+  :name: Smooth Decimator
+  :label: smoothDecimate
+  :id: '1414'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Resample rate:
+      :range:
+      - 0
+      - 1
+      :default: 1
+    Smoothing:
+      :range:
+      - 0
+      - 1
+      :default: 1
+split_1406:
+  :name: Mono to Stereo splitter
+  :label: split
+  :id: '1406'
+  :audio:
+  - Input
+  - Output 1
+  - Output 2
+step_muxer_1212:
+  :name: Step Demuxer
+  :label: stepMuxer
+  :id: '1212'
+  :audio:
+  - Clock
+  - Input 1
+  - Input 2
+  - Input 3
+  - Input 4
+  - Input 5
+  - Input 6
+  - Input 7
+  - Input 8
+  - Output
+  :controls:
+    Crossfade time (in ms):
+      :range:
+      - 0
+      - 100
+      :default: 50
+surround_encoder_1401:
+  :name: Surround matrix encoder
+  :label: surroundEncoder
+  :id: '1401'
+  :audio:
+  - L
+  - R
+  - C
+  - S
+  - Lt
+  - Rt
+svf_1214:
+  :name: State Variable Filter
+  :label: svf
+  :id: '1214'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Filter freq:
+      :range:
+      - 0
+      - 6000
+      :default: 440
+    Filter Q:
+      :range:
+      - 0
+      - 1
+      :default: 0.25
+    Filter resonance:
+      :range:
+      - 0
+      - 1
+      :default: 0
+tape_delay_1211:
+  :name: Tape Delay Simulation
+  :label: tapeDelay
+  :id: '1211'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Dry level (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+    Tap 1 distance (inches):
+      :range:
+      - 0
+      - 4
+      :default: 0
+    Tap 1 level (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+    Tap 2 distance (inches):
+      :range:
+      - 0
+      - 4
+      :default: 1
+    Tap 2 level (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+    Tap 3 distance (inches):
+      :range:
+      - 0
+      - 4
+      :default: 2
+    Tap 3 level (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+    Tap 4 distance (inches):
+      :range:
+      - 0
+      - 4
+      :default: 3
+    Tap 4 level (dB):
+      :range:
+      - -90
+      - 0
+      :default: 0
+transient_1206:
+  :name: Transient mangler
+  :label: transient
+  :id: '1206'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Attack speed:
+      :range:
+      - -1
+      - 1
+      :default: 0
+    Sustain time:
+      :range:
+      - -1
+      - 1
+      :default: 0
+triple_para_1204:
+  :name: Triple band parametric with shelves
+  :label: triplePara
+  :id: '1204'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Low-shelving gain (dB):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    Low-shelving frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.49
+      :default: 0.0001
+    Low-shelving slope:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+    Band 1 gain (dB):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    Band 1 frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.49
+      :default: 0.00083666
+    Band 1 bandwidth (octaves):
+      :range:
+      - 0
+      - 4
+      :default: 1
+    Band 2 gain (dB):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    Band 2 frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.49
+      :default: 0.007
+    Band 2 bandwidth (octaves):
+      :range:
+      - 0
+      - 4
+      :default: 1
+    Band 3 gain (dB):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    Band 3 frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.49
+      :default: 0.0585662
+    Band 3 bandwidth (octaves):
+      :range:
+      - 0
+      - 4
+      :default: 1
+    High-shelving gain (dB):
+      :range:
+      - -70
+      - 30
+      :default: 0
+    High-shelving frequency (Hz):
+      :range:
+      - 0.0001
+      - 0.49
+      :default: 0.49
+    High-shelving slope:
+      :range:
+      - 0
+      - 1
+      :default: 0.5
+valve_1209:
+  :name: Valve saturation
+  :label: valve
+  :id: '1209'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Distortion level:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Distortion character:
+      :range:
+      - 0
+      - 1
+      :default: 0
+valve_rect_1405:
+  :name: Valve rectifier
+  :label: valveRect
+  :id: '1405'
+  :audio:
+  - Input
+  - Output
+  :controls:
+    Sag level:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Distortion:
+      :range:
+      - 0
+      - 1
+      :default: 0
+vocoder_1337:
+  :name: Vocoder
+  :label: vocoder
+  :id: '1337'
+  :audio:
+  - Formant-in
+  - Carrier-in
+  - Output-out
+  - Output2-out
+  :controls:
+    Number of bands:
+      :range:
+      - 1
+      - 16
+      :default: 0
+    Left/Right:
+      :range:
+      - -100
+      - 100
+      :default: 0
+    Band 1 Level:
+      :range:
+      - 0
+      - 1
+    Band 2 Level:
+      :range:
+      - 0
+      - 1
+    Band 3 Level:
+      :range:
+      - 0
+      - 1
+    Band 4 Level:
+      :range:
+      - 0
+      - 1
+    Band 5 Level:
+      :range:
+      - 0
+      - 1
+    Band 6 Level:
+      :range:
+      - 0
+      - 1
+    Band 7 Level:
+      :range:
+      - 0
+      - 1
+    Band 8 Level:
+      :range:
+      - 0
+      - 1
+    Band 9 Level:
+      :range:
+      - 0
+      - 1
+    Band 10 Level:
+      :range:
+      - 0
+      - 1
+    Band 11 Level:
+      :range:
+      - 0
+      - 1
+    Band 12 Level:
+      :range:
+      - 0
+      - 1
+    Band 13 Level:
+      :range:
+      - 0
+      - 1
+    Band 14 Level:
+      :range:
+      - 0
+      - 1
+    Band 15 Level:
+      :range:
+      - 0
+      - 1
+    Band 16 Level:
+      :range:
+      - 0
+      - 1
+vynil_1905:
+  :name: VyNil (Vinyl Effect)
+  :label: vynil
+  :id: '1905'
+  :audio:
+  - Input L
+  - Input R
+  - Output L
+  - Output R
+  :controls:
+    Year:
+      :range:
+      - 1900
+      - 1990
+      :default: 1990
+    RPM:
+      :range:
+      - 33
+      - 78
+      :default: 33
+    Surface warping:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Crackle:
+      :range:
+      - 0
+      - 1
+      :default: 0
+    Wear:
+      :range:
+      - 0
+      - 1
+      :default: 0
+wave_terrain_1412:
+  :name: Wave Terrain Oscillator
+  :label: waveTerrain
+  :id: '1412'
+  :audio:
+  - x
+  - y
+  - z
+xfade_1915:
+  :name: Crossfade
+  :label: xfade
+  :id: '1915'
+  :audio:
+  - Input A left
+  - Input A right
+  - Input B left
+  - Input B right
+  - Output left
+  - Output right
+  :controls:
+    Crossfade:
+      :range:
+      - -1
+      - 1
+      :default: 0
+zm1_1428:
+  :name: z-1
+  :label: zm1
+  :id: '1428'
+  :audio:
+  - Input
+  - Output

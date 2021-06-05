@@ -1,7 +1,9 @@
 require 'alghemy/apparatus'
-require_relative 'the_lads'
+require 'alghemy/data'
 
 module LadspaInfo
+  LADS = Data[:LADS]
+
   def name
     LADS[sijil][__callee__]
   end
