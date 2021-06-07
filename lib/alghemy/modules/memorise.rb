@@ -26,14 +26,15 @@ module Alghemy
       end
 
       def store_memory( sijil, mems )
+        return if mems.empty?
         stored = read_archives
-        stored[sijil] = mems
+        stored[sijil.to_s] = mems
         File.write(archives, YAML.dump(stored))
       end
 
       def read_archives
         return {} unless File.exist?(archives)
-        YAML.load(File.readlines(archives).join)
+        YAML.unsafe_load_file archives
       end
 
       def archives
