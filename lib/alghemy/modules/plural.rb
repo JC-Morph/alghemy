@@ -11,7 +11,7 @@ module Alghemy
       delegate :[]    => :list
 
       # Public: Returns Integer of files represented by sijil.
-      def len
+      def count
         sijil.list.size
       end
 
