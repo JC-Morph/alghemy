@@ -17,6 +17,7 @@ module Alghemy
                lad
                mint
                mutate
+               mv_average
                sonify
                sublimate
                trim
