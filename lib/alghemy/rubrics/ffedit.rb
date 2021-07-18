@@ -1,3 +1,4 @@
+require 'alghemy/scripts'
 require 'alghemy/rubrics'
 
 module Alghemy
@@ -6,23 +7,20 @@ module Alghemy
     # ffglitch.org. ffedit is an altered ffmpeg binary focussed on glitch-based
     # processing of input.
     class Ffedit < Rubrics[:ffmpeg]
-      # alias_method :_option_templates, :option_templates
+      def self.moniker
+        moniker = %w[ffedit -loglevel warning]
+      end
+
       def self.option_templates
-        super.merge {
+        super.merge(
           func:   {flag: :f, default: :mv},
-          script: {flag: :s, default: 'mv_average.js'}
-        }
+          script: {flag: :s, default: 'mv_average'}
+        )
       end
 
-      def script( name = nil )
-        script = send(name) if name
-        ['-s', script || options[__callee__].default
+      def script( name = options[__callee__].default )
+        add ['-s', Scripts[name]]
       end
-
-      def average
-        "mv_#{__callee__}.js"
-      end
-      alias sink average
     end
   end
 end
