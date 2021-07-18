@@ -61,7 +61,7 @@ module Alghemy
       # Public: Open Matter with default application.
       def behold
         file = sijil.first
-        file = file.fenestrate if Gem.win_platform?
+        file = Gem.win_platform? ? file.fenestrate : ('xdg-open ' + file.to_s)
         Apparatus[:invoker].engage "#{file} 2>&1"
       end
 
