@@ -6,8 +6,10 @@ require 'config'
 require 'version'
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
+require 'alghemy/glyphs'
 
 include Alghemy
 include Affinities
+include Glyphs
 
 Matter = Ancestors[:matter]
