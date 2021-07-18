@@ -31,7 +31,7 @@ module Alghemy
         # Internal: Returns Array containing name of executable and any initial
         # flags.
         def moniker
-          []
+          [self.class.name.split('::').last.downcase]
         end
 
         # Public: Array of default templates for options.

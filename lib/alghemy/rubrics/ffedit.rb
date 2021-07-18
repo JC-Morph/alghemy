@@ -6,10 +6,6 @@ module Alghemy
     # ffglitch.org. ffedit is an altered ffmpeg binary focussed on glitch-based
     # processing of input.
     class Ffedit < Rubrics[:ffmpeg]
-      def self.moniker
-        ['ffedit']
-      end
-
       # alias_method :_option_templates, :option_templates
       def self.option_templates
         super.merge {
