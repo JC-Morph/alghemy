@@ -22,11 +22,17 @@ allpass_1895:
   - Output
   :controls:
     Max Delay (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
     Delay Time (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
     Decay Time (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
 am_pitchshift_1433:
   :name: AM pitchshifter
   :label: amPitchshift
@@ -47,17 +53,6 @@ am_pitchshift_1433:
       :default: 4
   :post_fx:
     latency: {}
-amp:
-  :name: Mono Amplifier
-  :label: amp_mono
-  :id: '1048'
-  :audio:
-  - Input
-  - Output
-  :controls:
-    Gain:
-      :range: 0 to ...
-      :default: 1
 amp_1181:
   :name: Simple amplifier
   :label: amp
@@ -230,11 +225,16 @@ comb_1887:
   - Output
   :controls:
     Max Delay (s):
-      :range: 0 to ...
+      - 0
+      - 60
     Delay Time (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
     Decay Time (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
 comb_splitter_1411:
   :name: Comb Splitter
   :label: combSplitter
@@ -296,7 +296,9 @@ decay_1886:
   - Output
   :controls:
     Decay Time (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
 decimator_1202:
   :name: Decimator
   :label: decimator
@@ -349,9 +351,13 @@ delay_1898:
   - Output
   :controls:
     Max Delay (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
     Delay Time (s):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 60
 delayorama_1402:
   :name: Delayorama
   :label: delayorama
@@ -1330,7 +1336,9 @@ impulse_1885:
   - Output
   :controls:
     Frequency (Hz):
-      :range: 0 to ...
+      :range:
+      - 0
+      - 20_000
 inv_1429:
   :name: Inverter
   :label: inv
@@ -1685,16 +1693,6 @@ multivoice_chorus_1201:
       - -20
       - 0
       :default: 0
-noise:
-  :name: White Noise Source
-  :label: noise_white
-  :id: '1050'
-  :audio:
-  - Output
-  :controls:
-    Amplitude:
-      :range: 0 to ...
-      :default: 1
 notch_iir_1894:
   :name: Mag's Notch Filter
   :label: notch_iir
