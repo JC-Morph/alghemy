@@ -27,6 +27,12 @@ module Alghemy
         Dir.glob self.to_s
       end
 
+      # Public: Open Matter with default application.
+      def behold
+        spell = Gem.win_platform? ? first.fenestrate : "xdg-open #{first.to_s}"
+        Apparatus[:invoker].engage "#{spell} 2>&1"
+      end
+
       def first
         self.class.new list.send(__callee__)
       end
