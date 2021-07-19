@@ -17,9 +17,12 @@ module Alghemy
       def extend_id( sijil, ident )
         @sijil = sijil
         @ident = ident
-        find_ids
-        ident[mutation] ? add_mutation : add_transposition
+        find_ids and add_ident
         idents * '-'
+      end
+
+      def add_ident
+        ident[mutation] ? add_mutation : add_transposition
       end
 
       # Internal: Add transposition ident.
@@ -69,8 +72,8 @@ module Alghemy
       #
       # id - See #mutation. (optional)
       def consecutive_mutation?( id = nil )
-        return false unless idents.last
-        !(idents.last =~ mutation(id)).nil?
+        last_id = idents.last
+        last_id && (last_id =~ mutation(id)) ? true : false
       end
 
       # Internal: Increment a number for ident repetitions.
