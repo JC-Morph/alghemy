@@ -46,8 +46,8 @@ module Alghemy
       # Public: Calculate and print aspects.
       def identify
         clss = self.class
-        puts "\nClass => #{clss.name.split('::').last}"
-        puts "sijil => #{sijil}\n\n"
+        puts "\nClass => #{clss.name.split('::').last} \
+        \nsijil => #{sijil}\n\n"
         clss.aspects.each {|asp| send asp }
         hshprint aspects
       end
@@ -60,9 +60,9 @@ module Alghemy
 
       # Public: Open Matter with default application.
       def behold
-        file = sijil.first
-        file = Gem.win_platform? ? file.fenestrate : ('xdg-open ' + file.to_s)
-        Apparatus[:invoker].engage "#{file} 2>&1"
+        file  = sijil.first
+        spell = Gem.win_platform? ? file.fenestrate : ('xdg-open ' + file.to_s)
+        Apparatus[:invoker].engage "#{spell} 2>&1"
       end
 
       private
