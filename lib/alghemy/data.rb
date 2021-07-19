@@ -5,7 +5,7 @@ module Alghemy
   module Data
     extend Bandoleer
 
-    vials = %w[lads]
+    vials = %w[ladspa]
 
     vials.each do |vial|
       bandoleer.register(vial) do

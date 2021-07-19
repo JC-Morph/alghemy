@@ -1,17 +1,21 @@
+require 'alghemy/data'
 require 'alghemy/methods'
-require_relative 'ladspa_info'
 
 module Alghemy
   module Mutagens
     # Public: Represents a LADSPA plugin.
     class Ladspa
-      extend  Methods[:alget]
-      include LadspaInfo
+      extend Methods[:alget]
       attr_reader :sijil, :params
 
       class << self
+        def ladspa_dict
+          Data[:ladspa]
+        end
+
         def list
-          index.map {|plug| plug[/\w+(?=\.so$)/] }
+          present = index.map {|plug| plug[/\w+(?=\.so$)/] }
+          present & ladspa_dict.keys
         end
 
         def index
@@ -26,24 +30,39 @@ module Alghemy
         end
       end
 
+      def dict
+        self.class.ladspa_dict
+      end
+
       def initialize( plugin = nil )
-        list     = self.class.list
-        plugin ||= list.sample
-        @sijil   = find plugin
-        @name    = name
-        params   = controls.merge post_fx
-        @params  = params unless params.empty?
+        plugin ||= self.class.list.sample
+        @sijil = find plugin
+        @name  = name
+        params  = controls.merge(post_fx)
+        @params = params unless params.empty?
       end
 
       def find( plugin )
         plug = plugin.downcase
-        found = LADS.select do |lad, info|
+        found = dict.select do |lad, info|
           (plug == lad) || %i[label id].any? do |attr|
             plug == info[attr].downcase
           end
         end
         found ? found.keys.first : match_error
       end
+
+      def name
+        dict[sijil][__callee__]
+      end
+      %i[label id audio].each do |attr|
+        alias_method attr, :name
+      end
+
+      def controls
+        dict[sijil][__callee__] || {}
+      end
+      alias_method :post_fx, :controls
 
       private
 
