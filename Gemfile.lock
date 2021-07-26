@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    canister (0.9.1)
+    dry-inflector (0.2.1)
+    ffi (1.15.3)
+    ffi (1.15.3-java)
+    listen (3.5.1)
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
+    rb-fsevent (0.11.0)
+    rb-inotify (0.10.1)
+      ffi (~> 1.0)
+
+PLATFORMS
+  universal-java-16
+  x86_64-linux
+
+DEPENDENCIES
+  canister
+  dry-inflector
+  listen
+
+BUNDLED WITH
+   2.2.21
