@@ -26,8 +26,8 @@ module Alghemy
             rate:   {flag: 'framerate', default: 30},
             format: {flag: 'f', default: 'rawvideo'},
             # options for audio and video streams
-            **stream_option(:codec,   'c', %w[libx264 aac]),
-            **stream_option(:quality, 'q', [5, 3])
+            **stream_option(:codec,   'c', ['libx264', 'aac']),
+            **stream_option(:quality, 'q', [5,         3])
           }
         end
 
@@ -61,13 +61,13 @@ module Alghemy
 
       def rip
         input
-        cata[:exclude][/^v/i] ? vn : an
+        cata[:exclude][/^v/i] ? no_video : no_audio
         output
       end
 
       def sublimate
         input
-        cata[:raw] ? vc : format
+        cata[:raw] ? vcodec : format
         output
       end
     end
