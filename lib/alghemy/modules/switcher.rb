@@ -34,9 +34,7 @@ module Alghemy
       end
 
       def def_aliases( switcher, opt )
-        aliases = []
-        aliases << opt.flag if opt.flag != opt.name
-        aliases << opt.shortcut if opt.shortcut
+        aliases = [opt.flag, opt.shortcut].compact
         aliases.each {|als| switcher.send(:alias_method, als, opt.name) }
       end
 
