@@ -8,7 +8,7 @@ module Alghemy
 
     # Internal: Initialise an Algput.
     #
-    # lyst - Hash of initialisation options:
+    # stuff - Hash of initialisation options:
     #        :enum   - Enumerator method for Tome. Changes depending on how the
     #                  input file(s) should be enumerated.
     #        :sijil  - Filename of input.
@@ -17,10 +17,10 @@ module Alghemy
     #        :name   - The name of the current Transmutation.
     #        :plural - Boolean if the transmutation is expected to create
     #                  multiple files.
-    def initialize( lyst = {} )
-      @enum  = lyst[:enum] || :lmnt
-      @parts = {dir: lyst[:sijil].label, ext: lyst[:ext]}
-      tune_parts lyst
+    def initialize( stuff = {} )
+      @enum  = stuff[:enum] || :lmnt
+      @parts = {dir: stuff[:sijil].label, ext: stuff[:ext]}
+      tune_parts stuff
       parts[:dir] = open_dir
     end
 
@@ -32,20 +32,20 @@ module Alghemy
 
     # Internal: Define appropriate parts for creating outputs.
     #
-    # lyst - Hash including relevant parameters:
+    # stuff - Hash including relevant parameters:
     #        :sijil  - Filename of input.
     #        :label  - String identifier for mutations (optional).
     #        :name   - The name of the current Transmutation.
     #        :plural - Boolean if the transmutation is expected to create
     #                  multiple files.
-    def tune_parts( lyst )
-      sijil = lyst[:sijil]
-      ident = get_id lyst
+    def tune_parts( stuff )
+      sijil = stuff[:sijil]
+      ident = get_id stuff
       ident = extend_id(sijil, ident)
-      if lyst[:plural]
+      if stuff[:plural]
         # TODO: different names possible here? Mutest
         parts[:base] = sijil.label unless sijil.plural?
-        parts[:base].concat('_' + lyst[:glob]) if lyst[:glob]
+        parts[:base].concat('_' + stuff[:glob]) if stuff[:glob]
         parts[:dir].concat(File::SEPARATOR + ident)
       else
         parts[:base] = ident
@@ -54,13 +54,13 @@ module Alghemy
 
     # Internal: Get ident for the current transform.
     #
-    # lyst - Hash including relevant parameters:
+    # stuff - Hash including relevant parameters:
     #        :label  - String identifier for mutations. (optional)
     #        :name   - The name of the current Transmutation.
     #
     # Returns String.
-    def get_id( lyst )
-      lyst[:label] || lyst[:name].to_s[0..2]
+    def get_id( stuff )
+      stuff[:label] || stuff[:name].to_s[0..2]
     end
 
     # Internal: Take any existing idents from sijil and combine them with the

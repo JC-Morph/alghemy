@@ -9,12 +9,12 @@ module Alghemy
       # Internal: Transmute method, for calling Transmutations on Matter.
       # Writes files.
       #
-      # lyst - Transmutation specific options (default: {}).
+      # stuff - Transmutation specific options (default: {}).
       #
       # Returns new Matter, dependent on Transmutation.
-      def transmute( *focus, **lyst )
-        tran = Transmutations[__callee__].new(self, *focus, **lyst)
-        Apparatus[:alghemist].transmute(self, tran, lyst)
+      def transmute( *focus, **stuff )
+        tran = Transmutations[__callee__].new(self, *focus, **stuff)
+        Apparatus[:alghemist].transmute(self, tran, stuff)
       end
       # Public: All Transmutations listed become named methods.
       Transmutations.equipped.each do |vial|

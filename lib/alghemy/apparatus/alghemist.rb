@@ -8,7 +8,7 @@ module Alghemy
     module Alghemist
       class << self
         include Modules[:memorise]
-        attr_reader :lmnt, :tran, :cata, :namer, :rubric
+        attr_reader :lmnt, :tran, :stuff, :namer, :rubric
 
         # TODO: rewrite
         # Public: Initialises Algput to define output environment, then Rubric
@@ -16,11 +16,11 @@ module Alghemy
         # create new files, then evoke new instance of Matter.
         #
         # Returns new instance of Matter.
-        def transmute( lmnt, transform, lyst = {} )
+        def transmute( lmnt, transform, stuff = {} )
           @lmnt = lmnt
           @tran = transform
-          @cata = tran.cata
-          @namer  = Algput.new(cata.merge name_options)
+          @stuff = tran.stuff
+          @namer  = Algput.new(stuff.merge name_options)
           @rubric = tran.write_rubric
           results = cast tran.tome
           evoke list(results)
@@ -50,7 +50,7 @@ module Alghemy
         def evoke( tome )
           tome_error if tome.empty?
           sijil  = tome.sijil
-          memory = record_memory(cata, lmnt.mems, short_term)
+          memory = record_memory(stuff, lmnt.mems, short_term)
           store_memory(sijil, memory)
           sijil.evoke memory
         end
@@ -66,7 +66,7 @@ module Alghemy
             next if rubric.option_memory.keys.any? do |option|
               anchor == option
             end
-            memory[anchor] = cata[anchor] || lmnt.send(anchor)
+            memory[anchor] = stuff[anchor] || lmnt.send(anchor)
           end
           memory.merge rubric.option_memory
         end

@@ -12,17 +12,17 @@ module Alghemy
       attr_reader   :list
 
       class << self
-        def build( templates, lyst = {} )
+        def build( templates, stuff = {} )
           options = new templates
           options.each do |name, option|
-            merge_values lyst, option
+            merge_values stuff, option
           end
           options
         end
 
-        def merge_values( lyst, option )
+        def merge_values( stuff, option )
           updated = %i[name flag shortcut].map do |id|
-            lyst[option.send(id)]
+            stuff[option.send(id)]
           end.compact
           updated = array_merge(*updated) if updated.size > 1
           option.value = array_merge(updated, option.default)

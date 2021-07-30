@@ -27,14 +27,14 @@ module Alghemy
 
       # Public: Replace parts in Trail.
       #
-      # lyst - Hash of parts to replace.
+      # stuff - Hash of parts to replace.
       #        :dir  - Directory.
       #        :base - Basename.
       #        :ext  - Extension.
       #
       # Returns new instance of class.
-      def swap_parts( lyst = {} )
-        swap = parts.merge lyst
+      def swap_parts( stuff = {} )
+        swap = parts.merge stuff
         file = swap[:base] + swap[:ext]
         self.class.new File.join(swap[:dir], file)
       end

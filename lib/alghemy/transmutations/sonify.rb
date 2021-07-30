@@ -8,12 +8,12 @@ module Alghemy
       include Boots
 
       def tran_init
-        cata[:ext] ||= '.wav'
+        stuff[:ext] ||= '.wav'
       end
 
       def write_rubric
         rubric = write.type.rate.ents.input
-        rubric.type(:raw) unless rubric.recognise?(cata[:ext])
+        rubric.type(:raw) unless rubric.recognise?(stuff[:ext])
         rubric.ents.output
       end
     end

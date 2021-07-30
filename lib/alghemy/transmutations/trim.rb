@@ -18,8 +18,8 @@ module Alghemy
       end
 
       def parse_positions
-        poss = %i[start pos end].map {|opt| cata[opt] }.compact
-        poss.prepend(0) if cata[:end] && poss.size == 1
+        poss = %i[start pos end].map {|opt| stuff[opt] }.compact
+        poss.prepend(0) if stuff[:end] && poss.size == 1
         poss.empty? ? [0, '-0'] : poss
       end
 

@@ -2,16 +2,16 @@
 # parameters.
 module Automation
   class << self
-    attr_reader :n_params, :cata
+    attr_reader :n_params, :stuff
 
-    def generate( lyst = {} )
-      @cata = defaults.merge lyst
-      init_params cata[:params] || rand_params
+    def generate( stuff = {} )
+      @stuff = defaults.merge stuff
+      init_params stuff[:params] || rand_params
     end
 
     def rand_params
-      params   = (0..cata[:total] - 1).to_a
-      n_params = cata[:n_params] || rand(bounds)
+      params   = (0..stuff[:total] - 1).to_a
+      n_params = stuff[:n_params] || rand(bounds)
       n_params.times.with_object([]) do |_, arr|
         arr << params.shuffle!.pop
       end
@@ -30,7 +30,7 @@ module Automation
 
     def rand_op
       op  = {operator: %i[+ -].sample}
-      axi = cata[:axi]
+      axi = stuff[:axi]
       axi = (0..axi - 1).to_a if axi.is_a? Integer
       op.merge(index: axi.sample)
     end
@@ -42,9 +42,9 @@ module Automation
     end
 
     def bounds
-      bounds   = [cata[:min], cata[:max]]
+      bounds   = [stuff[:min], stuff[:max]]
       min, max = bounds.collect do |percent|
-        (cata[:total].fdiv(100) * percent.to_f).round
+        (stuff[:total].fdiv(100) * percent.to_f).round
       end
       min..max
     end

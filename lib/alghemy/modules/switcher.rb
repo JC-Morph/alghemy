@@ -12,9 +12,9 @@ module Alghemy
         raise NotImplementedError
       end
 
-      def build_options( lyst )
+      def build_options( stuff )
         @opt_hist = []
-        @options  = Glyphs[:options].call self.class.option_templates, lyst
+        @options  = Glyphs[:options].call self.class.option_templates, stuff
         def_options
       end
 

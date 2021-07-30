@@ -8,14 +8,14 @@ module Alghemy
     class Sublimate < Ancestors[:transmutation]
       def sub_init
         tree = lmnt.raw? ? remember : hoist_anchors
-        @cata = tree.merge cata
+        @stuff = tree.merge stuff
       end
 
       def remember
         tree = lmnt.inherit(%i[ext affinity], transform: 'sublimate')
-        cata[:affinity] ||= tree[:affinity] || :image
+        stuff[:affinity] ||= tree[:affinity] || :image
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
-        cata[:size] = agree_size tree
+        stuff[:size] = agree_size tree
         {ext: affinity.defaults[:ext]}.merge tree
       end
 
@@ -35,21 +35,21 @@ module Alghemy
       private
 
       def affinity
-        return lmnt.class unless cata[:affinity]
-        Affinities[cata[:affinity]]
+        return lmnt.class unless stuff[:affinity]
+        Affinities[stuff[:affinity]]
       end
 
       def agree_size( tree )
-        size = Glyphs[:space].call(cata[:size], tree[:size])
+        size = Glyphs[:space].call(stuff[:size], tree[:size])
         @solution = Affinities[:elements] if shrunk?(tree)
         size
       end
 
       def shrunk?( tree )
-        return unless cata[:affinity] == :image
+        return unless stuff[:affinity] == :image
         %i[size depth].any? do |asp|
-          next unless cata[asp] && tree[asp]
-          cata[asp] < tree[asp]
+          next unless stuff[asp] && tree[asp]
+          stuff[asp] < tree[asp]
         end
       end
     end

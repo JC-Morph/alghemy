@@ -11,8 +11,8 @@ module Alghemy
       end
 
       def tran_init
-        cata[:enum] = :group
-        @tome     = sub_tome if cata[:magni] || cata[:phase]
+        stuff[:enum] = :group
+        @tome     = sub_tome if stuff[:magni] || stuff[:phase]
         @solution = Affinities[:element] if @tome.size == 2
       end
 
@@ -22,7 +22,7 @@ module Alghemy
       # may include explicit :magnitude or :phase images.
       def sub_tome
         tome = %i[magni phase].collect do |part|
-          part = cata[part] || cata[:tome]
+          part = stuff[part] || stuff[:tome]
           part.is_a?(Array) ? part : part.list
         end.transpose
         tome.flatten! if tome.size == 1

@@ -14,11 +14,11 @@ module Alghemy
       # old_mems - Prior memories from input to transmutation. Expected to be an
       #            Array in the same format as mems created by record_memory.
       # new_mems - Hash of options to keep from transform.
-      def record_memory( cata, old_mems, new_mems )
-        record = cata.fetch(:record, true)
+      def record_memory( stuff, old_mems, new_mems )
+        record = stuff.fetch(:record, true)
         return {} unless record
         if record == true
-          memory = {name: cata[:name].to_sym, **new_mems}
+          memory = {name: stuff[:name].to_sym, **new_mems}
           record = [Glyphs[:memory].new(memory)]
           record.unshift(*old_mems.list) if old_mems
         end

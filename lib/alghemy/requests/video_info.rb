@@ -13,7 +13,7 @@ module Alghemy
         end
 
         def sub_process
-          [probe[0], cata, probe[1]]
+          [probe[0], stuff, probe[1]]
         end
 
         def probe
@@ -21,7 +21,7 @@ module Alghemy
            %w[-of default=noprint_wrappers=1:nokey=1]]
         end
 
-        def cata
+        def stuff
           id = cat != 'duration' ? 'stream' : 'format'
           "#{id}=#{cat}"
         end

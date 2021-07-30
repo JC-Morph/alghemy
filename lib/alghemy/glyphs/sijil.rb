@@ -47,8 +47,8 @@ module Alghemy
         list[to_size..-1].each {|lmnt| File.delete lmnt }
       end
 
-      def evoke( lyst = {} )
-        Factories[:evoker].call(self.class, self, lyst)
+      def evoke( stuff = {} )
+        Factories[:evoker].call(self.class, self, stuff)
       end
 
       def unglob

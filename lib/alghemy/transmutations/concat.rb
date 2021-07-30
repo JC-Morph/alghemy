@@ -5,7 +5,7 @@ module Alghemy
   # Public: Concatenate Elements.
   class Concat < Ancestors[:transmutation]
     def tran_init
-      cata[:enum] = :group
+      stuff[:enum] = :group
       @solution   = Affinities[:element] unless lmnt.dims
     end
   end

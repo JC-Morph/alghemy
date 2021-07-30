@@ -19,13 +19,13 @@ module Alghemy
       end
 
       def tran_init
-        cata[:plug] = plugin.assert cata[:plug]
+        stuff[:plug] = plugin.assert stuff[:plug]
       end
 
       def write_rubric
-        plug = prepare cata[:plug]
+        plug = prepare stuff[:plug]
         rubric = write.input
-        rubric.type(:raw) unless rubric.recognise?(cata[:ext])
+        rubric.type(:raw) unless rubric.recognise?(stuff[:ext])
         rubric.output.add plug
       end
 
@@ -33,7 +33,7 @@ module Alghemy
         params = plug.params || {}
         values = params.map do |param, info|
           param = param.downcase.gsub(/[\s\/]/, '_').to_sym
-          cata[param] || info[:default] || rand_param(info)
+          stuff[param] || info[:default] || rand_param(info)
         end
         ['ladspa', plug.sijil, values].flatten
       end

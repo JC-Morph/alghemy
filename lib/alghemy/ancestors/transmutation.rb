@@ -9,7 +9,7 @@ module Alghemy
     # Returns Matter.
     class Transmutation
       include Modules[:osman]
-      attr_reader :lmnt, :tome, :cata
+      attr_reader :lmnt, :tome, :stuff
 
       # Public: This method can be used by individual Transmutations to specify
       # the preferential order for options, followed when they are passed prior
@@ -30,7 +30,7 @@ module Alghemy
         @tome     = lmnt.list
         @solution = lmnt.class
 
-        @cata = dict.merge name: name
+        @stuff = dict.merge name: name
         gather priorities unless priorities.empty?
         sub_init
         prepext
@@ -58,21 +58,21 @@ module Alghemy
 
       private
 
-      # Internal: Populate @cata with the ordered arguments provided.
+      # Internal: Populate @stuff with the ordered arguments provided.
       def gather( priorities )
         priorities.each.with_index do |option, i|
-          cata[self.class.priorities[i]] = option
+          stuff[self.class.priorities[i]] = option
         end
       end
 
-      # Internal: Merges default values with @cata. Serves as duckable
+      # Internal: Merges default values with @stuff. Serves as duckable
       # initialisation for transforms without default values.
       def sub_init
-        @cata = defaults.merge cata
+        @stuff = defaults.merge stuff
         tran_init
       end
 
-      # Internal: Returns Hash of default values for @cata that can be
+      # Internal: Returns Hash of default values for @stuff that can be
       # overridden.
       def defaults
         {ext: lmnt.sijil.ext}
@@ -89,9 +89,9 @@ module Alghemy
 
       # Internal: Prepend extension with period if not already present.
       def prepext
-        ext = cata[:ext].to_s
+        ext = stuff[:ext].to_s
         ext.prepend('.') if ext[/^[^\.]/]
-        cata[:ext] = ext
+        stuff[:ext] = ext
       end
     end
   end

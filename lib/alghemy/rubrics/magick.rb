@@ -35,7 +35,7 @@ module Alghemy
       end
 
       def sublimate
-        size.depth if cata[:raw]
+        size.depth if stuff[:raw]
         input.output
       end
     end

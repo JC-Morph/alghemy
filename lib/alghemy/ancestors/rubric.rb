@@ -8,7 +8,7 @@ module Alghemy
     class Rubric
       include Methods[:alget]
       include Modules[:switcher]
-      attr_reader :cata
+      attr_reader :stuff
 
       class << self
         # Public: Initialise a Rubric with a String or Array. Any input will be
@@ -21,10 +21,10 @@ module Alghemy
 
         # Public: Initialises a Rubric.
         #
-        # lyst - Hash of initialisation options.
-        def write( lyst = {} )
+        # stuff - Hash of initialisation options.
+        def write( stuff = {} )
           rubric = new.add moniker
-          rubric.init lyst
+          rubric.init stuff
           rubric
         end
 
@@ -40,10 +40,10 @@ module Alghemy
         end
       end
 
-      def init( lyst )
-        @cata = lyst
+      def init( stuff )
+        @stuff = stuff
         sub_init
-        build_options cata
+        build_options stuff
       end
 
       def scroll

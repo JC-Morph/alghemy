@@ -55,9 +55,9 @@ module Alghemy
       private
 
       def sub_init
-        return unless cata[:ents]
-        Glyphs[:ent].call(cata[:ents]).separate.each do |ananym, val|
-          cata[ananym] = array_merge(cata[ananym], val)
+        return unless stuff[:ents]
+        Glyphs[:ent].call(stuff[:ents]).separate.each do |ananym, val|
+          stuff[ananym] = array_merge(stuff[ananym], val)
         end
       end
     end

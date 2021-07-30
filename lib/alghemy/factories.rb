@@ -8,9 +8,9 @@ module Alghemy
   module Factories
     extend Bandoleer
 
-    evoke = lambda do |clss, sijil, lyst = {}|
+    evoke = lambda do |clss, sijil, stuff = {}|
       affinity = clss.name.split('::').last.downcase
-      Evoker.send(affinity, sijil, lyst)
+      Evoker.send(affinity, sijil, stuff)
     end
     transcribe = lambda do |list, dims = nil|
       Scribe.transcribe(list, dims)

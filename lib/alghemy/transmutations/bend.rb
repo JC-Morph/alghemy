@@ -18,13 +18,13 @@ module Alghemy
       end
 
       def bend
-        options = ["-f #{cata[:framerate]}", "-o #{cata[:oversample]}"]
+        options = ["-f #{stuff[:framerate]}", "-o #{stuff[:oversample]}"]
         bends   = parse_bends.map {|bend| bend.join(',') }
         ['bend', options, bends]
       end
 
       def parse_bends
-        bends = cata[:bends]
+        bends = stuff[:bends]
         return [[lmnt.len / 2, 1, '-0']] unless bends
         builder = []
         bends.each.with_object([]) do |bend, arr|

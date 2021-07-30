@@ -15,8 +15,8 @@ module Alghemy
       end
 
       def tran_init
-        cata[:enum] = :group_sijil
-        cata[:rate] = lmnt.inherit(:rate, except: :Sound)
+        stuff[:enum] = :group_sijil
+        stuff[:rate] = lmnt.inherit(:rate, except: :Sound)
         @solution = Affinities[:element] unless lmnt.dims
       end
 

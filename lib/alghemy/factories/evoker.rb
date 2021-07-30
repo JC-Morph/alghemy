@@ -17,14 +17,14 @@ module Alghemy
         # initialise. Delegates to methods: element, elements.
         #
         # sijil - String representing a filename or glob pattern.
-        # lyst  - Hash of initialisation options (default: {}). Passed directly
+        # stuff  - Hash of initialisation options (default: {}). Passed directly
         # to Matter.
         #
         # Returns new instance of Matter.
-        def matter( sijil, lyst = {} )
+        def matter( sijil, stuff = {} )
           sijil = compose sijil
           clss  = sijil.plural? ? :elements : :element
-          send(clss, sijil, lyst)
+          send(clss, sijil, stuff)
         end
         # Public: Alias for matter. Used to evoke Sijils.
         alias sijil matter
@@ -34,17 +34,17 @@ module Alghemy
         # arguments - See #matter.
         #
         # Returns new Element.
-        def element( sijil, lyst = {} )
+        def element( sijil, stuff = {} )
           @test_sijil = compose sijil
-          Affinities[affinitest].new(sijil, lyst)
+          Affinities[affinitest].new(sijil, stuff)
         end
 
         # Public: Constructor. Identical to #element, but for multiple files.
         #
         # Returns new Elements.
-        def elements( sijil, lyst = {} )
+        def elements( sijil, stuff = {} )
           @test_sijil = compose(sijil).first
-          Affinities[affinitest.to_s.concat('s')].new(sijil, lyst)
+          Affinities[affinitest.to_s.concat('s')].new(sijil, stuff)
         end
 
         private

@@ -17,10 +17,10 @@ module Alghemy
       def tran_init
         which = :output
         if lmnt.raw?
-          cata  = lmnt.inherit([:affinity, :size]).merge cata
+          stuff  = lmnt.inherit([:affinity, :size]).merge stuff
           which = :input
         end
-        cata[:pf] ||= Glyphs[:pix_fmt].random(which)
+        stuff[:pf] ||= Glyphs[:pix_fmt].random(which)
       end
 
       def write_rubric

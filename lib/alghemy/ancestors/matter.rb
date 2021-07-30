@@ -21,21 +21,21 @@ module Alghemy
       # initialisation method for Matter.
       #
       # sijil - See #initialize.
-      # lyst  - See #initialize.
-      def self.evoke( sijil, lyst = {} )
-        Factories[:evoker].call(self, sijil, lyst)
+      # stuff  - See #initialize.
+      def self.evoke( sijil, stuff = {} )
+        Factories[:evoker].call(self, sijil, stuff)
       end
 
       # Internal: Initialise a Matter. Publicly, Matter should always be evoked.
       #
       # sijil - String representing a filename or glob pattern.
-      # lyst  - Hash of initialisation options (default: {}):
+      # stuff  - Hash of initialisation options (default: {}):
       #         :mems - Memories of previous transforms (optional).
-      def initialize( sijil, lyst = {} )
+      def initialize( sijil, stuff = {} )
         @sijil = Glyphs[:sijil].compose sijil
         self.class.def_asps
-        sub_init lyst
-        mem_init lyst[:mems]
+        sub_init stuff
+        mem_init stuff[:mems]
       end
 
       # Public: Returns Tome of all files in sijil.
@@ -66,7 +66,7 @@ module Alghemy
       private
 
       # Internal: Duckable initialisation, intended for subclasses.
-      def sub_init( _lyst )
+      def sub_init( _stuff )
         nil
       end
 

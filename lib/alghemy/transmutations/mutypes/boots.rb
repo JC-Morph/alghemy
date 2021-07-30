@@ -13,7 +13,7 @@ module Alghemy
     end
 
     def sub_init
-      cata[:ents] = Glyphs[:ent].call cata[:ents]
+      stuff[:ents] = Glyphs[:ent].call stuff[:ents]
       tran_init
     end
 

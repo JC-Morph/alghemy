@@ -8,15 +8,15 @@ module Alghemy
       include Boots
 
       def tran_init
-        ents = aural? ? lmnt_ents : cata[:ents].flatten
-        cata[:ents].balance ents
-        cata[:ext]  ||= ext_init
-        cata[:rate] ||= lmnt.rate if aural?
+        ents = aural? ? lmnt_ents : stuff[:ents].flatten
+        stuff[:ents].balance ents
+        stuff[:ext]  ||= ext_init
+        stuff[:rate] ||= lmnt.rate if aural?
       end
 
       def write_rubric
         rubric = write
-        rubric.t(:raw).r if cata[:raw]
+        rubric.t(:raw).r if stuff[:raw]
         rubric.ents.input.t.ents.output
       end
 

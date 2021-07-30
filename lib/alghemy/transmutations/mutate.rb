@@ -19,13 +19,13 @@ module Alghemy
       end
 
       def tran_init
-        cata[:plug] = plugin.assert cata[:plug]
+        stuff[:plug] = plugin.assert stuff[:plug]
       end
 
       def write_rubric
-        plug = cata[:plug]
+        plug = stuff[:plug]
         rubric = write.input.plugin(plug.sijil)
-        rubric.automate if cata[:data]
+        rubric.automate if stuff[:data]
         rubric.output
       end
 

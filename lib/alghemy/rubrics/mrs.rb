@@ -14,7 +14,7 @@ module Alghemy
 
       # Public: Method for processing sound with Vsts using MrsWatson utility.
       def mutate
-        vst = cata[:vst]
+        vst = stuff[:vst]
         input.plugin(vst.sijil)
         automate
         output
@@ -23,7 +23,7 @@ module Alghemy
       # Public: Method for keeping track of the data being used for parameter
       # automation.
       def automate
-        return self unless cata[:data]
+        return self unless stuff[:data]
         @count ||= 0
         vst.automatons.each {|am| param(am) }
         @count += 1
@@ -47,7 +47,7 @@ module Alghemy
 
       # Private: Return automation data at the current count.
       def data
-        cata[:data][@count]
+        stuff[:data][@count]
       end
 
       def operate( auto )

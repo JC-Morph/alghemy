@@ -18,8 +18,8 @@ module Alghemy
       private
 
       # Internal: Check for grouped files during initialisation.
-      def sub_init( lyst )
-        dims  = lyst[:dims] || list.dims
+      def sub_init( stuff )
+        dims  = stuff[:dims] || list.dims
         @dims = dims if dims && dims > 1
       end
     end

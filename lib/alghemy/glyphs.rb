@@ -11,8 +11,8 @@ module Alghemy
     invoke = lambda do |ent = nil|
       Ent.invoke ent
     end
-    build = lambda do |templates, lyst = {}|
-      Options.build templates, lyst
+    build = lambda do |templates, stuff = {}|
+      Options.build templates, stuff
     end
     trace = lambda do |space, subspace = nil|
       Space.trace space, subspace

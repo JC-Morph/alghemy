@@ -12,7 +12,7 @@ module Alghemy
       end
 
       def tran_init
-        cata[:fps] ||= lmnt.rate || 30
+        stuff[:fps] ||= lmnt.rate || 30
       end
 
       def write_rubric
@@ -20,9 +20,9 @@ module Alghemy
       end
 
       def mint
-        pts = "setpts=#{cata[:pts]}*PTS"
+        pts = "setpts=#{stuff[:pts]}*PTS"
         options = %i[fps scd me_mode search_param vsbmc].map do |opt|
-          "#{opt}=#{cata[opt]}"
+          "#{opt}=#{stuff[opt]}"
         end.join(':')
         ['-vf', "\"#{pts},minterpolate='#{options}'\""]
       end

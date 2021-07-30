@@ -11,8 +11,8 @@ module Alghemy
       end
 
       def tran_init
-        cata[:glob] ||= frames_less_than(1_000) ? '%03d' : '%04d'
-        cata[:rate] = lmnt.rate if lmnt.is_a?(Video)
+        stuff[:glob] ||= frames_less_than(1_000) ? '%03d' : '%04d'
+        stuff[:rate] = lmnt.rate if lmnt.is_a?(Video)
         @solution = Affinities[:elements] unless frames_less_than 2
       end
 

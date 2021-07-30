@@ -7,21 +7,21 @@ module Alghemy
       # Public: Method that builds command line to be executed.  Can be ducked
       # by transmutations to allow more control.
       def write_rubric
-        write.send cata[:name]
+        write.send stuff[:name]
       end
 
       def write
-        rubric.write cata.merge(raw: lmnt.raw?)
+        rubric.write stuff.merge(raw: lmnt.raw?)
       end
 
       # Public: Returns appropritate Rubric class for current transmutation.
       def rubric
-        return lmnt.class.rubric unless cata[:affinity]
-        Affinities[cata[:affinity]].rubric
+        return lmnt.class.rubric unless stuff[:affinity]
+        Affinities[stuff[:affinity]].rubric
       end
 
       # Public: Duckable Hash of options to initiaise Rubric with.
-      def cata
+      def stuff
         {}
       end
 

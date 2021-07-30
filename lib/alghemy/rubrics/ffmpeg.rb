@@ -45,7 +45,7 @@ module Alghemy
       end
 
       def input
-        formats.size.rate if cata[:raw]
+        formats.size.rate if stuff[:raw]
         add ['-i', '%<input>s']
       end
 
@@ -55,19 +55,19 @@ module Alghemy
 
       # Shared transmutations
       def compile
-        format.rate unless cata[:raw]
+        format.rate unless stuff[:raw]
         input.output
       end
 
       def rip
         input
-        cata[:exclude][/^v/i] ? no_video : no_audio
+        stuff[:exclude][/^v/i] ? no_video : no_audio
         output
       end
 
       def sublimate
         input
-        cata[:raw] ? vcodec : format
+        stuff[:raw] ? vcodec : format
         output
       end
     end

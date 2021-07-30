@@ -35,9 +35,9 @@ module Alghemy
       end
 
       # Public: Distill an appropriate output Sijil from Grimoire.
-      def swap_parts( lyst = {} )
-        # define abstracted Sijil and swap parts with lyst.
-        sijil = globvert.swap_parts lyst
+      def swap_parts( stuff = {} )
+        # define abstracted Sijil and swap parts with stuff.
+        sijil = globvert.swap_parts stuff
         # remove any identifiable glob patterns.
         sijil.unglob
       end

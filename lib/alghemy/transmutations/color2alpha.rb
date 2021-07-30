@@ -14,7 +14,7 @@ module Alghemy
       end
 
       def write_rubric
-        write.input.fuzz.add("-transparent #{cata[:color]}").output
+        write.input.fuzz.add("-transparent #{stuff[:color]}").output
       end
 
       private

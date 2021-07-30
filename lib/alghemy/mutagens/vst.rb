@@ -32,9 +32,9 @@ module Alghemy
         @sijil = plugin
       end
 
-      def automate( lyst = {} )
-        lyst = lyst.merge(total: params.size)
-        @automatons = Automation.generate lyst
+      def automate( stuff = {} )
+        stuff = stuff.merge(total: params.size)
+        @automatons = Automation.generate stuff
       end
 
       private
