@@ -31,7 +31,7 @@ module Alghemy
       end
 
       def input
-        formats.size.rate if stuff[:raw]
+        formats.size.rate if stuff[:is_raw]
         add ['-i', '%<input>s']
       end
 
@@ -41,7 +41,7 @@ module Alghemy
 
       # Shared transmutations
       def compile
-        format.rate unless stuff[:raw]
+        format.rate unless stuff[:is_raw]
         input.output
       end
 
@@ -53,7 +53,7 @@ module Alghemy
 
       def sublimate
         input
-        stuff[:raw] ? vcodec : format
+        stuff[:is_raw] ? vcodec : format
         output
       end
     end

@@ -11,7 +11,7 @@ module Alghemy
       end
 
       def write
-        rubric.write stuff.merge(raw: lmnt.raw?)
+        rubric.write stuff.merge(is_raw: lmnt.raw?)
       end
 
       # Public: Returns appropritate Rubric class for current transmutation.

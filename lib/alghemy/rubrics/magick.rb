@@ -35,7 +35,7 @@ module Alghemy
       end
 
       def sublimate
-        size.depth if stuff[:raw]
+        size.depth if stuff[:is_raw]
         input.output
       end
     end
