@@ -9,13 +9,13 @@ module Alghemy
       attr_reader :sijil, :params
 
       class << self
-        def ladspa_dict
+        def dict
           Data[:ladspa]
         end
 
         def list
           present = index.map {|plug| plug[/\w+(?=\.so$)/] }
-          present & ladspa_dict.keys
+          present & dict.keys
         end
 
         def index
@@ -31,7 +31,7 @@ module Alghemy
       end
 
       def dict
-        self.class.ladspa_dict
+        self.class.dict
       end
 
       def initialize( plugin = nil )
@@ -43,7 +43,7 @@ module Alghemy
       end
 
       def find( plugin )
-        plug = plugin.downcase
+        plug = plugin.to_s.downcase
         found = dict.select do |lad, info|
           (plug == lad) || %i[label id].any? do |attr|
             plug == info[attr].downcase

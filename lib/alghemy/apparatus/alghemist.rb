@@ -16,7 +16,7 @@ module Alghemy
         # create new files, then evoke new instance of Matter.
         #
         # Returns new instance of Matter.
-        def transmute( lmnt, transform, stuff = {} )
+        def transmute( lmnt, transform )
           @lmnt = lmnt
           @tran = transform
           @stuff = tran.stuff

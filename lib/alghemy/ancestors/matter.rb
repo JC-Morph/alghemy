@@ -6,12 +6,13 @@ require 'alghemy/requests'
 
 module Alghemy
   module Ancestors
-    # Public: Base representation of transmutable files and group of files.
+    # Public: Base representation of a transmutable file or group of files.
     class Matter
       include Modules[:aspects]
       include Modules[:laws]
       attr_reader :sijil, :dims
 
+      # Public: Opens Matter in the OS using a command-line program.
       def self.open
         Requests[:image_open]
       end
