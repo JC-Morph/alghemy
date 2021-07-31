@@ -60,8 +60,7 @@ module Alghemy
         #
         # Returns Hash.
         def short_term
-          affinity = lmnt.class.name.split('::').last.to_sym
-          memory   = {affinity: affinity, ext: lmnt.sijil.ext}
+          memory   = {affinity: lmnt.affinity, ext: lmnt.sijil.ext}
           tran.anchors.each do |anchor|
             next if rubric.option_memory.keys.any? do |option|
               anchor == option

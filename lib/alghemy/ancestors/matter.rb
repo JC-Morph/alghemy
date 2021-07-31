@@ -59,9 +59,15 @@ module Alghemy
         self.class.open.this sijil
       end
 
-      # Public: Open Matter with default application.
+      # Public: Open Matter in OS with default application.
       def behold
         sijil.behold
+      end
+
+      # Public: Returns humanised name of Element affinity.
+      # (image, sound, video, or element)
+      def affinity
+        self.class.name.split('::').last.to_sym
       end
 
       private
