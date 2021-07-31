@@ -33,17 +33,17 @@ module Alghemy
         def moniker
           [self.class.name.split('::').last.downcase]
         end
+
+        # Public: Array of templates for command line options.
+        def option_templates
+          []
+        end
       end
 
       def init( stuff )
         @stuff = stuff
         sub_init
-        build_options(option_templates, stuff)
-      end
-
-      # Public: Array of default templates for options.
-      def option_templates
-        []
+        build_options(self.class.option_templates, stuff)
       end
 
       def scroll
