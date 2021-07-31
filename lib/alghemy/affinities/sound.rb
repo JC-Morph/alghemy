@@ -30,6 +30,10 @@ module Alghemy
         def rubric
           Rubrics[:sox]
         end
+
+        def mould
+          super.merge(Image: :visualise)
+        end
       end
     end
   end

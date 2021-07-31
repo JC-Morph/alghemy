@@ -20,17 +20,28 @@ module Alghemy
         [:ext]
       end
 
+      # Public: Which affinity (image, sound, video, element) the Transmutation
+      # is designed for. Elements of other affinities will be coerced as
+      # defined by Affinity#mould.
+      def self.expects
+        with_plurals %i[Image Sound Video Element]
+      end
+
+      def self.with_plurals( affinities )
+        [affinities].flatten.map {|aff| [aff, [aff, 's'].join.to_sym] }.flatten
+      end
+
       # Public: Initialise a Transmutation.
       #
       # lmnt - The Matter to build the transform for. Usually this is the input
       #        file for the transform.
       # dict - Hash of initialisation options. (default: {})
-      def initialize( lmnt, *priorities, **dict )
+      def initialize( lmnt, *priorities, **stuff )
         @lmnt     = lmnt
         @tome     = lmnt.list
         @solution = lmnt.class
 
-        @stuff = dict.merge name: name
+        @stuff = stuff.merge name: name
         gather priorities unless priorities.empty?
         sub_init
         prepext

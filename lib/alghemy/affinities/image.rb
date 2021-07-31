@@ -26,6 +26,10 @@ module Alghemy
         def rubric
           Rubrics[:magick]
         end
+
+        def mould
+          {Sound: :sublimate, Video: :compile}
+        end
       end
     end
   end

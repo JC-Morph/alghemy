@@ -27,6 +27,16 @@ module Alghemy
         Factories[:evoker].call(self, sijil, stuff)
       end
 
+      # Public: Hash of methods to send to self when a Transmutation expects an
+      # Element of a different affinity.
+      def self.mould
+        {
+          Sound: :sonify,
+          Image: :sublimate,
+          Video: [:visualise, {ext: 'mp4'}]
+        }
+      end
+
       # Internal: Initialise a Matter. Publicly, Matter should always be evoked.
       #
       # sijil - String representing a filename or glob pattern.

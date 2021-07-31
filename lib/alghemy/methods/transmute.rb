@@ -13,12 +13,26 @@ module Alghemy
       #
       # Returns new Matter, dependent on Transmutation.
       def transmute( *focus, **stuff )
-        tran = Transmutations[__callee__].new(self, *focus, **stuff)
-        Apparatus[:alghemist].transmute(self, tran, stuff)
+        tran     = Transmutations[__callee__]
+        expected = tran.expects
+        lmnt = self
+        until expected.include?(lmnt.affinity)
+          lmnt = mould(lmnt, expected)
+        end
+        tran = tran.new(lmnt, *focus, **stuff)
+        Apparatus[:alghemist].transmute(lmnt, tran)
       end
       # Public: All Transmutations listed become named methods.
       Transmutations.equipped.each do |vial|
         alias_method vial, :transmute
+      end
+
+      def mould( lmnt, expected )
+        return lmnt.send(*[lmnt.class.mould[expected.first]].flatten)
+      end
+
+      def affinity
+        raise NotImplementedError
       end
     end
   end

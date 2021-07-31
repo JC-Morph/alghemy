@@ -35,6 +35,10 @@ module Alghemy
         def rubric
           Rubrics[:ffmpeg]
         end
+
+        def mould
+          {Image: :frames, Sound: :sublimate}
+        end
       end
     end
   end

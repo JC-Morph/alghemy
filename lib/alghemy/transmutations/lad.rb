@@ -10,6 +10,10 @@ module Alghemy
         [:plug, :ext]
       end
 
+      def self.expects
+        with_plurals :Sound
+      end
+
       def rubric
         Rubrics[:sox]
       end

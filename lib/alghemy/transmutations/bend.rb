@@ -9,6 +9,10 @@ module Alghemy
         %i[bends framerate oversample ext]
       end
 
+      def self.expects
+        with_plurals :Sound
+      end
+
       def rubric
         Rubrics[:sox]
       end

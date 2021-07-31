@@ -7,6 +7,10 @@ module Alghemy
     class Sonify < Ancestors[:transmutation]
       include Boots
 
+      def self.expects
+        with_plurals %i[Element Image Video]
+      end
+
       def tran_init
         stuff[:ext] ||= '.wav'
       end
