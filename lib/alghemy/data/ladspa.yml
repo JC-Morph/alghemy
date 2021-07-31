@@ -1328,17 +1328,6 @@ imp_1199:
       :default: 0
   :post_fx:
     latency: {}
-impulse_1885:
-  :name: 'Nonbandlimited single-sample impulses (Frequency: Control)'
-  :label: impulse_fc
-  :id: '1885'
-  :audio:
-  - Output
-  :controls:
-    Frequency (Hz):
-      :range:
-      - 0
-      - 20_000
 inv_1429:
   :name: Inverter
   :label: inv
