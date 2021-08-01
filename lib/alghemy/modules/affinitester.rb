@@ -16,12 +16,12 @@ module Alghemy
 
       def discern
         %i[sound video image].each do |affinity|
-          return affinity unless wrong affinity
+          return affinity unless wrong? affinity
         end
         nil
       end
 
-      def wrong( affinity )
+      def wrong?( affinity )
         affinity = Affinities[affinity]
         report   = affinity.analyse.this test_sijil
 

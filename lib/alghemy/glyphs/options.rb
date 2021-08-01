@@ -14,7 +14,7 @@ module Alghemy
       class << self
         def build( templates, stuff = {} )
           options = new templates
-          options.each do |name, option|
+          options.each do |_name, option|
             merge_values stuff, option
           end
           options
