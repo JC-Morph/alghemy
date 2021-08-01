@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     canister (0.9.1)
-    dry-inflector (0.2.1)
     ffi (1.15.3)
     ffi (1.15.3-java)
     listen (3.5.1)
@@ -18,8 +17,7 @@ PLATFORMS
 
 DEPENDENCIES
   canister
-  dry-inflector
   listen
 
 BUNDLED WITH
-   2.2.21
+   2.2.25
