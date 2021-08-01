@@ -25,7 +25,7 @@ module Alghemy
 
       def print( val = nil )
         val ||= increment_value
-        return construct unless val
+        return construct unless val && val != true
         hist << val
         construct val
       end

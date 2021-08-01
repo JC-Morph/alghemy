@@ -92,6 +92,10 @@ module Alghemy
       def perceive( asp )
         self.class.analyse.this(sijil.first, asp)
       end
+
+      def mould( lmnt, expected )
+        return lmnt.send(*[lmnt.class.mould[expected.first]].flatten)
+      end
     end
   end
 end

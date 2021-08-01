@@ -1,3 +1,4 @@
+require 'alghemy/meta'
 require 'alghemy/methods'
 require 'alghemy/modules'
 
@@ -7,10 +8,12 @@ module Alghemy
     module Laws
       # Hash print method.
       include Methods[:hshprint]
-      # Transmutation methods.
-      include Methods[:transmute]
       # Memory functions.
       include Modules[:serial_recall]
+
+      # Add transformation methods.
+      include Meta[:define_cdps]
+      include Meta[:define_transmutations]
     end
   end
 end
