@@ -10,8 +10,10 @@ module Alghemy
         write.send stuff[:name]
       end
 
-      def write
-        rubric.write stuff.merge(is_raw: lmnt.raw?)
+      def write( moniker = nil )
+        stuff = self.stuff.merge(is_raw: lmnt.raw?)
+        return rubric.write(stuff) unless moniker
+        rubric.new.add(moniker).init(stuff)
       end
 
       # Public: Returns appropritate Rubric class for current transmutation.

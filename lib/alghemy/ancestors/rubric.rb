@@ -25,7 +25,6 @@ module Alghemy
         def write( stuff = {} )
           rubric = new.add moniker
           rubric.init stuff
-          rubric
         end
 
         # Internal: Returns Array containing name of executable and any initial
@@ -44,6 +43,7 @@ module Alghemy
         @stuff = stuff
         sub_init
         build_options(self.class.option_templates, stuff)
+        self
       end
 
       def scroll
