@@ -45,8 +45,9 @@ module Alghemy
       def revert( matter, levels = size )
         memories = self.class.deepclone list
         levels.times do
-          transform = alget(:REVERTABLE)[memories.last[:name]]
-          memories.pop && next if transform.nil?
+          transform = memories.last[:name]
+          reversion = alget(:REVERTABLE)[transform]
+          memories.pop && next if reversion.nil?
           puts "reverting #{transform}"
 
           args = rebuild_args(memories, matter.sijil)
