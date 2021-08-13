@@ -11,7 +11,7 @@ module Alghemy
 
       def self.moniker
         # TODO: make dither optional
-        %w[sox -V1 -D]
+        'sox -V1 -D'
       end
 
       def self.option_templates

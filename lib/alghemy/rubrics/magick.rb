@@ -5,7 +5,7 @@ module Alghemy
     # Public: Define an Array for a command passed to ImageMagick.
     class Magick < Ancestors[:rubric]
       def self.moniker
-        ['convert']
+        'convert'
       end
 
       def self.option_templates

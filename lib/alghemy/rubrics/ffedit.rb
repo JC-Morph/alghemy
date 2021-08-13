@@ -8,7 +8,7 @@ module Alghemy
     # processing of input.
     class Ffedit < Rubrics[:ffmpeg]
       def self.moniker
-        moniker = %w[ffedit -loglevel warning]
+        'ffedit -loglevel warning'
       end
 
       def self.option_templates

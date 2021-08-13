@@ -5,7 +5,7 @@ module Alghemy
     # Public: Define an executable process for a command passed to MrsWatson.
     class Mrs < Ancestors[:rubric]
       def self.moniker
-        ['mrswatson']
+        'mrswatson'
       end
 
       def self.option_templates

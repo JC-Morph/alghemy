@@ -5,7 +5,7 @@ module Alghemy
     # Define an Array for a command passed to fftw-compiled ImageMagick.
     class Fourier < Ancestors[:rubric]
       def self.moniker
-        ['ffconvert']
+        'ffconvert'
       end
 
       def self.option_templates

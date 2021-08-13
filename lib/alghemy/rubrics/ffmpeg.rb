@@ -10,6 +10,7 @@ module Alghemy
       def self.moniker
         moniker = %w[ffmpeg -loglevel warning -stats]
         moniker << '-y' if alget(:overwrite)
+        moniker.join(' ')
       end
 
       def option_templates

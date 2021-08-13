@@ -19,7 +19,7 @@ module Alghemy
         # verbose - Boolean for verbosity. If true, prints process before
         #           execution.
         def io( process, io = {}, verbose = false )
-          process = compress(process, io) % io
+          process = condense(process, io) % io
           puts process if verbose
           engage process
         end
@@ -28,16 +28,16 @@ module Alghemy
         # Procs.
         #
         # Returns String.
-        def compress( process, io = {} )
+        def condense( process, io = {} )
           return process if process.is_a? String
-          process.flatten.collect do |lmnt|
-            lmnt.is_a?(Proc) ? lmnt.call(io) : lmnt
+          process.flatten.collect do |word|
+            word.is_a?(Proc) ? word.call(io) : word
           end.join(' ')
         end
 
         # Public: Execute given process on the command line.
         def engage( process )
-          process = compress process
+          process = condense process
           puts process if alget(:verbose)
           `#{process}`
         end

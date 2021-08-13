@@ -1,4 +1,5 @@
 require 'alghemy/apparatus'
+require 'alghemy/glyphs'
 require 'alghemy/methods'
 require 'alghemy/modules'
 
@@ -8,7 +9,7 @@ module Alghemy
     class Rubric
       include Methods[:alget]
       include Modules[:switcher]
-      attr_reader :stuff
+      attr_reader :scroll, :stuff
 
       class << self
         # Public: Initialise a Rubric with a String or Array. Any input will be
@@ -23,14 +24,14 @@ module Alghemy
         #
         # stuff - Hash of initialisation options.
         def write( stuff = {} )
-          rubric = new.add moniker
+          rubric = new(moniker)
           rubric.init stuff
         end
 
         # Internal: Returns Array containing name of executable and any initial
         # flags.
         def moniker
-          [self.class.name.split('::').last.downcase]
+          self.class.name.split('::').last.downcase
         end
 
         # Public: Array of templates for command line options.
@@ -39,15 +40,15 @@ module Alghemy
         end
       end
 
+      def initialize( moniker = self.class.moniker )
+        @scroll = Glyphs[:scroll].new(moniker)
+      end
+
       def init( stuff )
         @stuff = stuff
         sub_init
         build_options(self.class.option_templates, stuff)
         self
-      end
-
-      def scroll
-        @scroll ||= []
       end
 
       def add( passage )
@@ -62,12 +63,15 @@ module Alghemy
       #      :input  - String naming input file(s). Files should exist.
       #      :output - String naming output file(s). Files can exist.
       def invoke( io )
-        Apparatus[:invoker].io(scroll, io, alget(:print_rubric))
+        process = scroll.condense(io)
+        puts process.read if alget(:print_rubric)
+        Apparatus[:invoker].engage(process.scroll)
       end
 
       # Public: Add substitute String for input Filename.
       def input
-        add "%{#{__callee__}}"
+        option = __callee__
+        add({option => "%{#{option}}"})
       end
       # Public: Add substitute for output.
       alias output input
