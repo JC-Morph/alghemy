@@ -52,7 +52,7 @@ module Alghemy
 
           args = rebuild_args(memories, matter.sijil)
           # Reverse Transmutation.
-          matter = matter.send(transform, **args)
+          matter = matter.send(reversion, **args)
         end
         matter
       end
