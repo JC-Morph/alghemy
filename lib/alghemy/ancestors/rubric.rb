@@ -64,7 +64,7 @@ module Alghemy
       #      :output - String naming output file(s). Files can exist.
       def invoke( io )
         process = scroll.condense(io)
-        puts process.read if alget(:print_rubric)
+        puts process.read if alget(:rubric_print)
         Apparatus[:invoker].engage(process.scroll)
       end
 

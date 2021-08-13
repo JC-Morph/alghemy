@@ -1,5 +1,6 @@
 require 'forwardable'
 require 'paint'
+require 'alghemy/methods'
 
 module Alghemy
   module Glyphs
@@ -8,6 +9,7 @@ module Alghemy
     # method to resolve any Procs, and substitute any Strings.
     class Scroll
       extend Forwardable
+      include Methods[:alget]
       def_delegators :scroll, :map
       attr_reader    :scroll, :coloured
 
@@ -21,8 +23,8 @@ module Alghemy
       end
 
       def read
-        # text = alget(:coloured) ? coloured : scroll
-        coloured * ' '
+        text = alget(:rubric_colour) ? coloured : scroll
+        text * ' '
       end
 
       def <<( passage )
