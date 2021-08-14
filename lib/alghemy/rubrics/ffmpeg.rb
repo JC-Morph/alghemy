@@ -57,19 +57,19 @@ module Alghemy
         stuff[:is_raw] ? vcodec : format
         output
       end
-    end
 
-    private
+      private
 
-    # Private: Generates switch templates for options that specify a stream.
-    # (v - video, a - audio)
-    #
-    # label  - String of option in command-line format.
-    # values - Array of default values for each stream.
-    def stream_option( label, flag, defaults )
-      %w[a v].collect.with_object({}) do |stream, hsh|
-        flag = [flag, stream].join(':')
-        hsh[label] = {flag: flag, default: defaults.pop}
+      # Private: Generates switch templates for options that specify a stream.
+      # (v - video, a - audio)
+      #
+      # label  - String of option in command-line format.
+      # values - Array of default values for each stream.
+      def stream_option( label, flag, defaults )
+        %w[a v].collect.with_object({}) do |stream, hsh|
+          flag = [flag, stream].join(':')
+          hsh[label] = {flag: flag, default: defaults.pop}
+        end
       end
     end
   end
