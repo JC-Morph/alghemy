@@ -14,7 +14,7 @@ module Alghemy
         'sox -V1 -D'
       end
 
-      def self.option_templates
+      def option_templates
         {
           # no argument
           null: {flag: :n},

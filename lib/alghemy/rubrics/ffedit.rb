@@ -11,7 +11,7 @@ module Alghemy
         'ffedit -loglevel warning'
       end
 
-      def self.option_templates
+      def option_templates
         super.merge(
           func:   {flag: :f, default: :mv},
           script: {flag: :s, default: 'mv_average'}

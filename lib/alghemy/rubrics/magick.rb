@@ -8,7 +8,7 @@ module Alghemy
         'convert'
       end
 
-      def self.option_templates
+      def option_templates
         {
           # no argument
           append: {shortcut: :a, preswitch: [:vertical, :horizontal]},

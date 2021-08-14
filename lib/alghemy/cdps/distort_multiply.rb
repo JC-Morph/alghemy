@@ -30,7 +30,10 @@ module Alghemy
       end
 
       def moniker
-        self.class.name.split('::').last.split(/(?=[A-Z])/).map(&:downcase)
+        self.class.name.split('::').last.
+          split(/(?=[A-Z])/).
+          map(&:downcase).
+          join(' ')
       end
 
       private

@@ -8,7 +8,7 @@ module Alghemy
         'mrswatson'
       end
 
-      def self.option_templates
+      def option_templates
         {plugin: {flag: :p, default: 'mrs_passthru'}}
       end
 

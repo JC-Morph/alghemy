@@ -8,7 +8,7 @@ module Alghemy
         'ffconvert'
       end
 
-      def self.option_templates
+      def option_templates
         {
           fft: {preswitch: [:imaginary, :real]},
           ift: {preswitch: [:imaginary, :real]}

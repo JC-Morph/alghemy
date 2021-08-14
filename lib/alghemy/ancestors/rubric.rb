@@ -24,8 +24,7 @@ module Alghemy
         #
         # stuff - Hash of initialisation options.
         def write( stuff = {} )
-          rubric = new(moniker)
-          rubric.init stuff
+          rubric = new(moniker, stuff)
         end
 
         # Internal: Returns Array containing name of executable and any initial
@@ -33,22 +32,13 @@ module Alghemy
         def moniker
           self.class.name.split('::').last.downcase
         end
-
-        # Public: Array of templates for command line options.
-        def option_templates
-          []
-        end
       end
 
-      def initialize( moniker = self.class.moniker )
+      def initialize( moniker = self.class.moniker, stuff = {} )
         @scroll = Glyphs[:scroll].new(moniker)
-      end
-
-      def init( stuff )
-        @stuff = stuff
+        @stuff  = stuff
         sub_init
-        build_options(self.class.option_templates, stuff)
-        self
+        build_options(option_templates, stuff)
       end
 
       def add( passage )
@@ -81,6 +71,11 @@ module Alghemy
       end
 
       private
+
+      # Public: Array of templates for command line options.
+      def option_templates
+        []
+      end
 
       # Internal: Duckable initialisation.
       def sub_init
