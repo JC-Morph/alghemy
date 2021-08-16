@@ -1,5 +1,6 @@
 require 'forwardable'
 require 'alghemy/factories'
+require 'alghemy/methods'
 require 'alghemy/modules'
 
 module Alghemy
@@ -8,6 +9,7 @@ module Alghemy
     class Sijil
       extend Forwardable
       def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub, :to_s
+      include Methods[:memorise]
       include Modules[:trail]
 
       def self.compose( sijil )
@@ -47,7 +49,8 @@ module Alghemy
         list[to_size..-1].each {|lmnt| File.delete lmnt }
       end
 
-      def evoke( stuff = {} )
+      def evoke( stuff = {}, memory = nil )
+        memorise(memory, stuff)
         Factories[:evoker].call(self.class, self, stuff)
       end
 

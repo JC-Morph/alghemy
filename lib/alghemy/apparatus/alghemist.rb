@@ -49,18 +49,16 @@ module Alghemy
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          sijil  = tome.sijil
-          memory = record_memory(stuff, lmnt.mems, short_term)
-          store_memory(sijil, memory)
-          sijil.evoke memory
+          sijil = tome.sijil
+          sijil.evoke(stuff, memory)
         end
 
         # Internal: Collect aspects that could be useful for future
         # Transmutations.
         #
         # Returns Hash.
-        def short_term
-          memory = {affinity: lmnt.affinity, ext: lmnt.sijil.ext}
+        def memory
+          memory = memory_template
           tran.anchors.each do |anchor|
             next if rubric.option_memory.keys.any? do |option|
               anchor == option
@@ -68,6 +66,14 @@ module Alghemy
             memory[anchor] = stuff[anchor] || lmnt.send(anchor)
           end
           memory.merge rubric.option_memory
+        end
+
+        def memory_template
+          {
+            affinity: lmnt.affinity,
+            ext:      lmnt.sijil.ext,
+            name:     stuff[:name].to_sym
+          }
         end
 
         # Internal: Returns Hash with variables specific to Algput
