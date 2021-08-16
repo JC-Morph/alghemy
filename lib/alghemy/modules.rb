@@ -9,7 +9,6 @@ module Alghemy
                analyse
                aspects
                laws
-               memorise
                osman
                plural
                request

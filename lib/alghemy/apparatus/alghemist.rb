@@ -1,13 +1,12 @@
 require 'alghemy/apparatus'
 require 'alghemy/factories'
-require 'alghemy/modules'
+require 'alghemy/rubrics'
 require_relative 'alghemist/algput'
 
 module Alghemy
   module Apparatus
     module Alghemist
       class << self
-        include Modules[:memorise]
         attr_reader :lmnt, :tran, :stuff, :namer, :rubric
 
         # TODO: rewrite
