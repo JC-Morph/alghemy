@@ -1,9 +1,9 @@
 module Alghemy
-  module Modules
-    # Public: Extension module. Allows the definition of named methods on
-    # class. Names are defined as methods on class that pass the name to
-    # #find and return the result.
-    module AspectDefiner
+  module Meta
+    # Public: Meta module. Allows the definition of named methods on class.
+    # Names are defined as methods on class that pass the name to #find and
+    # return the result.
+    module DefineAspects
       # Public: Meta programming method that adds aspect names as methods. When
       # called they call #aspects on the instance, passing their name.
       def def_asps

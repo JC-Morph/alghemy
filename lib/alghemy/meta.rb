@@ -5,7 +5,7 @@ module Alghemy
   module Meta
     extend Bandoleer
 
-    vials = %w[cdps transforms transmutations].each do |definable|
+    vials = %w[aspects cdps transforms transmutations].each do |definable|
       definable.prepend('define_').to_sym
     end
 

@@ -1,5 +1,5 @@
 require 'ostruct'
-require 'alghemy/modules'
+require 'alghemy/meta'
 
 module Alghemy
   module Modules
@@ -12,7 +12,7 @@ module Alghemy
       #
       # base - Class that included self.
       def self.included( base )
-        base.extend Modules[:aspect_definer]
+        base.extend Meta[:define_aspects]
       end
 
       # Public: Aspect finder, updates Hash of aspects.
