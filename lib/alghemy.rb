@@ -7,9 +7,11 @@ require 'version'
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/glyphs'
+require 'alghemy/properties'
 
 include Alghemy
 include Affinities
 include Glyphs
+include Properties
 
 Matter = Ancestors[:matter]
