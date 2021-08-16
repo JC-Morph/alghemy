@@ -1,6 +1,6 @@
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
-require 'alghemy/glyphs'
+require 'alghemy/properties'
 require 'alghemy/rubrics'
 
 module Alghemy
@@ -20,7 +20,7 @@ module Alghemy
           stuff  = lmnt.inherit([:affinity, :size]).merge stuff
           which = :input
         end
-        stuff[:pf] ||= Glyphs[:pix_fmt].random(which)
+        stuff[:pf] ||= Properties[:pix_fmt].random(which)
       end
 
       def write_rubric

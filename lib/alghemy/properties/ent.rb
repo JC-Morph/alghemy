@@ -1,5 +1,5 @@
 module Alghemy
-  module Glyphs
+  module Properties
     # Public: Representation of encoding and bitdepth variables for sox.
     class Ent < Array
       def self.invoke( ent = nil )

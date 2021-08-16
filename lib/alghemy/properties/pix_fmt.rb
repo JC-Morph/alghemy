@@ -1,5 +1,5 @@
 module Alghemy
-  module Glyphs
+  module Properties
     class PixFmt
       attr_reader :sijil
 

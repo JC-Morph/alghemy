@@ -1,6 +1,6 @@
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
-require 'alghemy/glyphs'
+require 'alghemy/properties'
 
 module Alghemy
   module Transmutations
@@ -40,7 +40,7 @@ module Alghemy
       end
 
       def agree_size( tree )
-        size = Glyphs[:space].call(stuff[:size], tree[:size])
+        size = Properties[:space].call(stuff[:size], tree[:size])
         @solution = Affinities[:elements] if shrunk?(tree)
         size
       end

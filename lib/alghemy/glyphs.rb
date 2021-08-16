@@ -6,18 +6,12 @@ module Alghemy
   module Glyphs
     extend Bandoleer
 
-    equip_constants %i[memory memories option pix_fmt scroll sijil]
+    equip_constants %i[memory memories option scroll sijil]
 
-    invoke = lambda do |ent = nil|
-      Ent.invoke ent
-    end
     build = lambda do |templates, stuff = {}|
       Options.build templates, stuff
     end
-    trace = lambda do |space, subspace = nil|
-      Space.trace space, subspace
-    end
 
-    equip ent: invoke, options: build, space: trace
+    equip options: build
   end
 end

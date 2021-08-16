@@ -1,5 +1,5 @@
-require 'alghemy/glyphs'
 require 'alghemy/modules'
+require 'alghemy/properties'
 
 module Alghemy
   module Requests
@@ -38,7 +38,7 @@ module Alghemy
         end
 
         def fmtdex
-          fmts = [->(asp) { Glyphs[:space].call asp.split },
+          fmts = [->(asp) { Properties[:space].call asp.split },
                   :to_f,
                   ->(asp) { asp[%r{/}] ? asp : asp.to_f },
                   :to_i]

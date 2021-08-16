@@ -1,7 +1,7 @@
 require 'forwardable'
 
 module Alghemy
-  module Glyphs
+  module Properties
     # Public: 2-dimensional aspect for visual Elements, i.e. height x width.
     class Space < String
       extend Forwardable

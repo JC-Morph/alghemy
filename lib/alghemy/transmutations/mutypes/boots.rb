@@ -1,4 +1,4 @@
-require 'alghemy/glyphs'
+require 'alghemy/properties'
 require 'alghemy/rubrics'
 
 module Alghemy
@@ -24,7 +24,7 @@ module Alghemy
     private
 
     def sub_init
-      stuff[:ents] = Glyphs[:ent].call stuff[:ents]
+      stuff[:ents] = Properties[:ent].call stuff[:ents]
       tran_init
     end
   end

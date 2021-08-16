@@ -33,7 +33,7 @@ module Alghemy
     end
 
     def equip_constants( vials )
-      vials.each do |vial|
+      [vials].flatten.each do |vial|
         bandoleer.register(vial) do
           retrieve vial
           const_get desnake(vial.to_s)

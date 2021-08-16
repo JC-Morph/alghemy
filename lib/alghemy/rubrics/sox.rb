@@ -1,7 +1,7 @@
 require 'alghemy/ancestors'
 require 'alghemy/apparatus'
-require 'alghemy/glyphs'
 require 'alghemy/methods'
+require 'alghemy/properties'
 
 module Alghemy
   module Rubrics
@@ -41,7 +41,7 @@ module Alghemy
         depth = options[:depth]
         if opt_hist.last == :encode
           ent = [options[:e].hist.last, (val || depth.increment_value)]
-          val = Glyphs[:ent].call(ent).bitcheck.separate[:bit]
+          val = Properties[:ent].call(ent).bitcheck.separate[:bit]
         end
         opt_hist << :depth
         add depth.print(val)
@@ -56,7 +56,7 @@ module Alghemy
 
       def sub_init
         return unless stuff[:ents]
-        Glyphs[:ent].call(stuff[:ents]).separate.each do |ananym, val|
+        Properties[:ent].call(stuff[:ents]).separate.each do |ananym, val|
           stuff[ananym] = array_merge(stuff[ananym], val)
         end
       end
