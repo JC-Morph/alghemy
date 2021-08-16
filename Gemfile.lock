@@ -17,9 +17,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  canister
-  listen
-  paint
+  canister (~> 0.9.1)
+  listen (~> 3.5.1)
+  paint (~> 2.2.1)
 
 BUNDLED WITH
    2.2.25
