@@ -8,7 +8,6 @@ module Alghemy
     vials = %i[affinitester
                analyse
                aspects
-               aspect_definer
                laws
                memorise
                osman
