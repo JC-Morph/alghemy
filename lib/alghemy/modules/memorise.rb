@@ -1,13 +1,9 @@
-require 'yaml'
 require 'alghemy/glyphs'
-require 'alghemy/methods'
 
 module Alghemy
   module Modules
     # Public: Memory recording module.
     module Memorise
-      include Methods[:alget]
-
       # Public: Returns Hash of options necessary to identify or revert a
       # transform, along with prior mems from the transmutation input.
       #
@@ -25,20 +21,8 @@ module Alghemy
         {mems: record}
       end
 
-      def store_memory( sijil, mems )
-        return if mems.empty?
-        stored = read_archives
-        stored[sijil.to_s] = mems
-        File.write(archives, YAML.dump(stored))
-      end
-
-      def read_archives
-        return {} unless File.exist?(archives)
-        YAML.unsafe_load_file archives
-      end
-
-      def archives
-        File.join(alget(:ROOT), '.archives.yml')
+      def store_memory( sijil, memory )
+        Glyphs[:archive].store(sijil, memory)
       end
     end
   end

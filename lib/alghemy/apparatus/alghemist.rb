@@ -1,6 +1,6 @@
 require 'alghemy/apparatus'
 require 'alghemy/factories'
-require 'alghemy/methods'
+require 'alghemy/modules'
 require_relative 'alghemist/algput'
 
 module Alghemy
@@ -60,7 +60,7 @@ module Alghemy
         #
         # Returns Hash.
         def short_term
-          memory   = {affinity: lmnt.affinity, ext: lmnt.sijil.ext}
+          memory = {affinity: lmnt.affinity, ext: lmnt.sijil.ext}
           tran.anchors.each do |anchor|
             next if rubric.option_memory.keys.any? do |option|
               anchor == option
