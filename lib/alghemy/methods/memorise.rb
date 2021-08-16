@@ -11,8 +11,7 @@ module Alghemy
       def memorise( memory, stuff )
         record = stuff.fetch(:record, true)
         return unless memory && record
-        record = [Glyphs[:memory].new(memory)]
-        binding.pry
+        record = Glyphs[:memory].new(memory)
         Glyphs[:archive].store(self.to_s, record)
       end
     end
