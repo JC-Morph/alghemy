@@ -1,3 +1,4 @@
+require 'alghemy/glyphs'
 require 'alghemy/methods'
 
 module Alghemy
@@ -15,10 +16,10 @@ module Alghemy
       #
       # Returns idents as a String.
       def extend_id( sijil, ident )
-        @sijil = sijil
+        @sijil = Glyphs[:sijil].compose sijil
         @ident = ident
         find_ids and add_ident
-        idents * '-'
+        idents.join('-')
       end
 
       def add_ident
@@ -34,7 +35,7 @@ module Alghemy
       # Internal: Add mutation ident.
       def add_mutation
         return add_transposition unless consecutive_mutation?
-        return add_number if consecutive_mutation? ident
+        return add_number if consecutive_mutation?(ident)
         idents.last.concat ident
       end
 
