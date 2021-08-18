@@ -21,10 +21,10 @@ module Alghemy
         # to Matter.
         #
         # Returns new instance of Matter.
-        def matter( sijil, stuff = {} )
+        def matter( sijil )
           sijil = compose sijil
           clss  = sijil.plural? ? :elements : :element
-          send(clss, sijil, stuff)
+          send(clss, sijil)
         end
         # Public: Alias for matter. Used to evoke Sijils.
         alias sijil matter
@@ -34,17 +34,17 @@ module Alghemy
         # arguments - See #matter.
         #
         # Returns new Element.
-        def element( sijil, stuff = {} )
+        def element( sijil )
           @test_sijil = compose sijil
-          Affinities[affinitest].new(sijil, stuff)
+          Affinities[affinitest].new sijil
         end
 
         # Public: Constructor. Identical to #element, but for multiple files.
         #
         # Returns new Elements.
-        def elements( sijil, stuff = {} )
+        def elements( sijil )
           @test_sijil = compose(sijil).first
-          Affinities[affinitest.to_s.concat('s')].new(sijil, stuff)
+          Affinities[affinitest.to_s.concat('s')].new(sijil)
         end
 
         private

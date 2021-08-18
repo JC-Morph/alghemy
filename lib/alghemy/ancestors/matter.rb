@@ -1,4 +1,3 @@
-require 'alghemy/apparatus'
 require 'alghemy/factories'
 require 'alghemy/glyphs'
 require 'alghemy/modules'
@@ -22,9 +21,8 @@ module Alghemy
       # initialisation method for Matter.
       #
       # sijil - See #initialize.
-      # stuff  - See #initialize.
-      def self.evoke( sijil, stuff = {} )
-        Factories[:evoker].call(self, sijil, stuff)
+      def self.evoke( sijil )
+        Factories[:evoker].call(self, sijil)
       end
 
       # Public: Hash of methods to send to self when a Transmutation expects an
@@ -40,13 +38,9 @@ module Alghemy
       # Internal: Initialise a Matter. Publicly, Matter should always be evoked.
       #
       # sijil - String representing a filename or glob pattern.
-      # stuff  - Hash of initialisation options (default: {}):
-      #         :mems - Memories of previous transforms (optional).
-      def initialize( sijil, stuff = {} )
+      def initialize( sijil )
         @sijil = Glyphs[:sijil].compose sijil
         self.class.def_asps
-        sub_init stuff
-        mem_init stuff[:mems]
       end
 
       # Public: Returns Tome of all files in sijil.
@@ -81,11 +75,6 @@ module Alghemy
       end
 
       private
-
-      # Internal: Duckable initialisation, intended for subclasses.
-      def sub_init( _stuff )
-        nil
-      end
 
       # TODO: make analyse method with usable param?
       # Internal: Analyse Matter with designated executable.
