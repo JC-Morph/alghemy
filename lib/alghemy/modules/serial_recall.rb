@@ -6,17 +6,20 @@ module Alghemy
     # Public: Methods accessing stored Memories.
     module SerialRecall
       include Methods[:hshprint]
-      attr_reader :mems
 
-      def mem_init( mems )
-        @mems = Glyphs[:memories].clonefreeze(mems)
+      def mems
+        Glyphs[:memories].call sijil
+      end
+
+      def sijil
+        raise NotImplementedError
       end
 
       def inherit( aspect, **options )
         mems.recall aspect, options
       end
 
-      # Public: Revert transforms on self using Mems.
+      # Public: Revert transforms on self using mems.
       def revert( levels = mems.size )
         mems.revert(self, levels)
       end
