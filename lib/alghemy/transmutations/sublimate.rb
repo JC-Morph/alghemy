@@ -12,11 +12,15 @@ module Alghemy
       end
 
       def remember
-        tree = lmnt.inherit(%i[ext affinity], transform: 'sublimate')
+        tree       = lmnt.inherit(%i[affinity sijil], transform: 'sublimate')
+        tree[:ext] = tree[:sijil] ?
+          tree[:sijil].ext :
+          affinity.defaults[:ext]
+
         stuff[:affinity] ||= tree[:affinity] || :image
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
         stuff[:size] = agree_size tree
-        {ext: affinity.defaults[:ext]}.merge tree
+        tree
       end
 
       def hoist_anchors

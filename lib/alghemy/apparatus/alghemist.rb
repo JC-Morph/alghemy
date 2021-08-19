@@ -69,9 +69,9 @@ module Alghemy
 
         def memory_template
           {
+            name:     stuff[:name].to_sym,
             affinity: lmnt.affinity,
-            ext:      lmnt.sijil.ext,
-            name:     stuff[:name].to_sym
+            sijil:    lmnt.sijil
           }
         end
 
