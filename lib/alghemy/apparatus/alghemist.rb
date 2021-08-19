@@ -49,7 +49,7 @@ module Alghemy
         def evoke( tome )
           tome_error if tome.empty?
           sijil = tome.sijil
-          sijil.evoke(stuff, memory)
+          sijil.evoke(memory, stuff.fetch(:record, true))
         end
 
         # Internal: Collect aspects that could be useful for future

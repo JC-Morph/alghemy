@@ -35,7 +35,7 @@ module Alghemy
       # Public: Attempt to recall an aspect of a memory, optionally
       # disregarding memories of specified affinities.
       def recall( aspect, options )
-        mem = mem_index(**options) || {}
+        mem = mem_search(**options) || {}
         return mem[aspect] unless [aspect].flatten.size > 1
         mem.select {|asp| aspect.any? asp }
       end
@@ -63,7 +63,7 @@ module Alghemy
       # or from when element did not have the affinity :except.
       #
       # Returns Integer.
-      def mem_index( transform: nil, except: 'Raw' )
+      def mem_search( transform: nil, except: 'Raw' )
         return if empty?
         return slice(transform).last if transform
         list.reject {|mem| mem[:affinity][/#{except}/] }.last

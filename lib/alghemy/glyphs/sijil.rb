@@ -9,7 +9,7 @@ module Alghemy
     class Sijil
       extend Forwardable
       def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub, :to_s
-      include Methods[:memorise]
+      include Methods[:store]
       include Modules[:trail]
 
       def self.compose( sijil )
@@ -49,9 +49,9 @@ module Alghemy
         list[to_size..-1].each {|lmnt| File.delete lmnt }
       end
 
-      def evoke( stuff = {}, memory = nil )
-        memorise(memory, stuff)
-        Factories[:evoker].call(self.class, self, stuff)
+      def evoke( memory = nil, record = true )
+        store(memory) if memory && record
+        Factories[:evoker].call(self.class, self)
       end
 
       def unglob
