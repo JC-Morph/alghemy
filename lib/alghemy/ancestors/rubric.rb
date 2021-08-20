@@ -41,6 +41,11 @@ module Alghemy
         build_options(option_templates, stuff)
       end
 
+      # Public: Array of templates for command line options.
+      def option_templates
+        []
+      end
+
       def add( passage )
         scroll << passage
         self
@@ -71,11 +76,6 @@ module Alghemy
       end
 
       private
-
-      # Public: Array of templates for command line options.
-      def option_templates
-        []
-      end
 
       # Internal: Duckable initialisation.
       def sub_init
