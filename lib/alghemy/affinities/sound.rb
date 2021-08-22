@@ -34,6 +34,10 @@ module Alghemy
         def mould
           super.merge(Image: :visualise)
         end
+
+        def colour
+          'light sky blue'
+        end
       end
     end
   end

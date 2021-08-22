@@ -39,6 +39,10 @@ module Alghemy
         def mould
           {Image: :frames, Sound: :sublimate}
         end
+
+        def colour
+          'medium sea green'
+        end
       end
     end
   end

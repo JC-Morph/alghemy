@@ -30,6 +30,10 @@ module Alghemy
         def mould
           {Sound: :sublimate, Video: :compile}
         end
+
+        def colour
+          'orange red'
+        end
       end
     end
   end

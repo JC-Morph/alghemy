@@ -35,6 +35,19 @@ module Alghemy
         }
       end
 
+      def self.colour
+        'forest green'
+      end
+
+      def pretty_print( pp )
+        aff = Paint[affinity.to_s, self.class.colour, :bold, :underline]
+        puts "#{aff}:"
+        vars = instance_variables.each.with_object({}) do |var, hsh|
+          hsh[var] = instance_variable_get(var)
+        end
+        pp.pp vars
+      end
+
       # Internal: Initialise a Matter. Publicly, Matter should always be evoked.
       #
       # sijil - String representing a filename or glob pattern.
