@@ -6,6 +6,7 @@ require 'config'
 require 'version'
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
+require 'alghemy/comrades'
 require 'alghemy/glyphs'
 require 'alghemy/properties'
 
@@ -14,4 +15,5 @@ include Affinities
 include Glyphs
 include Properties
 
+Hunter = Comrades[:hunter]
 Matter = Ancestors[:matter]
