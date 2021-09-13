@@ -6,7 +6,7 @@ module Alghemy
   module Comrades
     module Hunter
       class << self
-        attr_reader :scent
+        attr_reader :scent, :fuzzgun
 
         def find( sijil )
           @scent = sijil
@@ -17,8 +17,8 @@ module Alghemy
         alias_method :[], :find
 
         def find_string
-          fm = FuzzyMatch.new(Dir.glob('**/*.*'))
-          fm.find_all(scent)[0..19]
+          @fuzzgun = FuzzyMatch.new(Dir.glob('**/*.*'))
+          fuzzgun.find_all(scent)[0..19]
         end
 
         def find_symbol
