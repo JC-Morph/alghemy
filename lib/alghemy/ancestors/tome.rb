@@ -1,18 +1,35 @@
-require 'alghemy/comrades'
+require 'forwardable'
+require 'paint'
 require 'alghemy/factories'
-require 'alghemy/rubrics'
 require_relative 'tome/gnumbers'
 
 module Alghemy
   module Ancestors
     # Public: A Tome is a collections of Filenames. It is used to make
     # iterating over files easier and more intuitive.
-    class Tome < Array
+    class Tome
+      extend Forwardable
       include Gnumbers
-      alias _collect collect
+      def_delegators :entries,
+        :[], :first, :last,
+        :collect, :each, :transpose,
+        :join, :size, :empty?
+      attr_reader :entries
+
+      def pretty_print( pp )
+        entries.each.with_index do |entry, i|
+          entry = Paint[entry, '#68d66a']
+          puts "%-7d#{entry}" % i
+        end
+        pp.pp size
+      end
 
       def to_s
         join(' ')
+      end
+
+      def initialize( files )
+        @entries = files
       end
 
       def sijil
@@ -23,7 +40,7 @@ module Alghemy
 
       # Public: Ensure collected Tome returns Tome.
       def collect( &block )
-        self.class.new _collect(&block)
+        self.class.new entries.collect(&block)
       end
 
       def each_group_sijil( &block )
