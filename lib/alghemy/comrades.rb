@@ -6,6 +6,6 @@ module Alghemy
   module Comrades
     extend Bandoleer
 
-    equip_constants %i[alghemist invoker scout]
+    equip_constants %i[alghemist hunter invoker scout]
   end
 end

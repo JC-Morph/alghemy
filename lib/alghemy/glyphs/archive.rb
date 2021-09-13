@@ -35,6 +35,11 @@ module Alghemy
           entries.reverse
         end
 
+        def select( &block )
+          read
+          contents.select(&block)
+        end
+
         private
 
         def archive
