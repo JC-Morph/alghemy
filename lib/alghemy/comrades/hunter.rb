@@ -8,6 +8,13 @@ module Alghemy
       class << self
         attr_reader :scent, :fuzzgun
 
+        def fetch( sijil )
+          tome = find(sijil)
+          tome.index
+          puts 'select index'
+          tome[gets.chomp.to_i].evoke
+        end
+
         def find( sijil )
           @scent = sijil
           klass  = sijil.class.name.downcase

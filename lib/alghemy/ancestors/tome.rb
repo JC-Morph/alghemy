@@ -17,11 +17,15 @@ module Alghemy
       attr_reader :entries
 
       def pretty_print( pp )
+        index
+        pp.pp size
+      end
+
+      def index
         entries.each.with_index do |entry, i|
           entry = Paint[entry, '#68d66a']
           puts "%-7d#{entry}" % i
         end
-        pp.pp size
       end
 
       def to_s
