@@ -1,4 +1,4 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 
 module VstInfo
   def params
@@ -13,7 +13,7 @@ module VstInfo
 
   def info
     process = "mrswatson -p #{sijil} --display-info 2>&1"
-    Apparatus[:invoker].engage(process).split("\n")
+    Comrades[:invoker].engage(process).split("\n")
   end
 
   def sijil

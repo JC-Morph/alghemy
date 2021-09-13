@@ -1,4 +1,4 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 require 'alghemy/glyphs'
 require 'alghemy/methods'
 require 'alghemy/modules'
@@ -60,7 +60,7 @@ module Alghemy
       def invoke( io )
         process = scroll.condense(io)
         puts process.read if alget(:rubric_print)
-        Apparatus[:invoker].engage(process.scroll)
+        Comrades[:invoker].engage(process.scroll)
       end
 
       # Public: Add substitute String for input Filename.

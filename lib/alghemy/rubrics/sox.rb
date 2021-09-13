@@ -1,5 +1,5 @@
 require 'alghemy/ancestors'
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 require 'alghemy/methods'
 require 'alghemy/properties'
 
@@ -32,7 +32,7 @@ module Alghemy
 
       def recognise?( ext )
         ext = ext[1..-1] if ext[/^\./]
-        raw = Apparatus[:invoker].engage "sox --help-format #{ext}"
+        raw = Comrades[:invoker].engage "sox --help-format #{ext}"
         (raw.split("\n")[1] =~ /^Cannot/).nil?
       end
 

@@ -1,10 +1,10 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 require 'alghemy/factories'
 require 'alghemy/rubrics'
 require_relative 'alghemist/algput'
 
 module Alghemy
-  module Apparatus
+  module Comrades
     module Alghemist
       class << self
         attr_reader :lmnt, :tran, :stuff, :namer, :rubric
@@ -26,18 +26,18 @@ module Alghemy
         end
 
         def cast( tome )
-          ears.listen namer.dir
+          scout.monitor namer.dir
           tome.send('each_' + namer.enum.to_s) do |input|
             input  = input.ffglob if ffgroup(rubric.class, namer.enum)
             output = input.swap_parts namer.parts
             io = {input: input.to_s, output: output}
             rubric.invoke io
           end
-          ears.amputate
+          scout.report
         end
 
-        def ears
-          @ears ||= Apparatus[:ears]
+        def scout
+          @scout ||= Comrades[:scout]
         end
 
         # Public: Evoke new Matter from Tome with memories from the

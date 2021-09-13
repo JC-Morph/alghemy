@@ -1,4 +1,4 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 require 'alghemy/modules'
 
 module Alghemy
@@ -18,7 +18,7 @@ module Alghemy
       end
 
       def report( sijil )
-        Apparatus[:invoker].engage [moniker, "\"#{sijil}\"", '2>&1']
+        Comrades[:invoker].engage [moniker, "\"#{sijil}\"", '2>&1']
       end
 
       def process

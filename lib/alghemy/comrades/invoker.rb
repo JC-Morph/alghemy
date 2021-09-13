@@ -1,7 +1,7 @@
 require 'alghemy/methods'
 
 module Alghemy
-  module Apparatus
+  module Comrades
     # Public: Execute a command. Accepts Strings and Arrays as viable processes.
     # Use #io to inject input and output.
     module Invoker

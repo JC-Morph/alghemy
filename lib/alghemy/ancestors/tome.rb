@@ -1,4 +1,4 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 require 'alghemy/factories'
 require 'alghemy/rubrics'
 require_relative 'tome/gnumbers'

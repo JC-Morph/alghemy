@@ -1,4 +1,4 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 
 module Alghemy
   module Meta
@@ -18,7 +18,7 @@ module Alghemy
               lmnt = mould(lmnt, expected)
             end
             tran = tran.new(lmnt, *focus, **stuff)
-            Apparatus[:alghemist].transmute(lmnt, tran)
+            Comrades[:alghemist].transmute(lmnt, tran)
           end
         end
       end

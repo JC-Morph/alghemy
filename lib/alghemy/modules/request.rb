@@ -1,4 +1,4 @@
-require 'alghemy/apparatus'
+require 'alghemy/comrades'
 
 module Alghemy
   module Modules
@@ -13,7 +13,7 @@ module Alghemy
       # Returns String as result of process.
       def this( sijil )
         sijil = sijil.fenestrate if windows_process?
-        Apparatus[:invoker].io(process, input: sijil)
+        Comrades[:invoker].io(process, input: sijil)
       end
 
       def process

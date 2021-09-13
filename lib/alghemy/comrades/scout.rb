@@ -2,33 +2,33 @@ require 'alghemy/methods'
 require 'listen'
 
 module Alghemy
-  module Apparatus
+  module Comrades
     # Public: Listen gem wrapper for watching directories.
-    module Ears
+    module Scout
       class << self
         include Methods[:alget]
-        attr_reader :heard, :listening
+        attr_reader :spotted, :monitoring
 
         def pwd
           @pwd ||= Pathname.new Dir.pwd
         end
 
         # Public: Start monitoring dir for modified or added files.
-        def listen( dir = Dir.pwd )
-          @heard = []
-          @listening = Listen.to(dir) do |modified, added|
-            heard << modified << added
+        def monitor( dir = Dir.pwd )
+          @spotted = []
+          @monitoring = Listen.to(dir) do |modified, added|
+            spotted << modified << added
           end
-          listening.start
+          monitoring.start
           sleep ear_sleep
         end
 
         # Public: Stop monitoring and return Array of heard files.
-        def amputate
+        def report
           sleep ear_sleep
-          listening.stop
+          monitoring.stop
           Listen.stop
-          heard.flatten.uniq.collect {|file| relate file }
+          spotted.flatten.uniq.collect {|file| relate file }
         end
 
         private
