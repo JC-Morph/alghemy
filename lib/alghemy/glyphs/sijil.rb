@@ -8,9 +8,9 @@ module Alghemy
     # Public: Represents a path referencing the location of Matter.
     class Sijil
       extend Forwardable
-      def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub, :to_s
       include Methods[:store]
       include Modules[:trail]
+      def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub, :to_s
 
       def self.compose( sijil )
         sij = new sijil
