@@ -1,7 +1,7 @@
 # Public: Define configurable constants and variables used in Alghemy.
 module Alghemy
   class << self
-    attr_accessor :colour,
+    attr_accessor \
       :ear_sleep,
       :ladspath,
       :overwrite,
