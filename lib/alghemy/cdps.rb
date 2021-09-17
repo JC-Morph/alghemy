@@ -5,6 +5,6 @@ module Alghemy
   module Cdps
     extend Bandoleer
 
-    equip_constants %i[distort_multiply]
+    equip_constants %i[distort_multiply rmverb]
   end
 end
