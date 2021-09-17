@@ -8,7 +8,9 @@ module Alghemy
       end
 
       def invoke( io )
-        File.delete io[:output].to_s
+        previous_file = io[:output].to_s
+        super unless File.exists?(previous_file)
+        File.delete previous_file
         super
       end
     end
