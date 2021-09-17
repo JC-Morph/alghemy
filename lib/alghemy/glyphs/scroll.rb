@@ -14,7 +14,7 @@ module Alghemy
       attr_reader    :scroll, :coloured
 
       def pretty_print( pp )
-        pp.pp(read)
+        pp.pp(scroll)
       end
 
       def initialize( moniker = '' )

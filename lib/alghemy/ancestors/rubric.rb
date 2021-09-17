@@ -34,6 +34,10 @@ module Alghemy
         end
       end
 
+      def pretty_print( pp )
+        pp.pp scroll
+      end
+
       def initialize( moniker = self.class.moniker, stuff = {} )
         @scroll = Glyphs[:scroll].new(moniker)
         @stuff  = stuff
