@@ -9,7 +9,7 @@ module Alghemy
       extend Forwardable
       extend Methods[:deepclone]
       include Methods[:alget]
-      def_delegators :@list, :empty?, :index, :size
+      def_delegators :@list, :empty?, :each, :index, :size
       attr_reader :list
 
       # Public: Constructor. Deepclones mems to ensure they are not accidentally

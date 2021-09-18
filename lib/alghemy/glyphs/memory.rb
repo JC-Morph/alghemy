@@ -5,7 +5,11 @@ module Alghemy
     # Public: Represent information from previous Transmutations.
     class Memory
       extend Forwardable
-      def_delegators :@aspects, :[], :[]=, :select, :values, :empty?
+      def_delegators :@aspects,
+        :[], :[]=,
+        :each, :select,
+        :keys, :values,
+        :empty?
       attr_reader :aspects
 
       # Public: Override pretty_print to cleanup output in REPL.
