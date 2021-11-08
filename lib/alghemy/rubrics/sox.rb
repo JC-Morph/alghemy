@@ -22,7 +22,7 @@ module Alghemy
           rate: {flag: :r, default: 48000},
           type: {flag: :t, default: 'raw'},
           depth:  {flag: :b, default: [8, 32], shortcut: :bit},
-          encode: {flag: :e, default: %w[unsigned float], shortcut: :enc}
+          enc: {flag: :e, default: %w[unsigned float], shortcut: :enc}
         }
       end
 
@@ -39,7 +39,7 @@ module Alghemy
       # Unique options
       def depth( val = nil )
         depth = options[:depth]
-        if opt_hist.last == :encode
+        if opt_hist.last == :enc
           ent = [options[:e].hist.last, (val || depth.increment_value)]
           val = Properties[:ent].call(ent).bitcheck.separate[:bit]
         end
