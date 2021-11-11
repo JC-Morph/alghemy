@@ -7,6 +7,7 @@ module Alghemy
 
     vials = %i[affinitester
                analyse
+               archives
                aspects
                laws
                osman

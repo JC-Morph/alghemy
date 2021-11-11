@@ -1,3 +1,4 @@
+require 'alghemy/modules'
 require_relative 'automation'
 require_relative 'param_check'
 require_relative 'vst_info'
@@ -6,22 +7,31 @@ module Alghemy
   module Mutagens
     # Public: Represents a VST plugin.
     class Vst
-      include VstInfo
+      extend Modules[:archives]
       include ParamCheck
+      include VstInfo
       attr_reader :sijil, :automatons
 
-      def self.list
-        name = /(?<=\\)[+\w][\w\.-]+.$/
-        index.map {|line| line[name] if line[/Vst/] }.compact
-      end
+      class << self
+        def archive_name
+          '.vsts'
+        end
 
-      def self.index
-        `mrswatson --list-plugins 2>&1`.split
-      end
+        def list
+          return archive_read if archive_read
+          name = /(?<=\\)[+\w][\w\.-]+.$/
+          list = index.map {|line| line[name] if line[/Vst/] }.compact
+          archive_write list
+        end
 
-      def self.assert( plugin )
-        return plugin if plugin.is_a? self
-        new plugin
+        def index
+          `mrswatson.exe --list-plugins 2>&1`.split
+        end
+
+        def assert( plugin )
+          return plugin if plugin.is_a? self
+          new plugin
+        end
       end
 
       def initialize( plugin = nil )
