@@ -41,16 +41,17 @@ module Alghemy
       end
 
       def condense( io = {} )
-        @scroll = map.with_index do |passage, i|
+        spell = Hash.new {|k, v| k[v] = [] }
+        scroll.each.with_index do |passage, i|
           passage = [passage].flatten.map do |word|
             word.is_a?(Proc) ?
               word.call(io) :
               word.to_s % io
           end.join(' ')
-          coloured[i] = coloured[i] % {content: passage}
-          passage
+          spell[:raw] << passage
+          spell[:wow] << coloured[i] % {content: passage}
         end
-        self
+        spell
       end
 
       private

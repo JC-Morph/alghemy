@@ -62,9 +62,12 @@ module Alghemy
       #      :input  - String naming input file(s). Files should exist.
       #      :output - String naming output file(s). Files can exist.
       def invoke( io )
-        process = scroll.condense(io)
-        puts process.read if alget(:rubric_print)
-        Comrades[:invoker].engage(process.scroll)
+        spell = scroll.condense(io)
+        if alget(:rubric_print)
+          shading = alget(:rubric_colour) ? :wow : :raw
+          puts spell[shading].join(' ')
+        end
+        Comrades[:invoker].engage(spell[:raw])
       end
 
       # Public: Add substitute String for input Filename.
