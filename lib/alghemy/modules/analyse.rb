@@ -18,7 +18,7 @@ module Alghemy
       end
 
       def report( sijil )
-        Comrades[:invoker].engage [moniker, "\"#{sijil}\"", '2>&1']
+        Comrades[:invoker].cast [moniker, "\"#{sijil}\"", '2>&1']
       end
 
       def process

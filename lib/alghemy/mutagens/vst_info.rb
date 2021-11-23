@@ -13,7 +13,7 @@ module VstInfo
 
   def info
     process = "mrswatson -p #{sijil} --display-info 2>&1"
-    Comrades[:invoker].engage(process).split("\n")
+    Comrades[:invoker].cast(process).split("\n")
   end
 
   def sijil

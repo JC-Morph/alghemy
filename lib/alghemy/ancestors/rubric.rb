@@ -67,7 +67,7 @@ module Alghemy
           shading = alget(:rubric_colour) ? :wow : :raw
           puts spell[shading].join(' ')
         end
-        Comrades[:invoker].engage(spell[:raw])
+        Comrades[:invoker].cast(spell[:raw])
       end
 
       # Public: Add substitute String for input Filename.

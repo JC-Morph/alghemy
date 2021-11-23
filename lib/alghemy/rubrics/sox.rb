@@ -32,7 +32,7 @@ module Alghemy
 
       def recognise?( ext )
         ext = ext[1..-1] if ext[/^\./]
-        raw = Comrades[:invoker].engage "sox --help-format #{ext}"
+        raw = Comrades[:invoker].cast "sox --help-format #{ext}"
         (raw.split("\n")[1] =~ /^Cannot/).nil?
       end
 

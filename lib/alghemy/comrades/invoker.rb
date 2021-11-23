@@ -21,7 +21,7 @@ module Alghemy
         def io( process, io = {}, verbose = false )
           process = condense(process, io) % io
           puts process if verbose
-          engage process
+          cast process
         end
 
         # Public: Takes process and formats it, flattening Arrays and resolving
@@ -36,7 +36,7 @@ module Alghemy
         end
 
         # Public: Execute given process on the command line.
-        def engage( process )
+        def cast( process )
           process = condense process
           puts process if alget(:verbose)
           `#{process}`

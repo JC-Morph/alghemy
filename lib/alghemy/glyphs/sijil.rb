@@ -32,7 +32,7 @@ module Alghemy
       # Public: Open Matter with default application.
       def behold
         spell = Gem.win_platform? ? first.fenestrate : "xdg-open #{first.to_s}"
-        Comrades[:invoker].engage "#{spell} 2>&1"
+        Comrades[:invoker].cast "#{spell} 2>&1"
       end
 
       def first
