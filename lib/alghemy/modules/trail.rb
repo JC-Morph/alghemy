@@ -71,13 +71,14 @@ module Alghemy
          raise NotImplementedError
       end
 
+      #TODO: broke
       def ffglob
         glob = "_%0#{first.base_num.size}d"
         swap_parts base: unglob.base.concat(glob)
       end
 
       def base_num
-        base[/(?<=[_-])\d+$/]
+        base[/(?<=[_-])*\d+(?=\.)*$/]
       end
 
       private
