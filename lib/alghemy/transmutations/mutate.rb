@@ -7,24 +7,24 @@ module Alghemy
     # Public: Process Sound with VST effect plugins.
     class Mutate < Ancestors[:transmutation]
       def self.priorities
-        [:plug, :ext]
+        [:plugin, :ext]
       end
 
       def rubric
         Rubrics[:mrs]
       end
 
-      def plugin
+      def vst
         Mutagens[:vst]
       end
 
       def tran_init
-        stuff[:plug] = plugin.assert stuff[:plug]
+        stuff[:plugin] = vst.assert stuff[:plugin]
       end
 
       def write_rubric
-        plug = stuff[:plug]
-        rubric = write.input.plugin(plug.sijil)
+        vst = stuff[:plugin].sijil
+        rubric = write.input.plugin(vst)
         rubric.automate if stuff[:data]
         rubric.output
       end
@@ -32,7 +32,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: lmnt.sijil.ext, label: 'M', plug: plugin.list.sample}
+        {ext: lmnt.sijil.ext, label: 'M', plugin: vst.list.sample}
       end
     end
   end

@@ -8,16 +8,15 @@ module Alghemy
         'mrswatson.exe'
       end
 
-      def option_templates
-        {plugin: {flag: :p, default: 'mrs_passthru'}}
+      def initialize( moniker = self.class.moniker, stuff = {} )
+        @stuff = stuff
+        moniker = 'mrswatson64.exe' if stuff[:plugin].sijil[/64/]
+        @scroll = Glyphs[:scroll].new(moniker)
+        build_options(option_templates, stuff)
       end
 
-      # Public: Method for processing sound with Vsts using MrsWatson utility.
-      def mutate
-        vst = stuff[:vst]
-        input.plugin(vst.sijil)
-        automate
-        output
+      def option_templates
+        {plugin: {flag: :p, default: 'mrs_passthru'}}
       end
 
       # Public: Method for keeping track of the data being used for parameter
