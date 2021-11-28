@@ -15,6 +15,7 @@ module Alghemy
                frames
                ift
                lad
+               loopfade
                mint
                mutate
                mv_average
