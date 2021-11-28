@@ -11,24 +11,27 @@ module Alghemy
       include Modules[:osman]
       attr_reader :lmnt, :tome, :stuff
 
-      # Public: This method can be used by individual Transmutations to specify
-      # the preferential order for options, followed when they are passed prior
-      # to keyword arguments.
-      # For example, with crop or scale, the priorities are [:size, :ext],
-      # as size will always want to be defined for these Transmutations.
-      def self.priorities
-        [:ext]
-      end
+      class << self
+        # Public: This method can be used by individual Transmutations to specify
+        # the preferential order for options, followed when they are passed prior
+        # to keyword arguments.
+        # For example, with crop or scale, the priorities are [:size, :ext],
+        # as size will always want to be defined for these Transmutations.
+        def priorities
+          [:ext]
+        end
 
-      # Public: Which affinity (image, sound, video, element) the Transmutation
-      # is designed for. Elements of other affinities will be coerced as
-      # defined by Affinity#mould.
-      def self.expects
-        with_plurals %i[Image Sound Video Element]
-      end
+        # Public: Which affinity (image, sound, video, element) the Transmutation
+        # is designed for. Elements of other affinities will be coerced as
+        # defined by Affinity#mould.
+        def expects
+          with_plurals %i[Image Sound Video Element]
+        end
 
-      def self.with_plurals( affinities )
-        [affinities].flatten.map {|aff| [aff, [aff, 's'].join.to_sym] }.flatten
+        def with_plural( affinities )
+          [affinities].flatten.map {|aff| [aff, [aff, 's'].join.to_sym] }.flatten
+        end
+        alias with_plurals with_plural
       end
 
       # Public: Initialise a Transmutation.

@@ -11,7 +11,7 @@ module Alghemy
       end
 
       def self.expects
-        with_plurals :Sound
+        with_plural :Sound
       end
 
       def rubric
