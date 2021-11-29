@@ -10,6 +10,10 @@ module Alghemy
         [:plugin, :ext]
       end
 
+      def self.expects
+        with_plural :Sound
+      end
+
       def rubric
         Rubrics[:mrs]
       end
@@ -32,7 +36,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: lmnt.sijil.ext, label: 'M', plugin: vst.list.sample}
+        {ext: lmnt.sijil.ext, label: 'V', plugin: vst.list.sample}
       end
     end
   end

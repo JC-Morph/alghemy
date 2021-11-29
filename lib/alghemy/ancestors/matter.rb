@@ -95,8 +95,9 @@ module Alghemy
         self.class.analyse.this(sijil.first, asp)
       end
 
-      def mould( lmnt, expected )
-        return lmnt.send(*[lmnt.class.mould[expected.first]].flatten)
+      def mould( expected, lmnt = self )
+        expected = [expected].flatten.first
+        return lmnt.send(*[lmnt.class.mould[expected]].flatten)
       end
     end
   end

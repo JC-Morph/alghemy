@@ -15,7 +15,7 @@ module Alghemy
             expected = tran.expects
             lmnt = self
             until expected.include?(lmnt.affinity)
-              lmnt = mould(lmnt, expected)
+              lmnt = mould(expected, lmnt)
             end
             tran = tran.new(lmnt, *focus, **stuff)
             Comrades[:alghemist].transmute(lmnt, tran)
