@@ -8,8 +8,8 @@ module Alghemy
       alias each_group each
       alias _transpose transpose
 
-      # Public: Constructor method. Parses list according to dims, & coerces
-      # elements to Grimoires. Preferred initialiser.
+      # Public: Constructor method. Parses given Array according to dims,
+      # & coerces Array elements into Grimoires. Preferred initialiser.
       def self.scribe( list, dims )
         groups = list.size / dims
         lmnts  = list.dup

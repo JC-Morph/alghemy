@@ -30,7 +30,7 @@ module Alghemy
           while contents[sijil]
             entry = contents[sijil]
             entries << entry
-            sijil = entry[:sijil].to_s
+            sijil = entry[:list].sijil.to_s
           end
           entries.reverse
         end

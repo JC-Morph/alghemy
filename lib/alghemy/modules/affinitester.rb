@@ -23,7 +23,7 @@ module Alghemy
 
       def wrong?( affinity )
         affinity = Affinities[affinity]
-        report   = affinity.analyse.this test_sijil
+        report = affinity.analyse.this test_sijil
 
         affinity.tests.any? do |test|
           test.class == Regexp ? report =~ test : !report[/#{test}/]

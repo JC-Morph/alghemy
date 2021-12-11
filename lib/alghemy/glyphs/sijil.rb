@@ -8,13 +8,18 @@ module Alghemy
     # Public: Represents a path referencing the location of Matter.
     class Sijil
       extend Forwardable
+      include Methods[:deepclone]
       include Methods[:store]
       include Modules[:trail]
-      def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub, :to_s
+      def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub
 
       def self.compose( sijil )
-        sij = new sijil
-        sij.list.empty? ? match_error(sij) : sij
+        match_error(sijil) if list(sijil).empty?
+        new sijil
+      end
+
+      def self.list( sijil )
+        Dir.glob sijil.to_s
       end
 
       def self.match_error( sijil )
@@ -22,40 +27,34 @@ module Alghemy
       end
 
       def initialize( filename )
-        @sijil = filename
+        @sijil = filename.to_s
+      end
+
+      def to_s
+        deepclone @sijil
       end
 
       def list
-        Dir.glob self.to_s
+        self.class.list @sijil
       end
-
-      # Public: Open Matter with default application.
-      def behold
-        spell = Gem.win_platform? ? first.fenestrate : "xdg-open #{first.to_s}"
-        Comrades[:invoker].cast "#{spell} 2>&1"
-      end
-
-      def first
-        self.class.new list.send(__callee__)
-      end
-      alias last first
 
       def plural?
         list.size > 1
       end
 
-      def limit( to_size )
-        return unless list.size > to_size
-        list[to_size..-1].each {|lmnt| File.delete lmnt }
-      end
+      # Public: Delete any files Sijil represents after the number of files has
+      # reached size #to_size.
+      # def limit( to_size )
+      #   return unless list.size > to_size
+      #   list[to_size..-1].each {|lmnt| File.delete lmnt }
+      # end
 
+      # Public: Instantiate Matter from the current Sijil.
+      #
+      # Returns Matter.
       def evoke( memory = nil, record = true )
         store(memory) if memory && record
         Factories[:evoker].call(self.class, self)
-      end
-
-      def unglob
-        self.class.new gsub(/[_-]*(?<!\\)[\*\?]+/, '')
       end
     end
   end

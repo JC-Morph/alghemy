@@ -50,7 +50,7 @@ module Alghemy
           memories.pop && next if reversion.nil?
           puts "reverting #{transform}"
 
-          args = rebuild_args(memories, matter.sijil)
+          args = rebuild_args(memories, matter.list)
           # Reverse Transmutation.
           matter = matter.send(reversion, **args)
         end
@@ -71,17 +71,17 @@ module Alghemy
 
       # Internal: Build arguments from a memory for passing to a Transmutation
       # as a reversion.
-      def rebuild_args( memories, sijil )
+      def rebuild_args( memories, list )
         memory = memories.pop
-        memory[:ext] = memory[:sijil].ext
-        yuv_tweak(memory, sijil)
+        memory[:ext] = memory[:list].first.ext
+        yuv_tweak(memory, list)
         memory.invert.merge label: 'R', record: false
       end
 
       # Internal: Yuv specific alterations to dimensions during sublimation.
       # TODO: put this where it makes sense
-      def yuv_tweak( memory, sijil )
-        return unless sijil.ext == '.yuv'
+      def yuv_tweak( memory, list )
+        return unless list.first.ext == '.yuv'
         size = memory[:size].dims.map {|dim| dim.odd? ? dim.succ : dim }
         memory[:size] = size
       end

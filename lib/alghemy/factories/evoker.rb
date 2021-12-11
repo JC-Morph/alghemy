@@ -16,41 +16,65 @@ module Alghemy
         # Public: Constructor. Identify affinity for arbitrary number of files &
         # initialise. Delegates to methods: element, elements.
         #
-        # sijil - String representing a filename or glob pattern.
-        # stuff  - Hash of initialisation options (default: {}). Passed directly
+        # list  - Array containing filenames.
+        # stuff - Hash of initialisation options (default: {}). Passed directly
         # to Matter.
         #
         # Returns new instance of Matter.
-        def matter( sijil )
-          sijil = compose sijil
-          clss  = sijil.plural? ? :elements : :element
-          send(clss, sijil)
+        def matter( list )
+          matt = format list
+          clss = matt.size > 1 ? :elements : :element
+          send(clss, list)
         end
-        # Public: Alias for matter. Used to evoke Sijils.
-        alias sijil matter
+        alias grimoire matter
+
+        def sijil( filename )
+          element([filename])
+        end
 
         # Public: Constructor. Identify affinity for a single file & initialise.
         #
         # arguments - See #matter.
         #
         # Returns new Element.
-        def element( sijil )
-          @test_sijil = compose sijil
-          Affinities[affinitest].new sijil
+        def element( list )
+          list = format(list)
+          @test_sijil = compose list
+          Affinities[affinitest].new list
         end
 
         # Public: Constructor. Identical to #element, but for multiple files.
         #
         # Returns new Elements.
-        def elements( sijil )
-          @test_sijil = compose(sijil).first
-          Affinities[affinitest.to_s.concat('s')].new(sijil)
+        def elements( list )
+          list = format(list)
+          @test_sijil = compose list
+          Affinities[affinitest.to_s.concat('s')].new(list)
         end
+        alias metamoire elements
 
         private
 
-        def compose( sijil )
-          Glyphs[:sijil].compose sijil
+        def compose( this )
+          Glyphs[:sijil].compose this.flatten.first
+        end
+
+        def format( input )
+          return Dir.glob(input) if is_glob? input
+          return [input]         if is_str?  input
+          input
+        end
+
+        def is_glob?( input )
+          is_str?(input) && input[/\*/]
+        end
+
+        def is_str?( input )
+          input.is_a?(String)
+        end
+
+        def match_error( pattern )
+          raise IOError, "Cannot find any files matching: #{pattern}"
         end
       end
     end

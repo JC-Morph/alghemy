@@ -1,6 +1,8 @@
 require 'forwardable'
 require 'paint'
 require 'alghemy/factories'
+require 'alghemy/glyphs'
+require 'alghemy/methods'
 require_relative 'tome/gnumbers'
 
 module Alghemy
@@ -10,6 +12,7 @@ module Alghemy
     class Tome
       extend Forwardable
       include Gnumbers
+      include Methods[:store]
       def_delegators :entries,
         :[], :first, :last,
         :collect, :each, :transpose,
@@ -28,18 +31,19 @@ module Alghemy
         end
       end
 
-      def to_s
-        join(' ')
-      end
-
       def initialize( files )
-        @entries = files
+        @entries = [files].flatten(1)
       end
 
       def sijil
         sijil = size < 2 ? first : globvert
-        sijil.limit size
-        sijil
+        Glyphs[:sijil].compose sijil
+      end
+      alias to_s sijil
+
+      def evoke( memory = nil, record = true )
+        store(memory) if memory && record
+        Factories[:evoker].call(self.class, entries)
       end
 
       # Public: Ensure collected Tome returns Tome.
@@ -59,8 +63,8 @@ module Alghemy
         glob_replace(first_lmnt, numbers)
       end
 
-      # Public: Return depth of 2-dimensional lists, i.e a list of lists. This
-      # is useful with fourier transforms, when you have two components
+      # Public: Return depth of 2-dimensional lists, i.e a list of lists.
+      # This is useful with fourier transforms, when you have two components
       # representing a single file.
       def dims
         dims = e_nums(numbers).compact.size

@@ -6,7 +6,7 @@ module Alghemy
   module Transmutations
     # Public: Perform an inverse fourier transform with image magick.
     class Ift < Ancestors[:transmutation]
-      def rubriclass
+      def rubric
         Rubrics[:fourier]
       end
 

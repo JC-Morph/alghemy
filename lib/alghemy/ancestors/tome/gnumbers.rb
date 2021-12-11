@@ -14,7 +14,7 @@ module Alghemy
     # Public: Replace gnums in filename with a suitable glob pattern.
     def glob_replace( filename, numbers )
       ranges = e_ranges(filename, numbers)
-      ranges.reverse_each.with_object(filename.dup) do |rng, str|
+      ranges.reverse_each.with_object(filename.to_s) do |rng, str|
         glob = rng.size > 2 ? '*' : ('?' * rng.size)
         str[rng] = glob
       end

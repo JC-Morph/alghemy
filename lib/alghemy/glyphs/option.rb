@@ -45,7 +45,9 @@ module Alghemy
       end
 
       def construct_prefix
-        prefix || '-'
+        return '-' unless prefix
+        return prefix unless prefix.is_a?(Array)
+        defined?(prefix.last) ? '+' : '-'
       end
 
       def has_value?( which )

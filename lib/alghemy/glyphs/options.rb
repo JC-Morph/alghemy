@@ -9,7 +9,7 @@ module Alghemy
       extend Forwardable
       extend Methods[:array_merge]
       def_delegators :@list, :each, :values
-      attr_reader   :list
+      attr_reader :list
 
       class << self
         def build( templates, stuff = {} )

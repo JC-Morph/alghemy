@@ -9,7 +9,8 @@ module Alghemy
       alias first_lmnt first
       alias last_lmnt  last
 
-      # Public: Constructor. Coerces elements to Sijils. Preferred initialiser.
+      # Public: Constructor. Coerces elements of given Array into Sijils.
+      # Preferred initialiser.
       def self.scribe( list, _dims = nil )
         new(list).liberate
       end

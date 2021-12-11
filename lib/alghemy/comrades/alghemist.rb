@@ -19,7 +19,7 @@ module Alghemy
           @lmnt = lmnt
           @tran = transform
           @stuff = tran.stuff
-          @namer  = Algput.new(stuff.merge name_options)
+          @namer = Algput.new(stuff.merge name_options)
           @rubric = tran.write_rubric
           results = cast tran.tome
           evoke list(results)
@@ -48,8 +48,7 @@ module Alghemy
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          sijil = tome.sijil
-          sijil.evoke(memory, stuff.fetch(:record, true))
+          tome.evoke(memory, stuff.fetch(:record, true))
         end
 
         # Internal: Collect aspects that could be useful for future
@@ -71,7 +70,7 @@ module Alghemy
           {
             name:     stuff[:name].to_sym,
             affinity: lmnt.affinity,
-            sijil:    lmnt.sijil
+            list:     lmnt.list
           }
         end
 

@@ -1,3 +1,4 @@
+require 'alghemy/comrades'
 require 'alghemy/methods'
 
 module Alghemy
@@ -14,6 +15,12 @@ module Alghemy
 
       def slice
         raise NotImplementedError
+      end
+
+      # Public: Open Matter with default application.
+      def behold
+        spell = Gem.win_platform? ? fenestrate : "xdg-open #{to_s}"
+        Comrades[:invoker].cast "#{spell} 2>&1"
       end
 
       # Public: Convert Trail for Windows processes.
@@ -68,7 +75,7 @@ module Alghemy
       end
 
       def unglob
-         raise NotImplementedError
+        self.class.new gsub(/[_-]*(?<!\\)[\*\?]+/, '')
       end
 
       #TODO: broke
@@ -88,7 +95,7 @@ module Alghemy
         {'-2' => dir, '-1' => label, '0' => base, '1' => ext}
       end
 
-      # Internal: Returns Hash containing default parts of sijil used by
+      # Internal: Returns Hash containing default parts of a filename used by
       # #swap_parts method.
       def parts
         {dir: dir, base: base, ext: ext}

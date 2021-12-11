@@ -10,14 +10,14 @@ module Alghemy
 
       def option_templates
         {
-          fft: {preswitch: [:imaginary, :real]},
-          ift: {preswitch: [:imaginary, :real]}
+          fft: {prefix: [:real]},
+          ift: {prefix: [:real]}
         }
       end
 
       # Shared transmutations
       def fft
-        [input, send(__callee__), output]
+        input.add(options[__callee__].print).output
       end
       alias ift fft
     end
