@@ -40,20 +40,51 @@ module Alghemy
         def element( list )
           list = format(list)
           @test_sijil = compose list
-          Affinities[affinitest].new list
+          affinity = affinitest
+          affinity = pluralise(affinity) if list.size > 1
+          Affinities[affinity].new list
         end
+        alias elements  element
+        alias metamoire element
 
         # Public: Constructor. Identical to #element, but for multiple files.
         #
         # Returns new Elements.
-        def elements( list )
+        # def elements( list )
+        #   list = format(list)
+        #   @test_sijil = compose list
+        #   Affinities[affinitest.to_s.concat('s')].new(list)
+        # end
+        # alias metamoire elements
+
+        def image( list )
           list = format(list)
-          @test_sijil = compose list
-          Affinities[affinitest.to_s.concat('s')].new(list)
+          affinity = __callee__
+          affinity = pluralise(affinity) if list.size > 1
+          Affinities[affinity].new list
         end
-        alias metamoire elements
+        alias images image
+        %i[sound video].each do |aff|
+          alias_method aff, :image
+          alias_method aff.to_s.concat('s'), :image
+        end
+
+        # def images( list )
+        #   list = format(list)
+        #   Affinities[__callee__].new list
+        # end
+        # alias sounds images
+        # alias videos images
 
         private
+
+        # Public: Returns a String representing the pluralised version of an
+        # affinity.
+        def pluralise( affinity )
+          aff = affinity.to_s.downcase
+          return aff if aff[/s$/]
+          aff.concat 's'
+        end
 
         def compose( this )
           Glyphs[:sijil].compose this.flatten.first
