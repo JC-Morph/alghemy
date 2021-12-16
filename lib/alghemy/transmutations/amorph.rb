@@ -7,7 +7,7 @@ module Alghemy
   module Transmutations
     class Amorph < Ancestors[:transmutation]
       def self.priorities
-        %i[pf ext]
+        [:pf, :ext]
       end
 
       def rubriclass

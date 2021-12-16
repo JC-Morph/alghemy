@@ -22,10 +22,10 @@ module Alghemy
       def write_rubric
         fade      = stuff[:fade]
         fade_pts  = lmnt.len - (fade.to_i * 2)
-        fade_vars = "duration=#{fade},format=yuva420p,fade=d=#{fade}:alpha=1"
+        fade_vars = "duration=#{fade},format=yuva420p,fade=d=#{fade}"
         rubric = write.input.add("-filter_complex '
           [0]split[body][pre];
-          [pre]trim=#{fade_vars},setpts=PTS+(#{fade_pts}/TB)[jt];
+          [pre]trim=#{fade_vars}:alpha=1,setpts=PTS+(#{fade_pts}/TB)[jt];
           [body]trim=#{fade},setpts=PTS-STARTPTS[main];
           [main][jt]overlay
           '")

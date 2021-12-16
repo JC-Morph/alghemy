@@ -5,6 +5,14 @@ module Alghemy
   module Transmutations
     # Public: Crop a Sound.
     class Trim < Ancestors[:transmutation]
+      def self.priorities
+        [:end, :ext]
+      end
+
+      def self.expects
+        with_plural :Sound
+      end
+
       def rubric
         Rubrics[:sox]
       end
