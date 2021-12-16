@@ -14,7 +14,7 @@ module Alghemy
         attr_reader :test_sijil
 
         # Public: Constructor. Identify affinity for arbitrary number of files &
-        # initialise. Delegates to methods: element, elements.
+        # initialise.
         #
         # list  - Array containing filenames.
         # stuff - Hash of initialisation options (default: {}). Passed directly
@@ -22,40 +22,15 @@ module Alghemy
         #
         # Returns new instance of Matter.
         def matter( list )
-          matt = format list
-          clss = matt.size > 1 ? :elements : :element
-          send(clss, list)
-        end
-        alias grimoire matter
-
-        def sijil( filename )
-          element([filename])
-        end
-
-        # Public: Constructor. Identify affinity for a single file & initialise.
-        #
-        # arguments - See #matter.
-        #
-        # Returns new Element.
-        def element( list )
           list = format(list)
           @test_sijil = compose list
           affinity = affinitest
           affinity = pluralise(affinity) if list.size > 1
           Affinities[affinity].new list
         end
-        alias elements  element
-        alias metamoire element
-
-        # Public: Constructor. Identical to #element, but for multiple files.
-        #
-        # Returns new Elements.
-        # def elements( list )
-        #   list = format(list)
-        #   @test_sijil = compose list
-        #   Affinities[affinitest.to_s.concat('s')].new(list)
-        # end
-        # alias metamoire elements
+        %i[element elements grimoire metamoire sijil].each do |clss|
+          alias_method clss, :matter
+        end
 
         def image( list )
           list = format(list)
@@ -69,12 +44,9 @@ module Alghemy
           alias_method aff.to_s.concat('s'), :image
         end
 
-        # def images( list )
-        #   list = format(list)
-        #   Affinities[__callee__].new list
-        # end
-        # alias sounds images
-        # alias videos images
+        def sijil( filename )
+          element([filename])
+        end
 
         private
 
