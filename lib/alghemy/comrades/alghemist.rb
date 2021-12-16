@@ -48,7 +48,9 @@ module Alghemy
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          tome.evoke(memory, stuff.fetch(:record, true))
+          matter = tome.evoke(memory, stuff.fetch(:record, true))
+          return matter unless stuff[:autotrim]
+          matter.trim "#{lmnt.span - matter.span}s"
         end
 
         # Internal: Collect aspects that could be useful for future
