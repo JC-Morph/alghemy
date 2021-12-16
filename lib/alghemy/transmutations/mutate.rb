@@ -36,7 +36,12 @@ module Alghemy
       private
 
       def defaults
-        {ext: lmnt.sijil.ext, label: 'V', plugin: vst.list.sample}
+        {
+          autotrim: true,
+          label:    'V',
+          plugin: vst.list.sample,
+          ext:    lmnt.sijil.ext
+        }
       end
     end
   end
