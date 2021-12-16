@@ -59,13 +59,13 @@ module Alghemy
       def paint( key = nil, string = nil )
         string ||= '%{content}'
         return string unless key
-        Paint[string, *[cipher[key]].flatten]
+        Paint[string, *cipher[key].flatten]
       end
 
       def cipher
         {
           moniker: ['tomato', :bold],
-          input:   'lime green',
+          input:   ['lime green'],
           output:  ['lime green', :bold]
         }
       end

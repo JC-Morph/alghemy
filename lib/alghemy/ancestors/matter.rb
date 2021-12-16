@@ -30,8 +30,8 @@ module Alghemy
           Factories[:evoker].call(self, list)
         end
 
-        # Public: Hash of methods to send to self when a Transmutation expects an
-        # Element of a different affinity.
+        # Public: Hash of methods to send to self when a Transmutation expects
+        # an Element of a different affinity.
         def mould
           {
             Sound: :sonify,
@@ -40,6 +40,8 @@ module Alghemy
           }
         end
 
+        # Public: Returns colour to display Matter's class in when printing to
+        # the terminal.
         def colour
           'forest green'
         end
