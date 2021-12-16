@@ -50,7 +50,9 @@ module Alghemy
           tome_error if tome.empty?
           matter = tome.evoke(memory, stuff.fetch(:record, true))
           return matter unless stuff[:autotrim]
-          matter.trim "#{lmnt.span - matter.span}s"
+          fat = matter.span - lmnt.span
+          matter = matter.trim("-#{fat}s") if fat > 0
+          matter
         end
 
         # Internal: Collect aspects that could be useful for future
