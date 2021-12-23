@@ -1,4 +1,3 @@
-require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/rubrics'
 
@@ -17,7 +16,7 @@ module Alghemy
       def tran_init
         stuff[:enum] = :group_sijil
         stuff[:rate] = lmnt.inherit(:rate, except: :Sound)
-        @solution = Affinities[:element] unless lmnt.dims
+        @mult = false unless lmnt.dims
       end
 
       private

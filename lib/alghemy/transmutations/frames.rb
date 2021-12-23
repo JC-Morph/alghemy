@@ -13,7 +13,7 @@ module Alghemy
       def tran_init
         stuff[:glob] ||= frames_less_than(1_000) ? '%03d' : '%04d'
         stuff[:rate] = lmnt.rate if lmnt.is_a?(Video)
-        @solution = Affinities[:elements] unless frames_less_than 2
+        @mult = true unless frames_less_than 2
       end
 
       def write_rubric

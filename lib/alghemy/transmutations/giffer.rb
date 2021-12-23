@@ -15,7 +15,7 @@ module Alghemy
 
       def tran_init
         stuff[:enum] = :group_sijil
-        @solution = Affinities[:element] unless lmnt.dims
+        @mult = false unless lmnt.dims
       end
 
       def write_rubric

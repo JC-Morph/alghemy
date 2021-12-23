@@ -36,13 +36,13 @@ module Alghemy
     #        :sijil  - Filename of input.
     #        :label  - String identifier for mutations (optional).
     #        :name   - The name of the current Transmutation.
-    #        :plural - Boolean if the transmutation is expected to create
+    #        :mult   - Boolean if the transmutation is expected to create
     #                  multiple files.
     def tune_parts( stuff )
       sijil = stuff[:sijil]
       ident = get_id stuff
       ident = extend_id(sijil, ident)
-      if stuff[:plural]
+      if stuff[:mult]
         # TODO: different names possible here? Mutest
         parts[:base] = sijil.label unless sijil.plural?
         parts[:base].concat('_' + stuff[:glob]) if stuff[:glob]

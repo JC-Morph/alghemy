@@ -12,7 +12,7 @@ module Alghemy
       end
 
       def remember
-        tree       = lmnt.inherit(%i[affinity sijil], transform: 'sublimate')
+        tree = lmnt.inherit(%i[affinity sijil], transform: 'sublimate')
         tree[:ext] = tree[:sijil] ?
           tree[:sijil].ext :
           affinity.defaults[:ext]
@@ -45,7 +45,7 @@ module Alghemy
 
       def agree_size( tree )
         size = Properties[:space].call(stuff[:size], tree[:size])
-        @solution = Affinities[:elements] if shrunk?(tree)
+        @mult = true if shrunk?(tree)
         size
       end
 

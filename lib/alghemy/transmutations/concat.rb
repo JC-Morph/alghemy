@@ -1,4 +1,3 @@
-require 'alghemy/affinities'
 require 'alghemy/ancestors'
 
 module Alghemy
@@ -6,7 +5,7 @@ module Alghemy
   class Concat < Ancestors[:transmutation]
     def tran_init
       stuff[:enum] = :group
-      @solution   = Affinities[:element] unless lmnt.dims
+      @mult = false unless lmnt.dims
     end
   end
 end

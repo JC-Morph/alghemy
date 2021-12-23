@@ -1,4 +1,3 @@
-require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/rubrics'
 
@@ -11,7 +10,7 @@ module Alghemy
       end
 
       def tran_init
-        @solution = Affinities[:elements]
+        @mult = true
       end
 
       private

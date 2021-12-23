@@ -1,5 +1,4 @@
 require 'alghemy/ancestors'
-require 'alghemy/affinities'
 require 'alghemy/rubrics'
 
 module Alghemy
@@ -12,8 +11,8 @@ module Alghemy
 
       def tran_init
         stuff[:enum] = :group
-        @tome     = sub_tome if stuff[:magni] || stuff[:phase]
-        @solution = Affinities[:element] if @tome.size == 2
+        @tome = sub_tome if stuff[:magni] || stuff[:phase]
+        @mult = false if @tome.size == 2
       end
 
       private

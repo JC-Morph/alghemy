@@ -79,6 +79,11 @@ module Alghemy
       end
       alias id identify
 
+      # Public: Returns the number of files represented by sijil.
+      def count
+        list.size
+      end
+
       # Public: Open Matter with designated executable.
       def open
         self.class.open.this first

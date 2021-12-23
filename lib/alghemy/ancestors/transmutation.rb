@@ -9,7 +9,7 @@ module Alghemy
     # Returns Matter.
     class Transmutation
       include Modules[:osman]
-      attr_reader :lmnt, :tome, :stuff
+      attr_reader :lmnt, :tome, :mult, :stuff
 
       class << self
         # Public: This method can be used by individual Transmutations to specify
@@ -40,9 +40,9 @@ module Alghemy
       #        file for the transform.
       # dict - Hash of initialisation options. (default: {})
       def initialize( lmnt, *priorities, **stuff )
-        @lmnt     = lmnt
-        @tome     = lmnt.list
-        @solution = lmnt.class
+        @lmnt = lmnt
+        @tome = lmnt.list
+        @mult = true if lmnt.count > 1
 
         @stuff = stuff.merge name: name
         gather priorities unless priorities.empty?
@@ -59,9 +59,9 @@ module Alghemy
 
       # Public: Boolean if expected output Class ends with an 's'. True if
       # output is expected to create more than one file.
-      def plural?
-        !(@solution.to_s =~ /s$/).nil?
-      end
+      # def plural?
+      #   !(@mult.to_s =~ /s$/).nil?
+      # end
 
       # Public: Array of attribute names used in Transmutation that should be
       # kept in memory so they can be accessed by future Transmutations. This is
