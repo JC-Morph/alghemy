@@ -12,7 +12,7 @@ module Alghemy
       extend Forwardable
       include Modules[:aspects]
       include Modules[:laws]
-      def_delegators :@list, :[], :first, :sijil
+      def_delegators :@list, :[], :first, :last, :sijil, :dims
       attr_reader :list
 
       class << self
