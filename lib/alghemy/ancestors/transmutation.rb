@@ -72,6 +72,16 @@ module Alghemy
 
       private
 
+      # Internal: Add options specified by class #priorities to rubric.
+      #
+      # Returns Rubric.
+      def add_priorities( rubric )
+        self.class.priorities.each do |opt|
+          rubric.send(opt) if stuff[opt]
+        end
+        rubric
+      end
+
       # Internal: Populate @stuff with the ordered arguments provided.
       def gather( priorities )
         priorities.each.with_index do |option, i|
