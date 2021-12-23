@@ -114,8 +114,8 @@ module Alghemy
       # Internal: Prepend extension with period if not already present.
       def prepext
         ext = stuff[:ext].to_s
-        ext.prepend('.') if ext[/^[^\.]/]
-        stuff[:ext] = ext
+        return if ext[/^\./]
+        stuff[:ext] = ext.prepend('.')
       end
     end
   end

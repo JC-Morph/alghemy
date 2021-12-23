@@ -44,6 +44,10 @@ module Alghemy
         index = Struct.new(*infodex)
         index.new(*arr)
       end
+
+      def infodex
+        raise NotImplementedError
+      end
     end
   end
 end

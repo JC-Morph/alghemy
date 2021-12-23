@@ -13,7 +13,7 @@ module Alghemy
       #        shortcut - Optional, shorter name that can be used to refer to
       #                   the option.
       #        default  - Default value for the option.
-      def initialize(name, args)
+      def initialize(name, args = [])
         args.each do |key, val|
           instance_variable_set("@#{key}", val)
         end
