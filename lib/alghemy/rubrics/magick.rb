@@ -13,10 +13,14 @@ module Alghemy
           # no argument
           append: {shortcut: :a, preswitch: [:vertical, :horizontal]},
           # no default
-          size:  {shortcut: :s},
-          depth: {shortcut: :d},
+          colors:    {},
+          depth:     {shortcut: :d},
+          posterize: {shortcut: :post},
+          size:      {shortcut: :s},
           # with default
-          fuzz: {default: '22%'}
+          delay:  {default: 3},
+          dither: {default: 'floydsteinberg'},
+          fuzz:   {default: '22%'}
         }
       end
 

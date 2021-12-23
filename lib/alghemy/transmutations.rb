@@ -13,6 +13,7 @@ module Alghemy
                convert
                fft
                frames
+               giffer
                ift
                lad
                loopfade
