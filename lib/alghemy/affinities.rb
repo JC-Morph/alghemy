@@ -14,10 +14,8 @@ module Alghemy
     equip_constants vials
 
     vials.each do |vial|
-      plural = Class.new(bandoleer[vial]) do
-        include Modules[:plural]
-      end
-      vial = vial.to_s.concat('s')
+      plural = Class.new(bandoleer[vial])
+      vial   = vial.to_s.concat('s')
 
       bandoleer.register(vial) do
         const_set(vial.capitalize, plural)

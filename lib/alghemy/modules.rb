@@ -11,7 +11,6 @@ module Alghemy
                aspects
                laws
                osman
-               plural
                request
                serial_recall
                switcher
