@@ -6,14 +6,21 @@ module Alghemy
   module Transmutations
     # Public: Extract Images from a Video.
     class Frames < Ancestors[:transmutation]
-      def rubriclass
+      def self.expects
+        with_plural :Video
+      end
+
+      def rubric
         Rubrics[:ffmpeg]
       end
 
       def tran_init
-        stuff[:glob] ||= frames_less_than(1_000) ? '%03d' : '%04d'
-        stuff[:rate] = lmnt.rate if lmnt.is_a?(Video)
-        @mult = true unless frames_less_than 2
+        span = lmnt.span
+        pad  = span.to_s.size
+        pad  = 2 if pad == 1
+        stuff[:glob] ||= "%0#{pad}d"
+        stuff[:rate]   = lmnt.rate
+        @mult = true unless span < 2
       end
 
       def write_rubric
@@ -27,11 +34,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: '.png'}
-      end
-
-      def frames_less_than( frames )
-        lmnt.is_a?(Affinities[:video]) && lmnt.span < frames
+        {ext: '.png', label: 'frames'}
       end
     end
   end
