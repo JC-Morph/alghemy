@@ -4,7 +4,7 @@ require_relative 'algput/archivist'
 module Alghemy
   # Internal: Output class for alghemical processes.
   class Algput
-    attr_reader :enum, :parts
+    attr_reader :enum, :tome, :sijil, :parts
 
     # Internal: Initialise an Algput.
     #
@@ -15,13 +15,18 @@ module Alghemy
     #        :ext    - Filename extension for output.
     #        :label  - String identifier for mutations (optional).
     #        :name   - The name of the current Transmutation.
-    #        :plural - Boolean if the transmutation is expected to create
-    #                  multiple files.
     def initialize( stuff = {} )
-      @enum  = stuff[:enum] || :lmnt
-      @parts = {dir: stuff[:sijil].label, ext: stuff[:ext]}
+      @enum  = stuff[:enum]  || :lmnt
+      @tome  = stuff[:tome]
+      @sijil = stuff[:sijil] || tome.sijil
+      @parts = {dir: sijil.label, seq: stuff[:seq], ext: stuff[:ext]}
       tune_parts stuff
       parts[:dir] = open_dir
+    end
+
+    def next_batch
+      parts[:seq].succ! if parts[:seq]
+      parts
     end
 
     def dir
@@ -33,15 +38,14 @@ module Alghemy
     # Internal: Define appropriate parts for creating outputs.
     #
     # stuff - Hash including relevant parameters:
-    #        :sijil  - Filename of input.
     #        :label  - String identifier for mutations (optional).
     #        :name   - The name of the current Transmutation.
     #        :mult   - Boolean if the transmutation is expected to create
     #                  multiple files.
     def tune_parts( stuff )
-      sijil = stuff[:sijil]
       ident = get_id stuff
-      ident = extend_id(sijil, ident)
+      ident = extend_id ident
+      add_sequence
       if stuff[:mult]
         # TODO: different names possible here? Mutest
         parts[:base] = sijil.label unless sijil.plural?
@@ -66,12 +70,16 @@ module Alghemy
     # Internal: Take any existing idents from sijil and combine them with the
     # new ident.
     #
-    # sijil - Filename of input.
     # ident - Short String to represent a transmutation in a Filename.
     #
     # Returns new ident as String.
-    def extend_id( sijil, ident )
+    def extend_id( ident )
       Archivist.extend_id(sijil, ident)
+    end
+
+    def add_sequence
+      return unless tome.size > 1 && tome.entries.map(&:to_s).uniq.size == 1
+      parts[:seq] ||= "_0#{0 * tome.size.to_s.size}"
     end
 
     def open_dir
