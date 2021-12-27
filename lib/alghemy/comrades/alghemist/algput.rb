@@ -78,7 +78,7 @@ module Alghemy
     end
 
     def add_sequence
-      return unless tome.size > 1 && tome.entries.map(&:to_s).uniq.size == 1
+      return if tome.size.between?(1, tome.entries.map(&:to_s).uniq.size)
       parts[:seq] ||= "_0#{0 * tome.size.to_s.size}"
     end
 
