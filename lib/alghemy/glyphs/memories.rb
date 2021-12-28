@@ -73,7 +73,7 @@ module Alghemy
       # as a reversion.
       def rebuild_args( memories, list )
         memory = memories.pop
-        memory[:ext] = memory[:list].first.ext
+        memory[:ext] = memory[:list].first_lmnt.ext
         yuv_tweak(memory, list)
         memory.invert.merge label: 'R', record: false
       end

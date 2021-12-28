@@ -12,9 +12,9 @@ module Alghemy
       end
 
       def remember
-        tree = lmnt.inherit(%i[affinity sijil], transform: 'sublimate')
-        tree[:ext] = tree[:sijil] ?
-          tree[:sijil].ext :
+        tree = lmnt.inherit(%i[affinity list], transform: 'sublimate')
+        tree[:ext] = tree[:list] ?
+          tree[:list].first_lmnt.ext :
           affinity.defaults[:ext]
 
         stuff[:affinity] ||= tree[:affinity] || :image
