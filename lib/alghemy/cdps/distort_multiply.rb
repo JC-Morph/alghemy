@@ -39,7 +39,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: 'wav', label: 'D', num: (2..16).to_a.sample, autotrim: true}
+        {autotrim: true, label: 'D', ext: 'wav', num: (2..16).to_a.sample}
       end
     end
   end

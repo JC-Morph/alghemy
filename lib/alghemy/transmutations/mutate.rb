@@ -39,8 +39,8 @@ module Alghemy
         {
           autotrim: true,
           label:    'V',
-          plugin: vst.list.sample,
-          ext:    lmnt.sijil.ext
+          ext:      lmnt.sijil.ext,
+          plugin:   vst.list.sample
         }
       end
     end
