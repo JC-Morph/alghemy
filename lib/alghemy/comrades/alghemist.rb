@@ -92,8 +92,8 @@ module Alghemy
         end
 
         # NOTE: WHAT IS THIS
-        def ffgroup( rubriclass, enum )
-          rubriclass == Rubrics[:ffmpeg] && enum == :group_sijil
+        def ffgroup( clss, enum )
+          clss == Rubrics[:ffmpeg] && enum == :group_sijil
         end
 
         def tome_error

@@ -23,7 +23,7 @@ module Alghemy
       end
 
       def self.match_error( sijil )
-        raise IOError, "Cannot find any files matching: #{sijil}"
+        raise IOError, "Cannot find any files matching: #{sijil.to_s}"
       end
 
       def initialize( filename )
