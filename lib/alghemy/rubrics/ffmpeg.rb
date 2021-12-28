@@ -27,7 +27,7 @@ module Alghemy
           format: {flag: 'f', default: 'rawvideo'},
           # options for audio and video streams
           **stream_option(:codec,   'c', ['libx264', 'aac']),
-          **stream_option(:quality, 'q', [5,         3])
+          **stream_option(:quality, 'q', [5, 3])
         }
       end
 

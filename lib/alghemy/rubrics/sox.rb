@@ -21,8 +21,8 @@ module Alghemy
           # with default
           rate: {flag: :r, default: 48000},
           type: {flag: :t, default: 'raw'},
-          depth:  {flag: :b, default: [8, 32], shortcut: :bit},
-          enc: {flag: :e, default: %w[unsigned float], shortcut: :enc}
+          depth: {flag: :b, default: [8, 32], shortcut: :bit},
+          enc:   {flag: :e, default: %w[unsigned float], shortcut: :enc}
         }
       end
 
