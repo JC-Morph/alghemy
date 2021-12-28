@@ -81,7 +81,10 @@ module Alghemy
         dims > 1 ? dims : nil
       end
 
-      private
+      def ffglob
+        glob = "_%0#{e_nums(numbers).last.size}d"
+        sijil.swap_parts base: sijil.unglob.base.concat(glob)
+      end
 
       def numbers
         list = self[0..-(size / 2)].to_a.flatten

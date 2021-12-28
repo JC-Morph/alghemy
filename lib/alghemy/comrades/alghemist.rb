@@ -28,7 +28,7 @@ module Alghemy
         def cast( tome )
           scout.monitor namer.dir
           tome.send('each_' + namer.enum.to_s) do |input|
-            input  = input.ffglob if ffgroup(rubric.class, namer.enum)
+            input  = tome.ffglob if ffgroup(rubric.class, namer.enum)
             output = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
