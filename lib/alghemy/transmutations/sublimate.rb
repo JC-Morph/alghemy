@@ -31,7 +31,7 @@ module Alghemy
       end
 
       def anchors
-        rejects = /^(len|span|arcana)$/
+        rejects = /^(len|span)$/
         aspects = affinity.aspects.reject {|asp| asp[rejects] }
         aspects.collect(&:to_sym)
       end

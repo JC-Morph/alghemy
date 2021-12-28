@@ -19,8 +19,8 @@ module Alghemy
           no_audio: {flag: :an},
           no_video: {flag: :vn},
           # no default
-          pix_fmt: {shortcut: :pf},
-          size:    {flag: 'video_size'},
+          arcana: {flag: :pix_fmt, shortcut: :pf},
+          size:   {flag: 'video_size'},
           # with default
           crf:    {default: 12},
           rate:   {flag: 'framerate', default: 30},
@@ -54,7 +54,8 @@ module Alghemy
 
       def sublimate
         input
-        stuff[:is_raw] ? vcodec : format
+        return format.output unless stuff[:is_raw]
+        vcodec unless stuff[:ext][/gif/]
         output
       end
 
