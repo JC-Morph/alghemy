@@ -7,16 +7,6 @@ module Alghemy
     module Trail
       include Methods[:alget]
 
-      # Public: Slice shortcut for Trail parts.
-      def []( idx )
-        return num_index[idx.to_s] if (-2..1).include?(idx.to_i)
-        slice idx
-      end
-
-      def slice
-        raise NotImplementedError
-      end
-
       # Public: Open Matter with default application.
       def behold
         spell = Gem.win_platform? ? fenestrate : "xdg-open #{to_s}"
