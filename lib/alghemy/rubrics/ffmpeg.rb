@@ -63,11 +63,12 @@ module Alghemy
       # Private: Generates switch templates for options that specify a stream.
       # (v - video, a - audio)
       #
-      # label  - String of option in command-line format.
-      # values - Array of default values for each stream.
-      def stream_option( label, flag, defaults )
+      # option   - String of option in command-line format.
+      # defaults - Array of default values for each stream.
+      def stream_option( option, command, defaults )
         %w[a v].collect.with_object({}) do |stream, hsh|
-          flag = [flag, stream].join(':')
+          label = stream + option.to_s
+          flag  = [command, stream].join(':')
           hsh[label] = {flag: flag, default: defaults.pop}
         end
       end
