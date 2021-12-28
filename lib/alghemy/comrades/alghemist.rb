@@ -5,6 +5,7 @@ require_relative 'alghemist/algput'
 
 module Alghemy
   module Comrades
+    # Public: Performs Transmutations.
     module Alghemist
       class << self
         attr_reader :lmnt, :tran, :stuff, :namer, :rubric
@@ -28,7 +29,7 @@ module Alghemy
         def cast( tome )
           scout.monitor namer.dir
           tome.send('each_' + namer.enum.to_s) do |input|
-            input  = tome.ffglob if ffgroup(rubric.class, namer.enum)
+            input  = tome.ffglob if ffgroup
             output = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
@@ -49,7 +50,10 @@ module Alghemy
         def evoke( tome )
           tome_error if tome.empty?
           matter = tome.evoke(memory, stuff.fetch(:record, true))
-          return matter unless stuff[:autotrim]
+          stuff[:autotrim] ? autotrim(matter) : matter
+        end
+
+        def autotrim( matter )
           fat = matter.span - lmnt.span
           matter = matter.trim("-#{fat}s") if fat > 0
           matter
@@ -60,14 +64,13 @@ module Alghemy
         #
         # Returns Hash.
         def memory
-          memory = memory_template
+          opt_mem = rubric.option_memory
+          memory  = memory_template
           tran.anchors.each do |anchor|
-            next if rubric.option_memory.keys.any? do |option|
-              anchor == option
-            end
+            next if opt_mem.keys.include?(anchor)
             memory[anchor] = stuff[anchor] || lmnt.send(anchor)
           end
-          memory.merge rubric.option_memory
+          memory.merge opt_mem
         end
 
         def memory_template
@@ -91,9 +94,9 @@ module Alghemy
           Factories[:scribe].call arr
         end
 
-        # NOTE: WHAT IS THIS
-        def ffgroup( clss, enum )
-          clss == Rubrics[:ffmpeg] && enum == :group_sijil
+        # NOTE: BAD PRACTICE
+        def ffgroup
+          namer.enum == :group_sijil && rubric.class == Rubrics[:ffmpeg]
         end
 
         def tome_error
