@@ -17,11 +17,15 @@ module Alghemy
           '.vsts'
         end
 
-        def list
-          return archive_read if archive_read
+        def list( refresh = false )
+          return archive_read if archive_read && !refresh
           name = /(?<=\\)[+\w][\w\.-]+.$/
           list = index.map {|line| line[name] if line[/Vst/] }.compact
           archive_write list
+        end
+
+        def list_refresh
+          list(true)
         end
 
         def index
