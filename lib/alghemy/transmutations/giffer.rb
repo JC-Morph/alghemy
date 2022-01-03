@@ -6,7 +6,7 @@ module Alghemy
     # Public: Replace a color in an image with an alpha channel.
     class Giffer < Ancestors[:transmutation]
       def self.priorities
-        %i[colors delay dither posterize]
+        %i[posterize colors dither delay]
       end
 
       def rubric
@@ -26,7 +26,7 @@ module Alghemy
       private
 
       def defaults
-        {delay: 3, dither: 'floydsteinberg', ext: 'gif'}
+        {dither: 'floydsteinberg', ext: 'gif'}
       end
     end
   end

@@ -7,6 +7,10 @@ module Alghemy
     # Use the pts option to determine the factor by which the video is slowed,
     # which will dictate the number of new frames that are generated.
     class Mint < Ancestors[:transmutation]
+      def self.priorities
+        %i[pts]
+      end
+
       def rubric
         Rubrics[:ffmpeg]
       end

@@ -14,8 +14,8 @@ module Alghemy
       end
 
       def tran_init
-        stuff[:enum] = :group_sijil
-        stuff[:rate] = lmnt.inherit(:rate, except: :Sound)
+        stuff[:enum]   = :group_sijil
+        stuff[:rate] ||= lmnt.inherit(:rate, except: :Sound)
         @mult = false unless lmnt.dims
       end
 
