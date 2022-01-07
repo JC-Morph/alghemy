@@ -53,6 +53,11 @@ module Alghemy
           stuff[:autotrim] ? autotrim(matter) : matter
         end
 
+        # Public: Trim excess material from Matter if it was unintentionally
+        # introduced by a Transmutation. Enabled on a per Transmutation basis
+        # using the :autotrim variable.
+        #
+        # Returns Matter.
         def autotrim( matter )
           fat = matter.span - lmnt.span
           matter = matter.trim("-#{fat}s") if fat > 0

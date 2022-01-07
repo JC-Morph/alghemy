@@ -41,7 +41,7 @@ module Alghemy
 
       private
 
-      # Internal: Find preexisting idents in Sijil.
+      # Internal: Find pre-existing idents in Sijil.
       def find_ids
         @idents = []
         list   = dir_ident_search

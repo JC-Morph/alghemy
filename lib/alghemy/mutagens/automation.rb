@@ -19,7 +19,7 @@ module Automation
 
     def init_params( params )
       params.sort.collect do |param|
-        operator = rand_op
+        operator = rand_operator
         if param[1].is_a? Hash
           param = param[0]
           operator.merge! param[1]
@@ -28,23 +28,24 @@ module Automation
       end
     end
 
-    def rand_op
-      op  = {operator: %i[+ -].sample}
-      axi = stuff[:axi]
-      axi = (0..axi - 1).to_a if axi.is_a? Integer
-      op.merge(index: axi.sample)
+    def rand_operator
+      operator = {operator: %i[+ -].sample}
+      column = stuff[:column]
+      column = (0..column - 1).to_a if column.is_a? Integer
+      operator.merge(index: column.sample)
     end
 
     private
 
     def defaults
-      {min: '25%', max: '75%', axi: 1}
+      {min: '25%', max: '75%', column: 1}
     end
 
     def bounds
-      bounds   = [stuff[:min], stuff[:max]]
+      bounds    = [stuff[:min], stuff[:max]]
+      bounds[1] = bounds.map!(&:to_f).max
       min, max = bounds.collect do |percent|
-        (stuff[:total].fdiv(100) * percent.to_f).round
+        (stuff[:total].fdiv(100) * percent).round
       end
       min..max
     end
