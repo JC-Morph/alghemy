@@ -57,12 +57,6 @@ module Alghemy
         Factories[:scribe].call arr
       end
 
-      # Public: Boolean if expected output Class ends with an 's'. True if
-      # output is expected to create more than one file.
-      # def plural?
-      #   !(@mult.to_s =~ /s$/).nil?
-      # end
-
       # Public: Array of attribute names used in Transmutation that should be
       # kept in memory so they can be accessed by future Transmutations. This is
       # where we want to put attributes that will be used to revert transforms.
