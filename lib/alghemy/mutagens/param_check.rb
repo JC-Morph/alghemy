@@ -47,6 +47,6 @@ module ParamCheck
   # problematic to use in filenames.
   def format( name )
     name.gsub(/[<>\.\?]/, '').
-      .gsub(/[\/\s]/, '_')
+      gsub(/[\/\s]/, '_')
   end
 end
