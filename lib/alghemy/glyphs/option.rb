@@ -31,9 +31,9 @@ module Alghemy
       end
 
       def increment_value
-        return value unless value.is_a? Array
-        index = !hist.empty? && (value.size > 1) ? 1 : 0
-        value[index]
+        return value unless value.is_a?(Array)
+        return value.first unless !hist.empty?
+        value.rotate!.first
       end
 
       def construct( val = nil )
