@@ -21,7 +21,7 @@ module Alghemy
 
       def write_rubric
         fade      = stuff[:fade]
-        fade_pts  = lmnt.len - (fade.to_i * 2)
+        fade_pts  = lmnt.len - (fade.to_f * 2)
         fade_vars = "duration=#{fade},format=yuva420p,fade=d=#{fade}"
         rubric = write.input.add("-filter_complex '
           [0]split[body][pre];
@@ -29,13 +29,13 @@ module Alghemy
           [body]trim=#{fade},setpts=PTS-STARTPTS[main];
           [main][jt]overlay
           '")
-        rubric.output
+        rubric.add("-t #{lmnt.len - fade.to_f}").crf.output
       end
 
       private
 
       def defaults
-        {ext: 'mp4', fade: 1, label: 'Lf'}
+        {crf: 10, ext: 'mp4', fade: 1, label: 'Lf'}
       end
     end
   end
