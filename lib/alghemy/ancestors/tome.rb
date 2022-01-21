@@ -51,6 +51,10 @@ module Alghemy
         sijil.to_s
       end
 
+      def *( num )
+        self.class.new entries * num
+      end
+
       def evoke( memory = nil, record = true )
         store(memory) if memory && record
         Factories[:evoker].call(self.class, entries)
