@@ -13,15 +13,15 @@ module Alghemy
       extend Forwardable
       include Gnumbers
       include Methods[:store]
-      delegators = %i[
-        []
-        first
-        last
-        each
-        transpose
-        join
-        size
-        empty?
+      delegators = [
+        :[],
+        :empty?,
+        :first,
+        :last,
+        :each,
+        :join,
+        :size,
+        :transpose
       ]
       def_delegators :entries, *delegators
       attr_reader :entries

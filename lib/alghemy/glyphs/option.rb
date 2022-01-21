@@ -7,20 +7,20 @@ module Alghemy
 
       # Public: Initialise an Option.
       #
-      # args - Array of values that define the options' initial variables.
+      # args - Hash of values that define the option's initial variables:
       #        flag     - Option in command-line format - flag that is used by
       #                   the executable.
       #        shortcut - Optional, shorter name that can be used to refer to
       #                   the option.
       #        default  - Default value for the option.
-      def initialize(name, args = [])
+      def initialize( name, args = {} )
         args.each do |key, val|
           instance_variable_set("@#{key}", val)
         end
         @name = name
         @hist = []
-        @flag ||= name
-        @value  = default
+        @flag  ||= name
+        @value ||= default
       end
 
       def print( val = nil )
