@@ -19,9 +19,9 @@ module Alghemy
         def transmute( lmnt, transform )
           @lmnt = lmnt
           @tran = transform
-          @stuff = tran.stuff
-          @namer = Algput.new(stuff.merge name_options)
           @rubric = tran.write_rubric
+          @stuff  = tran.stuff
+          @namer  = Algput.new(stuff.merge name_options)
           results = cast tran.tome
           evoke list(results)
         end
