@@ -1,9 +1,10 @@
-require_relative 'algput/algdir'
+require 'alghemy/methods'
 require_relative 'algput/archivist'
 
 module Alghemy
   # Internal: Output class for alghemical processes.
   class Algput
+    include Methods[:alget]
     attr_reader :enum, :tome, :sijil, :parts
 
     # Internal: Initialise an Algput.
@@ -79,11 +80,15 @@ module Alghemy
 
     def add_sequence
       return if tome.size.between?(1, tome.entries.map(&:to_s).uniq.size)
-      parts[:seq] ||= "_0#{0 * tome.size.to_s.size}"
+      parts[:seq] ||= "_#{'0' * tome.size.to_s.size}"
     end
 
     def open_dir
-      Algdir.open dir
+      root = alget(:ROOT)
+      dir = self.dir.to_s
+      dir = File.join(root, dir) unless dir[/^#{root}/]
+      FileUtils.makedirs dir
+      dir
     end
   end
 end
