@@ -1,9 +1,7 @@
 require 'forwardable'
 require 'paint'
 require 'alghemy/factories'
-require 'alghemy/glyphs'
 require 'alghemy/modules'
-require 'alghemy/requests'
 
 module Alghemy
   module Ancestors
@@ -15,36 +13,14 @@ module Alghemy
       def_delegators :@list, :[], :first, :last, :sijil, :dims
       attr_reader :list
 
-      class << self
-        # Public: Opens Matter in the OS using a command-line program.
-        def open
-          Requests[:image_open]
-        end
 
-        # Public: Constructor. Attempts to discern what manner of files are in
-        # the list, and then initialise the appropriate subclass.
-        # This is the preferred initialisation method for Matter.
-        #
-        # list - Array containing filenames.
-        def evoke( list )
-          Factories[:evoker].call(self, list)
-        end
-
-        # Public: Hash of methods to send to self when a Transmutation expects
-        # an Element of a different affinity.
-        def mould
-          {
-            Sound: :sonify,
-            Image: :sublimate,
-            Video: [:visualise, {ext: 'mp4'}]
-          }
-        end
-
-        # Public: Returns colour to display Matter's class in when printing to
-        # the terminal.
-        def colour
-          'forest green'
-        end
+      # Public: Constructor. Attempts to discern what manner of files are in
+      # the list, and then initialise the appropriate subclass.
+      # This is the preferred initialisation method for Matter.
+      #
+      # list - Array containing filenames.
+      def self.evoke( list )
+        Factories[:evoker].call(self, list)
       end
 
       def pretty_print( pp )

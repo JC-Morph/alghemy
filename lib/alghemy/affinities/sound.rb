@@ -7,16 +7,16 @@ module Alghemy
     # Public: Represents a sound.
     class Sound < Ancestors[:matter]
       class << self
-        def aspects
-          %i[len rate span depth arcana]
-        end
-
         def defaults
           {ext: '.wav', raw_ext: '.pcm'}
         end
 
-        def tests
-          [/FAIL/]
+        def mould
+          {Image: :visualise, Video: [:visualise, {ext: 'avi'}]}
+        end
+
+        def colour
+          'light sky blue'
         end
 
         def open
@@ -31,12 +31,12 @@ module Alghemy
           Rubrics[:sox]
         end
 
-        def mould
-          super.merge(Image: :visualise)
+        def aspects
+          %i[len rate span depth arcana]
         end
 
-        def colour
-          'light sky blue'
+        def tests
+          [/FAIL/]
         end
       end
     end

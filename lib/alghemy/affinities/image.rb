@@ -7,16 +7,20 @@ module Alghemy
     # Public: Represents an image.
     class Image < Ancestors[:matter]
       class << self
-        def aspects
-          %i[size depth arcana]
-        end
-
         def defaults
           {ext: '.png', raw_ext: '.rgb'}
         end
 
-        def tests
-          [%r{error/.+}, %r{=>.+([\./-]\w+)+\[\d+\]}, /GIF/]
+        def mould
+          {Sound: :sublimate, Video: :compile}
+        end
+
+        def colour
+          'orange red'
+        end
+
+        def open
+          Requests[:image_open]
         end
 
         def analyse
@@ -27,12 +31,12 @@ module Alghemy
           Rubrics[:magick]
         end
 
-        def mould
-          {Sound: :sublimate, Video: :compile}
+        def aspects
+          %i[size depth arcana]
         end
 
-        def colour
-          'orange red'
+        def tests
+          [%r{error/.+}, %r{=>.+([\./-]\w+)+\[\d+\]}, /GIF/]
         end
       end
     end
