@@ -10,14 +10,14 @@ module Alghemy
       # Returns new Matter, dependent on Transform.
       def define_transforms( bandoleer )
         bandoleer.equipped.each do |transform|
-          define_method transform do |*focus, **stuff|
+          define_method transform do |*priorities, **stuff|
             tran     = bandoleer[__callee__]
             expected = tran.expects
             lmnt = self
             until expected.include?(lmnt.affinity)
               lmnt = mould(expected, lmnt)
             end
-            tran = tran.new(lmnt, *focus, **stuff)
+            tran = tran.new(lmnt, *priorities, **stuff)
             Comrades[:alghemist].transmute(lmnt, tran)
           end
         end

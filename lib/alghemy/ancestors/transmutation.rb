@@ -29,7 +29,9 @@ module Alghemy
         end
 
         def with_plural( affinities )
-          [affinities].flatten.map {|aff| [aff, [aff, 's'].join.to_sym] }.flatten
+          [affinities].flatten.map do |aff|
+            [aff, [aff, 's'].join.to_sym]
+          end.flatten
         end
         alias with_plurals with_plural
       end
