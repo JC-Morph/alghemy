@@ -45,7 +45,6 @@ module Alghemy
       def find_ids
         @idents = []
         list   = dir_ident_search
-        list  << sijil.base_num if list && sijil.base_num
         list ||= sijil.unglob.base.sub(sijil.label, '')
         @idents = list.split '-' unless list[/^\./]
       end
