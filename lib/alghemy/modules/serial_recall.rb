@@ -20,7 +20,7 @@ module Alghemy
       end
 
       # Public: Revert transforms on self using mems.
-      def revert( with = mems, levels = nil )
+      def revert( with = mems, levels: nil )
         revertable = with.respond_to?(:mems) ?
           with.mems :
           with
