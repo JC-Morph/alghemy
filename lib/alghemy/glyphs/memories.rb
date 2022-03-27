@@ -32,12 +32,20 @@ module Alghemy
       end
       alias_method :[], :slice
 
-      # Public: Attempt to recall an aspect of a memory, optionally
-      # disregarding memories of specified affinities.
+      # Public: Attempt to recall an aspect of a memory, optionally disregarding
+      # memories of specified affinities.
+      #
+      # aspect  - Aspect to recall. Expected to be a key in a Memory Hash.
+      # options - Hash of optional arguments.
+      #           :transform - Only search in Memories with a stored :name that
+      #                        matches this variable.
+      #           :except    - Only search in Memories with a stored :affinity
+      #                        that doesn't match this variable.
       def recall( aspect, options )
-        mem = mem_search(**options) || {}
-        return mem[aspect] unless [aspect].flatten.size > 1
-        mem.select {|asp| aspect.any? asp }
+        aspect_list = [aspect].flatten
+        aspects     = aspect_search(aspect_list, **options)
+        return aspects unless aspect_list.size == 1
+        aspects.values.last
       end
 
       # Public: Reverses remembered transmutations in reverse chronological
@@ -62,11 +70,17 @@ module Alghemy
       # Internal: Find last mem which is either from a specified :transform,
       # or from when element did not have the affinity :except.
       #
-      # Returns Integer.
-      def mem_search( transform: nil, except: 'Raw' )
-        return if empty?
-        return slice(transform).last if transform
-        list.reject {|mem| mem[:affinity][/#{except}/] }.last
+      # For documentation of the arguments, see #recall.
+      def aspect_search( aspect, transform: nil, except: 'Raw' )
+        return {} if empty?
+        list = transform ? slice(transform) : self.list
+        list.reject! {|mem| mem[:affinity][/#{except}/] }
+        aspect.each.with_object({}) do |asp, hsh|
+          values = list.map {|mem| mem[asp] }
+          value  = values.compact.last
+          next unless value
+          hsh[asp] = value
+        end
       end
 
       # Internal: Build arguments from a memory for passing to a Transmutation
