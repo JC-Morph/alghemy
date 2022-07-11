@@ -64,7 +64,7 @@ module Alghemy
       def invoke( io )
         spell = scroll.condense(io)
         if alget(:rubric_print)
-          shading = alget(:rubric_colour) ? :wow : :raw
+          shading = alget(:rubric_colour) ? :fancy : :raw
           puts spell[shading].join(' ')
         end
         Comrades[:invoker].cast(spell[:raw])

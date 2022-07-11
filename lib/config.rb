@@ -7,7 +7,8 @@ module Alghemy
       :overwrite,
       :verbose,
       :rubric_print,
-      :rubric_colour
+      :rubric_colour,
+      :show_input
   end
 
   # NOTE: Needs work to be made OS agnostic.
@@ -35,6 +36,8 @@ module Alghemy
   @rubric_colour = true
   # Public: Root directory for transmuted Matter.
   ROOT = 'Alghemy'.freeze
+  # Public: Show the input path when printing Rubrics.
+  @show_input = true
 
   # Public: Shortcut for file separator.
   SEP = File::SEPARATOR

@@ -11,32 +11,32 @@ module Alghemy
       extend Forwardable
       include Methods[:alget]
       def_delegators :scroll, :map
-      attr_reader    :scroll, :coloured
+      attr_reader    :scroll, :fancy
 
       def pretty_print( pp )
         pp.pp(scroll)
       end
 
       def initialize( moniker = '' )
-        @scroll   = [moniker]
-        @coloured = [paint(:moniker, moniker)]
+        @scroll = [moniker]
+        @fancy  = [paint(:moniker, moniker)]
       end
 
       def read
-        text = alget(:rubric_colour) ? coloured : scroll
+        text = alget(:rubric_colour) ? fancy : scroll
         text * ' '
       end
 
       def <<( passage )
         return lookup(passage) if passage.is_a?(Hash)
         scroll   << passage
-        coloured << paint
+        fancy << paint
       end
 
       def lookup( passage )
         passage.each do |key, value|
-          scroll   << value
-          coloured << paint(key)
+          scroll << value
+          fancy  << paint(key)
         end
       end
 
@@ -48,8 +48,8 @@ module Alghemy
               word.call(io) :
               word.to_s % io
           end.join(' ')
-          spell[:raw] << passage
-          spell[:wow] << coloured[i] % {content: passage}
+          spell[:raw]   << passage
+          spell[:fancy] << fancy[i] % {content: passage}
         end
         spell
       end
@@ -57,6 +57,7 @@ module Alghemy
       private
 
       def paint( key = nil, string = nil )
+        string ||= '{element}' if key == :input && !alget(:show_input)
         string ||= '%{content}'
         return string unless key
         Paint[string, *cipher[key].flatten]
