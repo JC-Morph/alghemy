@@ -33,7 +33,7 @@ module Alghemy
 
       def input
         formats.size.rate if stuff[:is_raw]
-        add ['-i', '%<input>s']
+        add input: ['-i', '%{input}']
       end
 
       def formats

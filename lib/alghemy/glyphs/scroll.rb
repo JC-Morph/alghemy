@@ -29,8 +29,8 @@ module Alghemy
 
       def <<( passage )
         return lookup(passage) if passage.is_a?(Hash)
-        scroll   << passage
-        fancy << paint
+        scroll << passage
+        fancy  << paint
       end
 
       def lookup( passage )
@@ -57,7 +57,7 @@ module Alghemy
       private
 
       def paint( key = nil, string = nil )
-        string ||= '{element}' if key == :input && !alget(:show_input)
+        string ||= '{matter}' if key == :input && !alget(:show_input)
         string ||= '%{content}'
         return string unless key
         Paint[string, *cipher[key].flatten]
