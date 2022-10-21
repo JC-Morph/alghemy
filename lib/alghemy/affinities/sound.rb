@@ -32,7 +32,7 @@ module Alghemy
         end
 
         def aspects
-          %i[len rate span depth arcana]
+          %i[len chans rate span depth arcana]
         end
 
         def tests

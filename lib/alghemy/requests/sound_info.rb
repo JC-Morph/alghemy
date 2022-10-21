@@ -18,19 +18,19 @@ module Alghemy
         private
 
         def catdex
-          # length, rate, total samples, bitdepth, encoding
-          aspdex %w[-D -r -s -b -e]
+          # length, channels, rate, total samples, bitdepth, encoding
+          aspdex %w[-D -c -r -s -b -e]
         end
 
         def fmtdex
           fmts = [:to_f,
-                  Array.new(3) { :to_i },
+                  Array.new(4) { :to_i },
                   ->(asp) { asp[0..4].strip.downcase }]
           aspdex fmts.flatten
         end
 
         def infodex
-          %i[len rate span depth arcana]
+          %i[len chans rate span depth arcana]
         end
       end
     end
