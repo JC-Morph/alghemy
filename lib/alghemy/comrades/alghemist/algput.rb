@@ -46,8 +46,8 @@ module Alghemy
     def tune_parts( stuff )
       ident = get_id stuff
       ident = extend_id ident
-      add_sequence
       if stuff[:mult]
+        add_sequence
         # TODO: different names possible here? Mutest
         parts[:base] = sijil.label unless sijil.plural?
         parts[:base].concat('_' + stuff[:glob]) if stuff[:glob]

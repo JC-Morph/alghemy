@@ -30,7 +30,7 @@ module Alghemy
           scout.monitor namer.dir
           tome.send('each_' + namer.enum.to_s) do |input|
             input  = tome.ffglob if ffgroup
-            output = input.swap_parts namer.next_batch
+            output = lmnt.list.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
           end
@@ -89,7 +89,7 @@ module Alghemy
         # Internal: Returns Hash with variables specific to Algput
         # initialisation.
         def name_options
-          {tome: tran.tome, mult: tran.mult}
+          {tome: lmnt.list, mult: tran.mult}
         end
 
         # Internal: Returns a Tome of all files in Array.

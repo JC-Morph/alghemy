@@ -23,8 +23,8 @@ module Alghemy
           size:   {flag: 'video_size'},
           # with default
           crf:    {default: 12},
-          rate:   {flag: 'framerate', default: 30},
           format: {flag: 'f', default: 'rawvideo'},
+          rate:   {flag: 'r', default: 30},
           # options for audio and video streams
           **stream_option(:codec,   'c', ['libx264', 'aac']),
           **stream_option(:quality, 'q', [5, 3])
