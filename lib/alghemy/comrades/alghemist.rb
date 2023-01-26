@@ -30,7 +30,7 @@ module Alghemy
           scout.monitor namer.dir
           tome.send('each_' + namer.enum.to_s) do |input|
             input  = tome.ffglob if ffgroup
-            output = lmnt.list.swap_parts namer.next_batch
+            output = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
           end
