@@ -49,7 +49,12 @@ module Alghemy
         # Returns new instance of Matter.
         def evoke( tome )
           tome_error if tome.empty?
-          matter = tome.evoke(memory, stuff.fetch(:record, true))
+          record = stuff.fetch(:record, true)
+          if record.is_a?(Hash)
+            memory = record
+            record = true
+          end
+          matter = tome.evoke(memory, record)
           stuff[:autotrim] ? autotrim(matter) : matter
         end
 

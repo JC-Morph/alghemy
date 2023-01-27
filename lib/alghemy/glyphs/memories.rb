@@ -52,7 +52,7 @@ module Alghemy
       # order, attempting to revert the Object to a previous state.
       def revert( matter, levels = size )
         memories = self.class.deepclone list
-        levels.times do
+        while !memories.empty? && levels > 0
           transform = memories.last[:name]
           reversion = alget(:REVERTABLE)[transform]
           memories.pop && next if reversion.nil?
@@ -61,6 +61,7 @@ module Alghemy
           args = rebuild_args(memories, matter.list)
           # Reverse Transmutation.
           matter = matter.send(reversion, **args)
+          levels -= 1
         end
         matter
       end
@@ -89,7 +90,7 @@ module Alghemy
         memory = memories.pop
         memory[:ext] = memory[:list].first_lmnt.ext
         yuv_tweak(memory, list)
-        memory.invert.merge label: 'R', record: false
+        memory.invert.merge label: 'R', record: memories[-1]&.aspects
       end
 
       # Internal: Yuv specific alterations to dimensions during sublimation.
