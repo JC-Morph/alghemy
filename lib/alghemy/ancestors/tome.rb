@@ -36,6 +36,7 @@ module Alghemy
           entry = Paint[entry, '#68d66a']
           puts "%-7d#{entry}" % i
         end
+        puts "\n"
       end
 
       def initialize( files )
