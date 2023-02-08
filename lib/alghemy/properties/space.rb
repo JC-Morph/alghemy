@@ -54,13 +54,18 @@ module Alghemy
         split('x').collect(&:to_i)
       end
 
-      # Public: Slice shortcut for dimensions.
+      # Public: Slice shortcuts for dimensions.
       #
-      # Returns element in Array.
+      # Returns Integer of relevant dimension.
       def []( idx )
         return nil if idx.is_a?(Regexp)
         dims.slice({x: 0, y: 1}[idx.to_s.to_sym] || idx)
       end
+      # Public: As above.
+      def x
+        self[__callee__]
+      end
+      alias y x
 
       # Public: Comparison method. Compares reducable by product of elements,
       # i.e number of pixels.
