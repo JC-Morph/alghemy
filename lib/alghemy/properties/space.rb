@@ -58,6 +58,7 @@ module Alghemy
       #
       # Returns element in Array.
       def []( idx )
+        return nil if idx.is_a?(Regexp)
         dims.slice({x: 0, y: 1}[idx.to_s.to_sym] || idx)
       end
 
