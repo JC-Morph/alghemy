@@ -50,6 +50,7 @@ module Alghemy
         def evoke( tome )
           tome_error if tome.empty?
           record = stuff.fetch(:record, true)
+          memory = form_memory
           if record.is_a?(Hash)
             memory = record
             record = true
@@ -73,7 +74,7 @@ module Alghemy
         # Transmutations.
         #
         # Returns Hash.
-        def memory
+        def form_memory
           opt_mem = rubric.option_memory
           memory  = memory_template
           tran.anchors.each do |anchor|
