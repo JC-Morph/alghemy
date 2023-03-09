@@ -10,7 +10,7 @@ module Alghemy
       # Public: Open Matter with default application.
       def behold
         spell = Gem.win_platform? ? fenestrate : "xdg-open #{to_s}"
-        Comrades[:invoker].cast "#{spell} 2>&1"
+        Comrades[:invoker].cast "#{spell} > /dev/null 2>&1"
       end
 
       # Public: Convert Trail for Windows processes.
