@@ -67,7 +67,8 @@ module Alghemy
       private
 
       def match_error
-        msg = "Can't find plugin with name: #{sijil}\nCheck [Plugin_class].list"
+        msg  = %{Cannot find any plugins matching: #{sijil}
+          Check [Plugin_class].list}
         raise IOError, msg
       end
     end

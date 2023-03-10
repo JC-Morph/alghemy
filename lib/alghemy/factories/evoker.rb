@@ -22,7 +22,7 @@ module Alghemy
         #
         # Returns new instance of Matter.
         def matter( list )
-          list = format(list)
+          list = format list
           @test_sijil = compose list
           affinity = affinitest
           affinity = pluralise(affinity) if list.size > 1
@@ -63,8 +63,12 @@ module Alghemy
         end
 
         def format( input )
-          return Dir.glob(input) if is_glob? input
-          return [input]         if is_str?  input
+          if is_glob? input
+            list = Dir.glob input
+            match_error(input) if list.empty?
+            return list
+          end
+          return [input] if is_str? input
           input
         end
 

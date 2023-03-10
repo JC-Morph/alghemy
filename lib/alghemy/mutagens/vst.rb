@@ -54,7 +54,7 @@ module Alghemy
       private
 
       def match_error
-        msg = "Cannot find Vst with name: #{sijil}\nCheck Vst.list"
+        msg = "Cannot find any Vsts matching: #{sijil}\nCheck Vst.list"
         raise IOError, msg
       end
     end
