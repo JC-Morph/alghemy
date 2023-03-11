@@ -20,6 +20,7 @@ module Alghemy
                mint
                mutate
                mv_average
+               pixelsort
                sonify
                sublimate
                trim
