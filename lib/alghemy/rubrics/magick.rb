@@ -11,7 +11,8 @@ module Alghemy
       def option_templates
         {
           # no argument
-          append: {shortcut: :a, preswitch: [:vertical, :horizontal]},
+          append_h: {flag: :append, shortcut: :ah, prefix: '+'},
+          append_v: {flag: :append, shortcut: :av},
           # no default
           colors:    {},
           depth:     {shortcut: :d},
@@ -35,7 +36,9 @@ module Alghemy
 
       # Shared transmutations
       def concat
-        input.append.output
+        opt = %i[v vert vertical].any? {|key| stuff[key] } ?
+          'append_v' : 'append_h'
+        input.send(opt).output
       end
 
       def sublimate
