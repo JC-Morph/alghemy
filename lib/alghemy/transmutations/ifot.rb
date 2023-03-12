@@ -4,7 +4,7 @@ require 'alghemy/rubrics'
 module Alghemy
   module Transmutations
     # Public: Perform an inverse fourier transform with image magick.
-    class Ift < Ancestors[:transmutation]
+    class Ifot < Ancestors[:transmutation]
       def rubric
         Rubrics[:fourier]
       end

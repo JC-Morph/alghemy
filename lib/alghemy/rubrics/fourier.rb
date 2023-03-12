@@ -5,21 +5,25 @@ module Alghemy
     # Define an Array for a command passed to fftw-compiled ImageMagick.
     class Fourier < Ancestors[:rubric]
       def self.moniker
-        'ffconvert'
+        Gem.win_platform? ? 'ffconvert' : 'convert'
       end
 
       def option_templates
         {
-          fft: {prefix: [:real]},
-          ift: {prefix: [:real]}
+          fft_i: {flag: 'fft'},
+          fft_r: {flag: 'fft', prefix: '+'},
+          ift_i: {flag: 'ift'},
+          ift_r: {flag: 'ift', prefix: '+'}
         }
       end
 
       # Shared transmutations
-      def fft
-        input.add(options[__callee__].print).output
+      def ffot
+        opt = __callee__.to_s.gsub(/a|o/, '')
+        opt += stuff[:real] ? '_r' : '_i'
+        input.send(opt).output
       end
-      alias ift fft
+      alias ifot ffot
     end
   end
 end

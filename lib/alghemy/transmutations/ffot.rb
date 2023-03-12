@@ -4,7 +4,7 @@ require 'alghemy/rubrics'
 module Alghemy
   module Transmutations
     # Public: Perform a fast fourier transform with image magick.
-    class Fft < Ancestors[:transmutation]
+    class Ffot < Ancestors[:transmutation]
       def rubric
         Rubrics[:fourier]
       end
@@ -16,7 +16,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: '.png'}
+        {ext: 'png'}
       end
     end
   end

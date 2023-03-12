@@ -46,8 +46,8 @@ module Alghemy
   REVERTABLE = {
     sonify:    :visualise,
     visualise: :sonify,
-    fft:       :ift,
-    ift:       :fft,
+    ffot:      :ifot,
+    ifot:      :ffot,
     frames:    :compile,
     compile:   :frames,
     sublimate: :sublimate

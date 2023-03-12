@@ -8,13 +8,14 @@ module Alghemy
 
     vials = %i[amorph
                bend
+               concat
                color2alpha
                compile
                convert
-               fft
+               ffot
                frames
                giffer
-               ift
+               ifot
                lad
                loopfade
                mint
