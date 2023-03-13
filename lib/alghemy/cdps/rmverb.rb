@@ -18,7 +18,7 @@ module Alghemy
 
       def tran_init
         templates = {
-          channels: {flag: :c, default: 1, no_space: true}
+          channels: {flag: :c, default: 1, delim: ''}
         }
         bare_number_options = {
           rmsize: {default: 1},

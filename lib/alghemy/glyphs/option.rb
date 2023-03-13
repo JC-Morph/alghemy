@@ -2,7 +2,7 @@ module Alghemy
   module Glyphs
     # Public: Represents an option and appropriate value for an executable.
     class Option
-      attr_reader :name, :hist, :flag, :prefix, :default, :shortcut, :no_space
+      attr_reader :name, :hist, :flag, :prefix, :default, :shortcut, :delim
       attr_accessor :value
 
       # Public: Initialise an Option.
@@ -41,7 +41,7 @@ module Alghemy
         pre = "#{pre}#{flag}"
         pre = nil if pre.empty?
         opt = [pre, val].compact
-        no_space ? opt.join : opt
+        delim ? opt.join(delim) : opt
       end
 
       def construct_prefix
