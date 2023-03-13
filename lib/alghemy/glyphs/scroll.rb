@@ -5,8 +5,8 @@ require 'alghemy/methods'
 module Alghemy
   module Glyphs
     # Public: Defines an Array to be invoked on the command-line. Can be used
-    # to build a process piece-by-piece using #<<, and can use the #condense
-    # method to resolve any Procs, and substitute any Strings.
+    # to build a process piece-by-piece using #<<. Use the #condense method to
+    # resolve Procs and perform String substitutions.
     class Scroll
       extend Forwardable
       include Methods[:alget]

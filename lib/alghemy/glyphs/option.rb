@@ -23,6 +23,7 @@ module Alghemy
         @value ||= default
       end
 
+      # Public: Discern and return next iteration of @value.
       def print( val = nil )
         val ||= increment_value
         return construct unless val && val != true
@@ -30,12 +31,14 @@ module Alghemy
         construct val
       end
 
+      # Public: Handle Array rotation for @value.
       def increment_value
         return value unless value.is_a?(Array)
         return value.first unless !hist.empty?
         value.rotate!.first
       end
 
+      # Public: Construct a commandline representation of the option.
       def construct( val = nil )
         pre = construct_prefix
         pre = "#{pre}#{flag}"
@@ -44,12 +47,14 @@ module Alghemy
         delim ? opt.join(delim) : opt
       end
 
+      # Public: Construct the correct flag prefix for the commandline.
       def construct_prefix
         return '-' unless prefix
         return prefix unless prefix.is_a?(Array)
         defined?(prefix.last) ? '+' : '-'
       end
 
+      # Public: Bool if any of the named instance variables match the argument.
       def has_value?( which )
         %i[name flag shortcut].any? {|id| which == send(id) }
       end
