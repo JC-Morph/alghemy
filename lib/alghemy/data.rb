@@ -2,6 +2,7 @@ require 'yaml'
 require 'alghemy/bandoleer'
 
 module Alghemy
+  # Public: Bandoleer. Vials contain yaml files denoting useful information.
   module Data
     extend Bandoleer
 

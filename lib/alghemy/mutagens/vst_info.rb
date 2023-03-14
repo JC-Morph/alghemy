@@ -1,5 +1,6 @@
 require 'alghemy/comrades'
 
+# Public: Extract information from VST plugins using mrswatson utility.
 module VstInfo
   def params
     data = find 'Parameters'

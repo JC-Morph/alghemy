@@ -4,6 +4,7 @@ require 'alghemy/glyphs'
 
 module Alghemy
   module Comrades
+    # Public: Fuzzy finder for potential Matter.
     module Hunter
       class << self
         attr_reader :scent, :fuzzgun

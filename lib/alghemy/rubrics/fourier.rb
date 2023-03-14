@@ -2,7 +2,7 @@ require 'alghemy/ancestors'
 
 module Alghemy
   module Rubrics
-    # Define an Array for a command passed to fftw-compiled ImageMagick.
+    # Define an executable process for fftw-compiled imagemagick.
     class Fourier < Ancestors[:rubric]
       def self.moniker
         Gem.win_platform? ? 'ffconvert' : 'convert'

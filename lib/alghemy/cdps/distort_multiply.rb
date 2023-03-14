@@ -3,6 +3,7 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Cdps
+    # Public: Process Sound with CDP wavecycle frequency multiplier.
     class DistortMultiply < Ancestors[:transmutation]
       def self.priorities
         [:num]

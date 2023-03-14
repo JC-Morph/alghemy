@@ -2,6 +2,7 @@ require 'alghemy/methods'
 
 module Alghemy
   module Modules
+    # Public: Wrapper functions to simplify reading and writing to yaml files.
     module Archives
       include Methods[:alget]
 

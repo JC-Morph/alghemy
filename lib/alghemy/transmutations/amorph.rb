@@ -5,6 +5,8 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
+    # Public: Morph Element's affinity; colorspace, pixel format, or encoding.
+    # TODO: Generalise or specialise
     class Amorph < Ancestors[:transmutation]
       def self.priorities
         [:pf, :ext]

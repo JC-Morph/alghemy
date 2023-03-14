@@ -3,6 +3,7 @@ require 'alghemy/methods'
 
 module Alghemy
   module Rubrics
+    # Public: Define an executable process for a CDP utility.
     class Cdp < Ancestors[:rubric]
       include Methods[:alget]
 

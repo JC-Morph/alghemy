@@ -1,5 +1,6 @@
 module Alghemy
   module Properties
+    # Public: Represents valid ffmpeg compatible pixel formats.
     class PixFmt
       attr_reader :sijil
 

@@ -5,7 +5,7 @@ require 'alghemy/properties'
 
 module Alghemy
   module Rubrics
-    # Public: Define an executable process for a command passed to Sox.
+    # Public: Define an executable process for sox.
     class Sox < Ancestors[:rubric]
       include Methods[:array_merge]
 

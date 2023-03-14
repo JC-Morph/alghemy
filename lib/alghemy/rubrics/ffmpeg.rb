@@ -3,7 +3,7 @@ require 'alghemy/methods'
 
 module Alghemy
   module Rubrics
-    # Public: Define an Array for a command passed to ffmpeg.
+    # Public: Define an executable process for ffmpeg.
     class Ffmpeg < Ancestors[:rubric]
       extend Methods[:alget]
 

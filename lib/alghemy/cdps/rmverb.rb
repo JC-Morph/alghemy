@@ -3,6 +3,7 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Cdps
+    # Public: Process Sound with CDP multichannel reverb.
     class Rmverb < Ancestors[:transmutation]
       def self.priorities
         [:rmsize, :rgain, :mix, :fback, :absorb, :lpfreq, :trtime]

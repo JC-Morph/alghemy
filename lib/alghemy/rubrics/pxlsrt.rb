@@ -2,7 +2,7 @@ require 'alghemy/ancestors'
 
 module Alghemy
   module Rubrics
-    # Public: Define an executable process for a brute pxlsrt.
+    # Public: Define an executable process for a brute pixelsort.
     class Pxlsrt < Ancestors[:rubric]
       def self.moniker
         'pxlsrt brute'

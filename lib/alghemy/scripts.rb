@@ -2,6 +2,8 @@ require 'yaml'
 require 'alghemy/bandoleer'
 
 module Alghemy
+  # Public: Bandoleer. Vials contain executable scripts that are utilised by
+  # auxiliary utilities.
   module Scripts
     extend Bandoleer
 

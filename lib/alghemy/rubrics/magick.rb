@@ -2,7 +2,7 @@ require 'alghemy/ancestors'
 
 module Alghemy
   module Rubrics
-    # Public: Define an Array for a command passed to ImageMagick.
+    # Public: Define an executable process for imagemagick.
     class Magick < Ancestors[:rubric]
       def self.moniker
         'convert'

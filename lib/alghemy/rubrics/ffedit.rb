@@ -3,9 +3,9 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Rubrics
-    # Define an Array for a command passed to the ffedit command, supplied by
+    # Define an executable process for the ffedit command, supplied by
     # ffglitch.org. ffedit is an altered ffmpeg binary focussed on glitch-based
-    # processing of input.
+    # processing of videos.
     class Ffedit < Rubrics[:ffmpeg]
       def self.moniker
         'ffedit -loglevel warning'

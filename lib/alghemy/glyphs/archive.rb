@@ -3,6 +3,9 @@ require 'alghemy/methods'
 
 module Alghemy
   module Glyphs
+    # Public: Manages reading and writing to yaml files. Used to store Memories
+    # of Transmutations on Matter, allowing for the reversion of Matter to
+    # previous states.
     module Archive
       class << self
         include Methods[:alget]

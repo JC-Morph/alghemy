@@ -2,7 +2,7 @@ require 'alghemy/ancestors'
 
 module Alghemy
   module Rubrics
-    # Public: Define an executable process for a command passed to MrsWatson.
+    # Public: Define an executable process for mrswatson.
     # Requires wine to run on linux.
     class Mrs < Ancestors[:rubric]
       def self.moniker
