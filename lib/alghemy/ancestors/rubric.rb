@@ -24,7 +24,7 @@ module Alghemy
         #
         # stuff - Hash of initialisation options.
         def write( stuff = {} )
-          rubric = new(moniker, stuff)
+          new(moniker, stuff)
         end
 
         # Internal: Returns Array containing name of executable and any initial

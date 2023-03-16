@@ -36,7 +36,7 @@ module Alghemy
         end
 
         def tests
-          [%r{error/.+}, %r{=>.+([\./-]\w+)+\[\d+\]}, /GIF/]
+          [%r{error/.+}, %r{=>.+([./-]\w+)+\[\d+\]}, /GIF/]
         end
       end
     end

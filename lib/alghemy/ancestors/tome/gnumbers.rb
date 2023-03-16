@@ -26,7 +26,7 @@ module Alghemy
     # Public: Returns Array of index ranges for e_nums in filename.
     def e_ranges( filename, numbers )
       ranges = []
-      e_nums(numbers).each.with_index do |enum, i|
+      e_nums(numbers).each do |enum|
         start  = num_index(filename)[enum]
         finish = start + enum.size - 1
         ranges << (start..finish)

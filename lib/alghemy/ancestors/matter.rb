@@ -86,7 +86,7 @@ module Alghemy
 
       def mould( expected, lmnt = self )
         expected = [expected].flatten.first
-        return lmnt.send(*[lmnt.class.mould[expected]].flatten)
+        lmnt.send(*[lmnt.class.mould[expected]].flatten)
       end
     end
   end

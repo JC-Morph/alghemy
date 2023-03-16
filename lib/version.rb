@@ -1,3 +1,3 @@
 module Alghemy
-  VERSION = '0.3.15'.freeze
+  VERSION = '0.3.16'.freeze
 end
