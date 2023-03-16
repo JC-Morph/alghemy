@@ -13,15 +13,15 @@ module Alghemy
       extend Forwardable
       include Gnumbers
       include Methods[:store]
-      delegators = [
-        :[],
-        :empty?,
-        :first,
-        :last,
-        :each,
-        :join,
-        :size,
-        :transpose
+      delegators = %i[
+        []
+        empty?
+        first
+        last
+        each
+        join
+        size
+        transpose
       ]
       def_delegators :entries, *delegators
       attr_reader :entries
@@ -43,17 +43,17 @@ module Alghemy
         @entries = [files].flatten(1)
       end
 
-      def sijil
-        sijil = size < 2 ? first : globvert
-        Glyphs[:sijil].compose sijil
+      def *( other )
+        self.class.new entries * other
       end
 
       def to_s
         sijil.to_s
       end
 
-      def *( num )
-        self.class.new entries * num
+      def sijil
+        sijil = size < 2 ? first : globvert
+        Glyphs[:sijil].compose sijil
       end
 
       def evoke( memory = nil, record = true )
