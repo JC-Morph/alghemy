@@ -17,16 +17,18 @@ module Alghemy
       end
 
       def tran_init
-        which = :output
-        if lmnt.raw?
-          stuff  = lmnt.inherit([:affinity, :size]).merge stuff
-          which = :input
+        direction = :output
+        heirlooms = {}
+        if is_raw?
+          direction = :input
+          heirlooms = lmnt.inherit([:affinity, :size])
         end
-        stuff[:pf] ||= Properties[:pix_fmt].random(which)
+        stuff = heirlooms.merge stuff
+        stuff[:pf] ||= Properties[:pix_fmt].random(direction)
       end
 
       def write_rubric
-        if lmnt.raw?
+        if is_raw?
           write.input.output
         else
           write.input.format.pf.output
@@ -34,7 +36,7 @@ module Alghemy
       end
 
       def anchors
-        return [] if lmnt.raw?
+        return [] if is_raw?
         anchors = [:size]
         anchors << :rate if lmnt.is_a?(Affinities[:video])
       end

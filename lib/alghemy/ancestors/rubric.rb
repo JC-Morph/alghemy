@@ -82,6 +82,10 @@ module Alghemy
         input.output
       end
 
+      def is_raw?
+        stuff[:is_raw]
+      end
+
       private
 
       # Internal: Duckable initialisation.
