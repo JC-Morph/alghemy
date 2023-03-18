@@ -28,11 +28,9 @@ module Alghemy
       end
 
       def write_rubric
-        if is_raw?
-          write.input.output
-        else
-          write.input.format.pf.output
-        end
+        rubric = write.input
+        rubric.format.pf unless is_raw?
+        rubric.output
       end
 
       def anchors
