@@ -4,20 +4,20 @@ module Alghemy
   module Modules
     # Public: Writes Rubrics for transmutations.
     module Osman
-      # Public: Method that builds command line to be executed. May be ducked by
-      # transmutations.
+      # Public: Method that builds command line to be executed. Duckable.
       def write_rubric
         write.send stuff[:name]
       end
 
+      # Public: Begin writing a Rubric in the appropriate manner.
       def write( moniker = nil )
-        stuff    = self.stuff.merge(is_raw: lmnt.raw?)
-        rubric   = self.rubric.write(stuff) unless moniker
-        rubric ||= self.rubric.new(moniker, stuff)
-
+        rubric = self.rubric
+        stuff  = self.stuff.merge(is_raw: is_raw?)
+        moniker ? rubric.new(moniker, stuff) : rubric.write(stuff)
       end
 
       # Public: Returns appropritate Rubric class for current transmutation.
+      # Duckable.
       def rubric
         rubric = stuff[:rubric]
         return rubric if rubric
@@ -26,12 +26,17 @@ module Alghemy
         Affinities[affinity].rubric
       end
 
-      # Public: Duckable Hash of options to initiaise Rubric with.
+      # Public: Hash of options to initiaise Rubric with. Duckable.
       def stuff
         {}
       end
 
-      # Public: Expects an instance of Matter provided by class. Must duck the
+      # Public: Boolean whether input is considered raw (uncompressed) data.
+      def is_raw?
+        lmnt.raw?
+      end
+
+      # Public: Expects an instance of Matter provided by class. Must provide
       # #raw? method, to discern whether the input will be raw data.
       def lmnt
         raise NotImplementedError

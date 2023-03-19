@@ -113,10 +113,6 @@ module Alghemy
         return if ext[/^\./]
         stuff[:ext] = ext.prepend('.')
       end
-
-      def is_raw?
-        stuff[:is_raw]
-      end
     end
   end
 end
