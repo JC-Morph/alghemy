@@ -38,7 +38,7 @@ module Alghemy
       def find( which )
         return list[which] if list.has_key?(which)
         found ||= list.values.each do |option|
-          return option if option.has_value?(which)
+          return option if option.value?(which)
         end
       end
       alias_method :[], :find

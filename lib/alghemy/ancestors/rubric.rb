@@ -82,7 +82,7 @@ module Alghemy
         input.output
       end
 
-      def is_raw?
+      def raw?
         stuff[:is_raw]
       end
 

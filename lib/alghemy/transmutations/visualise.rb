@@ -16,7 +16,7 @@ module Alghemy
 
       def write_rubric
         rubric = write
-        rubric.t(:is_raw).r if is_raw?
+        rubric.t(:is_raw).r if raw?
         rubric.ents.input.t.ents.output
       end
 

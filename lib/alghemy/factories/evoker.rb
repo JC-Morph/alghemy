@@ -63,20 +63,20 @@ module Alghemy
         end
 
         def format( input )
-          if is_glob? input
+          if glob? input
             list = Dir.glob input
             match_error(input) if list.empty?
             return list
           end
-          return [input] if is_str? input
+          return [input] if str? input
           input
         end
 
-        def is_glob?( input )
-          is_str?(input) && input[/\*/]
+        def glob?( input )
+          str?(input) && input[/\*/]
         end
 
-        def is_str?( input )
+        def str?( input )
           input.is_a?(String)
         end
 

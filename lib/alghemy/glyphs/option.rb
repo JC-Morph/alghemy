@@ -55,7 +55,7 @@ module Alghemy
       end
 
       # Public: Bool if any of the named instance variables match the argument.
-      def has_value?( which )
+      def value?( which )
         %i[name flag shortcut].any? {|id| which == send(id) }
       end
     end

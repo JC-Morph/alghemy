@@ -12,7 +12,7 @@ module Alghemy
       # Public: Begin writing a Rubric in the appropriate manner.
       def write( moniker = nil )
         rubric = self.rubric
-        stuff  = self.stuff.merge(is_raw: is_raw?)
+        stuff  = self.stuff.merge(is_raw: raw?)
         moniker ? rubric.new(moniker, stuff) : rubric.write(stuff)
       end
 
@@ -32,7 +32,7 @@ module Alghemy
       end
 
       # Public: Boolean whether input is considered raw (uncompressed) data.
-      def is_raw?
+      def raw?
         lmnt.raw?
       end
 

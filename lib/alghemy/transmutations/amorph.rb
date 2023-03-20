@@ -19,7 +19,7 @@ module Alghemy
       def tran_init
         direction = :output
         heirlooms = {}
-        if is_raw?
+        if raw?
           direction = :input
           heirlooms = lmnt.inherit([:affinity, :size])
         end
@@ -29,12 +29,12 @@ module Alghemy
 
       def write_rubric
         rubric = write.input
-        rubric.format.pf unless is_raw?
+        rubric.format.pf unless raw?
         rubric.output
       end
 
       def anchors
-        return [] if is_raw?
+        return [] if raw?
         anchors = [:size]
         anchors << :rate if lmnt.is_a?(Affinities[:video])
       end
