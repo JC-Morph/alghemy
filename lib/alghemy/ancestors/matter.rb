@@ -13,7 +13,6 @@ module Alghemy
       def_delegators :@list, :[], :first, :last, :sijil, :dims
       attr_reader :list
 
-
       # Public: Constructor. Attempts to discern what manner of files are in
       # the list, and then initialise the appropriate subclass.
       # This is the preferred initialisation method for Matter.
@@ -26,10 +25,7 @@ module Alghemy
       def pretty_print( pp )
         aff = Paint[affinity.to_s, self.class.colour, :bold, :underline]
         puts "#{aff}:"
-        name = list.size == 1 ?
-          first :
-          "#{list.size} files in #{first.dir}"
-        puts Paint[[' ' * affinity.size, name].join, '#68d66a']
+        puts Paint[[' ' * affinity.size, print_name].join, '#68d66a']
         vars = instance_variables.each.with_object({}) do |var, hsh|
           next if var == :@list
           hsh[var] = instance_variable_get(var)
@@ -47,10 +43,9 @@ module Alghemy
 
       # Public: Calculate and print aspects.
       def identify
-        clss = self.class
-        puts "\nClass => #{clss.name.split('::').last} \
+        puts "\nClass => #{affinity} \
         \nsijil => #{sijil}\n\n"
-        clss.aspects.each {|asp| send asp }
+        self.class.aspects.each {|asp| send asp }
         hshprint aspects
       end
       alias id identify
@@ -77,6 +72,11 @@ module Alghemy
       end
 
       private
+
+      def print_name
+        return first if list.size == 1
+        "#{list.size} files in #{first.dir}"
+      end
 
       # TODO: make analyse method with usable param?
       # Internal: Analyse Matter with designated executable.
