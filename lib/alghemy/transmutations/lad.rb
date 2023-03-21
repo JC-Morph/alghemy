@@ -36,7 +36,7 @@ module Alghemy
       def prepare( plug )
         params = plug.params || {}
         values = params.map do |param, info|
-          param = param.downcase.gsub(/[\s\/]/, '_').to_sym
+          param = param.downcase.gsub(%r{[\s/]}, '_').to_sym
           stuff[param] || info[:default] || rand_param(info)
         end
         ['ladspa', plug.sijil, values].flatten

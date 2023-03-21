@@ -19,7 +19,7 @@ module Alghemy
 
         def list( refresh = false )
           return archive_read if archive_read && refresh != true
-          name = /(?<=\\)[+\w][\w\.-]+.$/
+          name = /(?<=\\)[+\w][\w.-]+.$/
           list = index.map {|line| line[name] if line[/Vst/] }.compact
           archive_write list
         end

@@ -64,11 +64,11 @@ module Alghemy
         root = alget(:ROOT)
         sep  = alget(:SEP)
         child_dir  = dir[/(?<=#{root + sep})[^#{sep}]+/]
-        child_dir || dir[/[^#{sep}\.]+$/]
+        child_dir || dir[/[^#{sep}.]+$/]
       end
 
       def unglob
-        self.class.new gsub(/[_-]*(?<!\\)[\*\?]+/, '')
+        self.class.new gsub(/[_-]*(?<!\\)[*?]+/, '')
       end
 
       private

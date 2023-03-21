@@ -46,7 +46,7 @@ module ParamCheck
   # Private: Formats parameter or preset name to get rid of characters that are
   # problematic to use in filenames.
   def format( name )
-    name.gsub(/[<>\.\?]/, '').
-      gsub(/[\/\s]/, '_')
+    name.gsub(/[<>.?]/, '').
+      gsub(%r{[/\s]}, '_')
   end
 end
