@@ -18,23 +18,19 @@ module Alghemy
         # Returns new instance of Matter.
         def transmute( lmnt, transform )
           @lmnt = lmnt
-          @tran = transform
-          @rubric = tran.write_rubric
-          @stuff  = tran.stuff
-          @namer  = Algput.new(stuff.merge name_options)
-          results = cast tran.tome
+          assign_trans_variables transform
+
+          results = scout.mission(-> { cast(tran.tome) }, namer.dir)
           evoke list(results)
         end
 
         def cast( tome )
-          scout.monitor namer.dir
-          tome.send('each_' + namer.enum.to_s) do |input|
+          tome.send("each_#{namer.enum}") do |input|
             input  = tome.ffglob if ffgroup
             output = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
           end
-          scout.report
         end
 
         def scout
@@ -65,31 +61,18 @@ module Alghemy
         #
         # Returns Matter.
         def autotrim( matter )
-          fat = matter.span - lmnt.span
-          matter = matter.trim("-#{fat}s") if fat > 0
+          surplus = matter.span - lmnt.span
+          matter  = matter.trim("-#{surplus}s") if surplus.positive?
           matter
         end
 
-        # Internal: Collect aspects that could be useful for future
-        # Transmutations.
-        #
-        # Returns Hash.
-        def form_memory
-          opt_mem = rubric.option_memory
-          memory  = memory_template
-          tran.anchors.each do |anchor|
-            next if opt_mem.keys.include?(anchor)
-            memory[anchor] = stuff[anchor] || lmnt.send(anchor)
-          end
-          memory.merge opt_mem
-        end
+        private
 
-        def memory_template
-          {
-            name:     stuff[:name].to_sym,
-            affinity: lmnt.affinity,
-            list:     lmnt.list
-          }
+        def assign_trans_variables( transform )
+          @tran   = transform
+          @rubric = tran.write_rubric
+          @stuff  = tran.stuff
+          @namer  = Algput.new(stuff.merge(name_options))
         end
 
         # Internal: Returns Hash with variables specific to Algput
@@ -105,18 +88,44 @@ module Alghemy
           Factories[:scribe].call arr
         end
 
-        # NOTE: BAD PRACTICE
+        # Internal: Collect aspects that could be useful for future
+        # Transmutations.
+        #
+        # Returns Hash.
+        def form_memory
+          opt_mem = rubric.option_memory
+          anchors = tran.anchors.reject do |anchor|
+            opt_mem.keys.include?(anchor)
+          end
+          init_memory(anchors).merge opt_mem
+        end
+
+        def init_memory( anchors )
+          anchors.each.with_object(memory_template) do |anchor, memory|
+            memory[anchor] = stuff[anchor] || lmnt.send(anchor)
+          end
+        end
+
+        def memory_template
+          {
+            affinity: lmnt.affinity,
+            list:     lmnt.list,
+            name:     stuff[:name].to_sym
+          }
+        end
+
+        # NOTE: Very probably in the wrong place
         def ffgroup
-          namer.enum == :group_sijil && rubric.class == Rubrics[:ffmpeg]
+          namer.enum == :group_sijil && rubric.instance_of?(Rubrics[:ffmpeg])
         end
 
         def tome_error
           msg = "No created files found! Something has gone wrong.\n" \
                 "The last Transmutation may have failed.\n" \
-                "Check the Rubric to see intended file output, " \
+                'Check the Rubric to see intended file output, ' \
                 "and then check if the file(s) actually exist.\n" \
-                "If they do, try increasing Alghemy.ear_sleep, " \
-                "to give Listen more time to detect the files."
+                'If they do, try increasing Alghemy.ear_sleep, ' \
+                'to give Listen more time to detect the files.'
           raise msg
         end
       end
