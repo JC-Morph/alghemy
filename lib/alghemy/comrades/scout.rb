@@ -9,12 +9,21 @@ module Alghemy
         include Methods[:alget]
         attr_reader :spotted, :monitoring
 
+        # Public: Return Pathname denoting current working directory.
         def pwd
           @pwd ||= Pathname.new Dir.pwd
         end
 
+        # Public: Given a Proc and a directory, monitor the directory and return
+        # any findings.
+        def mission( target, location = pwd.to_s )
+          monitor location
+          target.call
+          report
+        end
+
         # Public: Start monitoring dir for modified or added files.
-        def monitor( dir = Dir.pwd )
+        def monitor( dir = pwd.to_s )
           @spotted = []
           @monitoring = Listen.to(dir) do |modified, added|
             spotted << modified << added
