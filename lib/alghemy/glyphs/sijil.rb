@@ -8,7 +8,7 @@ module Alghemy
     # Public: Represents a path referencing the location of Matter.
     class Sijil
       extend Forwardable
-      include Methods[:deepclone]
+      include Methods[:deep_clone]
       include Methods[:store]
       include Modules[:trail]
       def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub
@@ -31,7 +31,7 @@ module Alghemy
       end
 
       def to_s
-        deepclone @sijil
+        deep_clone @sijil
       end
 
       def list

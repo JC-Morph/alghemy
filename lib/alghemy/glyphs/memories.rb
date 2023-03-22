@@ -7,15 +7,15 @@ module Alghemy
     # states.
     class Memories
       extend Forwardable
-      extend Methods[:deepclone]
+      extend Methods[:deep_clone]
       include Methods[:alget]
       def_delegators :@list, :empty?, :each, :index, :size
       attr_reader :list
 
-      # Public: Constructor. Deepclones mems to ensure they are not accidentally
+      # Public: Constructor. Uses #deep_clone to ensure that argument is not
       # mutated. Preferred initialiser.
       def self.clonefreeze( mems = nil )
-        mems ? new(deepclone(mems)) : new
+        mems ? new(deep_clone(mems)) : new
       end
 
       def pretty_print( pp )
@@ -48,10 +48,10 @@ module Alghemy
         aspects.values.last
       end
 
-      # Public: Reverses remembered transmutations in reverse chronological
-      # order, attempting to revert the Object to a previous state.
+      # Public: Undo nondestructive transmutations in reverse chronological
+      # order, in an attempt to revert Matter to a previous state.
       def revert( matter, levels = size )
-        memories = self.class.deepclone list
+        memories = self.class.deep_clone list
         while !memories.empty? && levels > 0
           transform = memories.last[:name]
           reversion = alget(:REVERTABLE)[transform]
