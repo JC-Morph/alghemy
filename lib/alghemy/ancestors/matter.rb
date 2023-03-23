@@ -10,7 +10,7 @@ module Alghemy
       extend Forwardable
       include Modules[:aspects]
       include Modules[:laws]
-      def_delegators :@list, :[], :first, :last, :sijil, :dims
+      def_delegators :@list, :[], :first, :last, :sijil, :dims, :dissolve
       attr_reader :list
 
       # Public: Constructor. Attempts to discern what manner of files are in

@@ -12,6 +12,7 @@ module Alghemy
     class Tome
       extend Forwardable
       include Gnumbers
+      include Methods[:alget]
       include Methods[:store]
       delegators = %i[
         []
@@ -59,6 +60,17 @@ module Alghemy
       def evoke( memory = nil, record = true )
         store(memory) if memory && record
         Factories[:evoker].call(self.class, entries)
+      end
+
+      def dissolve
+        dir = sijil.dir
+        each_lmnt do |lmnt|
+          File.delete lmnt.to_s
+        end
+        id = /#{alget(:ROOT)}#{alget(:SEP)}/
+        if dir[id] && Dir.glob(File.join(dir, '*')).empty?
+          FileUtils.remove_dir dir
+        end
       end
 
       # Public: Ensure collected Tome returns Tome.
