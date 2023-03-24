@@ -1,5 +1,6 @@
 require 'alghemy/comrades'
 require 'alghemy/factories'
+require 'alghemy/methods'
 require 'alghemy/rubrics'
 require_relative 'alghemist/algput'
 
@@ -8,6 +9,7 @@ module Alghemy
     # Public: Performs Transmutations.
     module Alghemist
       class << self
+        include Methods[:alget]
         attr_reader :lmnt, :tran, :stuff, :namer, :rubric
 
         # TODO: rewrite
@@ -19,8 +21,12 @@ module Alghemy
         def transmute( lmnt, transform )
           @lmnt = lmnt
           assign_trans_variables transform
+          tome = tran.tome
 
-          results = scout.mission(-> { cast(tran.tome) }, namer.dir)
+          results = scout.mission(-> { cast(tome) }, namer.dir)
+
+          tome_error    if tome.empty?
+          tome.dissolve if alget(:leave_no_trace)
           evoke list(results)
         end
 
@@ -44,7 +50,6 @@ module Alghemy
         #
         # Returns new instance of Matter.
         def evoke( tome )
-          tome_error if tome.empty?
           record = stuff.fetch(:record, true)
           memory = form_memory
           if record.is_a?(Hash)

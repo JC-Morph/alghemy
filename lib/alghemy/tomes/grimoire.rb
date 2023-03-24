@@ -5,7 +5,6 @@ module Alghemy
   module Tomes
     # Public: An indexed collection of Sijils.
     class Grimoire < Ancestors[:tome]
-      alias each_lmnt  each
       alias first_lmnt first
       alias last_lmnt  last
 

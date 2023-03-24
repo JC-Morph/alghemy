@@ -14,7 +14,7 @@ module Alghemy
       include Gnumbers
       include Methods[:alget]
       include Methods[:store]
-      delegators = %i[
+      methods = %i[
         []
         empty?
         first
@@ -24,8 +24,9 @@ module Alghemy
         size
         transpose
       ]
-      def_delegators :entries, *delegators
-      attr_reader :entries
+      def_delegators :entries, *methods
+      alias_method :each_lmnt, :each
+      attr_reader  :entries
 
       def pretty_print( pp )
         index
@@ -64,11 +65,12 @@ module Alghemy
 
       def dissolve
         dir = sijil.dir
+        id  = /#{alget(:ROOT)}#{alget(:SEP)}/
+        return unless dir[id]
         each_lmnt do |lmnt|
           File.delete lmnt.to_s
         end
-        id = /#{alget(:ROOT)}#{alget(:SEP)}/
-        if dir[id] && Dir.glob(File.join(dir, '*')).empty?
+        if Dir.glob(File.join(dir, '*')).empty?
           FileUtils.remove_dir dir
         end
       end
