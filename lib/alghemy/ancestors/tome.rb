@@ -34,9 +34,9 @@ module Alghemy
       end
 
       def index
-        entries.each.with_index do |entry, i|
+        entries.each.with_index do |entry, idx|
           entry = Paint[entry, '#68d66a']
-          puts "%-7d#{entry}" % i
+          puts "%-7d#{entry}" % idx
         end
         puts "\n"
       end
@@ -67,12 +67,8 @@ module Alghemy
         dir = sijil.dir
         id  = /#{alget(:ROOT)}#{alget(:SEP)}/
         return unless dir[id]
-        each_lmnt do |lmnt|
-          File.delete lmnt.to_s
-        end
-        if Dir.glob(File.join(dir, '*')).empty?
-          FileUtils.remove_dir dir
-        end
+        each_lmnt {|lmnt| File.delete lmnt.to_s }
+        FileUtils.remove_dir(dir) if Dir.children(dir).empty?
       end
 
       # Public: Ensure collected Tome returns Tome.

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Alghemy
-  VERSION = '0.6.20'
+  VERSION = '0.6.21'
 end
