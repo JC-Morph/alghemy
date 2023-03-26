@@ -3,17 +3,25 @@
 # Public: Define configurable constants and variables used in Alghemy.
 module Alghemy
   class << self
-    attr_accessor \
-      :ear_sleep,
-      :ladspath,
-      :leave_no_trace,
-      :overwrite,
-      :verbose,
-      :rubric_print,
-      :rubric_colour,
-      :show_input
+    vars = %i[
+      ear_sleep
+      encoding
+      bitdepth
+      ladspath
+      leave_no_trace
+      overwrite
+      verbose
+      rubric_print
+      rubric_colour
+      show_input
+    ]
+    attr_accessor *vars
   end
 
+  # Public: Default encoding conversion for sox sonification.
+  @encoding = %w[unsigned float]
+  # Public: Default bitdepth conversion for sox sonification.
+  @bitdepth = [8, 32]
   # Public: Sleep duration for Listen gem used by Comrade Scout.
   @ear_sleep = 0.1
 
