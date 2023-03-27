@@ -3,7 +3,7 @@
 # Public: Define configurable constants and variables used in Alghemy.
 module Alghemy
   class << self
-    vars = %i[
+    attr_accessor *%i[
       ear_sleep
       encoding
       bitdepth
@@ -15,45 +15,54 @@ module Alghemy
       rubric_colour
       show_input
     ]
-    attr_accessor *vars
   end
 
-  # Public: Default encoding conversion for sox sonification.
-  @encoding = %w[unsigned float]
-  # Public: Default bitdepth conversion for sox sonification.
-  @bitdepth = [8, 32]
-  # Public: Sleep duration for Listen gem used by Comrade Scout.
-  @ear_sleep = 0.1
+  # ---- CONSTANTS ----
+  #
+  # Root directory for transmuted Matter.
+  ROOT = 'Alghemy'
+  # File separator shortcut.
+  SEP = File::SEPARATOR
 
+  # ---- PATHS ----
+  #
   # NOTE: Not OS agnostic.
-  # Public: Default path for ladspa plugins when LADSPA_PATH is undefined.
+  # Public: Default path for LADSPA plugins when LADSPA_PATH is undefined.
   def self.default_path_ladspa
     File.join(*%w[/usr lib ladspa])
   end
-  # Public: Array of directories to search for LADSPA plugins.
+  # Array of directories to search for LADSPA plugins.
   @ladspath = `echo $LADSPA_PATH`.strip.split(':')
   @ladspath = default_path_ladspa if ladspath.empty?
 
-  # Public: Boolean for deleting interstitial Matter after transmuting.
+  # ---- TRANSMUTING ----
+  #
+  # Sleep duration for Listen gem used by Comrade::Scout.
+  @ear_sleep = 0.1
+  # Delete interstitial Matter after transmuting?
   @leave_no_trace = false
-  # Public: Boolean for overwriting existing files.
+  # Automatically overwrite existing Matter?
   @overwrite = true
-  # Public: Boolean for printing all external processes before they're executed.
-  @verbose   = false
 
-  # Public: Boolean for printing transmutations before they're executed.
-  @rubric_print  = true
-  # Public: Boolean for colouring transmutation process strings.
+  # Default encoding conversion for sox sonification.
+  @encoding = %w[unsigned float]
+  # Default bitdepth conversion for sox sonification.
+  @bitdepth = [8, 32]
+
+  # ---- PRINTING ----
+  #
+  # Print all external processes before they're executed?
+  @verbose = false
+  # Print Transmutations before they're executed?
+  @rubric_print = true
+  # Colour the printed Transmutations?
   @rubric_colour = true
-  # Public: Show the input path when printing Rubrics.
+  # Show the input path when printing?
   @show_input = true
 
-  # Public: Root directory for transmuted Matter.
-  ROOT = 'Alghemy'
-  # Public: Shortcut for file separator.
-  SEP = File::SEPARATOR
-
-  # Public: Table of Transmutant reversions.
+  # ---- TABLES ----
+  #
+  # Revertable Transmutations.
   REVERTABLE = {
     sonify:    :visualise,
     visualise: :sonify,
