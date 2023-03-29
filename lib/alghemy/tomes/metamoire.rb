@@ -43,6 +43,10 @@ module Alghemy
         send(place).send(place)
       end
       alias last_lmnt first_lmnt
+
+      def size
+        entries.inject(0) {|size, tome| size + tome.size }
+      end
     end
   end
 end

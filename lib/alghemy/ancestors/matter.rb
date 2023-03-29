@@ -75,7 +75,7 @@ module Alghemy
 
       def print_name
         return first if list.size == 1
-        "#{list.size} files in #{first.dir}"
+        "#{list.size} files in #{list.first_lmnt.dir}"
       end
 
       # TODO: make analyse method with usable param?
