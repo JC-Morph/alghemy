@@ -45,7 +45,11 @@ module Alghemy
       alias last_lmnt first_lmnt
 
       def size
-        entries.inject(0) {|size, tome| size + tome.size }
+        inject(0) {|size, tome| size + tome.size }
+      end
+
+      def all_entries
+        map {|tome| tome.entries }.flatten
       end
     end
   end

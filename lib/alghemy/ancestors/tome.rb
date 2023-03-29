@@ -19,14 +19,17 @@ module Alghemy
         empty?
         first
         last
-        each
-        join
         size
+        each
+        inject
+        join
+        map
         transpose
       ]
       def_delegators :entries, *methods
-      alias_method :each_lmnt, :each
       attr_reader  :entries
+      alias_method :all_entries, :entries
+      alias_method :each_lmnt,   :each
 
       def pretty_print( pp )
         index
@@ -60,7 +63,7 @@ module Alghemy
 
       def evoke( memory = nil, record = true )
         store(memory) if memory && record
-        Factories[:evoker].call(self.class, entries)
+        Factories[:evoker].call(self.class, all_entries)
       end
 
       def dissolve
