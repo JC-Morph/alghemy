@@ -105,7 +105,7 @@ module Alghemy
       end
 
       def numbers
-        list = self[0..-(size / 2)].to_a.flatten
+        list = all_entries[0..-(size / 2)].flatten
         num_list list
       end
     end
