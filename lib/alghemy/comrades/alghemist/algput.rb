@@ -10,14 +10,14 @@ module Alghemy
     # Internal: Initialise an Algput.
     #
     # stuff - Hash of initialisation options:
-    #        :enum   - Enumerator method for Tome. Changes depending on how the
+    #         :enum  - Enumerator method for Tome. Changes depending on how the
     #                  input file(s) should be enumerated.
-    #        :sijil  - Filename of input.
-    #        :ext    - Filename extension for output.
-    #        :label  - String identifier for mutations (optional).
-    #        :name   - The name of the current Transmutation.
+    #         :sijil - Filename of input.
+    #         :ext   - Filename extension for output.
+    #         :label - String identifier for mutations (optional).
+    #         :name  - The name of the current Transmutation.
     def initialize( stuff = {} )
-      @enum  = stuff[:enum]  || :lmnt
+      @enum  = stuff[:enum] || :lmnt
       @tome  = stuff[:tome]
       @sijil = stuff[:sijil] || tome.sijil
       @parts = {dir: sijil.label, seq: stuff[:seq], ext: stuff[:ext]}
@@ -26,7 +26,7 @@ module Alghemy
     end
 
     def next_batch
-      parts[:seq].succ! if parts[:seq]
+      parts[:seq]&.succ!
       parts
     end
 
@@ -39,29 +39,30 @@ module Alghemy
     # Internal: Define appropriate parts for creating outputs.
     #
     # stuff - Hash including relevant parameters:
-    #        :label  - String identifier for mutations (optional).
-    #        :name   - The name of the current Transmutation.
-    #        :mult   - Boolean if the transmutation is expected to create
-    #                  multiple files.
+    #         :mult - Boolean if the transmutation is expected to create
+    #                 multiple files.
     def tune_parts( stuff )
-      ident = get_id stuff
-      ident = extend_id ident
+      ident = extend_id(get_id(stuff))
       if stuff[:mult]
-        add_sequence
-        # TODO: different names possible here? Mutest
-        parts[:base] = sijil.label unless sijil.plural?
-        parts[:base].concat('_' + stuff[:glob]) if stuff[:glob]
-        parts[:dir].concat(File::SEPARATOR + ident)
+        multi_parts(ident, stuff[:glob])
       else
         parts[:base] = ident
       end
     end
 
+    def multi_parts( ident, glob = nil )
+      add_sequence
+      # TODO: different names possible here? Mutest
+      parts[:base] = sijil.label unless sijil.plural?
+      parts[:base].concat("_#{glob}") if glob
+      parts[:dir].concat(alget(:SEP) + ident)
+    end
+
     # Internal: Get ident for the current transform.
     #
     # stuff - Hash including relevant parameters:
-    #        :label  - String identifier for mutations. (optional)
-    #        :name   - The name of the current Transmutation.
+    #         :label - String identifier for mutations. (optional)
+    #         :name  - The name of the current Transmutation.
     #
     # Returns String.
     def get_id( stuff )

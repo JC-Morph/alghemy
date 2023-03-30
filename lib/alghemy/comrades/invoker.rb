@@ -15,12 +15,8 @@ module Alghemy
         #           include resolvable Procs.
         #
         # io      - Hash of inputs and outputs to be used.
-        #
-        # verbose - Boolean for verbosity. If true, prints process before
-        #           execution.
-        def io( process, io = {}, verbose = false )
+        def io( process, io = {} )
           process = condense(process, io) % io
-          puts process if verbose
           cast process
         end
 

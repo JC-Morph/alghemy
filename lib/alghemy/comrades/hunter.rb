@@ -22,7 +22,7 @@ module Alghemy
           list   = send "find_#{klass}"
           Factories[:scribe].call list
         end
-        alias_method :[], :find
+        alias [] find
 
         def find_string
           @fuzzgun = FuzzyMatch.new(Dir.glob('**/*.*'))
@@ -30,7 +30,7 @@ module Alghemy
         end
 
         def find_symbol
-          Glyphs[:archive].select do |sijil, entry|
+          Glyphs[:archive].select do |_sijil, entry|
             entry.values.include? scent
           end.keys
         end

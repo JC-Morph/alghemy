@@ -53,7 +53,7 @@ module Alghemy
       def dir_ident_search
         dirs  = sijil.dir.split alget(:SEP)
         index = dirs.index {|dir| dir == alget(:ROOT) }
-        return unless index && dirs[index..-1].size > 2
+        return unless index && dirs[index..].size > 2
         dirs[index + 2]
       end
 
