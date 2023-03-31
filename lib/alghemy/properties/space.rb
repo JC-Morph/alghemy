@@ -2,10 +2,13 @@ require 'forwardable'
 
 module Alghemy
   module Properties
-    # Public: 2-dimensional aspect for visual Elements, i.e. height x width.
-    class Space < String
+    # Public: Represents width and height for Elements with a spatial component.
+    class Space
       extend Forwardable
-      delegate :reduce => :dims
+      attr_reader :str, :width, :height
+      alias x width
+      alias y height
+      delegate reduce: :dims
 
       # Public: Constructor. Parses space according to Class. Optionally uses
       # subspace to substitute missing dims.
@@ -15,11 +18,10 @@ module Alghemy
       #                      'heightxwidth'.
       #            Array   - Arrays can be one or two elements in size, and may
       #                      contain 0 at indexes to substitute with subspace.
-      #            Integer - Expected to be the height of the Space. Width is
-      #                      expected to be provided by subspace.
-      # subspace - Sliceable duck to substitute for missing values in space.
-      #            Expected to represent (or be) a valid Space.
-      def self.trace( space, subspace = '500x500' )
+      #            Integer - The width of the Space. Height will be provided by
+      #                      subspace.
+      # subspace - Array containing substitute values for the Space.
+      def self.trace( space, subspace = [500, 500] )
         space = case space
                 when String || self.class
                   space
@@ -36,39 +38,41 @@ module Alghemy
       #
       # arr    - Array expected to have at least one element. May contain 0 at
       #          indexes to be substituted.
-      # subarr - Substitute Array or nil. If Array it is intended to contain
-      #          enough elements to substitute missing or empty values in arr.
+      # subarr - Substitute Array. Expected to contain both width and height.
       #
       # Returns Array.
-      def self.draw( arr, subarr )
+      def self.draw( arr, subarr = nil )
         return arr if subarr.nil?
-        space = arr.collect.with_index do |dim, i|
-          dim.zero? ? subarr[i] : dim
+        subarr.map.with_index do |dim, i|
+          curr = arr[i]
+          curr&.positive? ? curr : dim
         end
-        space << subarr[1] if space.size == 1
-        space
+      end
+
+      def pretty_print( pp )
+        pp.pp str
+      end
+
+      def initialize( space )
+        @str = space
+        @width, @height = space.split('x').map(&:to_i)
       end
 
       # Public: Returns Array of dimensions.
       def dims
-        split('x').collect(&:to_i)
+        [width, height]
       end
 
       # Public: Slice shortcuts for dimensions.
       #
       # Returns Integer of relevant dimension.
       def []( idx )
-        return nil if idx.is_a?(Regexp)
-        dims.slice({x: 0, y: 1}[idx.to_s.to_sym] || idx)
+        return unless idx.is_a? Integer
+        return width if idx == 0
+        height if idx == 1
       end
-      # Public: As above.
-      def x
-        self[__callee__]
-      end
-      alias y x
 
-      # Public: Comparison method. Compares reducable by product of elements,
-      # i.e number of pixels.
+      # Public: Compares total number of pixels.
       def >( other )
         raise ArgumentError unless other.respond_to? :reduce
         reduce(:*) > other.reduce(:*)
