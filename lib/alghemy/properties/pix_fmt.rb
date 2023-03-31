@@ -6,10 +6,10 @@ module Alghemy
 
       class << self
         def list( which = :any )
-          list = index[8..-1]
+          list = index[8..]
           test = keep[which]
           list.map {|line| line.split[1] if line[test] }
-            .compact
+              .compact
         end
 
         def any
@@ -24,9 +24,9 @@ module Alghemy
 
         def keep
           {
-            input: /^I(\.|O)/,
+            input:  /^I(\.|O)/,
             output: /^(\.|I)O/,
-            any: /^(I(\.|O)|(I|\.)O)/
+            any:    /^(I(\.|O)|(I|\.)O)/
           }
         end
 

@@ -68,7 +68,7 @@ module Alghemy
       # Returns Integer of relevant dimension.
       def []( idx )
         return unless idx.is_a? Integer
-        return width if idx == 0
+        return width if idx.zero?
         height if idx == 1
       end
 
