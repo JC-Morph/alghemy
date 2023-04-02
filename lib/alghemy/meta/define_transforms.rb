@@ -12,11 +12,11 @@ module Alghemy
       # Returns new Matter, dependent on Transform.
       def define_transforms( bandoleer )
         bandoleer.equipped.each do |transform|
-          define_transform transform
+          define_transform(transform, bandoleer)
         end
       end
 
-      def define_transform( transform )
+      def define_transform( transform, bandoleer )
         define_method transform do |*priorities, **stuff|
           tran = bandoleer[__callee__]
           expected = tran.expects
