@@ -4,26 +4,13 @@ require 'alghemy/rubrics'
 module Alghemy
   module Cdps
     # Public: Process Sound with CDP signal clipper.
-    class DistortOverload < Ancestors[:transmutation]
+    class DistortOverload < Ancestors[:cdp_transmutation]
       def self.priorities
         [:gate, :depth]
       end
 
-      def self.expects
-        with_plural :Sound
-      end
-
-      def rubric
-        Rubrics[:cdp]
-      end
-
       def tran_init
-        stuff[:option_templates] = {
-          mode:      {flag: '', prefix: '', default: 2},
-          threshold: {flag: '', prefix: '', default: 0.2, shortcut: :gate},
-          depth:     {flag: '', prefix: '', default: 1},
-          freq:      {flag: '', prefix: '', default: 555}
-        }
+        stuff[:option_templates] = option_templates
       end
 
       def write_rubric
@@ -33,17 +20,19 @@ module Alghemy
         rubric
       end
 
-      def moniker
-        self.class.name.split('::').last.
-          split(/(?=[A-Z])/).
-          map(&:downcase).
-          join(' ')
-      end
-
       private
 
       def defaults
         {ext: 'wav', label: 'D'}
+      end
+
+      def option_templates
+        {
+          mode:      {flag: '', prefix: '', default: 2},
+          threshold: {flag: '', prefix: '', default: 0.2, shortcut: :gate},
+          depth:     {flag: '', prefix: '', default: 1},
+          freq:      {flag: '', prefix: '', default: 555}
+        }
       end
     end
   end
