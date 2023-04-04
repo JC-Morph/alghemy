@@ -9,7 +9,7 @@ module Alghemy
       # entry - Hash of options from a transform.
       def store( entry )
         memory = Glyphs[:memory].new(entry)
-        Glyphs[:archive].store(self.to_s, memory)
+        Glyphs[:archive].store(to_s, memory)
       end
     end
   end

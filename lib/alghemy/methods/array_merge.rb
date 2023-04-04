@@ -14,8 +14,8 @@ module Alghemy
         drawn = arr.collect.with_index do |dim, i|
           dim.nil? ? subarr[i] : dim
         end
-        diff = (subarr.size - drawn.size) > 0
-        drawn << subarr[drawn.size..-1] if diff
+        diff = (subarr.size - drawn.size).positive?
+        drawn << subarr[drawn.size..] if diff
         drawn.flatten
       end
     end
