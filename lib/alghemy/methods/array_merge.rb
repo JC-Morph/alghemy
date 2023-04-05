@@ -2,21 +2,19 @@ module Alghemy
   module Methods
     # Public: Method for merging two Arrays.
     module ArrayMerge
-      # Public: Merge two Arrays. Uses nil as a reference for substitution.
+      # Public: Merge two Arrays.
       #
-      # arr    - A value or Array with at least one element. Nil represents an
-      #          element to be substituted.
-      # subarr - Substitute Array. Should contain desired number of elements.
+      # base_array - The Array to be iterated over.
+      # sub_array  - The Array to be merged.
+      # ignore     - Optional object that will be ignored if found in sub_array.
       #
       # Returns Array.
-      def array_merge( arr, subarr )
-        arr, subarr = *[arr, subarr].collect {|a| [a].flatten(1).compact }
-        drawn = arr.collect.with_index do |dim, i|
-          dim.nil? ? subarr[i] : dim
+      def array_merge( base_array, sub_array, ignore = 'Ignored Object' )
+        base_array.map.with_index do |element, index|
+          next element if index >= sub_array.size
+          sub_element = sub_array[index]
+          sub_element == ignore ? element : sub_element
         end
-        diff = (subarr.size - drawn.size).positive?
-        drawn << subarr[drawn.size..] if diff
-        drawn.flatten
       end
     end
   end
