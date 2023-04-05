@@ -9,7 +9,7 @@ module Alghemy
 
       # Public: Open Matter with default application.
       def behold
-        spell = Gem.win_platform? ? fenestrate : "xdg-open #{to_s}"
+        spell = Gem.win_platform? ? fenestrate : "xdg-open #{self}"
         Comrades[:invoker].cast "#{spell} > /dev/null 2>&1"
       end
 
@@ -41,17 +41,17 @@ module Alghemy
 
       # Public: Returns Directory.
       def dir
-        File.dirname self.to_s
+        File.dirname to_s
       end
 
       # Public: Basename.
       def base
-        File.basename(self.to_s, '.*')
+        File.basename(to_s, '.*')
       end
 
       # Public: Extension.
       def ext
-        File.extname self.to_s
+        File.extname to_s
       end
 
       # Public: Attempt to return unique part of Trail.
@@ -63,7 +63,7 @@ module Alghemy
       def dir_label
         root = alget(:ROOT)
         sep  = alget(:SEP)
-        child_dir  = dir[/(?<=#{root + sep})[^#{sep}]+/]
+        child_dir = dir[/(?<=#{root + sep})[^#{sep}]+/]
         child_dir || dir[/[^#{sep}.]+$/]
       end
 
