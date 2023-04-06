@@ -39,7 +39,7 @@ module Alghemy
       # Public: Method for adding input and output to process.
       def input
         io = __callee__
-        add ["-#{io[/^\w/]}", "%<#{io}>s"]
+        add(io => ["-#{io[/^\w/]}", "%<#{io}>s"])
       end
       alias output input
 
