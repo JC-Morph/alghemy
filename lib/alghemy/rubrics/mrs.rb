@@ -6,13 +6,13 @@ module Alghemy
     # Requires wine to run on linux.
     class Mrs < Ancestors[:rubric]
       def self.moniker
-        'mrswatson.exe'
+        %w[mrswatson.exe --log-level warn]
       end
 
       def initialize( moniker = self.class.moniker, stuff = {} )
         @stuff = stuff
-        moniker = 'mrswatson64.exe' if stuff[:plugin].sijil[/64/]
-        @scroll = Glyphs[:scroll].new(moniker)
+        moniker[0] = 'mrswatson64.exe' if stuff[:plugin].sijil[/64/]
+        @scroll = Glyphs[:scroll].new(moniker.join(' '))
         build_options(option_templates, stuff)
       end
 
