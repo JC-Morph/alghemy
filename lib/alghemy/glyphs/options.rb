@@ -15,17 +15,16 @@ module Alghemy
         def build( templates, stuff = {} )
           options = new templates
           options.each do |_name, option|
-            merge_values stuff, option
+            update_value stuff, option
           end
           options
         end
 
-        def merge_values( stuff, option )
-          updated = %i[name flag shortcut].map do |id|
+        def update_value( stuff, option )
+          values = %i[name flag shortcut].map do |id|
             stuff[option.send(id)]
           end.compact
-          updated = array_merge(*updated) if updated.size > 1
-          option.value = array_merge(updated, option.default)
+          option.value = values.first unless values.empty?
         end
       end
 
