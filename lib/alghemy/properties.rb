@@ -7,13 +7,10 @@ module Alghemy
 
     equip_constants :pix_fmt
 
-    invoke = lambda do |ent = nil|
-      Ent.invoke ent
-    end
     trace = lambda do |space, subspace = nil|
       Space.trace space, subspace
     end
 
-    equip ent: invoke, space: trace
+    equip space: trace
   end
 end

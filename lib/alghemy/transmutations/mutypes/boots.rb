@@ -20,12 +20,5 @@ module Alghemy
     def aural?
       !(lmnt.class.name =~ /Sounds*$/).nil?
     end
-
-    private
-
-    def sub_init
-      stuff[:ents] = Properties[:ent].call stuff[:ents]
-      tran_init
-    end
   end
 end

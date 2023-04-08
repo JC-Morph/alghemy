@@ -1,14 +1,13 @@
 require 'alghemy/ancestors'
 require 'alghemy/comrades'
 require 'alghemy/methods'
-require 'alghemy/properties'
 
 module Alghemy
   module Rubrics
     # Public: Define an executable process for sox.
     class Sox < Ancestors[:rubric]
       include Methods[:alget]
-      include Methods[:array_merge]
+      include Methods[:bit_check]
 
       def self.moniker
         # TODO: make dither optional
@@ -41,8 +40,9 @@ module Alghemy
       def depth( val = nil )
         depth = options[:depth]
         if opt_hist.last == :enc
-          ent = [options[:e].hist.last, (val || depth.increment_value)]
-          val = Properties[:ent].call(ent).bitcheck.separate[:bit]
+          enc   = options[:e].hist.last
+          val ||= depth.increment_value
+          val   = bit_check(enc, val)
         end
         opt_hist << :depth
         add depth.print(val)
@@ -51,15 +51,6 @@ module Alghemy
       # Shared transmutations
       def concat
         input.output
-      end
-
-      private
-
-      def sub_init
-        return unless stuff[:ents]
-        Properties[:ent].call(stuff[:ents]).separate.each do |ananym, val|
-          stuff[ananym] = array_merge(stuff[ananym], val)
-        end
       end
     end
   end

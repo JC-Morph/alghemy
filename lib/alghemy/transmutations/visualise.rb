@@ -1,4 +1,5 @@
 require 'alghemy/ancestors'
+require 'alghemy/methods'
 require_relative 'mutypes/boots'
 
 module Alghemy
@@ -6,10 +7,10 @@ module Alghemy
     # Public: Transmute Sound into Matter of a different affinity.
     class Visualise < Ancestors[:transmutation]
       include Boots
+      include Methods[:alget]
 
       def tran_init
-        ents = aural? ? lmnt_ents : stuff[:ents].flatten
-        stuff[:ents].balance ents
+        def_ents if aural?
         stuff[:ext]  ||= ext_init
         stuff[:rate] ||= lmnt.rate if aural?
       end
@@ -22,9 +23,9 @@ module Alghemy
 
       private
 
-      # Internal: Default encoding and bitdepth.
-      def lmnt_ents
-        [lmnt.arcana, lmnt.depth]
+      def def_ents
+        stuff[:enc] ||= [lmnt.arcana, alget(:encoding).first]
+        stuff[:bit] ||= [lmnt.depth,  alget(:bitdepth).first]
       end
 
       # Internal: Default extension.

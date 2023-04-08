@@ -8,6 +8,7 @@ module Alghemy
 
     vials = %i[alget
                array_merge
+               bit_check
                deep_clone
                hshprint
                store
