@@ -23,9 +23,16 @@ module Alghemy
 
       # Public: Reorder mem for passing to a Transmutation as a reversion.
       def invert
-        invertible = aspects.select  {|asp| %i[bit enc ents].any? asp }
-        inverted   = invertible.each {|_, val| val.reverse! }
+        invertible = aspects.select  {|asp| %i[enc bit depth].any? asp }
+        inverted = invertible.transform_values {|val| invert_array val }
         aspects.merge inverted
+      end
+
+      private
+
+      def invert_array( arr )
+        return arr unless arr.is_a? Array
+        arr.reverse.map {|val| val.is_a?(Array) ? invert_array(val) : val }
       end
     end
   end
