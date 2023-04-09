@@ -12,9 +12,9 @@ module Alghemy
 
       def depth_limits
         {
-          "^a|u-" => 8..8,
-          "un|s"  => 8..64,
-          "f"     => 32..64
+          "^a|u" => 8..8,
+          "^s"   => 16..32,
+          "f"    => 32..64
         }
       end
     end
