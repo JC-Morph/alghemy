@@ -1,61 +1,50 @@
 require 'forwardable'
+require 'alghemy/methods'
 
 module Alghemy
   module Properties
-    # Public: Represents width and height for Elements with a spatial component.
+    # Public: Represents width and height for Elements with spatial dimensions,
+    # i.e Images and Videos.
     class Space
       extend Forwardable
-      attr_reader :str, :width, :height
+      extend Methods[:array_merge]
+      attr_reader :to_s, :width, :height
       alias x width
       alias y height
-      delegate reduce: :dims
+      delegate split: :to_s
+      def_delegators :dims, :join, :map, :reduce
 
-      # Public: Constructor. Parses space according to Class. Optionally uses
-      # subspace to substitute missing dims.
+      # Public: Constructor. Parses space according to it's class. Uses default
+      # argument to substitute values for missing dimensions.
       #
-      # space    - A String, Array, or Integer, used as the basis for the Space.
-      #            String  - Strings are unparsed. Expected format:
-      #                      'heightxwidth'.
-      #            Array   - Arrays can be one or two elements in size, and may
-      #                      contain 0 at indexes to substitute with subspace.
-      #            Integer - The width of the Space. Height will be provided by
-      #                      subspace.
-      # subspace - Array containing substitute values for the Space.
-      def self.trace( space, subspace = [500, 500] )
-        space = case space
-                when String || self.class
-                  space
-                when Array
-                  draw(space, subspace).join('x')
-                when Integer
-                  "#{space}x#{subspace[1]}"
-                end
-        new space || subspace
-      end
-
-      # Public: Build a 2-dimensional Array from two Arrays. Uses 0 as a
-      # reference for substitution.
-      #
-      # arr    - Array expected to have at least one element. May contain 0 at
-      #          indexes to be substituted.
-      # subarr - Substitute Array. Expected to contain both width and height.
-      #
-      # Returns Array.
-      def self.draw( arr, subarr = nil )
-        return arr if subarr.nil?
-        subarr.map.with_index do |dim, i|
-          curr = arr[i]
-          curr&.positive? ? curr : dim
-        end
+      # space   - A String, Array, or Integer, used as the basis for the Space.
+      #           String  - Strings are unparsed. Expected format:
+      #                     "#{width}x#{height}".
+      #           Array   - Arrays can be one or two elements in size, and may
+      #                     contain 0 at indexes to be substituted.
+      #           Integer - The width of the Space. Height will be provided by
+      #                     default.
+      # default - Space or Array containing substitute values for the Space.
+      def self.trace( space, default = [500, 500] )
+        formatted = case space
+                    when String, self
+                      space
+                    when Array
+                      arrays = [default.map(&:to_i), space.map(&:to_i)]
+                      array_merge(*arrays, ignore: 0)[0..1].join('x')
+                    when Integer
+                      "#{space}x#{default[1]}"
+                    end
+        new formatted || default.join('x')
       end
 
       def pretty_print( pp )
-        pp.pp str
+        pp.pp to_s
       end
 
       def initialize( space )
-        @str = space
-        @width, @height = space.split('x').map(&:to_i)
+        @to_s = space.to_s
+        @width, @height = split('x').map(&:to_i)
       end
 
       # Public: Returns Array of dimensions.
@@ -72,11 +61,14 @@ module Alghemy
         height if idx == 1
       end
 
-      # Public: Compares total number of pixels.
+      # Public: Compares product of dimensions.
+      #
+      # Returns Boolean.
       def >( other )
         raise ArgumentError unless other.respond_to? :reduce
-        reduce(:*) > other.reduce(:*)
+        reduce(:*).send(__callee__, other.reduce(:*))
       end
+      alias < >
     end
   end
 end
