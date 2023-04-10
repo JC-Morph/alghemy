@@ -9,7 +9,7 @@ module Alghemy
       # ignore     - Optional object that will be ignored if found in sub_array.
       #
       # Returns Array.
-      def array_merge( base_array, sub_array, ignore = 'Ignored Object' )
+      def array_merge( base_array, sub_array, ignore: 'Ignored Object' )
         base_array.map.with_index do |element, index|
           next element if index >= sub_array.size
           sub_element = sub_array[index]
