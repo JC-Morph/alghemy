@@ -20,5 +20,11 @@ module Alghemy
     def aural?
       !(lmnt.class.name =~ /Sounds*$/).nil?
     end
+
+    private
+
+    def defaults
+      {ext: '.wav'}
+    end
   end
 end

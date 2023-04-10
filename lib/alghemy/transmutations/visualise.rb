@@ -10,9 +10,9 @@ module Alghemy
       include Methods[:alget]
 
       def tran_init
-        def_ents if aural?
-        stuff[:ext]  ||= ext_init
-        stuff[:rate] ||= lmnt.rate if aural?
+        return unless aural?
+        def_ents
+        stuff[:rate] ||= lmnt.rate
       end
 
       def write_rubric
@@ -26,6 +26,10 @@ module Alghemy
       def def_ents
         stuff[:enc] ||= [lmnt.arcana, alget(:encoding).first]
         stuff[:bit] ||= [lmnt.depth,  alget(:bitdepth).first]
+      end
+
+      def defaults
+        {ext: ext_init}
       end
 
       # Internal: Default extension.
