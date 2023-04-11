@@ -7,7 +7,6 @@ module Alghemy
     # Public: Array of commandline options for a utility.
     class Options
       extend Forwardable
-      extend Methods[:array_merge]
       def_delegators :@list, :each, :values
       attr_reader :list
 
