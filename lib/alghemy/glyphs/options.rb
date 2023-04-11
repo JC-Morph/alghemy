@@ -33,13 +33,9 @@ module Alghemy
         end
       end
 
-      def find( which )
-        return list[which] if list.has_key?(which)
-        found ||= list.values.each do |option|
-          return option if option.value?(which)
-        end
+      def []( pseudonym )
+        list.values.find {|option| option.known_as? pseudonym }
       end
-      alias_method :[], :find
     end
   end
 end

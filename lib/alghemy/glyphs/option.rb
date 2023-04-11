@@ -2,8 +2,17 @@ module Alghemy
   module Glyphs
     # Public: Represents an option and appropriate value for an executable.
     class Option
-      attr_reader :name, :hist, :flag, :prefix, :default, :shortcut, :delim
       attr_accessor :value
+      attr_reader(*%i[
+                    name
+                    hist
+                    flag
+                    default
+                    bi
+                    prefix
+                    delim
+                    shortcut
+                  ])
 
       # Public: Initialise an Option.
       #
@@ -26,7 +35,7 @@ module Alghemy
       # Public: Discern and return next iteration of @value.
       def print( val = nil )
         val ||= increment_value
-        return construct unless val && val != true
+        return construct unless val&.!= true
         hist << val
         construct val
       end
@@ -40,8 +49,7 @@ module Alghemy
 
       # Public: Construct a commandline representation of the option.
       def construct( val = nil )
-        pre = construct_prefix
-        pre = "#{pre}#{flag}"
+        pre = "#{construct_prefix}#{flag}"
         pre = nil if pre.empty?
         opt = [pre, val].compact
         delim ? opt.join(delim) : opt
@@ -54,9 +62,9 @@ module Alghemy
         defined?(prefix.last) ? '+' : '-'
       end
 
-      # Public: Bool if any of the named instance variables match the argument.
-      def value?( which )
-        %i[name flag shortcut].any? {|id| which == send(id) }
+      # Public: Boolean if pseudonym matches an identifying variable.
+      def known_as?( pseudonym )
+        %i[name flag shortcut].any? {|id| pseudonym == send(id) }
       end
     end
   end
