@@ -55,6 +55,11 @@ module Alghemy
         val.rotate(inner_index).first
       end
 
+      def increment_outer_index
+        @outer_index += 1
+        @inner_index = -1
+      end
+
       # Public: Boolean if pseudonym matches an identifying variable.
       def known_as?( pseudonym )
         %i[name flag shortcut].any? {|id| pseudonym == send(id) }

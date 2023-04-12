@@ -33,6 +33,10 @@ module Alghemy
         end
       end
 
+      def increment_options
+        each {|_, option| option.increment_outer_index }
+      end
+
       def []( pseudonym )
         list.values.find {|option| option.known_as? pseudonym }
       end
