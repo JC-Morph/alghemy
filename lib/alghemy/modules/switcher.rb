@@ -21,7 +21,19 @@ module Alghemy
         def_options
       end
 
-      # Public: Define options and their shortcuts as methods on class.
+      # Public: Assemble pertinent memory from used options.
+      def option_memory
+        opt_hist.uniq.each.with_object({}) do |name, hsh|
+          values = options[name].hist
+          next if values.empty?
+          values = values.first if values.size == 1
+          hsh[name] = values unless defunct(values, name)
+        end
+      end
+
+      private
+
+      # Private: Define options and their shortcuts as methods on class.
       def def_options
         switcher = singleton_class
         options.values.each do |opt|
@@ -39,16 +51,6 @@ module Alghemy
       def def_aliases( switcher, opt )
         aliases = [opt.flag, opt.shortcut].compact
         aliases.each {|als| switcher.send(:alias_method, als, opt.name) }
-      end
-
-      # Public: Assemble pertinent memory from used options.
-      def option_memory
-        opt_hist.uniq.each.with_object({}) do |name, hsh|
-          values = options[name].hist
-          next if values.empty?
-          values = values.first if values.size == 1
-          hsh[name] = values unless defunct(values, name)
-        end
       end
 
       # Public: Boolean that confirms whether an Array of values matches the
