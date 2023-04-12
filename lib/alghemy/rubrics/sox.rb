@@ -21,8 +21,9 @@ module Alghemy
           # with default
           rate: {flag: :r, default: 48000},
           type: {flag: :t, default: 'raw'},
-          enc:   {flag: :e, default: alget(:encoding), shortcut: :enc},
-          depth: {flag: :b, default: alget(:bitdepth), shortcut: :bit}
+          # bidirectional
+          enc:   {bi: true, flag: :e, default: alget(:encoding)},
+          depth: {bi: true, flag: :b, default: alget(:bitdepth), shortcut: :bit}
         }
       end
 

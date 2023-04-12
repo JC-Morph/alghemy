@@ -1,11 +1,16 @@
+require 'alghemy/methods'
+
 module Alghemy
   module Glyphs
     # Public: Represents an option and appropriate value for an executable.
     class Option
+      include Methods[:deep_clone]
       attr_accessor :value
       attr_reader(*%i[
                     name
                     hist
+                    inner_index
+                    outer_index
                     flag
                     default
                     bi
@@ -28,8 +33,10 @@ module Alghemy
         end
         @name = name
         @hist = []
+        @inner_index = -1
+        @outer_index = 0
         @flag  ||= name
-        @value ||= default
+        @value ||= deep_clone default
       end
 
       # Public: Discern and return next iteration of @value.
@@ -42,12 +49,26 @@ module Alghemy
 
       # Public: Handle Array rotation for @value.
       def increment_value
-        return value unless value.is_a?(Array)
-        return value.first unless !hist.empty?
-        value.rotate!.first
+        val = current_value
+        return val unless val.is_a?(Array)
+        @inner_index += 1
+        val.rotate(inner_index).first
       end
 
-      # Public: Construct a commandline representation of the option.
+      # Public: Boolean if pseudonym matches an identifying variable.
+      def known_as?( pseudonym )
+        %i[name flag shortcut].any? {|id| pseudonym == send(id) }
+      end
+
+      private
+
+      def current_value
+        return value unless value.is_a?(Array)
+        return value if bi && !value.first.is_a?(Array)
+        value.rotate(outer_index).first
+      end
+
+      # Private: Construct a commandline representation of the option.
       def construct( val = nil )
         pre = "#{construct_prefix}#{flag}"
         pre = nil if pre.empty?
@@ -55,16 +76,11 @@ module Alghemy
         delim ? opt.join(delim) : opt
       end
 
-      # Public: Construct the correct flag prefix for the commandline.
+      # Private: Construct the correct flag prefix for the commandline.
       def construct_prefix
         return '-' unless prefix
         return prefix unless prefix.is_a?(Array)
         defined?(prefix.last) ? '+' : '-'
-      end
-
-      # Public: Boolean if pseudonym matches an identifying variable.
-      def known_as?( pseudonym )
-        %i[name flag shortcut].any? {|id| pseudonym == send(id) }
       end
     end
   end
