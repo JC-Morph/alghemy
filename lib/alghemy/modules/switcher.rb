@@ -27,7 +27,7 @@ module Alghemy
           values = options[name].hist
           next if values.empty?
           values = values.first if values.size == 1
-          hsh[name] = values unless defunct(values, name)
+          hsh[name] = values unless defunct?(values, name)
         end
       end
 
@@ -57,7 +57,7 @@ module Alghemy
       # default values for a given option.
       #
       # Returns boolean.
-      def defunct( values, name )
+      def defunct?( values, name )
         values == options[name].default
       end
     end
