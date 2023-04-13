@@ -10,6 +10,7 @@ require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/comrades'
 require 'alghemy/glyphs'
+require 'alghemy/mutagens'
 require 'alghemy/properties'
 
 include Alghemy
@@ -18,4 +19,5 @@ include Glyphs
 include Properties
 
 Hunter = Comrades[:hunter]
+Ladspa = Mutagens[:ladspa]
 Matter = Ancestors[:matter]
