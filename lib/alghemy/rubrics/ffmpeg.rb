@@ -61,7 +61,7 @@ module Alghemy
 
       private
 
-      # Private: Generates switch templates for options that specify a stream.
+      # Internal: Generates switch templates for options that specify a stream.
       # (v - video, a - audio)
       #
       # option   - String of option in command-line format.

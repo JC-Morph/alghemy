@@ -33,7 +33,7 @@ module Alghemy
 
       private
 
-      # Private: Define options and their shortcuts as methods on class.
+      # Internal: Define options and their shortcuts as methods on class.
       def def_options
         switcher = singleton_class
         options.values.each do |opt|
@@ -53,10 +53,8 @@ module Alghemy
         aliases.each {|als| switcher.send(:alias_method, als, opt.name) }
       end
 
-      # Public: Boolean that confirms whether an Array of values matches the
-      # default values for a given option.
-      #
-      # Returns boolean.
+      # Internal: Boolean whether an Array of values matches the default values
+      # for a given option.
       def defunct?( values, name )
         values == options[name].default
       end

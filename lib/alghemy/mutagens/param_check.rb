@@ -43,7 +43,7 @@ module ParamCheck
 
   private
 
-  # Private: Formats parameter or preset name to get rid of characters that are
+  # Internal: Formats parameter or preset name to get rid of characters that are
   # problematic to use in filenames.
   def format( name )
     name.gsub(/[<>.?]/, '').

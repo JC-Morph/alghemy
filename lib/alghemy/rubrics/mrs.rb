@@ -45,7 +45,7 @@ module Alghemy
 
       private
 
-      # Private: Return automation data at the current count.
+      # Internal: Return automation data at the current count.
       def data
         stuff[:data][@count]
       end

@@ -73,7 +73,7 @@ module Alghemy
         value.rotate(outer_index).first
       end
 
-      # Private: Construct a commandline representation of the option.
+      # Internal: Construct a commandline representation of the option.
       def construct( val = nil )
         pre = "#{construct_prefix}#{flag}"
         pre = nil if pre.empty?
@@ -81,7 +81,7 @@ module Alghemy
         delim ? opt.join(delim) : opt
       end
 
-      # Private: Construct the correct flag prefix for the commandline.
+      # Internal: Construct the correct flag prefix for the commandline.
       def construct_prefix
         return '-' unless prefix
         return prefix unless prefix.is_a?(Array)

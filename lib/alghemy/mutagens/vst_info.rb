@@ -30,7 +30,7 @@ module VstInfo
     info[line.succ..(line + size.to_i)]
   end
 
-  # Private: Regular expressions used for parsing and formatting Vst data.
+  # Internal: Regular expressions used for parsing and formatting Vst data.
   Regx = Struct.new(:size, :name, :dflt)
   def regx
     Regx.new(
