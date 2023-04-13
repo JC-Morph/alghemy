@@ -1,9 +1,13 @@
+require 'forwardable'
 require 'alghemy/affinities'
 
 module Alghemy
   module Modules
     # Public: Writes Rubrics for transmutations.
     module Osman
+      extend Forwardable
+      delegate raw?: :lmnt
+
       # Public: Method that builds command line to be executed. Duckable.
       def write_rubric
         write.send stuff[:name]
@@ -29,11 +33,6 @@ module Alghemy
       # Public: Hash of options to initiaise Rubric with. Duckable.
       def stuff
         {}
-      end
-
-      # Public: Boolean whether input is considered raw (uncompressed) data.
-      def raw?
-        lmnt.raw?
       end
 
       # Public: Expects an instance of Matter provided by class. Must provide
