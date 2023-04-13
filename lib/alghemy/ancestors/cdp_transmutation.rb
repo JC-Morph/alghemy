@@ -19,6 +19,13 @@ module Alghemy
             .join(' ')
       end
 
+      private
+
+      def tran_init
+        templates = option_templates.merge bare_templates
+        stuff[:option_templates] = templates
+      end
+
       def bare_templates
         bare_options.each_value do |template|
           %i[flag prefix].each do |key|

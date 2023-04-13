@@ -9,11 +9,6 @@ module Alghemy
         [:rmsize, :rgain, :mix, :fback, :absorb, :lpfreq, :trtime]
       end
 
-      def tran_init
-        templates = option_templates.merge bare_templates
-        stuff[:option_templates] = templates
-      end
-
       def write_rubric
         rubric = write(moniker).c.input.output
         rubric.rmsize.rgain.mix.fback.absorb.lpfreq.trtime

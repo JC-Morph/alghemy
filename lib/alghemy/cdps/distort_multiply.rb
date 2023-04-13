@@ -9,10 +9,6 @@ module Alghemy
         [:num]
       end
 
-      def tran_init
-        stuff[:option_templates] = option_templates
-      end
-
       def write_rubric
         rubric = write(moniker).input.output.num
         rubric.smooth if stuff[:smooth] == true

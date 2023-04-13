@@ -9,10 +9,6 @@ module Alghemy
         [:gate, :depth]
       end
 
-      def tran_init
-        stuff[:option_templates] = option_templates
-      end
-
       def write_rubric
         rubric = write(moniker).mode.input.output
         rubric.gate.depth
