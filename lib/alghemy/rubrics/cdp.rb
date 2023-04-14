@@ -12,11 +12,13 @@ module Alghemy
       end
 
       def invoke( io )
-        previous_file = io[:output].to_s
-        if File.exists?(previous_file) && alget(:overwrite)
-          File.delete previous_file
-        end
+        previous = io[:output].to_s
+        overwrite(previous) if alget(:overwrite)
         super
+      end
+
+      def overwrite( previous )
+        File.delete(previous) if File.exists?(previous)
       end
     end
   end

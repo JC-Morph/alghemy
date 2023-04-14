@@ -15,11 +15,15 @@ module Alghemy
       def moniker
         self.class.name.split('::').last
             .split(/(?=[A-Z])/)
-            .map(&:downcase)
             .join(' ')
+            .downcase
       end
 
       private
+
+      def defaults
+        {ext: '.wav'}
+      end
 
       def tran_init
         templates = option_templates.merge bare_templates

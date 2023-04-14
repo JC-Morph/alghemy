@@ -18,7 +18,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: 'wav', label: 'D', num: (2..16).to_a.sample}
+        super.merge {label: 'D', num: (2..16).to_a.sample}
       end
 
       def option_templates
