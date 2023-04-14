@@ -3,7 +3,7 @@ require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
-    # Public: Process Sound with LADSPA effect plugins.
+    # Public: Bend pitch of Sound over time.
     class Bend < Ancestors[:transmutation]
       def self.priorities
         %i[bends framerate oversample ext]

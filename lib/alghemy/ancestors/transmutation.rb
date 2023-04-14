@@ -1,4 +1,3 @@
-require 'alghemy/factories'
 require 'alghemy/modules'
 
 module Alghemy
@@ -38,9 +37,10 @@ module Alghemy
 
       # Public: Initialise a Transmutation.
       #
-      # lmnt - The Matter to build the transform for. Usually this is the input
-      #        file for the transform.
-      # dict - Hash of initialisation options. (default: {})
+      # lmnt       - Matter to be transmuted.
+      # priorities - Array of values for prioritised options, as determined by
+      #              self.class.priorities.
+      # stuff      - Hash of initialisation options.
       def initialize( lmnt, *priorities, **stuff )
         @lmnt = lmnt
         @tome = lmnt.list
