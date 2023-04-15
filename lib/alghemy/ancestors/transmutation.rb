@@ -52,13 +52,6 @@ module Alghemy
         prepext
       end
 
-      # Public: Returns a Tome of all files in Array.
-      #
-      # arr - Array containing Strings of filenames.
-      def list( arr )
-        Factories[:scribe].call arr
-      end
-
       # Public: Array of attribute names used in Transmutation that should be
       # kept in memory so they can be accessed by future Transmutations. This is
       # where we want to put attributes that will be used to revert transforms.
