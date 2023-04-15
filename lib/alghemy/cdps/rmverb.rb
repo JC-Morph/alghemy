@@ -17,7 +17,7 @@ module Alghemy
       private
 
       def defaults
-        super.merge{label: 'V'}
+        super.merge(label: 'V')
       end
 
       def option_templates

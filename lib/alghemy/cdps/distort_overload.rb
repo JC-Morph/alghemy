@@ -19,7 +19,7 @@ module Alghemy
       private
 
       def defaults
-        super.merge{label: 'D'}
+        super.merge(label: 'D')
       end
 
       def option_templates
@@ -28,7 +28,7 @@ module Alghemy
           threshold: {default: 0.2, shortcut: :gate},
           depth:     {default: 1},
           freq:      {default: 555}
-        }.transform_values {|val| val.merge {flag: '', prefix: ''} }
+        }.transform_values {|val| val.merge(flag: '', prefix: '') }
       end
     end
   end
