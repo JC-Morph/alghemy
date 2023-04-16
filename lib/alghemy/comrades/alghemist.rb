@@ -36,6 +36,8 @@ module Alghemy
             output = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
+            rubric.increment_options
+            @rubric = tran.write_rubric(rubric)
           end
         end
 
