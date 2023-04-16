@@ -9,8 +9,7 @@ module Alghemy
       attr_reader(*%i[
                     name
                     hist
-                    inner_index
-                    outer_index
+                    index
                     flag
                     default
                     bi
@@ -33,8 +32,6 @@ module Alghemy
         end
         @name = name
         @hist = []
-        @inner_index = -1
-        @outer_index = 0
         @flag  ||= name
         @value ||= deep_clone default
       end
@@ -49,15 +46,13 @@ module Alghemy
 
       # Public: Handle Array rotation for @value.
       def increment_value
-        val = current_value
-        return val unless val.is_a?(Array)
-        @inner_index += 1
-        val.rotate(inner_index).first
+        return value unless value.is_a?(Array)
+        @index += 1
+        value.rotate(index).first
       end
 
-      def increment_outer_index
-        @outer_index += 1
-        @inner_index = -1
+      def reset_index
+        @index = -1
       end
 
       # Public: Boolean if pseudonym matches an identifying variable.
@@ -66,12 +61,6 @@ module Alghemy
       end
 
       private
-
-      def current_value
-        return value unless value.is_a?(Array)
-        return value if bi && !value.first.is_a?(Array)
-        value.rotate(outer_index).first
-      end
 
       # Internal: Construct a commandline representation of the option.
       def construct( val = nil )

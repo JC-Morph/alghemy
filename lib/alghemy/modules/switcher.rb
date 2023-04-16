@@ -1,4 +1,3 @@
-require 'forwardable'
 require 'alghemy/glyphs'
 
 module Alghemy
@@ -6,9 +5,7 @@ module Alghemy
     # Public: Meta module. Defines options for commandline utilities as named
     # methods on Arrays.
     module Switcher
-      extend Forwardable
       attr_reader :options, :opt_hist
-      delegate increment_options: :options
 
       # Public: Templates for options.
       def self.option_templates
@@ -29,6 +26,10 @@ module Alghemy
           values = values.first if values.size == 1
           hsh[name] = values unless defunct?(values, name)
         end
+      end
+
+      def increment_options
+        options.increment_options stuff
       end
 
       private
