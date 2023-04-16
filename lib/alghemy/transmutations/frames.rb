@@ -23,8 +23,8 @@ module Alghemy
         @mult = true unless span < 2
       end
 
-      def write_rubric
-        write.input.format('image2').output
+      def write_rubric( rubric = nil )
+        write(rubric).input.format('image2').output
       end
 
       def anchors

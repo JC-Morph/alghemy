@@ -18,8 +18,8 @@ module Alghemy
         @mult = false unless lmnt.dims
       end
 
-      def write_rubric
-        rubric = write.input
+      def write_rubric( rubric = nil )
+        rubric = write(rubric).input
         add_priorities(rubric).output
       end
 

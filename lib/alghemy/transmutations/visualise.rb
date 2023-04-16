@@ -15,8 +15,8 @@ module Alghemy
         stuff[:rate] ||= lmnt.rate
       end
 
-      def write_rubric
-        rubric = write
+      def write_rubric( rubric = nil )
+        rubric = write(rubric)
         rubric.t(:raw).r if raw?
         rubric.ents.input.t.ents.output
       end

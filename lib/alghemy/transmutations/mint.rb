@@ -19,8 +19,8 @@ module Alghemy
         stuff[:fps] ||= lmnt.rate || 30
       end
 
-      def write_rubric
-        write.input.add(mint).output
+      def write_rubric( rubric = nil )
+        write(rubric).input.add(mint).output
       end
 
       def mint

@@ -9,8 +9,9 @@ module Alghemy
         [:num]
       end
 
-      def write_rubric
-        rubric = write(moniker).input.output.num
+      def write_rubric( rubric = nil )
+        rubric = write(rubric, moniker)
+        rubric.input.output.num
         rubric.smooth if stuff[:smooth] == true
         rubric
       end

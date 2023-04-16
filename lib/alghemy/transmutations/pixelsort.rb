@@ -17,8 +17,8 @@ module Alghemy
         Rubrics[:pxlsrt]
       end
 
-      def write_rubric
-        rubric = write.input.output
+      def write_rubric( rubric = nil )
+        rubric = write(rubric).input.output
         rubric.options.each do |name, opt|
           rubric.send(name) unless opt.value.empty?
         end

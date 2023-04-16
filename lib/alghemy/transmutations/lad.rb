@@ -26,9 +26,9 @@ module Alghemy
         stuff[:plug] = plugin.assert stuff[:plug]
       end
 
-      def write_rubric
+      def write_rubric( rubric = nil )
         plug = prepare stuff[:plug]
-        rubric = write.input
+        rubric = write(rubric).input
         rubric.type(:raw) unless rubric.recognise?(stuff[:ext])
         rubric.output.add plug
       end

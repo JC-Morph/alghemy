@@ -11,8 +11,8 @@ module Alghemy
         with_plurals %i[Element Image Video]
       end
 
-      def write_rubric
-        rubric = write.type.rate.ents.input
+      def write_rubric( rubric = nil )
+        rubric = write(rubric).type.rate.ents.input
         rubric.type(:raw) unless rubric.recognise?(stuff[:ext])
         rubric.ents.output
       end

@@ -1,5 +1,6 @@
 require 'forwardable'
 require 'alghemy/affinities'
+require 'alghemy/comrades'
 
 module Alghemy
   module Modules
@@ -7,17 +8,19 @@ module Alghemy
     module Osman
       extend Forwardable
       delegate raw?: :lmnt
+      delegate decipher_options: Comrades[:cryptographer]
 
       # Public: Method that builds command line to be executed. Duckable.
-      def write_rubric
-        write.send stuff[:name]
+      def write_rubric( rubric = nil )
+        write(rubric).send stuff[:name]
       end
 
       # Public: Begin writing a Rubric in the appropriate manner.
-      def write( moniker = nil )
-        rubric = self.rubric
-        stuff  = self.stuff.merge(is_raw: raw?)
-        moniker ? rubric.new(moniker, stuff) : rubric.write(stuff)
+      def write( rubric = nil, moniker = nil )
+        return rubric.cleanse if rubric
+        rubric  = self.rubric
+        options = consolidate_options
+        moniker ? rubric.new(moniker, options) : rubric.write(options)
       end
 
       # Public: Returns appropritate Rubric class for current transmutation.
@@ -37,8 +40,7 @@ module Alghemy
 
       # Public: Expects an instance of Matter provided by class. Must provide
       # #raw? method, to discern whether the input will be raw data.
-      def lmnt
-        raise NotImplementedError
+      def lmnt; end
 
       def amend_tome( iterations )
         count = lmnt.count
@@ -46,6 +48,13 @@ module Alghemy
         @tome = @tome * (iterations / count)
         @mult = true
       end
+
+      private
+
+      def consolidate_options
+        deciphered = decipher_options stuff
+        amend_tome(deciphered.values.map(&:size).max || 1)
+        stuff.merge(deciphered).merge(is_raw: raw?)
       end
     end
   end

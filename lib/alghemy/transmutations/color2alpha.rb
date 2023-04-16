@@ -13,8 +13,8 @@ module Alghemy
         Rubrics[:magick]
       end
 
-      def write_rubric
-        write.input.fuzz.add("-transparent #{stuff[:color]}").output
+      def write_rubric( rubric = nil )
+        write(rubric).input.fuzz.add("-transparent #{stuff[:color]}").output
       end
 
       private

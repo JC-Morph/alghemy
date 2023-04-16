@@ -9,9 +9,9 @@ module Alghemy
         [:gate, :depth]
       end
 
-      def write_rubric
-        rubric = write(moniker).mode.input.output
-        rubric.gate.depth
+      def write_rubric( rubric = nil )
+        rubric = write(rubric, moniker)
+        rubric.mode.input.output.gate.depth
         rubric.freq unless stuff[:mode] == 1
         rubric
       end

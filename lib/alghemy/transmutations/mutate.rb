@@ -26,9 +26,9 @@ module Alghemy
         stuff[:plugin] = vst.assert stuff[:plugin]
       end
 
-      def write_rubric
+      def write_rubric( rubric = nil )
         vst = stuff[:plugin].sijil
-        rubric = write.input.plugin(vst)
+        rubric = write(rubric).input.plugin(vst)
         rubric.automate if stuff[:data]
         rubric.output
       end

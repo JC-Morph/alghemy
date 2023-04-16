@@ -27,8 +27,8 @@ module Alghemy
         stuff[:pf] ||= Properties[:pix_fmt].random(direction)
       end
 
-      def write_rubric
-        rubric = write.input
+      def write_rubric( rubric = nil )
+        rubric = write(rubric).input
         rubric.format.pf unless raw?
         rubric.output
       end

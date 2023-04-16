@@ -17,8 +17,8 @@ module Alghemy
         Rubrics[:sox]
       end
 
-      def write_rubric
-        write.input.output.add bend
+      def write_rubric( rubric = nil )
+        write(rubric).input.output.add bend
       end
 
       def bend

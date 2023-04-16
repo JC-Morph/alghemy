@@ -9,8 +9,8 @@ module Alghemy
         Rubrics[:ffedit]
       end
 
-      def write_rubric
-        write.input.func(:mv).script(:mv_average).output
+      def write_rubric( rubric = nil )
+        write(rubric).input.func(:mv).script(:mv_average).output
       end
 
       private

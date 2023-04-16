@@ -9,8 +9,9 @@ module Alghemy
         [:rmsize, :rgain, :mix, :fback, :absorb, :lpfreq, :trtime]
       end
 
-      def write_rubric
-        rubric = write(moniker).c.input.output
+      def write_rubric( rubric = nil )
+        rubric = write(rubric, moniker)
+        rubric.channels.input.output
         rubric.rmsize.rgain.mix.fback.absorb.lpfreq.trtime
       end
 
