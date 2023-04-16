@@ -55,6 +55,11 @@ module Alghemy
         self
       end
 
+      def cleanse
+        scroll.palimpsest
+        self
+      end
+
       # Public: Executes process with input and output provided. Creates a new
       # file.
       #

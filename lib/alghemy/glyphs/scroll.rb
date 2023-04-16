@@ -22,6 +22,11 @@ module Alghemy
         @fancy  = [paint(:moniker, moniker)]
       end
 
+      def palimpsest
+        @scroll = [scroll[0]]
+        @fancy  = [fancy[0]]
+      end
+
       def read
         text = alget(:rubric_colour) ? fancy : scroll
         text * ' '
