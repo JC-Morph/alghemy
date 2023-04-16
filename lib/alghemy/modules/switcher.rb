@@ -14,7 +14,7 @@ module Alghemy
 
       def build_options( option_templates, stuff )
         @opt_hist = []
-        @options  = Glyphs[:options].call option_templates, stuff
+        @options  = Glyphs[:options].new option_templates, stuff
         def_options
       end
 

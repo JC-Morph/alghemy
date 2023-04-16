@@ -10,17 +10,12 @@ module Alghemy
       def_delegators :@list, :each, :values
       attr_reader :index, :list
 
-      class << self
-        def build( templates, stuff = {} )
-          new(templates).update!(stuff)
-        end
-      end
-
-      def initialize( templates )
+      def initialize( templates, stuff = {} )
         @index = 0
         @list  = templates.each.with_object({}) do |(name, args), list|
           list[name] = Glyphs[:option].new(name, **args)
         end
+        update! stuff
       end
 
       def increment_options( stuff )
