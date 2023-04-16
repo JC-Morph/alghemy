@@ -39,6 +39,13 @@ module Alghemy
       # #raw? method, to discern whether the input will be raw data.
       def lmnt
         raise NotImplementedError
+
+      def amend_tome( iterations )
+        count = lmnt.count
+        return unless count < iterations
+        @tome = @tome * (iterations / count)
+        @mult = true
+      end
       end
     end
   end
