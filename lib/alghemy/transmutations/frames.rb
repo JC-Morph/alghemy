@@ -15,12 +15,11 @@ module Alghemy
       end
 
       def tran_init
-        span = lmnt.span
-        pad  = span.to_s.size
-        pad  = 2 if pad == 1
+        frames = lmnt.span
+        return if frames < 2
+        @mult = true
+        pad   = [frames.to_s.size, 2].max
         stuff[:glob] ||= "%0#{pad}d"
-        stuff[:rate]   = lmnt.rate
-        @mult = true unless span < 2
       end
 
       def write_rubric( rubric = nil )
@@ -34,7 +33,7 @@ module Alghemy
       private
 
       def defaults
-        {ext: '.png', label: 'frames'}
+        {ext: '.png', label: 'frames', rate: lmnt.rate}
       end
     end
   end
