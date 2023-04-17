@@ -7,43 +7,19 @@ module Alghemy
     # i.e Images and Videos.
     class Space
       extend Forwardable
-      extend Methods[:array_merge]
+      include Methods[:array_merge]
       attr_reader :to_s, :width, :height
       alias x width
       alias y height
       delegate split: :to_s
       def_delegators :dims, :join, :map, :reduce
 
-      # Public: Constructor. Parses space according to it's class. Uses default
-      # argument to substitute values for missing dimensions.
-      #
-      # space   - A String, Array, or Integer, used as the basis for the Space.
-      #           String  - Strings are unparsed. Expected format:
-      #                     "#{width}x#{height}".
-      #           Array   - Arrays can be one or two elements in size, and may
-      #                     contain 0 at indexes to be substituted.
-      #           Integer - The width of the Space. Height will be provided by
-      #                     default.
-      # default - Space or Array containing substitute values for the Space.
-      def self.trace( space, default = [500, 500] )
-        formatted = case space
-                    when String, self
-                      space
-                    when Array
-                      arrays = [default.map(&:to_i), space.map(&:to_i)]
-                      array_merge(*arrays, ignore: 0)[0..1].join('x')
-                    when Integer
-                      "#{space}x#{default[1]}"
-                    end
-        new formatted || default.join('x')
-      end
-
       def pretty_print( pp )
         pp.pp to_s
       end
 
-      def initialize( space )
-        @to_s = space.to_s
+      def initialize( space, default = [500, 500] )
+        @to_s = parse_space(space, default)
         @width, @height = split('x').map(&:to_i)
       end
 
@@ -69,6 +45,36 @@ module Alghemy
         reduce(:*).send(__callee__, other.reduce(:*))
       end
       alias < >
+
+      private
+
+      # Public: Parses input according to it's class. Uses default argument to
+      # substitute values for missing dimensions.
+      #
+      # space   - A String, Array, or Integer, used as the basis for the Space.
+      #           String  - Strings are unparsed. Expected format:
+      #                     "#{width}x#{height}".
+      #           Array   - Arrays can be one or two elements in size, and may
+      #                     contain 0 at indexes to be substituted.
+      #           Integer - The width of the Space. Height will be provided by
+      #                     default.
+      # default - Space or Array containing substitute values for the Space.
+      def parse_space( space, default = [500, 500] )
+        case space
+        when self.class
+          space
+        when String
+          space[/x/] ? space : parse_space(space.to_i, default)
+        when Array
+          arrays = [default.map(&:to_i), space.map(&:to_i)]
+          array_merge(*arrays, ignore: 0)[0..1].join('x')
+        when Integer
+          space = 500 if space <= 0
+          "#{space}x#{default[1]}"
+        else
+          default.join('x')
+        end
+      end
     end
   end
 end

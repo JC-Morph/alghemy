@@ -5,12 +5,6 @@ module Alghemy
   module Properties
     extend Bandoleer
 
-    equip_constants :pix_fmt
-
-    trace = lambda do |space, subspace = nil|
-      Space.trace space, subspace
-    end
-
-    equip space: trace
+    equip_constants %i[pix_fmt space]
   end
 end

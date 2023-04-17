@@ -38,7 +38,7 @@ module Alghemy
         end
 
         def fmtdex
-          fmts = [->(asp) { Properties[:space].call asp.split },
+          fmts = [->(asp) { Properties[:space].new asp.split },
                   :to_f,
                   ->(asp) { asp[%r{/}] ? asp : asp.to_f },
                   :to_i]
