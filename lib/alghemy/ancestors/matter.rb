@@ -25,12 +25,8 @@ module Alghemy
       def pretty_print( pp )
         aff = Paint[affinity.to_s, self.class.colour, :bold, :underline]
         puts "#{aff}:"
-        puts Paint[[' ' * affinity.size, print_name].join, '#68d66a']
-        vars = instance_variables.each.with_object({}) do |var, hsh|
-          next if var == :@list
-          hsh[var] = instance_variable_get(var)
-        end
-        pp.pp vars
+        puts Paint["#{' ' * affinity.size}#{printable_name}", '#68d66a']
+        pp.pp printable_vars
       end
 
       # Internal: Initialise Matter. Publicly, Matter should always be evoked.
@@ -73,9 +69,16 @@ module Alghemy
 
       private
 
-      def print_name
-        return first if list.size == 1
-        "#{list.size} files in #{list.first_lmnt.dir}"
+      def printable_name
+        return first if count == 1
+        "#{count} files in #{list.first_lmnt.dir}"
+      end
+
+      def printable_vars
+        instance_variables.each.with_object({}) do |var, hsh|
+          next if var == :@list
+          hsh[var] = instance_variable_get(var)
+        end
       end
 
       # TODO: make analyse method with usable param?
