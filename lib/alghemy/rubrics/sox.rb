@@ -24,7 +24,7 @@ module Alghemy
           # bidirectional
           enc:   {bi: true, flag: :e, default: alget(:encoding)},
           depth: {bi: true, flag: :b, default: alget(:bitdepth), shortcut: :bit}
-        }
+        }.merge(stuff[:option_templates] || {})
       end
 
       def ents
