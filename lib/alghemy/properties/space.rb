@@ -62,7 +62,7 @@ module Alghemy
       def parse_space( space, default = [500, 500] )
         case space
         when self.class
-          space
+          space.to_s
         when String
           space[/x/] ? space : parse_space(space.to_i, default)
         when Array
