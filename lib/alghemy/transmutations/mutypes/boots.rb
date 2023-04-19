@@ -6,7 +6,7 @@ module Alghemy
   module Boots
 
     def self.priorities
-      [:ents, :ext]
+      [:ext]
     end
 
     def self.expects
