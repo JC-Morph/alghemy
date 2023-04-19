@@ -7,9 +7,9 @@ module Alghemy
       include Methods[:deep_clone]
       attr_accessor :value
       attr_reader(*%i[
+                    index
                     name
                     hist
-                    index
                     flag
                     default
                     bi
@@ -27,9 +27,8 @@ module Alghemy
       #                   the option.
       #        default  - Default value for the option.
       def initialize( name, args = {} )
-        args.each do |key, val|
-          instance_variable_set("@#{key}", val)
-        end
+        reset_index
+        set_arg_vars args
         @name = name
         @hist = []
         @flag  ||= name
@@ -51,6 +50,7 @@ module Alghemy
         value.rotate(index).first
       end
 
+      # Public: Set @index to -1.
       def reset_index
         @index = -1
       end
@@ -61,6 +61,13 @@ module Alghemy
       end
 
       private
+
+      # Internal: Set instance variables from key value pairs.
+      def set_arg_vars( args )
+        args.each do |key, val|
+          instance_variable_set("@#{key}", val)
+        end
+      end
 
       # Internal: Construct a commandline representation of the option.
       def construct( val = nil )
