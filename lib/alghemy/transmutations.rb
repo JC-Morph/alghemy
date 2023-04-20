@@ -18,6 +18,7 @@ module Alghemy
                ifot
                lad
                loopfade
+               loop_reverse
                mint
                mutate
                mv_average
