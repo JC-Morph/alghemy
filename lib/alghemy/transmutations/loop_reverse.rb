@@ -17,10 +17,10 @@ module Alghemy
         rate    = stuff[:rate]
         seg_end = stuff[:span] - 1
         rubric.add("-filter_complex '
-                   [0]segment=frames=1|#{seg_end}[s1][s2][s3];
-                   [s1][s3]concat,nullsink;
-                   [s2]reverse[r];
-                   [0][r]concat,setpts=N/#{rate}/TB'")
+                   [O0]segment=frames=1|#{seg_end}[s0][s1][s2];
+                   [s0][s2]concat,nullsink;
+                   [s1]reverse[rv];
+                   [O0][rv]concat,setpts=N/#{rate}/TB'")
         rubric.output
       end
 
