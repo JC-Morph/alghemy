@@ -17,7 +17,7 @@ module Alghemy
                giffer
                ifot
                lad
-               loopfade
+               loop_fade
                loop_reverse
                mint
                mutate
