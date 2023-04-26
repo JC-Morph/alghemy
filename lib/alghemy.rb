@@ -19,5 +19,7 @@ include Glyphs
 include Properties
 
 Hunter = Comrades[:hunter]
-Ladspa = Mutagens[:ladspa]
 Matter = Ancestors[:matter]
+
+Ladspa = Mutagens[:ladspa]
+Vst    = Mutagens[:vst]
