@@ -1,3 +1,4 @@
+require 'alghemy/methods'
 require 'alghemy/modules'
 require_relative 'automation'
 require_relative 'param_check'
@@ -8,34 +9,42 @@ module Alghemy
     # Public: Represents a VST plugin.
     class Vst
       extend Modules[:archives]
+      include Methods[:alget]
       include ParamCheck
       include VstInfo
       attr_reader :sijil, :automatons
       alias_method :to_s, :sijil
 
       class << self
+        def list( refresh: false )
+          return archive_read if archive_read && refresh != true
+          write_list
+          archive_write format_list
+        end
+
+        def list_refresh
+          list refresh: true
+        end
+
+        private
+
         def archive_name
           '.vsts'
         end
 
-        def list( refresh = false )
-          return archive_read if archive_read && refresh != true
-          name = /(?<=\\)[+\w][\w.-]+.$/
-          list = index.map {|line| line[name] if line[/Vst/] }.compact
-          archive_write list
+        def write_list
+          FileUtils.makedirs alget(:ROOT)
+          `mrswatson.exe --list-plugins 2> #{tmp_name}`
         end
 
-        def list_refresh
-          list(true)
+        def tmp_name
+          File.join(alget(:ROOT), '.vst_info')
         end
 
-        def index
-          `mrswatson.exe --list-plugins 2>&1`.split
-        end
-
-        def assert( plugin )
-          return plugin if plugin.is_a? self
-          new plugin
+        def format_list
+          File.read(tmp_name).split.map do |line|
+            line[/(?<=\\)[+\w][\w.-]+.$/] if line[/Vst/]
+          end.compact
         end
       end
 
