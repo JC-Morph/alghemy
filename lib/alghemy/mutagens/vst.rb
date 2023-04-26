@@ -11,6 +11,7 @@ module Alghemy
       include ParamCheck
       include VstInfo
       attr_reader :sijil, :automatons
+      alias_method :to_s, :sijil
 
       class << self
         def archive_name
@@ -43,7 +44,7 @@ module Alghemy
         plugin ||= list.sample
         match    = list.map(&:downcase).include? plugin.downcase
         match_error unless match
-        @sijil = plugin
+        @sijil = plugin.to_s
       end
 
       def automate( stuff = {} )

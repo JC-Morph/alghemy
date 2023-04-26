@@ -23,7 +23,7 @@ module Alghemy
       end
 
       def tran_init
-        stuff[:plugin] = vst.assert stuff[:plugin]
+        stuff[:plugin] = vst.new stuff[:plugin]
       end
 
       def write_rubric( rubric = nil )
