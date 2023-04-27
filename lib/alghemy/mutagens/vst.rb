@@ -1,18 +1,16 @@
+require 'alghemy/assistants'
 require 'alghemy/comrades'
 require 'alghemy/methods'
 require 'alghemy/modules'
 require_relative 'automation'
-require_relative 'param_check'
-require_relative 'vst_info'
 
 module Alghemy
   module Mutagens
     # Public: Represents a VST plugin.
     class Vst
       extend Modules[:archives]
+      include Assistants[:vst_info]
       include Methods[:alget]
-      include ParamCheck
-      include VstInfo
       attr_reader :sijil, :automatons
       alias_method :to_s, :sijil
 
