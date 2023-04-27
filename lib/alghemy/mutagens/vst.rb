@@ -1,3 +1,4 @@
+require 'alghemy/comrades'
 require 'alghemy/methods'
 require 'alghemy/modules'
 require_relative 'automation'
@@ -18,7 +19,6 @@ module Alghemy
       class << self
         def list( refresh: false )
           return archive_read if archive_read && refresh != true
-          write_list
           archive_write format_list
         end
 
@@ -32,19 +32,21 @@ module Alghemy
           '.vsts'
         end
 
+        def format_list
+          write_list
+          File.read(tmp_name).split.map do |line|
+            line[/(?<=\\)[+\w][\w.-]+.$/] if line[/Vst/]
+          end.compact
+        end
+
         def write_list
           FileUtils.makedirs alget(:ROOT)
-          `mrswatson.exe --list-plugins 2> #{tmp_name}`
+          spell = "mrswatson.exe --list-plugins 2> #{tmp_name}"
+          Comrads[:invoker].cast spell
         end
 
         def tmp_name
           File.join(alget(:ROOT), '.vst_info')
-        end
-
-        def format_list
-          File.read(tmp_name).split.map do |line|
-            line[/(?<=\\)[+\w][\w.-]+.$/] if line[/Vst/]
-          end.compact
         end
       end
 
