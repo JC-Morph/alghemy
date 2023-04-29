@@ -28,9 +28,9 @@ module Alghemy
       private
 
       def find( target )
-        data = format_info
-        hook = /#{target}(?= \(.+\):)/
-        line = data.index {|v| v[hook] }
+        data  = format_info
+        match = /#{target}(?= \(.+\):)/
+        line = data.index {|line| line[match] }
         size = data[line][filter[:size]]
         data[line.succ..(line + size.to_i)]
       end

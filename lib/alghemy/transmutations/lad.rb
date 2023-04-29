@@ -39,10 +39,10 @@ module Alghemy
 
       def tran_init
         stuff[:plug] = plugin.assert stuff[:plug]
-        stuff[:option_templates] = templates
+        stuff[:option_templates] = option_templates
       end
 
-      def templates
+      def option_templates
         snake_params.transform_values do |info|
           {
             flag:    '',

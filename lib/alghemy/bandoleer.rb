@@ -1,9 +1,8 @@
 require 'canister'
 
 module Alghemy
-  # Public: Bandoleer. Container used to retrieve dependencies. Contains vials
-  # representing various objects. Bandoleers are expected to be available for
-  # top-level namespaces in Alghemy.
+  # Public: Bandoleer. Container used to retrieve dependencies.
+  # Contains vials representing various objects.
   module Bandoleer
     def self.extended( base )
       base.define_singleton_method :included do |_base|
@@ -36,7 +35,7 @@ module Alghemy
       [vials].flatten.each do |vial|
         bandoleer.register(vial) do
           retrieve vial
-          const_get desnake(vial.to_s)
+          const_get to_camel(vial.to_s)
         end
       end
     end
@@ -48,13 +47,13 @@ module Alghemy
     def retrieve( files )
       [files].flatten.each do |file|
         file = file.to_s
-        next if const_defined? desnake(file)
+        next if const_defined? to_camel(file)
         require File.join(name.sub('::', File::SEPARATOR).downcase, file)
       end
     end
 
-    # Internal: Converts String from snake_case to ClassCase.
-    def desnake( str )
+    # Internal: Converts String from snake_case to CamelCase.
+    def to_camel( str )
       str.split('_').map(&:capitalize).join
     end
   end

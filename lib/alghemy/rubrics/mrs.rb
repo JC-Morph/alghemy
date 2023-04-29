@@ -32,7 +32,7 @@ module Alghemy
       def parameter( *automaton )
         param, auto = automaton.flatten
         param = [param, operate(auto)]
-        add ['--parameter', param * ',']
+        add ['--parameter', param.join(',')]
       end
       alias param parameter
 

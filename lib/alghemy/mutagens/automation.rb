@@ -41,10 +41,11 @@ module Automation
       {min: '25%', max: '75%', column: 1}
     end
 
+    # Internal: Returns Range of possible numbers of parameters to be automated.
     def bounds
-      bounds    = [stuff[:min], stuff[:max]]
-      bounds[1] = bounds.map!(&:to_f).max
-      min, max = bounds.collect do |percent|
+      bounds    = [stuff[:min], stuff[:max]].map(&:to_f)
+      bounds[1] = bounds.max
+      min, max = bounds.map do |percent|
         (stuff[:total].fdiv(100) * percent).round
       end
       min..max
