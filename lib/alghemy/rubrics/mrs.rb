@@ -17,7 +17,9 @@ module Alghemy
       end
 
       def option_templates
-        {plugin: {flag: :p, default: 'mrs_passthru'}}
+        {
+          plugin: {flag: :p, default: 'mrs_passthru'}
+        }.merge(stuff[:option_templates] || {})
       end
 
       # Public: Method for keeping track of the data being used for parameter

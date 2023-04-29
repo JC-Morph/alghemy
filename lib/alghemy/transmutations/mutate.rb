@@ -24,6 +24,7 @@ module Alghemy
 
       def tran_init
         stuff[:plugin] = vst.new stuff[:plugin]
+        stuff[:option_templates] = option_templates
       end
 
       def write_rubric( rubric = nil )
@@ -42,6 +43,18 @@ module Alghemy
           ext:      lmnt.sijil.ext,
           plugin:   vst.list.sample
         }
+      end
+
+      def option_templates
+        params = stuff[:plugin].params
+        params.transform_values.with_index do |val, idx|
+          {
+            delim:   ',',
+            prefix:  '--',
+            flag:    "parameter #{idx}",
+            default: val
+          }
+        end
       end
     end
   end
