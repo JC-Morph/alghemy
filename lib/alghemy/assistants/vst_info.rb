@@ -10,7 +10,7 @@ module Alghemy
       def params
         data = find 'Parameters'
         data.each.with_object({}) do |line, hsh|
-          key = line[filter[:name]].to_sym
+          key = line[filter[:name]].downcase.to_sym
           val = line[filter[:value]].to_f.round(3)
           hsh[key] = val
         end
