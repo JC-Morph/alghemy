@@ -46,15 +46,11 @@ module Alghemy
       end
 
       def condense( io = {} )
-        spell = Hash.new {|k, v| k[v] = [] }
-        scroll.each.with_index do |passage, i|
-          passage = [passage].flatten.map do |word|
-            word.is_a?(Proc) ?
-              word.call(io) :
-              word.to_s % io
-          end.join(' ')
+        spell = Hash.new {|hsh, key| hsh[key] = [] }
+        scroll.each.with_index do |passage, idx|
+          passage = translate_passage(passage, io)
           spell[:raw]   << passage
-          spell[:fancy] << fancy[i] % {content: passage}
+          spell[:fancy] << format(fancy[idx], {content: passage})
         end
         spell
       end
@@ -74,6 +70,12 @@ module Alghemy
           input:   ['lime green'],
           output:  ['lime green', :bold]
         }
+      end
+
+      def translate_passage( passage, io )
+        [passage].flatten.map do |word|
+          word.is_a?(Proc) ? word.call(io) : format(word.to_s, io)
+        end.join(' ')
       end
     end
   end
