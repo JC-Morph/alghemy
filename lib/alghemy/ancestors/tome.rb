@@ -1,9 +1,9 @@
 require 'forwardable'
 require 'paint'
+require 'alghemy/assistants'
 require 'alghemy/factories'
 require 'alghemy/glyphs'
 require 'alghemy/methods'
-require_relative 'tome/gnumbers'
 
 module Alghemy
   module Ancestors
@@ -11,7 +11,7 @@ module Alghemy
     # It is used to make iterating over files easier and more intuitive.
     class Tome
       extend Forwardable
-      include Gnumbers
+      include Assistants[:gnumbers]
       include Methods[:alget]
       include Methods[:store]
       methods = %i[
