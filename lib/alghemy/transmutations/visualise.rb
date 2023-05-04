@@ -1,12 +1,12 @@
 require 'alghemy/ancestors'
+require 'alghemy/assistants'
 require 'alghemy/methods'
-require_relative 'mutypes/boots'
 
 module Alghemy
   module Transmutations
     # Public: Transmute Sound into Matter of a different affinity.
     class Visualise < Ancestors[:transmutation]
-      include Boots
+      include Assistants[:boots]
       include Methods[:alget]
 
       def tran_init

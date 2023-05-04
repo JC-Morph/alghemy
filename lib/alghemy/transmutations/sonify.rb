@@ -1,11 +1,11 @@
 require 'alghemy/ancestors'
-require_relative 'mutypes/boots'
+require 'alghemy/assistants'
 
 module Alghemy
   module Transmutations
     # Public: Transmute visual Matter into Sound.
     class Sonify < Ancestors[:transmutation]
-      include Boots
+      include Assistants[:boots]
 
       def self.expects
         with_plurals %i[Element Image Video]
