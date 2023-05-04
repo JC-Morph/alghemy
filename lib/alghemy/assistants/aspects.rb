@@ -2,7 +2,7 @@ require 'ostruct'
 require 'alghemy/meta'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Public: Include module. Aspect functionality and lookup. Aspects are
     # attributes of Files that can be found using external utilities, like
     # image or video size, video or sound duration, etc.

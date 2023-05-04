@@ -1,4 +1,4 @@
-require 'alghemy/modules'
+require 'alghemy/assistants'
 
 module Alghemy
   module Ancestors
@@ -7,7 +7,7 @@ module Alghemy
     #
     # Returns Matter.
     class Transmutation
-      include Modules[:osman]
+      include Assistants[:osman]
       attr_reader :lmnt, :tome, :mult, :stuff
 
       class << self

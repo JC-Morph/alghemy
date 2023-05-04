@@ -5,17 +5,6 @@ module Alghemy
   module Modules
     extend Bandoleer
 
-    vials = %i[affinitester
-               analyse
-               archives
-               aspects
-               laws
-               osman
-               request
-               serial_recall
-               switcher
-               trail]
-
-    equip_constants vials
+    equip_constants %i[analyse archives request]
   end
 end

@@ -5,6 +5,15 @@ module Alghemy
   module Assistants
     extend Bandoleer
 
-    equip_constants %i[vst_info]
+    vials = %i[affinitester
+               aspects
+               laws
+               osman
+               serial_recall
+               switcher
+               trail
+               vst_info]
+
+    equip_constants vials
   end
 end

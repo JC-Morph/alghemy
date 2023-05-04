@@ -1,6 +1,6 @@
 require 'alghemy/affinities'
+require 'alghemy/assistants'
 require 'alghemy/glyphs'
-require 'alghemy/modules'
 
 module Alghemy
   module Factories
@@ -9,7 +9,7 @@ module Alghemy
     # or image data. If undiscernable, raw data is presumed.
     module Evoker
       class << self
-        include Modules[:affinitester]
+        include Assistants[:affinitester]
         # Internal: Returns Sijil, filename for testing.
         attr_reader :test_sijil
 

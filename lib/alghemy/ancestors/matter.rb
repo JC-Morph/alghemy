@@ -1,15 +1,15 @@
 require 'forwardable'
 require 'paint'
+require 'alghemy/assistants'
 require 'alghemy/factories'
-require 'alghemy/modules'
 
 module Alghemy
   module Ancestors
     # Public: Base representation of a transmutable file or group of files.
     class Matter
       extend Forwardable
-      include Modules[:aspects]
-      include Modules[:laws]
+      include Assistants[:aspects]
+      include Assistants[:laws]
       def_delegators :@list, :[], :first, :last, :sijil, :dims, :dissolve
       attr_reader :list
 

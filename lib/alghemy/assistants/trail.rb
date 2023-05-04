@@ -2,7 +2,7 @@ require 'alghemy/comrades'
 require 'alghemy/methods'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Public: Methods used to dissect a path. Similar to Pathname.
     module Trail
       include Methods[:alget]

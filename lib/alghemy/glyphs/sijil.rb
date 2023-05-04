@@ -1,16 +1,16 @@
 require 'forwardable'
+require 'alghemy/assistants'
 require 'alghemy/factories'
 require 'alghemy/methods'
-require 'alghemy/modules'
 
 module Alghemy
   module Glyphs
     # Public: Represents a path referencing the location of Matter.
     class Sijil
       extend Forwardable
+      include Assistants[:trail]
       include Methods[:deep_clone]
       include Methods[:store]
-      include Modules[:trail]
       def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub
 
       def self.compose( sijil )

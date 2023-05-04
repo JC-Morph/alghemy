@@ -1,7 +1,7 @@
 require 'alghemy/glyphs'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Public: Meta module. Defines options for commandline utilities as named
     # methods on Arrays.
     module Switcher

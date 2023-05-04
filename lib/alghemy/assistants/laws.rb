@@ -1,15 +1,15 @@
+require 'alghemy/assistants'
 require 'alghemy/meta'
 require 'alghemy/methods'
-require 'alghemy/modules'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Internal: All necessary inclusions for the Matter class.
     module Laws
+      # Memory functions.
+      include Assistants[:serial_recall]
       # Hash print method.
       include Methods[:hshprint]
-      # Memory functions.
-      include Modules[:serial_recall]
 
       # Add transformation methods.
       include Meta[:define_cdps]

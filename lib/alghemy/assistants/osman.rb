@@ -3,7 +3,7 @@ require 'alghemy/affinities'
 require 'alghemy/comrades'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Public: Writes Rubrics for transmutations.
     module Osman
       extend Forwardable

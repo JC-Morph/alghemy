@@ -1,14 +1,14 @@
+require 'alghemy/assistants'
 require 'alghemy/comrades'
 require 'alghemy/glyphs'
 require 'alghemy/methods'
-require 'alghemy/modules'
 
 module Alghemy
   module Ancestors
     # Public: Command builder for an executable that processes a file.
     class Rubric
+      include Assistants[:switcher]
       include Methods[:alget]
-      include Modules[:switcher]
       attr_reader :scroll, :stuff
 
       class << self

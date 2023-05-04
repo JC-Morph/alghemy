@@ -1,7 +1,7 @@
 require 'alghemy/affinities'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Public: Test test_sijil for identifiable affinity.
     module Affinitester
       def affinitest

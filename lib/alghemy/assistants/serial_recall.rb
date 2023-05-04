@@ -2,7 +2,7 @@ require 'alghemy/glyphs'
 require 'alghemy/methods'
 
 module Alghemy
-  module Modules
+  module Assistants
     # Public: Methods accessing stored Memories.
     module SerialRecall
       include Methods[:hshprint]
