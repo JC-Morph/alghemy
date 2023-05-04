@@ -27,7 +27,7 @@ module Alghemy
         transpose
       ]
       def_delegators :entries, *methods
-      delegate :sijil, :to_s
+      delegate sijil: :to_s
       attr_reader :entries
       alias_method :all_entries, :entries
       alias_method :each_lmnt,   :each
