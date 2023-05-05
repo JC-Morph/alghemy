@@ -2,16 +2,16 @@ require 'alghemy/methods'
 require_relative 'algput/archivist'
 
 module Alghemy
-  # Internal: Output class for alghemical processes.
+  # Public: Output class for alghemical processes.
   class Algput
     include Methods[:alget]
     attr_reader :enum, :tome, :sijil, :parts
 
-    # Internal: Initialise an Algput.
+    # Public: Initialise an Algput.
     #
     # stuff - Hash of initialisation options:
-    #         :enum  - Enumerator method for Tome. Changes depending on how the
-    #                  input file(s) should be enumerated.
+    #         :enum  - Enumerator method for Tome.
+    #                  Defines how the input file(s) should be enumerated.
     #         :sijil - Filename of input.
     #         :ext   - Filename extension for output.
     #         :label - String identifier for mutations (optional).
@@ -25,11 +25,13 @@ module Alghemy
       parts[:dir] = open_dir
     end
 
+    # Public: Return next iteration of parts, incrementing :seq if it exists.
     def next_batch
       parts[:seq]&.succ!
       parts
     end
 
+    # Public: Return value of :dir from the parts Hash.
     def dir
       parts[:dir]
     end
@@ -79,11 +81,15 @@ module Alghemy
       Archivist.extend_id(sijil, ident)
     end
 
+    # Internal: Add a padded number sequence to the parts Array, if Tome
+    # doesn't exclusively contain unique Sijils.
     def add_sequence
       return if tome.size.between?(1, tome.entries.map(&:to_s).uniq.size)
       parts[:seq] ||= "_#{'0' * tome.size.to_s.size}"
     end
 
+    # Internal: Make the requisite subdirectory. All directories are created
+    # within the root specified by Alghemy.ROOT.
     def open_dir
       root = alget(:ROOT)
       dir = self.dir.to_s
