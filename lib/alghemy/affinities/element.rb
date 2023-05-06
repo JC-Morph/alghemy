@@ -20,8 +20,9 @@ module Alghemy
           }
         end
 
-        # Public: Returns colour to display Matter's class in when printing to
-        # the terminal.
+        # Public: Colour to use when printing Affinity to the terminal.
+        #
+        # Returns String.
         def colour
           'forest green'
         end

@@ -11,14 +11,20 @@ module Alghemy
           {ext: '.avi', raw_ext: '.raw'}
         end
 
+        # Public: Hash of methods to send to self when a Transmutation expects
+        # an Element of a different affinity.
         def mould
           {Image: :frames, Sound: :sublimate}
         end
 
+        # Public: Colour to use when printing Affinity to the terminal.
+        #
+        # Returns String.
         def colour
           'medium sea green'
         end
 
+        # Public: Opens Matter in the OS using a command-line program.
         def open
           Requests[:video_open]
         end
