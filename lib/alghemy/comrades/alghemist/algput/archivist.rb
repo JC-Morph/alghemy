@@ -22,6 +22,9 @@ module Alghemy
         idents.join('-')
       end
 
+      private
+
+      # Internal: Add ident in the correct manner, depending on the type.
       def add_ident
         ident[mutation] ? add_mutation : add_transposition
       end
@@ -38,8 +41,6 @@ module Alghemy
         return add_number if consecutive_mutation?(ident)
         idents.last.concat ident
       end
-
-      private
 
       # Internal: Find pre-existing idents in Sijil.
       def find_ids
