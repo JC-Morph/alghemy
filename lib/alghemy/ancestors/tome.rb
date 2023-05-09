@@ -27,7 +27,6 @@ module Alghemy
         transpose
       ]
       def_delegators :entries, *methods
-      delegate sijil: :to_s
       attr_reader :entries
       alias_method :all_entries, :entries
       alias_method :each_lmnt,   :each
@@ -55,6 +54,10 @@ module Alghemy
       # Returns Tome.
       def *( other )
         self.class.new entries * other
+      end
+
+      def to_s
+        sijil.to_s
       end
 
       # Public: Compose a Sijil that represents all of Tome.
