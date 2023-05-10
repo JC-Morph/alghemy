@@ -51,7 +51,7 @@ module Alghemy
       def initialize( plugin = nil )
         list     = self.class.list
         plugin ||= list.sample
-        match    = list.map(&:downcase).include? plugin.downcase
+        match    = list.map(&:downcase).include? plugin.to_s.downcase
         match_error unless match
         @sijil = plugin.to_s
       end
