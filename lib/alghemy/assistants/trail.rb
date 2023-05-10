@@ -34,6 +34,7 @@ module Alghemy
       def swap_parts( other_parts = {} )
         swap = parts.merge other_parts
         file = swap[:base]
+        file += swap[:sfx] if swap[:sfx]
         file += swap[:seq] if swap[:seq]
         file += swap[:ext]
         self.class.new File.join(swap[:dir], file)

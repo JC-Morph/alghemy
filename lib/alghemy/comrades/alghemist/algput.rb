@@ -20,7 +20,10 @@ module Alghemy
       @enum  = stuff[:enum] || :lmnt
       @tome  = stuff[:tome]
       @sijil = stuff[:sijil] || tome.sijil
-      @parts = {dir: sijil.label, seq: stuff[:seq], ext: stuff[:ext]}
+      @parts = {dir: sijil.label,
+                sfx: stuff[:suffix],
+                seq: stuff[:seq],
+                ext: stuff[:ext]}
       tune_parts stuff
       parts[:dir] = open_dir
     end
