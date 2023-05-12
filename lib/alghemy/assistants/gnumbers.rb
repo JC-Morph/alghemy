@@ -24,17 +24,6 @@ module Alghemy
         Glyphs[:sijil].compose new_name
       end
 
-      # Public: Returns Array of index ranges for e_nums in filename.
-      def e_ranges( filename, numbers )
-        ranges = []
-        e_nums(numbers).each do |enum|
-          start  = num_index(filename)[enum]
-          finish = start + enum.size - 1
-          ranges << (start..finish)
-        end
-        ranges
-      end
-
       # Public: Returns Array of numbers in num_list that iterate.
       def e_nums( num_list )
         sizes = num_list.collect(&:size).sort
@@ -46,6 +35,17 @@ module Alghemy
       end
 
       private
+
+      # Internal: Returns Array of index ranges for e_nums in filename.
+      def e_ranges( filename, numbers )
+        ranges = []
+        e_nums(numbers).each do |enum|
+          start  = num_index(filename)[enum]
+          finish = start + (enum.size - 1)
+          ranges << (start..finish)
+        end
+        ranges
+      end
 
       # Internal: Returns Array of indices for numbers in filename.
       def num_index( filename )
