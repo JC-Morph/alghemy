@@ -117,13 +117,6 @@ module Alghemy
         dims > 1 ? dims : nil
       end
 
-      # Public: Add an ffmpeg compatible glob pattern to #sijil, replacing any
-      # previously exisiting glob pattern.
-      def ffglob
-        glob = "_%0#{e_nums(numbers).last.size}d"
-        sijil.swap_parts base: sijil.unglob.base.concat(glob)
-      end
-
       # Public: Return Array of all numbers in the first half of Tome's Sijils.
       def numbers
         list = all_entries[0..-(size / 2)].flatten

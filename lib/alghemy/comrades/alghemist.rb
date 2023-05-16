@@ -32,7 +32,6 @@ module Alghemy
 
         def cast( tome )
           tome.send("each_#{namer.enum}") do |input|
-            input  = tome.ffglob if ffgroup
             output = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
@@ -119,11 +118,6 @@ module Alghemy
             list:     lmnt.list,
             name:     stuff[:name].to_sym
           }
-        end
-
-        # NOTE: Very probably in the wrong place
-        def ffgroup
-          namer.enum == :group_sijil && rubric.instance_of?(Rubrics[:ffmpeg])
         end
 
         def tome_error
