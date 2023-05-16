@@ -2,7 +2,6 @@ require 'forwardable'
 require 'paint'
 require 'alghemy/assistants'
 require 'alghemy/factories'
-require 'alghemy/glyphs'
 require 'alghemy/methods'
 
 module Alghemy
@@ -63,8 +62,7 @@ module Alghemy
       # Public: Compose a Sijil that represents all of Tome.
       # If there are multiple files in Tome, this will include a glob pattern.
       def sijil
-        sijil = size < 2 ? first : globvert
-        Glyphs[:sijil].compose sijil
+        sijil = size < 2 ? first : glob_replace
       end
 
       # Public: Evoke new Matter from a Tome.
@@ -98,15 +96,9 @@ module Alghemy
       # Public: Enumerator that treats each enclosed group of Elements as a
       # separate input.
       def each_group_sijil( &block )
-        group_sijils = each_group.collect(&:globvert)
+        group_sijils = each_group.collect(&:glob_replace)
         group_sijils = Factories[:scribe].call group_sijils
         block_given? ? group_sijils.each_lmnt(&block) : group_sijils.to_enum
-      end
-
-      # Public: Abstract a Filename with a glob pattern that matches all of Tome
-      # when used with Dir#glob.
-      def globvert
-        glob_replace
       end
 
       # Public: Return depth of 2-dimensional lists, i.e a list of lists.
