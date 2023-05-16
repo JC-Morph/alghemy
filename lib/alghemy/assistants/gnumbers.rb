@@ -14,14 +14,10 @@ module Alghemy
         File.basename(filename.to_s).scan(/\d+/)
       end
 
-      # Public: Replace gnums in filename with a suitable glob pattern.
-      def glob_replace( filename, numbers )
-        ranges = e_ranges(filename, numbers)
-        new_name = ranges.reverse_each.with_object(filename.to_s) do |rng, str|
-          glob = rng.size > 2 ? '*' : ('?' * rng.size)
-          str[rng] = glob
-        end
-        Glyphs[:sijil].compose new_name
+      def glob_replace
+        parts = entries.map {|sij| sij.base.split('_') }.transpose.map(&:uniq)
+        sijil = first_lmnt.swap_parts base: gen_base(parts)
+        Glyphs[:sijil].compose sijil
       end
 
       # Public: Returns Array of numbers in num_list that iterate.
@@ -36,28 +32,21 @@ module Alghemy
 
       private
 
-      # Internal: Returns Array of index ranges for e_nums in filename.
-      def e_ranges( filename, numbers )
-        ranges = []
-        e_nums(numbers).each do |enum|
-          start  = num_index(filename)[enum]
-          finish = start + (enum.size - 1)
-          ranges << (start..finish)
-        end
-        ranges
+      def gen_base( parts )
+        parts.map do |part|
+          next part if part.size == 1
+          next num_glob(part) if part.all?(/^\d+$/)
+          sizes = part.map(&:size).uniq
+          sizes.size == 1 ? '?' * sizes.first : '*'
+        end.join('_')
       end
 
-      # Internal: Returns Array of indices for numbers in filename.
-      def num_index( filename )
-        hsh = {}
-        dir = File.dirname filename.to_s
-        pad = dir == '.' ? 0 : dir.size.succ
-        File.basename(filename.to_s).scan(/\d+/) do
-          match = Regexp.last_match
-          index = match.offset(0)[0]
-          hsh[match.to_s] = index + pad
-        end
-        hsh
+      def num_glob( part )
+        char_cols = part.map(&:chars).transpose
+        char_cols.each.with_object([]) do |chars, arr|
+          chars = chars.map(&:to_i)
+          arr << "[#{chars.min}-#{chars.max}]"
+        end.join
       end
     end
   end

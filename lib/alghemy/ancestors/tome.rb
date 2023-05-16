@@ -106,7 +106,7 @@ module Alghemy
       # Public: Abstract a Filename with a glob pattern that matches all of Tome
       # when used with Dir#glob.
       def globvert
-        glob_replace(first_lmnt, numbers)
+        glob_replace
       end
 
       # Public: Return depth of 2-dimensional lists, i.e a list of lists.
