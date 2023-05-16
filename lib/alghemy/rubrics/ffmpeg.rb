@@ -25,6 +25,7 @@ module Alghemy
           crf:    {default: 12},
           format: {flag: 'f', default: 'rawvideo'},
           rate:   {flag: 'r', default: 30},
+          pattern_type: {shortcut: 'glob', default: 'glob'},
           # options for audio and video streams
           **stream_option(:codec,   'c', ['libx264', 'aac']),
           **stream_option(:quality, 'q', [5, 3])
@@ -33,7 +34,7 @@ module Alghemy
 
       def input
         formats.size.rate if raw?
-        add input: ['-i', '%{input}']
+        add input: ['-i', '"%{input}"']
       end
 
       def formats
@@ -42,6 +43,7 @@ module Alghemy
 
       # Shared transmutations
       def compile
+        glob unless stuff[:pad]
         format.rate unless raw?
         input.output
       end
