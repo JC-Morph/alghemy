@@ -1,5 +1,6 @@
 require 'alghemy/assistants'
 require 'alghemy/meta'
+require 'alghemy/metamutations'
 require 'alghemy/methods'
 
 module Alghemy
@@ -11,9 +12,13 @@ module Alghemy
       # Hash print method.
       include Methods[:hshprint]
 
-      # Add transformation methods.
+      # Transformation methods.
       include Meta[:define_cdps]
       include Meta[:define_transmutations]
+      # Metamutations.
+      Metamutations.equipped.each do |mutation|
+        include Metamutations[mutation]
+      end
     end
   end
 end
