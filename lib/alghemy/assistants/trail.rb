@@ -69,7 +69,7 @@ module Alghemy
       end
 
       def unglob
-        self.class.new gsub(/[_-]*(?<!\\)[*?]+/, '')
+        self.class.new gsub(/[_-]*(?<!\\)([*?]+|\[\d+-\d+\])/, '')
       end
 
       private
