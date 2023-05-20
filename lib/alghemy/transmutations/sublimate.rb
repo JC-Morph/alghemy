@@ -13,13 +13,12 @@ module Alghemy
 
       def remember
         tree = lmnt.inherit(%i[affinity list], transform: 'sublimate')
-        tree[:ext] = tree[:list] ?
-          tree[:list].first_lmnt.ext :
-          affinity.defaults[:ext]
+        list = tree[:list]
+        tree[:ext] = list ? list.first_lmnt.ext : affinity.defaults[:ext]
 
-        stuff[:affinity] ||= tree[:affinity] || :image
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
-        stuff[:size] = agree_size tree
+        stuff[:affinity] ||= tree[:affinity] || :image
+        stuff[:size]       = agree_size tree
         tree
       end
 
@@ -39,8 +38,9 @@ module Alghemy
       private
 
       def affinity
-        return lmnt.class unless stuff[:affinity]
-        Affinities[stuff[:affinity]]
+        aff = stuff[:affinity]
+        return lmnt.class unless aff
+        Affinities[aff]
       end
 
       def agree_size( tree )
@@ -51,8 +51,10 @@ module Alghemy
       def shrunk?( tree )
         return unless stuff[:affinity] == :image
         %i[size depth].any? do |asp|
-          next unless stuff[asp] && tree[asp]
-          stuff[asp] < tree[asp]
+          stored = stuff[asp]
+          fresh  = tree[asp]
+          next unless stored && fresh
+          stored < fresh
         end
       end
     end
