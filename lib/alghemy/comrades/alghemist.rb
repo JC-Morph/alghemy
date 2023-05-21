@@ -20,7 +20,7 @@ module Alghemy
         # Returns new instance of Matter.
         def transmute( lmnt, transform )
           @lmnt = lmnt
-          assign_trans_variables transform
+          assign_variables transform
           tome = tran.tome
 
           results = scout.mission(-> { cast(tome) }, namer.dir)
@@ -32,11 +32,11 @@ module Alghemy
 
         def cast( tome )
           tome.send("each_#{namer.enum}") do |input|
-            output = input.swap_parts namer.next_batch
+            @rubric = tran.write_rubric(rubric)
+            output  = input.swap_parts namer.next_batch
             io = {input: input.to_s, output: output}
             rubric.invoke io
             rubric.increment_options
-            @rubric = tran.write_rubric(rubric)
           end
         end
 
@@ -74,9 +74,9 @@ module Alghemy
 
         private
 
-        def assign_trans_variables( transform )
+        def assign_variables( transform )
+          @rubric = nil
           @tran   = transform
-          @rubric = tran.write_rubric
           @stuff  = tran.stuff
           @namer  = Algput.new(stuff.merge(name_options))
         end
