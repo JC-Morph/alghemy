@@ -47,7 +47,7 @@ module Alghemy
 
       def condense( io = {} )
         spell = Hash.new {|hsh, key| hsh[key] = [] }
-        scroll.each.with_index do |passage, idx|
+        scroll.each_with_index do |passage, idx|
           passage = translate_passage(passage, io)
           spell[:raw]   << passage
           spell[:fancy] << format(fancy[idx], {content: passage})

@@ -9,7 +9,7 @@ module ParamCheck
     tot = 1.0 / div
     dir = File.join(File.dirname(sound), 'paramtest', sijil)
     FileUtils.makedirs dir
-    params.each.with_index do |param, i|
+    params.each_with_index do |param, i|
       pre = format param.keys.first
       pre = "%03d_#{pre}" % i
       pre = File.join(dir, pre)
@@ -30,7 +30,7 @@ module ParamCheck
   def preset_check( sound )
     dir = File.join(File.dirname(sound), 'presetest', sijil)
     FileUtils.makedirs dir
-    presets.each.with_index do |preset, i|
+    presets.each_with_index do |preset, i|
       out = format preset
       out = "%03d_#{out}." % i
       out = File.join(dir, out)

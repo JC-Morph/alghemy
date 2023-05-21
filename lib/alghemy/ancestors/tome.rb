@@ -37,7 +37,7 @@ module Alghemy
 
       # Public: Prints each Sijil in Tome to the console.
       def index
-        entries.each.with_index do |entry, idx|
+        entries.each_with_index do |entry, idx|
           entry = Paint[entry, '#68d66a']
           puts "%-7d#{entry}" % idx
         end

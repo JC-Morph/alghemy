@@ -30,7 +30,7 @@ module Alghemy
 
       # Public: Prints Mems in a human-friendly format.
       def memory
-        mems.each.with_index do |mem, i|
+        mems.each_with_index do |mem, i|
           puts "\n\nTransform %d" % i.succ
           hshprint mem
         end

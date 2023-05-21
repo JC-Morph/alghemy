@@ -73,7 +73,7 @@ module Alghemy
 
       # Internal: Populate @stuff with the ordered arguments provided.
       def gather( priorities )
-        priorities.each.with_index do |option, i|
+        priorities.each_with_index do |option, i|
           stuff[self.class.priorities[i]] = option
         end
       end
