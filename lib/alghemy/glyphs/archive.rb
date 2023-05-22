@@ -1,33 +1,30 @@
-require 'yaml'
-require 'alghemy/methods'
+require 'alghemy/modules'
 
 module Alghemy
   module Glyphs
-    # Public: Manages reading and writing to yaml files. Used to store Memories
-    # of Transmutations on Matter, allowing for the reversion of Matter to
-    # previous states.
+    # Public: Used to store Memories of Transmutations on Matter,
+    # allowing for the reversion of Matter to previous states.
     module Archive
       class << self
-        include Methods[:alget]
+        include Modules[:archives]
         attr_reader :contents, :directory
 
         def read
-          return unless File.exist?(archive)
-          @contents  = YAML.unsafe_load_file(archive)
-          dir        = File.dirname(archive)
+          @contents  = archive_read
+          dir        = File.dirname(archive_file)
           @directory = dir == '.' ? Dir.pwd : dir
         end
 
         def store( sijil, new_content )
           return if new_content.empty?
-          read unless contents && directory == Dir.pwd
+          update_state
           @contents ||= {}
           contents[sijil.to_s] = new_content
-          File.write(archive, YAML.dump(contents))
+          archive_write contents
         end
 
         def retrieve( sijil )
-          read unless contents && directory == Dir.pwd
+          update_state
           entries = []
           sijil   = sijil.to_s
           while contents[sijil]
@@ -45,8 +42,12 @@ module Alghemy
 
         private
 
-        def archive
-          File.join(alget(:ROOT), '.archive.yml')
+        def archive_name
+          '.archive'
+        end
+
+        def update_state
+          read unless contents && directory == Dir.pwd
         end
       end
     end
