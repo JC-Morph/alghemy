@@ -1,4 +1,5 @@
 require 'alghemy/ancestors'
+require 'alghemy/glyphs'
 
 module Alghemy
   module Rubrics
@@ -22,6 +23,13 @@ module Alghemy
         }.merge(stuff[:option_templates] || {})
       end
 
+      # Public: Method for adding input and output to process.
+      def input
+        io = __callee__
+        add(io => ["-#{io[/^\w/]}", "%<#{io}>s"])
+      end
+      alias output input
+
       # Public: Method for keeping track of the data being used for parameter
       # automation.
       def automate
@@ -37,13 +45,6 @@ module Alghemy
         add ['--parameter', param.join(',')]
       end
       alias param parameter
-
-      # Public: Method for adding input and output to process.
-      def input
-        io = __callee__
-        add(io => ["-#{io[/^\w/]}", "%<#{io}>s"])
-      end
-      alias output input
 
       private
 
