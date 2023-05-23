@@ -40,7 +40,7 @@ module Alghemy
         def write_list
           FileUtils.makedirs alget(:ROOT)
           spell = "mrswatson.exe --list-plugins 2> #{tmp_name}"
-          Comrads[:invoker].cast spell
+          Comrades[:invoker].cast spell
         end
 
         def tmp_name
