@@ -27,10 +27,19 @@ module Alghemy
 
       private
 
+      def aspdex( arr )
+        index = Struct.new(*infodex)
+        index.new(*arr)
+      end
+
       def catdex
         {}
       end
       alias fmtdex catdex
+
+      def infodex
+        raise NotImplementedError
+      end
 
       def format( result )
         return result unless fmt

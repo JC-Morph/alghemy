@@ -4,8 +4,7 @@ module Alghemy
   module Modules
     # Public: Methods for input-based commandline processes.
     module Request
-      # Public: Interpolate sijil into process and invoke (execute on the
-      # commandline.)
+      # Public: Execute process with a given input.
       #
       # sijil - Sijil or filename formatted String that responds to #fenestrate.
       #         Should represent existing files.
@@ -38,15 +37,6 @@ module Alghemy
       # Internal: Boolean whether utility requires Windows formatted paths.
       def windows_process?
         false
-      end
-
-      def aspdex( arr )
-        index = Struct.new(*infodex)
-        index.new(*arr)
-      end
-
-      def infodex
-        raise NotImplementedError
       end
     end
   end
