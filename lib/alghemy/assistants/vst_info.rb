@@ -1,11 +1,15 @@
+require 'forwardable'
 require 'alghemy/comrades'
 require 'alghemy/methods'
+require 'alghemy/requests'
 
 module Alghemy
   module Assistants
     # Public: Extract information from VST plugins using the mrswatson utility.
     module VstInfo
+      extend Forwardable
       include Methods[:alget]
+      delegate read_info: Requests[:vst_request]
 
       def params
         data = find 'Parameters'
@@ -28,22 +32,11 @@ module Alghemy
       private
 
       def find( target )
-        data  = format_info
+        data  = read_info sijil
         match = /#{target}(?= \(.+\):)/
         line = data.index {|line| line[match] }
         size = data[line][filter[:size]]
         data[line.succ..(line + size.to_i)]
-      end
-
-      def format_info
-        write_info
-        File.read(tmp_name).split(/\r*\n/)
-      end
-
-      def write_info
-        FileUtils.makedirs alget(:ROOT)
-        spell = "mrswatson.exe -p #{sijil} --display-info 2> #{tmp_name}"
-        Comrades[:invoker].cast spell
       end
 
       # Internal: Regular expressions used for filtering VST data.
@@ -53,10 +46,6 @@ module Alghemy
           size:  /(?<=\()\d+(?= \w+\):)/,
           value: /(?<=\()-?\d\.\d+(?=\))/
         }
-      end
-
-      def tmp_name
-        File.join(alget(:ROOT), '.vst_info')
       end
     end
   end

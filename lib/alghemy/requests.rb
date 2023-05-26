@@ -11,7 +11,8 @@ module Alghemy
                video_info
                image_open
                sound_open
-               video_open]
+               video_open
+               vst_request]
 
     equip_constants vials
   end

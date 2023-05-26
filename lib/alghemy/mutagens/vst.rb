@@ -1,7 +1,7 @@
+require 'forwardable'
 require 'alghemy/assistants'
-require 'alghemy/comrades'
-require 'alghemy/methods'
 require 'alghemy/modules'
+require 'alghemy/requests'
 require_relative 'automation'
 
 module Alghemy
@@ -10,14 +10,16 @@ module Alghemy
     class Vst
       extend Modules[:archives]
       include Assistants[:vst_info]
-      include Methods[:alget]
       attr_reader :sijil, :automatons
       alias_method :to_s, :sijil
 
       class << self
+        extend Forwardable
+        delegate read_list: Requests[:vst_request]
+
         def list( refresh: false )
           return archive_read if archive_read && refresh != true
-          archive_write format_list
+          archive_write read_list
         end
 
         def list_refresh
@@ -28,23 +30,6 @@ module Alghemy
 
         def archive_name
           '.vsts'
-        end
-
-        def format_list
-          write_list
-          File.read(tmp_name).split.map do |line|
-            line[/(?<=\\)[+\w][\w.-]+.$/] if line[/Vst/]
-          end.compact
-        end
-
-        def write_list
-          FileUtils.makedirs alget(:ROOT)
-          spell = "mrswatson.exe --list-plugins 2> #{tmp_name}"
-          Comrades[:invoker].cast spell
-        end
-
-        def tmp_name
-          File.join(alget(:ROOT), '.vst_info')
         end
       end
 
