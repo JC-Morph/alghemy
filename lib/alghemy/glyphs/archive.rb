@@ -10,7 +10,7 @@ module Alghemy
         attr_reader :contents, :directory
 
         def read
-          @contents  = archive_read
+          @contents  = archive_read || {}
           dir        = File.dirname(archive_file)
           @directory = dir == '.' ? Dir.pwd : dir
         end
