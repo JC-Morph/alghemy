@@ -24,6 +24,7 @@ module Alghemy
                mv_average
                pixelsort
                sonify
+               split_rgb
                sublimate
                trim
                visualise]

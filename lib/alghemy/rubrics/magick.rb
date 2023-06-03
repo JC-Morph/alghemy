@@ -17,6 +17,7 @@ module Alghemy
           colors:    {},
           depth:     {shortcut: :d},
           posterize: {shortcut: :post},
+          separate:  {shortcut: :sep},
           size:      {shortcut: :s},
           # with default
           delay:  {default: 3},
