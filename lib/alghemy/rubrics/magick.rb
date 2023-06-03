@@ -20,9 +20,10 @@ module Alghemy
           separate:  {shortcut: :sep},
           size:      {shortcut: :s},
           # with default
-          delay:  {default: 3},
-          dither: {default: 'floydsteinberg'},
-          fuzz:   {default: '22%'}
+          channel: {default: 'RGB', shortcut: :chan},
+          delay:   {default: 3},
+          dither:  {default: 'floydsteinberg'},
+          fuzz:    {default: '22%'}
         }
       end
 

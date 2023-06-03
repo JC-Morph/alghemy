@@ -15,17 +15,18 @@ module Alghemy
       end
 
       def tran_init
+        stuff[:label] = stuff[:channel].downcase
         @mult = true
       end
 
       def write_rubric( rubric = nil )
-        rubric = write(rubric).input.separate.output
+        rubric = write(rubric).input.chan.separate.output
       end
 
       private
 
       def defaults
-        {ext: 'bmp', label: 'rgb'}
+        {channel: 'RGB', ext: 'bmp'}
       end
     end
   end
