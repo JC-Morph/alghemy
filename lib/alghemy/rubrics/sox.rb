@@ -19,6 +19,7 @@ module Alghemy
           # no argument
           null: {flag: :n},
           # with default
+          combine: {prefix: '--', default: 'mix'},
           rate: {flag: :r, default: 48000},
           type: {flag: :t, default: 'raw'},
           # bidirectional
@@ -50,6 +51,10 @@ module Alghemy
       end
 
       # Shared transmutations
+      def conjunct
+        input.combine.output
+      end
+
       def concat
         input.output
       end

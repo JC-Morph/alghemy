@@ -15,6 +15,7 @@ module Alghemy
           append_v: {flag: :append, shortcut: :av},
           # no default
           colors:    {},
+          combine:   {},
           depth:     {shortcut: :d},
           posterize: {shortcut: :post},
           separate:  {shortcut: :sep},
@@ -37,6 +38,10 @@ module Alghemy
       end
 
       # Shared transmutations
+      def conjunct
+        input.chan.combine.output
+      end
+
       def concat
         opt = %i[v vert vertical].any? {|key| stuff[key] } ?
           'append_v' : 'append_h'
