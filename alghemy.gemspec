@@ -1,4 +1,4 @@
-require './lib/alghemy/version'
+require './lib/version'
 
 Gem::Specification.new do |s|
   s.name        = 'alghemy'
