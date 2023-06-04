@@ -6,6 +6,6 @@ module Alghemy
   module Rubrics
     extend Bandoleer
 
-    equip_constants %i[cdp ffedit ffmpeg fourier magick mrs pxlsrt sox]
+    equip_constants %i[arss cdp ffedit ffmpeg fourier magick mrs pxlsrt sox]
   end
 end
