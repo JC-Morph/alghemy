@@ -9,6 +9,7 @@ module Alghemy
     vials = %i[amorph
                bend
                concat
+               congeal
                conjunct
                color2alpha
                compile
