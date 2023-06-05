@@ -14,6 +14,7 @@ module Alghemy
                color2alpha
                compile
                convert
+               dissolve
                ffot
                frames
                giffer
