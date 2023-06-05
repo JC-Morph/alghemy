@@ -25,8 +25,8 @@ module Alghemy
 
           results = scout.mission(-> { cast(tome) }, namer.dir)
 
-          tome_error    if tome.empty?
-          tome.dissolve if alget(:leave_no_trace)
+          tome_error if tome.empty?
+          tome.erase if alget(:leave_no_trace)
           evoke list(results)
         end
 

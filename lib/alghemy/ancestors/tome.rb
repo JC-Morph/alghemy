@@ -80,7 +80,7 @@ module Alghemy
       # Public: Deletes the files in Tome.
       # Used to clean up after Transmutations, automatic use toggled with
       # Alghemy#leave_no_trace.
-      def dissolve
+      def erase
         dir = sijil.dir
         id  = /#{alget(:ROOT)}#{alget(:SEP)}/
         return unless dir[id]
