@@ -2,7 +2,7 @@ require 'alghemy/ancestors'
 
 module Alghemy
   # Public: Concatenate Elements.
-  class Conjunct < Ancestors[:transmutation]
+  class Conjoin < Ancestors[:transmutation]
     def tran_init
       stuff[:enum] = :group
       @mult = false unless lmnt.dims

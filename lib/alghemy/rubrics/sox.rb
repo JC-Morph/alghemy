@@ -51,8 +51,8 @@ module Alghemy
       end
 
       # Shared transmutations
-      def conjunct
-        input.combine.output
+      def conjoin
+        input.combine.output.norm
       end
 
       def concat

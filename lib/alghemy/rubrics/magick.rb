@@ -38,7 +38,7 @@ module Alghemy
       end
 
       # Shared transmutations
-      def conjunct
+      def conjoin
         input.chan.combine.output
       end
 

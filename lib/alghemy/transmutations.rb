@@ -10,7 +10,7 @@ module Alghemy
                bend
                concat
                congeal
-               conjunct
+               conjoin
                color2alpha
                compile
                convert
