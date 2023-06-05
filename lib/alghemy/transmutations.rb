@@ -27,6 +27,7 @@ module Alghemy
                mutate
                mv_average
                pixelsort
+               progress_bar
                sonify
                split_rgb
                sublimate
