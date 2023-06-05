@@ -19,13 +19,16 @@ module Alghemy
           no_audio: {flag: :an},
           no_video: {flag: :vn},
           # no default
-          arcana: {flag: :pix_fmt, shortcut: :pf},
-          size:   {flag: 'video_size'},
+          add_in:   {flag: :i},
+          arcana:   {flag: :pix_fmt, shortcut: :pf},
+          duration: {flag: :t, shortcut: :dur},
+          size:     {flag: 'video_size'},
           # with default
-          crf:    {default: 12},
-          format: {flag: 'f', default: 'rawvideo'},
-          rate:   {flag: 'r', default: 30},
-          pattern_type: {shortcut: 'glob', default: 'glob'},
+          crf:      {default: 12},
+          format:   {default: 'rawvideo', flag: 'f'},
+          glob:     {default: 'glob', flag: :pattern_type},
+          loop:     {default: 1},
+          rate:     {default: 30, flag: 'r'},
           # options for audio and video streams
           **stream_option(:codec,   'c', ['libx264', 'aac']),
           **stream_option(:quality, 'q', [5, 3])

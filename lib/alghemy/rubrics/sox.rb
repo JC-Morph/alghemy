@@ -17,11 +17,12 @@ module Alghemy
       def option_templates
         {
           # no argument
-          null: {flag: :n},
+          null:  {flag: :n},
           # with default
-          combine: {prefix: '--', default: 'mix'},
-          rate: {flag: :r, default: 48000},
-          type: {flag: :t, default: 'raw'},
+          fuse:  {default: 'mix', prefix: '--', flag: :combine},
+          norm:  {default: -3, prefix: ''},
+          rate:  {default: 48000, flag: :r},
+          type:  {default: 'raw', flag: :t},
           # bidirectional
           enc:   {bi: true, flag: :e, default: alget(:encoding)},
           depth: {bi: true, flag: :b, default: alget(:bitdepth), shortcut: :bit}

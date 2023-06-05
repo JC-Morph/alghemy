@@ -21,6 +21,7 @@ module Alghemy
       def prefixed_templates
         {
           # no argument
+          brightness: {shortcut: :g},
           linear:     {shortcut: :l},
           noise:      {shortcut: :n},
           sine:       {shortcut: :s},
@@ -29,7 +30,6 @@ module Alghemy
           height:     {shortcut: :y},
           width:      {shortcut: :x},
           # with default
-          brightness: {shortcut: :g, default: 2},
           pps:        {shortcut: :p, default: 32}
         }.transform_values do |val|
           val.merge prefix: '--'

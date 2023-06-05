@@ -11,20 +11,22 @@ module Alghemy
       def option_templates
         {
           # no argument
-          append_h: {flag: :append, shortcut: :ah, prefix: '+'},
-          append_v: {flag: :append, shortcut: :av},
+          append_h:   {flag: :append, shortcut: :ah, prefix: '+'},
+          append_v:   {flag: :append, shortcut: :av},
           # no default
-          colors:    {},
-          combine:   {},
-          depth:     {shortcut: :d},
-          posterize: {shortcut: :post},
-          separate:  {shortcut: :sep},
-          size:      {shortcut: :s},
+          alpha:      {},
+          colors:     {},
+          colorspace: {shortcut: :cs},
+          combine:    {},
+          depth:      {shortcut: :d},
+          posterize:  {shortcut: :post},
+          separate:   {shortcut: :sep},
+          size:       {shortcut: :s},
           # with default
-          channel: {default: 'RGB', shortcut: :chan},
-          delay:   {default: 3},
-          dither:  {default: 'floydsteinberg'},
-          fuzz:    {default: '22%'}
+          channel:    {default: 'RGB', shortcut: :chan},
+          delay:      {default: 3},
+          dither:     {default: 'floydsteinberg'},
+          fuzz:       {default: '22%'}
         }
       end
 
