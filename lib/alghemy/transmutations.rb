@@ -21,6 +21,7 @@ module Alghemy
                ifot
                lad
                loop_fade
+               loop_image
                loop_reverse
                mint
                mutate
