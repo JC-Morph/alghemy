@@ -89,7 +89,9 @@ module Alghemy
 
       def mould( expected, lmnt = self )
         expected = [expected].flatten.first
-        lmnt.send(*[lmnt.class.mould[expected]].flatten)
+        options  = [lmnt.class.mould[expected]].flatten
+        return lmnt.send(*options) if options.size == 1
+        lmnt.send(*options[0], **options[1])
       end
     end
   end
