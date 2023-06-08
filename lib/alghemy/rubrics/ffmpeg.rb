@@ -44,11 +44,20 @@ module Alghemy
         format.pix_fmt
       end
 
+      def add_ins
+        [stuff[:add_in]].flatten.compact.each {|input| add_in input.to_s }
+        self
+      end
+
       # Shared transmutations
       def compile
         glob unless stuff[:pad]
         format.rate unless raw?
-        input.output
+        input.add_ins.output
+      end
+
+      def convert
+        input.add_ins.output
       end
 
       def rip
