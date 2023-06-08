@@ -70,6 +70,9 @@ module Alghemy
     ifot:      :ffot,
     frames:    :compile,
     compile:   :frames,
+    congeal:   :dissolve,
+    dissolve:  :congeal,
+    splitrgb:  :conjoin,
     sublimate: :sublimate
   }.freeze
 end
