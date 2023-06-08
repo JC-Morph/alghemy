@@ -14,7 +14,11 @@ module Alghemy
         # Public: Hash of methods to send to self when a Transmutation expects
         # an Element of a different affinity.
         def mould
-          {Sound: :sublimate, Video: :compile}
+          {
+            Sound: :sublimate,
+            Video: :compile,
+            bmp:   [:convert, {ext: 'bmp'}]
+          }
         end
 
         # Public: Colour to use when printing Affinity to the terminal.

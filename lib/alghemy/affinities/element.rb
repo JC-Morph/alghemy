@@ -16,7 +16,8 @@ module Alghemy
           {
             Sound: :sonify,
             Image: :sublimate,
-            Video: [:visualise, {ext: 'avi'}]
+            Video: [:visualise, {ext: 'avi'}],
+            bmp:   [:sublimate, {ext: 'bmp'}]
           }
         end
 

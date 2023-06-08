@@ -5,7 +5,7 @@ module Alghemy
   module Transmutations
     class Dissolve < Ancestors[:transmutation]
       def self.expects
-        ['.bmp']
+        :bmp
       end
 
       def rubric
