@@ -19,9 +19,12 @@ module Alghemy
       def define_transform( transform, bandoleer )
         define_method transform do |*priorities, **stuff|
           tran = bandoleer[__callee__]
-          expected = tran.expects
+          expected = [tran.expects].flatten
+          valid = lambda do |lmnt|
+            (expected & [lmnt.affinity, lmnt.sijil.ext[1..-1].to_sym]).any?
+          end
           lmnt = self
-          lmnt = mould(expected, lmnt) until expected.include? lmnt.affinity
+          lmnt = mould(expected, lmnt) until valid.call(lmnt)
           tran = tran.new(lmnt, *priorities, **stuff)
           Comrades[:alghemist].transmute(lmnt, tran)
         end
