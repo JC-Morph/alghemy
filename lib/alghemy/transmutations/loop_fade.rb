@@ -1,4 +1,3 @@
-require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/rubrics'
 
