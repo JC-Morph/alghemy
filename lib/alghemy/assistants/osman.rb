@@ -10,6 +10,12 @@ module Alghemy
       delegate raw?: :lmnt
       delegate decipher_options: Comrades[:cryptographer]
 
+      def consolidate_options( stuff )
+        deciphered = decipher_options stuff
+        amend_tome(deciphered.values.map(&:size).max || 1)
+        stuff.merge(deciphered).merge(is_raw: raw?, name: name)
+      end
+
       # Public: Method that builds command line to be executed. Duckable.
       def write_rubric( rubric = nil )
         write(rubric).send stuff[:name]
@@ -18,9 +24,8 @@ module Alghemy
       # Public: Begin writing a Rubric in the appropriate manner.
       def write( rubric = nil, moniker = nil )
         return rubric.cleanse if rubric
-        rubric  = self.rubric
-        options = consolidate_options
-        moniker ? rubric.new(moniker, options) : rubric.write(options)
+        rubric = self.rubric
+        moniker ? rubric.new(moniker, stuff) : rubric.write(stuff)
       end
 
       # Public: Returns appropritate Rubric class for current transmutation.
@@ -47,14 +52,6 @@ module Alghemy
         return unless count < iterations
         @tome = @tome * (iterations / count)
         @mult = true
-      end
-
-      private
-
-      def consolidate_options
-        deciphered = decipher_options stuff
-        amend_tome(deciphered.values.map(&:size).max || 1)
-        stuff.merge(deciphered).merge(is_raw: raw?)
       end
     end
   end

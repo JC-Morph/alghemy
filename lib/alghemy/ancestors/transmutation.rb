@@ -42,11 +42,11 @@ module Alghemy
       #              self.class.priorities.
       # stuff      - Hash of initialisation options.
       def initialize( lmnt, *priorities, **stuff )
-        @lmnt = lmnt
-        @tome = lmnt.list
-        @mult = true if lmnt.count > 1
+        @lmnt  = lmnt
+        @tome  = lmnt.list
+        @mult  = true if lmnt.count > 1
+        @stuff = consolidate_options stuff
 
-        @stuff = stuff.merge name: name
         gather priorities unless priorities.empty?
         sub_init
         prepext
