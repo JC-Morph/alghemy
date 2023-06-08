@@ -11,6 +11,7 @@ module Alghemy
       include Assistants[:aspects]
       include Assistants[:laws]
       def_delegators :@list, :[], :first, :last, :sijil, :dims
+      delegate to_s: :sijil
       attr_reader :list
 
       # Public: Constructor. Attempts to discern what manner of files are in
