@@ -71,7 +71,7 @@ module Alghemy
     #
     # Returns String.
     def get_id( stuff )
-      stuff[:label] || stuff[:name].to_s[0..2]
+      stuff[:label] || stuff[:name].to_s[0..3]
     end
 
     # Internal: Take any existing idents from sijil and combine them with the
