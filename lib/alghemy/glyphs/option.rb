@@ -38,8 +38,8 @@ module Alghemy
       # Public: Discern and return next iteration of @value.
       def print( val = nil )
         val ||= increment_value
-        return construct unless val&.!= true
         hist << val
+        val = nil if val == true
         construct val
       end
 
