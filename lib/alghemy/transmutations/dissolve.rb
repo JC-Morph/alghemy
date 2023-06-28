@@ -21,7 +21,7 @@ module Alghemy
       end
 
       def anchors
-        [:linear, :size]
+        [:size]
       end
 
       private
