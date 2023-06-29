@@ -6,6 +6,17 @@ module Alghemy
   module Rubrics
     extend Bandoleer
 
-    equip_constants %i[arss cdp ffedit ffmpeg fourier magick mrs pxlsrt sox]
+    vials = %i[arss
+               byebyte
+               cdp
+               ffedit
+               ffmpeg
+               fourier
+               magick
+               mrs
+               pxlsrt
+               sox]
+
+    equip_constants vials
   end
 end
