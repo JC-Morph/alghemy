@@ -8,6 +8,7 @@ module Alghemy
 
     vials = %i[amorph
                bend
+               bye
                concat
                congeal
                conjoin
