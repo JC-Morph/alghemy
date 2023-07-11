@@ -1,5 +1,4 @@
 require 'forwardable'
-require 'alghemy/comrades'
 require 'alghemy/methods'
 require 'alghemy/requests'
 
