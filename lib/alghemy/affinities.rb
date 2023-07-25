@@ -11,7 +11,7 @@ module Alghemy
 
     vials = %i[element image sound video]
 
-    equip_constants vials
+    equip vials
 
     vials.each do |vial|
       plural = Class.new(bandoleer[vial])

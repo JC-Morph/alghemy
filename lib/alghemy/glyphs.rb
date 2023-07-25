@@ -6,12 +6,12 @@ module Alghemy
   module Glyphs
     extend Bandoleer
 
-    equip_constants %i[archive memory option options scroll sijil]
+    equip %i[archive memory option options scroll sijil]
 
     remember = lambda do |sijil|
       Memories.new Glyphs[:archive].retrieve(sijil)
     end
 
-    equip memories: remember
+    equip_custom memories: remember
   end
 end

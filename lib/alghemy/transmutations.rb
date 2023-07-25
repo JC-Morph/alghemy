@@ -35,6 +35,7 @@ module Alghemy
                trim
                visualise]
 
-    equip_constants vials
+    equip vials
   end
 end
+

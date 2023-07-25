@@ -16,6 +16,6 @@ module Alghemy
       Scribe.transcribe(list, dims)
     end
 
-    equip evoker: evoke, scribe: transcribe
+    equip_custom evoker: evoke, scribe: transcribe
   end
 end

@@ -16,6 +16,7 @@ module Alghemy
                trail
                vst_info]
 
-    equip_constants vials
+    equip vials
   end
 end
+

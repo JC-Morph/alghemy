@@ -22,20 +22,20 @@ module Alghemy
       bandoleer[vial.downcase]
     end
 
-    def equip( elixirs )
-      elixirs.each do |vial, contents|
-        bandoleer.register(vial.downcase) do
-          retrieve vial
-          contents
-        end
-      end
-    end
-
-    def equip_constants( vials )
+    def equip( vials )
       [vials].flatten.each do |vial|
         bandoleer.register(vial) do
           retrieve vial
           const_get to_camel(vial.to_s)
+        end
+      end
+    end
+
+    def equip_custom( elixirs )
+      elixirs.each do |vial, contents|
+        bandoleer.register(vial.downcase) do
+          retrieve vial
+          contents
         end
       end
     end

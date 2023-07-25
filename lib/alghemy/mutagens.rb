@@ -6,6 +6,7 @@ module Alghemy
   module Mutagens
     extend Bandoleer
 
-    equip_constants %i[ladspa vst]
+    equip %i[ladspa vst]
   end
 end
+

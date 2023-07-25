@@ -14,6 +14,7 @@ module Alghemy
                store
                transmute]
 
-    equip_constants vials
+    equip vials
   end
 end
+

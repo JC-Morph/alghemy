@@ -5,6 +5,7 @@ module Alghemy
   module Tomes
     extend Bandoleer
 
-    equip_constants %i[grimoire metamoire]
+    equip %i[grimoire metamoire]
   end
 end
+

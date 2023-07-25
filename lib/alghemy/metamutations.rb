@@ -7,6 +7,7 @@ module Alghemy
   module Metamutations
     extend Bandoleer
 
-    equip_constants %i[paramtest spectrify]
+    equip %i[paramtest spectrify]
   end
 end
+

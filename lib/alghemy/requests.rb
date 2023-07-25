@@ -14,6 +14,7 @@ module Alghemy
                video_open
                vst_request]
 
-    equip_constants vials
+    equip vials
   end
 end
+

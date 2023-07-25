@@ -14,6 +14,7 @@ module Alghemy
       vial.prepend('define_').to_sym
     end
 
-    equip_constants vials
+    equip vials
   end
 end
+

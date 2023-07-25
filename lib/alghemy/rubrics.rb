@@ -17,6 +17,7 @@ module Alghemy
                pxlsrt
                sox]
 
-    equip_constants vials
+    equip vials
   end
 end
+
