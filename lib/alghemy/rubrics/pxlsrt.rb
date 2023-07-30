@@ -5,7 +5,7 @@ module Alghemy
     # Public: Define an executable process for a brute pixelsort.
     class Pxlsrt < Ancestors[:rubric]
       def self.moniker
-        %w[pxlsrt brute]
+        'pxlsrt brute'
       end
 
       def option_templates

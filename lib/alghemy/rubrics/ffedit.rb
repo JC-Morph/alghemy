@@ -8,7 +8,7 @@ module Alghemy
     # processing of videos.
     class Ffedit < Rubrics[:ffmpeg]
       def self.moniker
-        %w[ffedit -loglevel warning]
+        'ffedit -loglevel warning'
       end
 
       def option_templates
