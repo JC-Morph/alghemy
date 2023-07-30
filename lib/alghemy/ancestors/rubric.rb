@@ -1,14 +1,12 @@
 require 'alghemy/assistants'
 require 'alghemy/comrades'
 require 'alghemy/glyphs'
-require 'alghemy/methods'
 
 module Alghemy
   module Ancestors
     # Public: Command builder for an executable that processes a file.
     class Rubric
       include Assistants[:switcher]
-      include Methods[:alget]
       attr_reader :scroll, :stuff
 
       class << self
@@ -67,12 +65,8 @@ module Alghemy
       #      :input  - String naming input file(s). Files should exist.
       #      :output - String naming output file(s). Files can exist.
       def invoke( io )
-        spell = scroll.condense(io)
-        if alget(:rubric_print)
-          shading = alget(:rubric_colour) ? :fancy : :raw
-          puts spell[shading].join(' ')
-        end
-        Comrades[:invoker].cast(spell[:raw])
+        spell = scroll.interpret(io)
+        Comrades[:invoker].cast spell
       end
 
       # Public: Add substitute String for input Filename.

@@ -5,7 +5,7 @@ require 'alghemy/methods'
 module Alghemy
   module Glyphs
     # Public: Defines an Array to be invoked on the command-line. Can be used
-    # to build a process piece-by-piece using #<<. Use the #condense method to
+    # to build a process piece-by-piece using #<<. Use the #interpret method to
     # resolve Procs and perform String substitutions.
     class Scroll
       extend Forwardable
@@ -27,9 +27,9 @@ module Alghemy
         @fancy  = [fancy[0]]
       end
 
-      def read
-        text = alget(:rubric_colour) ? fancy : scroll
-        text * ' '
+      def read( hsh = {raw: scroll, fancy: fancy} )
+        fmt = alget(:rubric_colour) ? :fancy : :raw
+        hsh[fmt] * ' '
       end
 
       def <<( passage )
@@ -45,14 +45,15 @@ module Alghemy
         end
       end
 
-      def condense( io = {} )
+      def interpret( io = {} )
         spell = Hash.new {|hsh, key| hsh[key] = [] }
         scroll.each_with_index do |passage, idx|
           passage = translate_passage(passage, io)
           spell[:raw]   << passage
           spell[:fancy] << format(fancy[idx], {content: passage})
         end
-        spell
+        puts read(spell) if alget(:rubric_print)
+        spell[:raw]
       end
 
       private
