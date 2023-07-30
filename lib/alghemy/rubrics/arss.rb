@@ -5,7 +5,7 @@ module Alghemy
     # Public: Define a process for the arss resynthesis utility.
     class Arss < Ancestors[:rubric]
       def self.moniker
-        'arss -q'
+        %w[arss -q]
       end
 
       def option_templates
