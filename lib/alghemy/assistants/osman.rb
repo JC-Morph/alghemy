@@ -23,7 +23,7 @@ module Alghemy
 
       # Public: Begin writing a Rubric in the appropriate manner.
       def write( rubric = nil, moniker = nil )
-        return rubric.cleanse if rubric
+        return rubric.forget if rubric
         rubric = self.rubric
         moniker ? rubric.new(moniker, stuff) : rubric.write(stuff)
       end

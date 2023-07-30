@@ -22,7 +22,7 @@ module Alghemy
         @fancy  = [paint(:moniker, moniker)]
       end
 
-      def palimpsest
+      def wash
         @scroll = [scroll[0]]
         @fancy  = [fancy[0]]
       end

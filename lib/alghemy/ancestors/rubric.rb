@@ -53,8 +53,8 @@ module Alghemy
         self
       end
 
-      def cleanse
-        scroll.palimpsest
+      def forget
+        scroll.wash
         self
       end
 
