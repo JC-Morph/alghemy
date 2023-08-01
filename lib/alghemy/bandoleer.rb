@@ -1,8 +1,8 @@
 require 'canister'
 
 module Alghemy
-  # Public: Bandoleer. Container used to retrieve dependencies.
-  # Contains vials representing various objects.
+  # Public: Wrapper for Canister, a container gem used to register dependencies.
+  # Provides helper methods for referencing constants from files.
   module Bandoleer
     def self.extended( base )
       base.define_singleton_method :included do |_base|
@@ -42,8 +42,9 @@ module Alghemy
 
     private
 
-    # Internal: 'Requires' the specified files, adding them to the current
-    # context. Ignores the input if it matches an already defined constant.
+    # Internal: Explicitly requires given files, allowing Bandoleer to reference
+    # any defined constants in the current context. Skips input if it directly
+    # matches an already defined constant.
     def retrieve( files )
       [files].flatten.each do |file|
         file = file.to_s
