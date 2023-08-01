@@ -23,8 +23,6 @@ The gem version of the library is currently offline by intention, but can easily
 
 ## Requirements
 
-### Programs
-
 Alghemy uses the following programs to process files, and expects them to be installed:
 
 - Video-based processes
@@ -40,13 +38,6 @@ Alghemy uses the following programs to process files, and expects them to be ins
 
 NOTE: To perform image-based fast-fourier transforms, your version of ImageMagick must support the [fftw](www.fftw.org) delegate.
 To check for this functionality, run `convert --version` and look for `fftw` in the `Delegates (built-in):` section.
-
-### Gems
-
-Alghemy uses the following gem:
-
-- [listen](https://github.com/guard/listen) \- Used to monitor directories for changes.
-Install with `gem install listen`.
 
 
 ## Usage
@@ -83,7 +74,7 @@ Broadly speaking, these are the typical aspects that are available for them. All
 Because Video and Sound elements are perceivable in the temporal dimension,
 they possess two other related aspects:
 
-`freq` - rate (Video:framerate || Sound:samplerate)  
+`freq` - rate (Video:framerate || Sound:samplerate)
 `lifespan` - total (Video:frames || Sound:samples)
 
 #### Sound and Image
