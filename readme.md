@@ -4,7 +4,6 @@
 ## Synopsis
 
 Alghemy is a Ruby library built to facilitate the manipulation of data for artistic purpose.
-It is intended for use as a mini [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language).
 It can recognise multiple sound, video, and image formats, convert between them, and automate unpredictable processes.
 
 

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.homepage    = 'https://github.com/JC-Morph/alghemy'
   s.summary     = %q{Transmute your data with ease.}
-  s.description = %q{A Ruby DSL for manipulating data with artistic purpose.}
+  s.description = %q{A Ruby library for manipulating files with artistic purpose.}
   s.license     = 'GPL-3.0'
 
   # Included files
