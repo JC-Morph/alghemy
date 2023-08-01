@@ -1,4 +1,3 @@
-require 'forwardable'
 require 'paint'
 require 'alghemy/methods'
 
@@ -8,13 +7,11 @@ module Alghemy
     # to build a process piece-by-piece using #<<. Use the #interpret method to
     # resolve Procs and perform String substitutions.
     class Scroll
-      extend Forwardable
       include Methods[:alget]
-      def_delegators :scroll, :map
-      attr_reader    :scroll, :fancy
+      attr_reader :scroll, :fancy
 
       def pretty_print( pp )
-        pp.pp(scroll)
+        pp.pp scroll
       end
 
       def initialize( moniker = '' )
