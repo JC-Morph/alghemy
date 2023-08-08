@@ -11,8 +11,8 @@ module Alghemy
     vials.each do |vial|
       bandoleer.register(vial) do
         dir  = name.split('::').last.downcase
-        file = File.join(__dir__, dir, vial + '.yml')
-        YAML.load(File.read(file))
+        file = File.join(__dir__, dir, "#{vial}.yml")
+        YAML.load_file file
       end
     end
   end
