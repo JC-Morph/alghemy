@@ -1,0 +1,5 @@
+test/
+tmp/
+Gemfile.lock
+.reek.yml
+.rubocop.yml
