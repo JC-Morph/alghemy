@@ -30,7 +30,9 @@ module Alghemy
       end
 
       def anchors
-        affinity.aspects.except(:len, :span).map(&:to_sym)
+        rejects = /^(len|span)$/
+        aspects = affinity.aspects.reject {|asp| asp[rejects] }
+        aspects.collect(&:to_sym)
       end
 
       private
