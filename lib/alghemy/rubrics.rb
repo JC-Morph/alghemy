@@ -1,4 +1,4 @@
-require 'alghemy/bandoleer'
+require 'bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain modules that build commands for external

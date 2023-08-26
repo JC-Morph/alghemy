@@ -1,5 +1,5 @@
 require 'yaml'
-require 'alghemy/bandoleer'
+require 'bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain yaml files denoting useful information.
@@ -9,7 +9,7 @@ module Alghemy
     vials = %w[ladspa]
 
     vials.each do |vial|
-      bandoleer.register(vial) do
+      pockets.register(vial) do
         dir  = name.split('::').last.downcase
         file = File.join(__dir__, dir, "#{vial}.yml")
         YAML.load_file file

@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb', 'license', 'readme.md']
   s.executables << 'alghemy'
 
+  s.add_dependency 'bandoleer',   '~> 0.2.1'
   s.add_dependency 'canister',    '~> 0.9.1'
   s.add_dependency 'fuzzy_match', '~> 2.1.0'
   s.add_dependency 'listen',      '~> 3.8.0'

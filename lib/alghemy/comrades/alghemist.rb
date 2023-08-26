@@ -114,7 +114,7 @@ module Alghemy
 
         def memory_template
           {
-            affinity: lmnt.affinity,
+            affinity: lmnt.affinity.downcase,
             list:     lmnt.list,
             name:     stuff[:name].to_sym
           }

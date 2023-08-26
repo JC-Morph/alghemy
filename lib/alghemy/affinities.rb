@@ -1,4 +1,4 @@
-require 'alghemy/bandoleer'
+require 'bandoleer'
 require 'alghemy/modules'
 
 module Alghemy
@@ -14,10 +14,10 @@ module Alghemy
     equip vials
 
     vials.each do |vial|
-      plural = Class.new(bandoleer[vial])
+      plural = Class.new(pockets[vial])
       vial   = vial.to_s.concat('s')
 
-      bandoleer.register(vial) do
+      pockets.register(vial) do
         const_set(vial.capitalize, plural)
       end
     end
