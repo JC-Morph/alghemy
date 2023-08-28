@@ -5,7 +5,7 @@ $LOAD_PATH << dir unless $LOAD_PATH.include?(dir || File.expand_path(dir))
 ENV['WINEDEBUG'] = 'fixme-all'
 
 require 'config'
-require 'version'
+# require 'alghemy/version'
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
 require 'alghemy/comrades'
