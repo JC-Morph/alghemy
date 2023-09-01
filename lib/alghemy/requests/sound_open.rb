@@ -4,12 +4,10 @@ module Alghemy
   module Requests
     # Public: Play sound files with sox.
     module SoundOpen
-      class << self
-        include Modules[:request]
+      extend Modules[:request]
 
-        def moniker
-          ['play']
-        end
+      def self.moniker
+        ['play']
       end
     end
   end
