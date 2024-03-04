@@ -8,6 +8,7 @@ module Alghemy
     vials = %i[affinitester
                aspects
                boots
+               fflister
                gnumbers
                laws
                osman
@@ -19,4 +20,3 @@ module Alghemy
     equip vials
   end
 end
-

@@ -1,11 +1,13 @@
 require 'alghemy/ancestors'
-require 'alghemy/factories'
+require 'alghemy/assistants'
 require 'alghemy/rubrics'
 
 module Alghemy
   module Transmutations
     # Public: Compile a Video from Images.
     class Compile < Ancestors[:transmutation]
+      include Assistants[:fflister]
+
       def self.priorities
         [:rate, :ext]
       end
@@ -19,27 +21,13 @@ module Alghemy
       end
 
       def tran_init
-        if stuff[:pad]
-          @mult = false
-          @tome = pad_input
-          stuff[:format] = 'concat'
-        else
-          @mult = false unless lmnt.dims
-          stuff[:enum] = :group_sijil
-        end
         stuff[:rate] ||= lmnt.inherit(:rate, except: :Sound)
+        return fflist_prep(pad: true) if stuff[:pad]
+        stuff[:enum] = :group_sijil
+        @mult = false unless lmnt.dims
       end
 
       private
-
-      def pad_input
-        ffinput = '.ffinput.txt'
-        list    = tome.entries.
-          append(*[tome.first] * 2).
-          map {|file| "file '#{file}'\n" }
-        File.write(ffinput, list.join)
-        Factories[:scribe].call [ffinput]
-      end
 
       def defaults
         {ext: 'mp4', format: 'image2'}
