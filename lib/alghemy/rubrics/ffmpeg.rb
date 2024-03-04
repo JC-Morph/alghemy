@@ -56,6 +56,10 @@ module Alghemy
         input.add_ins.output
       end
 
+      def concat
+        format.input.output
+      end
+
       def convert
         input.add_ins.output
       end
