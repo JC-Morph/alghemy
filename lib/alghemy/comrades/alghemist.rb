@@ -84,7 +84,8 @@ module Alghemy
         # Internal: Returns Hash with variables specific to Algput
         # initialisation.
         def name_options
-          {tome: tran.tome, mult: tran.mult}
+          tome = stuff.fetch(:name_tome, tran.tome)
+          {tome: tome, mult: tran.mult}
         end
 
         # Internal: Returns a Tome of all files in Array.
