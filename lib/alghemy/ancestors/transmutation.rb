@@ -1,4 +1,5 @@
 require 'alghemy/assistants'
+require 'alghemy/methods'
 
 module Alghemy
   module Ancestors
@@ -8,6 +9,7 @@ module Alghemy
     # Returns Matter.
     class Transmutation
       include Assistants[:osman]
+      include Methods[:deep_clone]
       attr_reader :lmnt, :tome, :mult, :stuff
 
       class << self
@@ -43,7 +45,7 @@ module Alghemy
       # stuff      - Hash of initialisation options.
       def initialize( lmnt, *priorities, **stuff )
         @lmnt  = lmnt
-        @tome  = lmnt.list
+        @tome  = deep_clone lmnt.list
         @mult  = true if lmnt.count > 1
         @stuff = consolidate_options stuff
 
