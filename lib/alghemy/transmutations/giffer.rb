@@ -14,8 +14,14 @@ module Alghemy
       end
 
       def tran_init
-        stuff[:enum] = :group_sijil
+        video = lmnt.affinity[/Video/]
+        stuff[:enum] = video ? :lmnt : :group_sijil
+        return if video
         @mult = false unless lmnt.dims
+      end
+
+      def vid_init
+        stuff[:enum] = :group_sijil
       end
 
       def write_rubric( rubric = nil )
