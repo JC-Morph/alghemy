@@ -88,7 +88,7 @@ module Alghemy
     # doesn't exclusively contain unique Sijils.
     def add_sequence
       return if tome.size.between?(1, tome.entries.map(&:to_s).uniq.size)
-      parts[:seq] ||= "_#{'0' * tome.size.to_s.size}"
+      parts[:seq] ||= "_#{'0' * [2, tome.size.to_s.size].max}"
     end
 
     # Internal: Make the requisite subdirectory. All directories are created
