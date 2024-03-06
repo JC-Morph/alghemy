@@ -15,7 +15,9 @@ module Alghemy
       end
 
       def glob_replace
-        parts = entries.map {|sij| sij.base.split('_') }.transpose.map(&:uniq)
+        parts = all_entries.map do |sij|
+          sij.base.split('_')
+        end.transpose.map(&:uniq)
         sijil = first_lmnt.swap_parts base: gen_base(parts)
         Glyphs[:sijil].compose sijil
       end

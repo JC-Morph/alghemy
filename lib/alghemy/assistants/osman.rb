@@ -38,7 +38,7 @@ module Alghemy
         Affinities[affinity].rubric
       end
 
-      # Public: Hash of options to initiaise Rubric with. Duckable.
+      # Public: Hash of options to initialise Rubric with. Duckable.
       def stuff
         {}
       end

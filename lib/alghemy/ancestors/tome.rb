@@ -96,9 +96,12 @@ module Alghemy
       # Public: Enumerator that treats each enclosed group of Elements as a
       # separate input.
       def each_group_sijil( &block )
-        group_sijils = each_group.collect(&:glob_replace)
-        group_sijils = Factories[:scribe].call group_sijils
-        block_given? ? group_sijils.each_lmnt(&block) : group_sijils.to_enum
+        g_sijils = group_sijils
+        block_given? ? g_sijils.each_lmnt(&block) : g_sijils.to_enum
+      end
+
+      def group_sijils
+        Factories[:scribe].call each_group.map(&:glob_replace)
       end
 
       # Public: Return depth of 2-dimensional lists, i.e a list of lists.
