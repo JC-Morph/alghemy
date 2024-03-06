@@ -59,7 +59,7 @@ module Alghemy
       add_sequence
       # TODO: different names possible here? Mutest
       parts[:base] = sijil.label unless sijil.plural?
-      parts[:base].concat("_#{glob}") if glob
+      parts[:glob] = "_#{glob}"  if glob
       parts[:dir].concat(alget(:SEP) + ident)
     end
 

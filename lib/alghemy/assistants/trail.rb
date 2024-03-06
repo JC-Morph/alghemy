@@ -28,14 +28,14 @@ module Alghemy
       #              :dir  - Directory.
       #              :base - Basename.
       #              :seq  - Numerical sequence.
+      #              :glob - Pattern sequence.
       #              :ext  - Extension.
       #
       # Returns new instance of class.
       def swap_parts( other_parts = {} )
         swap = parts.merge other_parts
         file = swap[:base]
-        file += swap[:sfx] if swap[:sfx]
-        file += swap[:seq] if swap[:seq]
+        [:sfx, :seq, :glob].each {|part| file += swap[part] || '' }
         file += swap[:ext]
         self.class.new File.join(swap[:dir], file)
       end
