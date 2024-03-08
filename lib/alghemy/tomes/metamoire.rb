@@ -11,10 +11,9 @@ module Alghemy
       # Public: Constructor method. Parses given Array according to dims,
       # & coerces Array elements into Grimoires. Preferred initialiser.
       def self.scribe( list, dims )
-        groups = list.size / dims
-        lmnts  = list.dup
-        meta   = groups.times.with_object([]) do |_, arr|
-          arr << lmnts.shift(dims)
+        lmnts = list.dup
+        meta  = dims.times.with_object([]) do |_, arr|
+          arr << lmnts.shift(list.size / dims)
         end
         new(meta).liberate
       end
