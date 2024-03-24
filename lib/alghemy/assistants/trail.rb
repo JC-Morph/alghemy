@@ -77,7 +77,7 @@ module Alghemy
       # Internal: Returns Hash containing default parts of a filename used by
       # #swap_parts method.
       def parts
-        {dir: dir, base: base, ext: ext}
+        {dir: dir, base: unglob.base, ext: ext}
       end
     end
   end
