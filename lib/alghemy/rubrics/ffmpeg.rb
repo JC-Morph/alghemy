@@ -40,6 +40,10 @@ module Alghemy
         add input: ['-i', '"%{input}"']
       end
 
+      def codecs
+        vcodec.acodec
+      end
+
       def formats
         format.pix_fmt
       end
