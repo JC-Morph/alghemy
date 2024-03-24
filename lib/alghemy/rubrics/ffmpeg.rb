@@ -65,7 +65,7 @@ module Alghemy
       end
 
       def convert
-        input.add_ins.output
+        input.add_ins.rate.codecs.output
       end
 
       def rip
