@@ -90,7 +90,7 @@ module Alghemy
       # defaults - Array of default values for each stream.
       def stream_option( option, command, defaults )
         %w[a v].collect.with_object({}) do |stream, hsh|
-          label = stream + option.to_s
+          label = (stream + option.to_s).to_sym
           flag  = [command, stream].join(':')
           hsh[label] = {flag: flag, default: defaults.pop}
         end
