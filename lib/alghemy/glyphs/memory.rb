@@ -6,9 +6,9 @@ module Alghemy
     class Memory
       extend Forwardable
       def_delegators :@aspects,
-        :[], :[]=,
-        :each, :select,
-        :keys, :values,
+        :[],    :[]=,
+        :each,  :select,
+        :keys,  :values,
         :empty?
       attr_reader :aspects
 
