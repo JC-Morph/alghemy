@@ -41,6 +41,13 @@ module Alghemy
       end
 
       def codecs
+        vc = case stuff[:ext]
+             when '.gif'
+               'gif'
+             when '.flv'
+               'flv1'
+             end
+        options[:vcodec].value = vc if vc
         vcodec.acodec
       end
 
@@ -77,8 +84,7 @@ module Alghemy
       def sublimate
         input
         return format.output unless raw?
-        vcodec unless stuff[:ext][/gif/]
-        output
+        vcodec.output
       end
 
       private
