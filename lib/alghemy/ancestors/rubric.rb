@@ -6,7 +6,7 @@ module Alghemy
   module Ancestors
     # Public: Command builder for an executable that processes a file.
     class Rubric
-      include Assistants[:switcher]
+      include Assistants[:counselor]
       attr_reader :scroll, :stuff
 
       class << self

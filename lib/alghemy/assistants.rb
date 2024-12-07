@@ -13,7 +13,7 @@ module Alghemy
                laws
                osman
                serial_recall
-               switcher
+               counselor
                trail
                vst_info]
 

@@ -4,7 +4,7 @@ module Alghemy
   module Assistants
     # Public: Meta module. Defines options for commandline utilities as named
     # methods on Arrays.
-    module Switcher
+    module Counselor
       attr_reader :options, :opt_hist
 
       # Public: Templates for options.
@@ -36,22 +36,22 @@ module Alghemy
 
       # Internal: Define options and their shortcuts as methods on class.
       def def_options
-        switcher = singleton_class
+        counselor = singleton_class
         options.values.each do |opt|
           name = opt.name
-          unless switcher.method_defined? name
-            switcher.send :define_method, name do |val = nil|
+          unless counselor.method_defined? name
+            counselor.send :define_method, name do |val = nil|
               opt_hist << name
               add opt.print(val)
             end
           end
-          def_aliases(switcher, opt)
+          def_aliases(counselor, opt)
         end
       end
 
-      def def_aliases( switcher, opt )
+      def def_aliases( counselor, opt )
         aliases = [opt.flag, opt.shortcut].compact
-        aliases.each {|als| switcher.send(:alias_method, als, opt.name) }
+        aliases.each {|als| counselor.send(:alias_method, als, opt.name) }
       end
 
       # Internal: Boolean whether an Array of values matches the default values
