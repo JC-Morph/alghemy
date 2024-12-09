@@ -5,7 +5,7 @@ module Alghemy
     # Public: Define an executable process for imagemagick.
     class Magick < Ancestors[:rubric]
       def self.moniker
-        'convert'
+        'magick'
       end
 
       def option_templates
