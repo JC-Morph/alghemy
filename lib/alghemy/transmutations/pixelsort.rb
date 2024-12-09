@@ -10,7 +10,7 @@ module Alghemy
       end
 
       def self.expects
-        with_plural :Image
+        with_plural :png
       end
 
       def rubric
