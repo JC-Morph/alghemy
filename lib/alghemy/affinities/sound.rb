@@ -17,7 +17,7 @@ module Alghemy
           {
             Image: :visualise,
             Video: [:visualise, {ext: 'avi'}],
-            bmp:   [:visualise, {ext: 'bmp'}]
+            bmp:   [:visualise, {ext: 'bmp'}],
             png:   [:visualise, {ext: 'png'}]
           }
         end

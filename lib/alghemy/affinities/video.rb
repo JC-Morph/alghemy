@@ -17,7 +17,7 @@ module Alghemy
           {
             Image: :frames,
             Sound: :sublimate,
-            bmp: [:frames, {ext: 'bmp'}]
+            bmp: [:frames, {ext: 'bmp'}],
             png: [:frames, {ext: 'png'}]
           }
         end
