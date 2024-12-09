@@ -17,7 +17,8 @@ module Alghemy
           {
             Sound: :sublimate,
             Video: :compile,
-            bmp:   [:convert, {ext: 'bmp'}]
+            bmp:   [:convert, {ext: 'bmp'}],
+            png:   [:convert, {ext: 'png'}]
           }
         end
 
