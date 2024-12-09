@@ -20,7 +20,7 @@ module Alghemy
       def write_rubric( rubric = nil )
         rubric = write(rubric).input.output
         rubric.options.each do |name, opt|
-          rubric.send(name) unless opt.value.empty?
+          rubric.send(name) unless !opt.value
         end
         rubric
       end
