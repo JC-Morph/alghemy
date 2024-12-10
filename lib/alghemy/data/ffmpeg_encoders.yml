@@ -1,0 +1,435 @@
+---
+:Video:
+  :a64multi:
+    :desc: Multicolor charset for Commodore 64 (codec a64_multi)
+  :a64multi5:
+    :desc: Multicolor charset for Commodore 64, extended with 5th color (colram) (codec
+      a64_multi5)
+  :alias_pix:
+    :desc: Alias/Wavefront PIX image
+  :amv:
+    :desc: AMV Video
+  :apng:
+    :desc: APNG (Animated Portable Network Graphics) image
+  :asv1:
+    :desc: ASUS V1
+  :asv2:
+    :desc: ASUS V2
+  :libaom-av1:
+    :desc: libaom AV1 (codec av1)
+  :librav1e:
+    :desc: librav1e AV1 (codec av1)
+  :libsvtav1:
+    :desc: SVT-AV1(Scalable Video Technology for AV1) encoder (codec av1)
+  :av1_nvenc:
+    :desc: NVIDIA NVENC av1 encoder (codec av1)
+  :av1_qsv:
+    :desc: AV1 (Intel Quick Sync Video acceleration) (codec av1)
+  :av1_amf:
+    :desc: AMD AMF AV1 encoder (codec av1)
+  :av1_vaapi:
+    :desc: AV1 (VAAPI) (codec av1)
+  :avrp:
+    :desc: Avid 1:1 10-bit RGB Packer
+  :avui:
+    :desc: Avid Meridien Uncompressed
+  :bitpacked:
+    :desc: Bitpacked
+  :bmp:
+    :desc: BMP (Windows and OS/2 bitmap)
+  :cfhd:
+    :desc: GoPro CineForm HD
+  :cinepak:
+    :desc: Cinepak
+  :cljr:
+    :desc: Cirrus Logic AccuPak
+  :vc2:
+    :desc: SMPTE VC-2 (codec dirac)
+  :dnxhd:
+    :desc: VC3/DNxHD
+  :dpx:
+    :desc: DPX (Digital Picture Exchange) image
+  :dvvideo:
+    :desc: DV (Digital Video)
+  :dxv:
+    :desc: Resolume DXV
+  :exr:
+    :desc: OpenEXR image
+  :ffv1:
+    :desc: 'FFmpeg video codec #1'
+  :ffvhuff:
+    :desc: Huffyuv FFmpeg variant
+  :fits:
+    :desc: Flexible Image Transport System
+  :flashsv:
+    :desc: Flash Screen Video
+  :flashsv2:
+    :desc: Flash Screen Video Version 2
+  :flv:
+    :desc: FLV / Sorenson Spark / Sorenson H.263 (Flash Video) (codec flv1)
+  :gif:
+    :desc: GIF (Graphics Interchange Format)
+  :h261:
+    :desc: H.261
+  :h263:
+    :desc: H.263 / H.263-1996
+  :h263_v4l2m2m:
+    :desc: V4L2 mem2mem H.263 encoder wrapper (codec h263)
+  :h263p:
+    :desc: H.263+ / H.263-1998 / H.263 version 2
+  :libx264:
+    :desc: libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (codec h264)
+  :libx264rgb:
+    :desc: libx264 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 RGB (codec h264)
+  :h264_amf:
+    :desc: AMD AMF H.264 Encoder (codec h264)
+  :h264_nvenc:
+    :desc: NVIDIA NVENC H.264 encoder (codec h264)
+  :h264_qsv:
+    :desc: H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (Intel Quick Sync Video acceleration)
+      (codec h264)
+  :h264_v4l2m2m:
+    :desc: V4L2 mem2mem H.264 encoder wrapper (codec h264)
+  :h264_vaapi:
+    :desc: H.264/AVC (VAAPI) (codec h264)
+  :h264_vulkan:
+    :desc: H.264/AVC (Vulkan) (codec h264)
+  :hap:
+    :desc: Vidvox Hap
+  :hdr:
+    :desc: HDR (Radiance RGBE format) image
+  :libx265:
+    :desc: libx265 H.265 / HEVC (codec hevc)
+  :hevc_amf:
+    :desc: AMD AMF HEVC encoder (codec hevc)
+  :hevc_nvenc:
+    :desc: NVIDIA NVENC hevc encoder (codec hevc)
+  :hevc_qsv:
+    :desc: HEVC (Intel Quick Sync Video acceleration) (codec hevc)
+  :hevc_v4l2m2m:
+    :desc: V4L2 mem2mem HEVC encoder wrapper (codec hevc)
+  :hevc_vaapi:
+    :desc: H.265/HEVC (VAAPI) (codec hevc)
+  :hevc_vulkan:
+    :desc: H.265/HEVC (Vulkan) (codec hevc)
+  :huffyuv:
+    :desc: Huffyuv / HuffYUV
+  :jpeg2000:
+    :desc: JPEG 2000
+  :libopenjpeg:
+    :desc: OpenJPEG JPEG 2000 (codec jpeg2000)
+  :jpegls:
+    :desc: JPEG-LS
+  :libjxl:
+    :desc: libjxl JPEG XL (codec jpegxl)
+  :ljpeg:
+    :desc: Lossless JPEG
+  :magicyuv:
+    :desc: MagicYUV video
+  :mjpeg:
+    :desc: MJPEG (Motion JPEG)
+  :mjpeg_qsv:
+    :desc: MJPEG (Intel Quick Sync Video acceleration) (codec mjpeg)
+  :mjpeg_vaapi:
+    :desc: MJPEG (VAAPI) (codec mjpeg)
+  :mpeg1video:
+    :desc: MPEG-1 video
+  :mpeg2video:
+    :desc: MPEG-2 video
+  :mpeg2_qsv:
+    :desc: MPEG-2 video (Intel Quick Sync Video acceleration) (codec mpeg2video)
+  :mpeg2_vaapi:
+    :desc: MPEG-2 (VAAPI) (codec mpeg2video)
+  :mpeg4:
+    :desc: MPEG-4 part 2
+  :libxvid:
+    :desc: libxvidcore MPEG-4 part 2 (codec mpeg4)
+  :mpeg4_v4l2m2m:
+    :desc: V4L2 mem2mem MPEG4 encoder wrapper (codec mpeg4)
+  :msmpeg4v2:
+    :desc: MPEG-4 part 2 Microsoft variant version 2
+  :msmpeg4:
+    :desc: MPEG-4 part 2 Microsoft variant version 3 (codec msmpeg4v3)
+  :msrle:
+    :desc: Microsoft RLE
+  :msvideo1:
+    :desc: Microsoft Video-1
+  :pam:
+    :desc: PAM (Portable AnyMap) image
+  :pbm:
+    :desc: PBM (Portable BitMap) image
+  :pcx:
+    :desc: PC Paintbrush PCX image
+  :pfm:
+    :desc: PFM (Portable FloatMap) image
+  :pgm:
+    :desc: PGM (Portable GrayMap) image
+  :pgmyuv:
+    :desc: PGMYUV (Portable GrayMap YUV) image
+  :phm:
+    :desc: PHM (Portable HalfFloatMap) image
+  :png:
+    :desc: PNG (Portable Network Graphics) image
+  :ppm:
+    :desc: PPM (Portable PixelMap) image
+  :prores:
+    :desc: Apple ProRes
+  :prores_aw:
+    :desc: Apple ProRes (codec prores)
+  :prores_ks:
+    :desc: Apple ProRes (iCodec Pro) (codec prores)
+  :qoi:
+    :desc: QOI (Quite OK Image format) image
+  :qtrle:
+    :desc: QuickTime Animation (RLE) video
+  :r10k:
+    :desc: AJA Kona 10-bit RGB Codec
+  :r210:
+    :desc: Uncompressed RGB 10-bit
+  :rawvideo:
+    :desc: raw video
+  :roqvideo:
+    :desc: id RoQ video (codec roq)
+  :rpza:
+    :desc: QuickTime video (RPZA)
+  :rv10:
+    :desc: RealVideo 1.0
+  :rv20:
+    :desc: RealVideo 2.0
+  :sgi:
+    :desc: SGI image
+  :smc:
+    :desc: QuickTime Graphics (SMC)
+  :snow:
+    :desc: Snow
+  :speedhq:
+    :desc: NewTek SpeedHQ
+  :sunrast:
+    :desc: Sun Rasterfile image
+  :svq1:
+    :desc: Sorenson Vector Quantizer 1 / Sorenson Video 1 / SVQ1
+  :targa:
+    :desc: Truevision Targa image
+  :libtheora:
+    :desc: libtheora Theora (codec theora)
+  :tiff:
+    :desc: TIFF image
+  :utvideo:
+    :desc: Ut Video
+  :v210:
+    :desc: Uncompressed 4:2:2 10-bit
+  :v308:
+    :desc: Uncompressed packed 4:4:4
+  :v408:
+    :desc: Uncompressed packed QT 4:4:4:4
+  :v410:
+    :desc: Uncompressed 4:4:4 10-bit
+  :vbn:
+    :desc: Vizrt Binary Image
+  :vnull:
+    :desc: null video
+  :libvpx:
+    :desc: libvpx VP8 (codec vp8)
+  :vp8_v4l2m2m:
+    :desc: V4L2 mem2mem VP8 encoder wrapper (codec vp8)
+  :vp8_vaapi:
+    :desc: VP8 (VAAPI) (codec vp8)
+  :libvpx-vp9:
+    :desc: libvpx VP9 (codec vp9)
+  :vp9_vaapi:
+    :desc: VP9 (VAAPI) (codec vp9)
+  :vp9_qsv:
+    :desc: VP9 video (Intel Quick Sync Video acceleration) (codec vp9)
+  :wbmp:
+    :desc: WBMP (Wireless Application Protocol Bitmap) image
+  :libwebp_anim:
+    :desc: libwebp WebP image (codec webp)
+  :libwebp:
+    :desc: libwebp WebP image (codec webp)
+  :wmv1:
+    :desc: Windows Media Video 7
+  :wmv2:
+    :desc: Windows Media Video 8
+  :wrapped_avframe:
+    :desc: AVFrame to AVPacket passthrough
+  :xbm:
+    :desc: XBM (X BitMap) image
+  :xface:
+    :desc: X-face image
+  :xwd:
+    :desc: XWD (X Window Dump) image
+  :y41p:
+    :desc: Uncompressed YUV 4:1:1 12-bit
+  :yuv4:
+    :desc: Uncompressed packed 4:2:0
+  :zlib:
+    :desc: LCL (LossLess Codec Library) ZLIB
+  :zmbv:
+    :desc: Zip Motion Blocks Video
+:Sound:
+  :aac:
+    :desc: AAC (Advanced Audio Coding)
+  :ac3:
+    :desc: ATSC A/52A (AC-3)
+  :ac3_fixed:
+    :desc: ATSC A/52A (AC-3) (codec ac3)
+  :adpcm_adx:
+    :desc: SEGA CRI ADX ADPCM
+  :adpcm_argo:
+    :desc: ADPCM Argonaut Games
+  :g722:
+    :desc: G.722 ADPCM (codec adpcm_g722)
+  :g726:
+    :desc: G.726 ADPCM (codec adpcm_g726)
+  :g726le:
+    :desc: G.726 little endian ADPCM ("right-justified") (codec adpcm_g726le)
+  :adpcm_ima_alp:
+    :desc: ADPCM IMA High Voltage Software ALP
+  :adpcm_ima_amv:
+    :desc: ADPCM IMA AMV
+  :adpcm_ima_apm:
+    :desc: ADPCM IMA Ubisoft APM
+  :adpcm_ima_qt:
+    :desc: ADPCM IMA QuickTime
+  :adpcm_ima_ssi:
+    :desc: ADPCM IMA Simon & Schuster Interactive
+  :adpcm_ima_wav:
+    :desc: ADPCM IMA WAV
+  :adpcm_ima_ws:
+    :desc: ADPCM IMA Westwood
+  :adpcm_ms:
+    :desc: ADPCM Microsoft
+  :adpcm_swf:
+    :desc: ADPCM Shockwave Flash
+  :adpcm_yamaha:
+    :desc: ADPCM Yamaha
+  :alac:
+    :desc: ALAC (Apple Lossless Audio Codec)
+  :libopencore_amrnb:
+    :desc: OpenCORE AMR-NB (Adaptive Multi-Rate Narrow-Band) (codec amr_nb)
+  :anull:
+    :desc: null audio
+  :aptx:
+    :desc: aptX (Audio Processing Technology for Bluetooth)
+  :aptx_hd:
+    :desc: aptX HD (Audio Processing Technology for Bluetooth)
+  :comfortnoise:
+    :desc: RFC 3389 comfort noise generator
+  :dfpwm:
+    :desc: DFPWM1a audio
+  :dca:
+    :desc: DCA (DTS Coherent Acoustics) (codec dts)
+  :eac3:
+    :desc: ATSC A/52 E-AC-3
+  :flac:
+    :desc: FLAC (Free Lossless Audio Codec)
+  :g723_1:
+    :desc: G.723.1
+  :libgsm:
+    :desc: libgsm GSM (codec gsm)
+  :libgsm_ms:
+    :desc: libgsm GSM Microsoft variant (codec gsm_ms)
+  :mlp:
+    :desc: MLP (Meridian Lossless Packing)
+  :mp2:
+    :desc: MP2 (MPEG audio layer 2)
+  :mp2fixed:
+    :desc: MP2 fixed point (MPEG audio layer 2) (codec mp2)
+  :libmp3lame:
+    :desc: libmp3lame MP3 (MPEG audio layer 3) (codec mp3)
+  :nellymoser:
+    :desc: Nellymoser Asao
+  :opus:
+    :desc: Opus
+  :libopus:
+    :desc: libopus Opus (codec opus)
+  :pcm_alaw:
+    :desc: PCM A-law / G.711 A-law
+  :pcm_bluray:
+    :desc: PCM signed 16|20|24-bit big-endian for Blu-ray media
+  :pcm_dvd:
+    :desc: PCM signed 16|20|24-bit big-endian for DVD media
+  :pcm_f32be:
+    :desc: PCM 32-bit floating point big-endian
+  :pcm_f32le:
+    :desc: PCM 32-bit floating point little-endian
+  :pcm_f64be:
+    :desc: PCM 64-bit floating point big-endian
+  :pcm_f64le:
+    :desc: PCM 64-bit floating point little-endian
+  :pcm_mulaw:
+    :desc: PCM mu-law / G.711 mu-law
+  :pcm_s16be:
+    :desc: PCM signed 16-bit big-endian
+  :pcm_s16be_planar:
+    :desc: PCM signed 16-bit big-endian planar
+  :pcm_s16le:
+    :desc: PCM signed 16-bit little-endian
+  :pcm_s16le_planar:
+    :desc: PCM signed 16-bit little-endian planar
+  :pcm_s24be:
+    :desc: PCM signed 24-bit big-endian
+  :pcm_s24daud:
+    :desc: PCM D-Cinema audio signed 24-bit
+  :pcm_s24le:
+    :desc: PCM signed 24-bit little-endian
+  :pcm_s24le_planar:
+    :desc: PCM signed 24-bit little-endian planar
+  :pcm_s32be:
+    :desc: PCM signed 32-bit big-endian
+  :pcm_s32le:
+    :desc: PCM signed 32-bit little-endian
+  :pcm_s32le_planar:
+    :desc: PCM signed 32-bit little-endian planar
+  :pcm_s64be:
+    :desc: PCM signed 64-bit big-endian
+  :pcm_s64le:
+    :desc: PCM signed 64-bit little-endian
+  :pcm_s8:
+    :desc: PCM signed 8-bit
+  :pcm_s8_planar:
+    :desc: PCM signed 8-bit planar
+  :pcm_u16be:
+    :desc: PCM unsigned 16-bit big-endian
+  :pcm_u16le:
+    :desc: PCM unsigned 16-bit little-endian
+  :pcm_u24be:
+    :desc: PCM unsigned 24-bit big-endian
+  :pcm_u24le:
+    :desc: PCM unsigned 24-bit little-endian
+  :pcm_u32be:
+    :desc: PCM unsigned 32-bit big-endian
+  :pcm_u32le:
+    :desc: PCM unsigned 32-bit little-endian
+  :pcm_u8:
+    :desc: PCM unsigned 8-bit
+  :pcm_vidc:
+    :desc: PCM Archimedes VIDC
+  :real_144:
+    :desc: RealAudio 1.0 (14.4K) (codec ra_144)
+  :roq_dpcm:
+    :desc: id RoQ DPCM
+  :s302m:
+    :desc: SMPTE 302M
+  :sbc:
+    :desc: SBC (low-complexity subband codec)
+  :sonic:
+    :desc: Sonic
+  :sonicls:
+    :desc: Sonic lossless
+  :libspeex:
+    :desc: libspeex Speex (codec speex)
+  :truehd:
+    :desc: TrueHD
+  :tta:
+    :desc: TTA (True Audio)
+  :vorbis:
+    :desc: Vorbis
+  :libvorbis:
+    :desc: libvorbis (codec vorbis)
+  :wavpack:
+    :desc: WavPack
+  :wmav1:
+    :desc: Windows Media Audio 1
+  :wmav2:
+    :desc: Windows Media Audio 2

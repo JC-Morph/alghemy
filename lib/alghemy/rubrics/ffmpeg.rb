@@ -1,4 +1,5 @@
 require 'alghemy/ancestors'
+require 'alghemy/data'
 require 'alghemy/methods'
 
 module Alghemy
@@ -7,10 +8,20 @@ module Alghemy
     class Ffmpeg < Ancestors[:rubric]
       extend Methods[:alget]
 
-      def self.moniker
-        moniker = %w[ffmpeg -loglevel warning -stats]
-        moniker << '-y' if alget(:overwrite)
-        moniker.join(' ')
+      class << self
+        def encoders
+          Data[:ffmpeg_encoders]
+        end
+
+        def random_encoder( element = :Video )
+          encoders[element].keys.sample
+        end
+
+        def moniker
+          moniker = %w[ffmpeg -loglevel warning -stats]
+          moniker << '-y' if alget(:overwrite)
+          moniker.join(' ')
+        end
       end
 
       def option_templates
@@ -51,6 +62,10 @@ module Alghemy
         vcodec.acodec
       end
 
+      def encoders
+        Data[:ffmpeg_encoders]
+      end
+
       def formats
         format.pix_fmt
       end
@@ -85,6 +100,10 @@ module Alghemy
         input
         return format.output unless raw?
         vcodec.output
+      end
+
+      def random_encoder
+        self.class.encoders.keys.sample
       end
 
       private
