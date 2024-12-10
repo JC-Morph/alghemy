@@ -30,8 +30,9 @@ module Alghemy
 
       # Public: Prints Mems in a human-friendly format.
       def memory
+        total = mems.size
         mems.each_with_index do |mem, i|
-          puts "\n\nTransform %d" % i.succ
+          puts "\n\nTransform %d" % (total - i)
           hshprint mem
         end
       end
