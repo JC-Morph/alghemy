@@ -82,6 +82,9 @@ module Alghemy
       end
 
       def convert
+        codecs if [:vcodec, :acodec].any? do |codec|
+          options[codec].value.is_a?(Array)
+        end
         input.add_ins.rate.codecs.output
       end
 
