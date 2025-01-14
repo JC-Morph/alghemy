@@ -13,10 +13,6 @@ module Alghemy
           Data[:ffmpeg_encoders]
         end
 
-        def random_encoder( element = :Video )
-          encoders[element].keys.sample
-        end
-
         def moniker
           moniker = %w[ffmpeg -loglevel warning -stats]
           moniker << '-y' if alget(:overwrite)
@@ -41,8 +37,11 @@ module Alghemy
           loop:     {default: 1},
           rate:     {default: 30, flag: 'r'},
           # options for audio and video streams
-          **stream_option(:codec,   'c', ['libx264', 'aac']),
-          **stream_option(:quality, 'q', [5, 3])
+          **stream_option(:codec,
+                          ['libx264', 'aac'],
+                          dict: [:ffmpeg_encoders, :_stream],
+                          bi: true),
+        **stream_option(:quality, [5, 3], dict: (0..100))
         }
       end
 
@@ -60,10 +59,6 @@ module Alghemy
              end
         options[:vcodec].value = vc if vc
         vcodec.acodec
-      end
-
-      def encoders
-        Data[:ffmpeg_encoders]
       end
 
       def formats
@@ -102,10 +97,6 @@ module Alghemy
         vcodec.output
       end
 
-      def random_encoder
-        self.class.encoders.keys.sample
-      end
-
       private
 
       # Internal: Generates switch templates for options that specify a stream.
@@ -113,12 +104,21 @@ module Alghemy
       #
       # option   - String of option in command-line format.
       # defaults - Array of default values for each stream.
-      def stream_option( option, command, defaults )
-        %w[a v].collect.with_object({}) do |stream, hsh|
-          label = (stream + option.to_s).to_sym
-          flag  = [command, stream].join(':')
-          hsh[label] = {flag: flag, default: defaults.pop}
+      def stream_option( option, defaults, dict: nil, **other_vars )
+        {Video: :v, Sound: :a}.each_with_object({}) do |(stream, char), hsh|
+          label = "#{char}#{option}".to_sym
+
+          hsh[label] = {flag:     "#{option[0]}:#{char}".to_sym,
+                        default:  defaults.shift,
+                        shortcut: "#{char}#{option[0]}".to_sym,
+                        **other_vars}
+          hsh[label].merge!(dict: write_dict(dict, stream)) if dict
         end
+      end
+
+      def write_dict( dict, stream )
+        return dict unless dict.is_a?(Array)
+        dict.map {|entry| entry == :_stream ? stream : entry }
       end
     end
   end

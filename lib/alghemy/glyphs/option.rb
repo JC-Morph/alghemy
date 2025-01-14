@@ -1,3 +1,4 @@
+require 'alghemy/data'
 require 'alghemy/methods'
 
 module Alghemy
@@ -16,6 +17,7 @@ module Alghemy
                     prefix
                     delim
                     shortcut
+                    dict
                   ])
 
       # Public: Initialise an Option.
@@ -35,6 +37,29 @@ module Alghemy
         @value ||= deep_clone default
       end
 
+      # Public: Set @index to -1.
+      def reset_index
+        @index = -1
+      end
+
+      # Public: Assign value.
+      #
+      # val - Value to assign to the option.
+      def value=( val )
+        val = [val].flatten.map do |contents|
+          contents == 'rand' ? random : contents
+        end
+        val = val.first if val.size == 1
+        @value = val
+      end
+
+      # Public: Get a random value from the option's boundaries.
+      def random
+        return value || default unless dict = find_dictionary
+        return dict.sample if dict.is_a?(Array)
+        rand(dict)
+      end
+
       # Public: Discern and return next iteration of @value.
       def print( val = nil )
         val ||= increment_value
@@ -50,17 +75,18 @@ module Alghemy
         value.rotate(index).first
       end
 
-      # Public: Set @index to -1.
-      def reset_index
-        @index = -1
-      end
-
       # Public: Boolean if pseudonym matches an identifying variable.
       def known_as?( pseudonym )
         %i[name flag shortcut].any? {|id| pseudonym == send(id) }
       end
 
       private
+
+      def find_dictionary
+        return nil  unless dict
+        return dict unless dict.is_a?(Array)
+        Data[dict[0]].fetch(dict[1])&.keys || dict
+      end
 
       # Internal: Set instance variables from key value pairs.
       def set_arg_vars( args )
