@@ -50,15 +50,12 @@ module Alghemy
         add input: ['-i', '"%{input}"']
       end
 
-      def codecs
-        vc = case stuff[:ext]
-             when '.gif'
-               'gif'
-             when '.flv'
-               'flv1'
-             end
-        options[:vcodec].value = vc if vc
-        vcodec.acodec
+      def codecs( local = :post )
+        [:vcodec, :acodec].each do |codec|
+          next unless options[codec].value.is_a?(Array) && (local == :pre)
+          send(codec)
+        end
+        self
       end
 
       def formats
@@ -82,10 +79,7 @@ module Alghemy
       end
 
       def convert
-        codecs if [:vcodec, :acodec].any? do |codec|
-          options[codec].value.is_a?(Array)
-        end
-        input.add_ins.rate.codecs.output
+        codecs(:pre).input.add_ins.rate.codecs.output
       end
 
       def rip
@@ -95,7 +89,7 @@ module Alghemy
       end
 
       def sublimate
-        input
+        codecs(:pre).input
         return format.output unless raw?
         vcodec.output
       end
