@@ -5,7 +5,6 @@ module Alghemy
   module Properties
     extend Bandoleer
 
-    equip %i[pix_fmt space]
+    equip %i[pix_fmt size]
   end
 end
-

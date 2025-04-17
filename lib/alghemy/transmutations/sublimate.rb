@@ -45,7 +45,7 @@ module Alghemy
 
       def agree_size( tree )
         @mult = true if shrunk?(tree)
-        Properties[:space].new(stuff[:size], tree[:size])
+        Properties[:size].new(stuff[:size], tree[:size])
       end
 
       def shrunk?( tree )

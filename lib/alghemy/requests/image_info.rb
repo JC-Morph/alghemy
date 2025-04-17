@@ -24,7 +24,7 @@ module Alghemy
         end
 
         def fmtdex
-          fmts = [->(asp) { Properties[:space].new asp },
+          fmts = [->(asp) { Properties[:size].new asp },
                   ->(asp) { asp.to_i },
                   ->(asp) { asp.split[1] }]
           aspdex fmts
