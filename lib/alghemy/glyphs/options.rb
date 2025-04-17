@@ -38,7 +38,7 @@ module Alghemy
       end
 
       def find_value( option, stuff )
-        values = %i[name flag shortcut].map do |id|
+        values = %i[flag shortcut name].map do |id|
           stuff[option.send(id)]
         end.compact
         return option.value if values.empty?
