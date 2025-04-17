@@ -47,13 +47,17 @@ module Alghemy
 
       def input
         formats.size.rate if raw?
-        add input: ['-i', '"%{input}"']
+        pre_codecs.add input: ['-i', '"%{input}"']
       end
 
-      def codecs( local = :post )
+      def codecs
+        vcodec.acodec
+      end
+
+      def pre_codecs
         [:vcodec, :acodec].each do |codec|
-          next unless options[codec].value.is_a?(Array) && (local == :pre)
-          send(codec)
+          next unless options[codec].value.is_a? Array
+          send codec
         end
         self
       end
@@ -69,11 +73,11 @@ module Alghemy
 
       # Shared transmutations
       def concat
-        format.input.output
+        format.input.codecs.output
       end
 
       def convert
-        codecs(:pre).input.add_ins.rate.codecs.output
+        input.add_ins.rate.codecs.output
       end
 
       def rip
@@ -83,14 +87,14 @@ module Alghemy
       end
 
       def sublimate
-        codecs(:pre).input
+        input
         return format.output unless raw?
-        vcodec.output
+        vcodec.pix_fmt.output
       end
 
       private
 
-      # Internal: Generates switch templates for options that specify a stream.
+      # Internal: Generates templates for options that specify a stream.
       # (v - video, a - audio)
       #
       # option   - String of option in command-line format.
