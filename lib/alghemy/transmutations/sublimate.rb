@@ -13,12 +13,12 @@ module Alghemy
 
       def remember
         tree = lmnt.inherit(%i[affinity list], transform: 'sublimate')
-        list = tree[:list]
+        stuff[:affinity] ||= tree[:affinity] || :image
+        list       = tree[:list]
         tree[:ext] = list ? list.first_lmnt.ext : affinity.defaults[:ext]
 
         tree.merge! lmnt.inherit(anchors, transform: 'sublimate')
-        stuff[:affinity] ||= tree[:affinity] || :image
-        stuff[:size]       = agree_size tree
+        stuff[:size] = agree_size tree
         tree
       end
 
