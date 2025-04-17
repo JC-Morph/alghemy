@@ -6,7 +6,7 @@ module Alghemy
   module Data
     extend Bandoleer
 
-    vials = %w[ffmpeg_encoders ladspa]
+    vials = %w[ffmpeg_encoders ffmpeg_pixel_formats ladspa]
 
     vials.each do |vial|
       pockets.register(vial) do

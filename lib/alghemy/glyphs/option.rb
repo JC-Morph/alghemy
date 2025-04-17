@@ -83,9 +83,9 @@ module Alghemy
       private
 
       def find_dictionary
-        return nil  unless dict
-        return dict unless dict.is_a?(Array)
-        Data[dict[0]].fetch(dict[1])&.keys || dict
+        return nil unless dict
+        return Data[dict[0]].fetch(dict[1])&.keys if dict.is_a?(Array)
+        dict.is_a?(Symbol) ? Data[dict] : dict
       end
 
       # Internal: Set instance variables from key value pairs.

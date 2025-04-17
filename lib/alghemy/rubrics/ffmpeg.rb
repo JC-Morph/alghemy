@@ -27,10 +27,14 @@ module Alghemy
           no_video: {flag: :vn},
           # no default
           add_in:   {flag: :i},
-          arcana:   {flag: :pix_fmt, shortcut: :pf},
           duration: {flag: :t, shortcut: :dur},
           size:     {flag: 'video_size'},
           # with default
+          arcana:   {default: 'yuv420p',
+                     flag: :pix_fmt,
+                     shortcut: :pf,
+                     dict: :ffmpeg_pixel_formats,
+                     bi: true},
           crf:      {default: 12},
           format:   {default: 'rawvideo', flag: 'f'},
           glob:     {default: 'glob', flag: :pattern_type},
