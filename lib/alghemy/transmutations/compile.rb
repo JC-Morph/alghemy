@@ -27,6 +27,13 @@ module Alghemy
         @mult = false unless lmnt.dims
       end
 
+      def write_rubric( rubric = nil )
+        rubric = write(rubric)
+        rubric.glob unless stuff[:pad]
+        rubric.format.rate unless lmnt.raw?
+        rubric.input.add_ins.codecs.output
+      end
+
       private
 
       def defaults

@@ -68,12 +68,6 @@ module Alghemy
       end
 
       # Shared transmutations
-      def compile
-        glob unless stuff[:pad]
-        format.rate unless raw?
-        input.add_ins.output
-      end
-
       def concat
         format.input.output
       end
