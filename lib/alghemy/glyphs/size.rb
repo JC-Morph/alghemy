@@ -2,7 +2,7 @@ require 'forwardable'
 require 'alghemy/methods'
 
 module Alghemy
-  module Properties
+  module Glyphs
     # Public: Represents width and height for Elements with spatial dimensions,
     # i.e Images and Videos.
     class Size

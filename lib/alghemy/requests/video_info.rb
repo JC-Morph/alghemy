@@ -38,7 +38,7 @@ module Alghemy
         end
 
         def fmtdex
-          fmts = [->(asp) { Properties[:size].new asp.split },
+          fmts = [->(asp) { Glyphs[:size].new asp.split },
                   :to_f,
                   ->(asp) { asp[%r{/}] ? asp : asp.to_f },
                   :to_i]

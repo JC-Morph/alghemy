@@ -17,7 +17,6 @@ require 'alghemy/tomes'
 include Alghemy
 include Affinities
 include Glyphs
-include Properties
 include Tomes
 
 Hunter = Comrades[:hunter]

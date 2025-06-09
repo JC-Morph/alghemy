@@ -2,7 +2,7 @@ require 'bandoleer'
 
 module Alghemy
   # Public: Bandoleer. Vials contain classes representing a specific format of
-  # data. Used to make information more context-specific.
+  # data. Used to make information more contextual.
   module Glyphs
     extend Bandoleer
 
