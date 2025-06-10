@@ -11,7 +11,6 @@ require 'alghemy/ancestors'
 require 'alghemy/comrades'
 require 'alghemy/glyphs'
 require 'alghemy/mutagens'
-require 'alghemy/properties'
 require 'alghemy/tomes'
 
 include Alghemy

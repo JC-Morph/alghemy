@@ -1,6 +1,6 @@
 require 'alghemy/affinities'
 require 'alghemy/ancestors'
-require 'alghemy/properties'
+require 'alghemy/glyphs'
 
 module Alghemy
   module Transmutations

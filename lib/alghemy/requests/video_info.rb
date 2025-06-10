@@ -1,5 +1,5 @@
+require 'alghemy/glyphs'
 require 'alghemy/modules'
-require 'alghemy/properties'
 
 module Alghemy
   module Requests

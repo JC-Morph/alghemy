@@ -1,4 +1,3 @@
-require 'alghemy/properties'
 require 'alghemy/rubrics'
 
 module Alghemy
