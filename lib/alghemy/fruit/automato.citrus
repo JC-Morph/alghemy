@@ -1,0 +1,102 @@
+grammar Automato
+  # Hierarchical syntax
+  rule term
+    mod_series | series | additive | factor
+  end
+
+#  rule auto_flag
+#    (flag:('a//' term)) {
+#    }
+#  end
+
+  rule mod_series
+    (series operator:('*' | '/' | '+' | '-') space* prefix) {
+      arr = [capture(:operator).to_s, capture(:prefix).value]
+      capture(:series).value.map {|val| val.send(*arr).round(5) }
+    }
+  end
+
+  rule series
+    (prefix '/' space* count:(prefix)) {
+      count = capture(:count).value
+      step  = capture(:prefix).value.fdiv(count - 1)
+      count.times.with_object([]) do |iterations, arr|
+        arr << (step * iterations).round(5)
+      end
+    }
+  end
+
+  rule additive
+    (factor operator:('+' | '-') space* term) {
+      def value
+        arr = [capture(:operator).to_s, capture(:term).value]
+        capture(:factor).value.send *arr
+      end
+    }
+  end
+
+  rule factor
+    multiplicative | prefix
+  end
+
+  rule multiplicative
+    (prefix operator:('*' | '/' | '%') space* factor) {
+      arr = [capture(:operator).to_s, capture(:factor).value]
+      capture(:prefix).value.send *arr
+    }
+  end
+
+  rule prefix
+    prefixed | exponent
+  end
+
+  rule prefixed
+    (operator:('-' | '+' | '~') space* prefix) {
+      s = capture(:operator).to_s
+      s += '@' unless s == '~' # Unary + and - require an @.
+      capture(:prefix).value.send(s)
+    }
+  end
+
+  rule exponent
+    exponential | primary
+  end
+
+  rule exponential
+    (primary operator:'**' space* prefix) {
+      arr = [capture(:operator).to_s, capture(:prefix).value]
+      capture(:primary).value.send *arr
+    }
+  end
+
+  rule primary
+    group | number
+  end
+
+  rule group
+    (lparen term rparen) {
+      capture(:term).value
+    }
+  end
+
+  # Lexical syntax
+  rule number
+    float | integer
+  end
+
+  rule float
+    (digits* '.' digits space*) { to_str.to_f }
+  end
+
+  rule integer
+    (digits space*) { to_str.to_i }
+  end
+
+  rule digits
+    [0-9]+ ('_' [0-9]+)* # Numbers may contain underscores.
+  end
+
+  rule lparen '(' space* end
+  rule rparen ')' space* end
+  rule space  [ \t\n\r]  end
+end
