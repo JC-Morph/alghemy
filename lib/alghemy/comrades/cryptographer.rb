@@ -8,17 +8,13 @@ module Alghemy
         include Methods[:decipher]
 
         def decipher_options( options )
-          auto_options(options).transform_values do |value|
-            decipher value.sub(auto_key, '')
-          end
+          auto_options(options).transform_values {|value| decipher value }
         end
 
-        private
-
         def auto_options( options )
-          options.select do |_k, val|
-            next unless val.is_a?(String)
-            val[%r{^#{auto_key}}]
+          options.each_with_object({}) do |(key, val), hsh|
+            next unless val.is_a?(String) && val[%r{^#{auto_key}}]
+            hsh[key] = val.sub(auto_key, '')
           end
         end
 
