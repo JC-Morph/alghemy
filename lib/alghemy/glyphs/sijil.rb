@@ -10,7 +10,7 @@ module Alghemy
       extend Forwardable
       include Assistants[:trail]
       include Methods[:deep_clone]
-      include Methods[:store]
+      include Methods[:store_memory]
       def_delegators :@sijil, :[]=, :gsub, :inspect, :slice, :sub
 
       def self.compose( sijil )
@@ -53,7 +53,7 @@ module Alghemy
       #
       # Returns Matter.
       def evoke( memory = nil, record = true )
-        store(memory) if memory && record
+        store_memory(memory) if memory && record
         Factories[:evoker].call(self.class, self)
       end
     end

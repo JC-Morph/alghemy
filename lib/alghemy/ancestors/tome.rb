@@ -12,7 +12,7 @@ module Alghemy
       extend Forwardable
       include Assistants[:gnumbers]
       include Methods[:alget]
-      include Methods[:store]
+      include Methods[:store_memory]
       methods = %i[
         []
         empty?
@@ -73,7 +73,7 @@ module Alghemy
       #
       # Returns Matter.
       def evoke( memory = nil, record = true )
-        store(memory) if memory && record
+        store_memory(memory) if memory && record
         Factories[:evoker].call(self.class, all_entries)
       end
 

@@ -12,7 +12,7 @@ module Alghemy
                decipher
                deep_clone
                hshprint
-               store
+               store_memory
                transmute]
 
     equip vials
