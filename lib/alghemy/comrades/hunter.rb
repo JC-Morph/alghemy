@@ -30,8 +30,8 @@ module Alghemy
         end
 
         def find_symbol
-          Glyphs[:archive].select do |_sijil, entry|
-            entry.values.include? scent
+          Glyphs[:memory_palace].follow_memory do |_sijil, memory|
+            memory.values.include? scent
           end.keys
         end
 
