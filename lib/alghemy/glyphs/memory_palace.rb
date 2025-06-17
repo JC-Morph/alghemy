@@ -6,7 +6,7 @@ module Alghemy
     # allowing for the reversion of Matter to previous states.
     module MemoryPalace
       class << self
-        include Modules[:archives]
+        include Modules[:archive]
         attr_reader :palace_map, :palace_location
 
         def open_palace_map

@@ -8,7 +8,7 @@ module Alghemy
   module Mutagens
     # Public: Represents a VST plugin.
     class Vst
-      extend Modules[:archives]
+      extend Modules[:archive]
       include Assistants[:vst_info]
       attr_reader :sijil, :automatons
       alias_method :to_s, :sijil

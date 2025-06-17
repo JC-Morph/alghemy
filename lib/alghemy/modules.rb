@@ -5,7 +5,6 @@ module Alghemy
   module Modules
     extend Bandoleer
 
-    equip %i[analyse archives request]
+    equip %i[analyse archive request]
   end
 end
-
