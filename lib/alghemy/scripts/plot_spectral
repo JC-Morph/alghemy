@@ -16,9 +16,4 @@ gnuplot --persist <<- EOP
 	unset colorbox
 
 	plot '$1' matrix with image
-
-	set margins 0,0,0,0
-	set term png
-	set output 'spectral.png'
-	replot
 EOP
