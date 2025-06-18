@@ -13,7 +13,8 @@ module Alghemy
                deep_clone
                hshprint
                store_memory
-               transmute]
+               transmute
+               write_to_file]
 
     equip vials
   end

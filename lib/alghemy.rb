@@ -12,11 +12,13 @@ require 'alghemy/comrades'
 require 'alghemy/glyphs'
 require 'alghemy/mutagens'
 require 'alghemy/tomes'
+require 'alghemy/vamp_clans'
 
 include Alghemy
 include Affinities
 include Glyphs
 include Tomes
+include VampClans
 
 Hunter = Comrades[:hunter]
 Matter = Ancestors[:matter]

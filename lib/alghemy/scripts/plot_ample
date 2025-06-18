@@ -1,0 +1,17 @@
+#!/bin/bash
+
+gnuplot --persist <<- EOP
+	reset
+
+	set autoscale fix
+	set xlabel 'Seconds'
+	set ylabel 'Amplitude'
+	set title  '$2'
+	plot '$1' using 1:2 notitle with lines
+
+	unset tics
+	set margins 0,0,0,0
+	set term png
+	set output 'ample.png'
+	replot
+EOP

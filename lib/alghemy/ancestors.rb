@@ -7,7 +7,6 @@ module Alghemy
   module Ancestors
     extend Bandoleer
 
-    equip %i[cdp_transmutation matter rubric transmutation tome]
+    equip %i[cdp_transmutation matter rubric transmutation tome vamp_clan]
   end
 end
-

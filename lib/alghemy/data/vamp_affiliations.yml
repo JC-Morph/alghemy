@@ -1,0 +1,35 @@
+---
+:Ample:
+- bbc-energy:average
+- bbc-energy:pdip
+- bbc-energy:rmsdelta
+- bbc-energy:rmsenergy
+- bbc-intensity:intensity
+- bbc-peaks:peaks
+- bbc-spectral-flux:spectral-flux
+- marsyas_bextract_centroid:centroid_value
+- marsyas_bextract_rolloff:rolloff
+:Spectral:
+- aubiomelenergy:mfcc
+- azi:plan
+- bbc-intensity:intensity-ratio
+- bbc-spectral-contrast:mean
+- bbc-spectral-constrast:peaks
+- bbc-spectral-contrast:valleys
+- cqchromavamp:chromagram
+- cqvamp:constantq
+- cqvampmidi:constantq
+- marsyas_bextract_lsp:line_spectral_pairs
+- marsyas_bextract_scf:scf
+- marsyas_bexctract_sfm:spf
+- nnls-chroma:basschroma
+- nnls-chroma:bothchroma
+- nnls-chroma:chroma
+- nnls-chroma:logfreqspec
+- nnls-chroma:semitonespectrum
+- nnls-chroma:tunedlogfreqspec
+- silvet:chroma
+- tipic:chroma
+- tipic:chroma-smoothed
+- spectralcentroid:linearcentroid
+- spectralcentroid:logcentroid
