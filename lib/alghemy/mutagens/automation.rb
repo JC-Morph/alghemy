@@ -1,5 +1,4 @@
-# Public: Provides methods to initialise automation templates for adjustable
-# parameters.
+# Public: Provides methods to create automation templates for vst parameters.
 module Automation
   class << self
     attr_reader :n_params, :stuff
@@ -41,7 +40,8 @@ module Automation
       {min: '25%', max: '75%', column: 1}
     end
 
-    # Internal: Returns Range of possible numbers of parameters to be automated.
+    # Internal: Returns the Range in percentages of possible parameters to be
+    # automated.
     def bounds
       bounds    = [stuff[:min], stuff[:max]].map(&:to_f)
       bounds[1] = bounds.max
