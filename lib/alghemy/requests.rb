@@ -12,9 +12,9 @@ module Alghemy
                image_open
                sound_open
                video_open
+               vampyre_bite
                vst_request]
 
     equip vials
   end
 end
-

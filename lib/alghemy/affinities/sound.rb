@@ -6,6 +6,8 @@ module Alghemy
   module Affinities
     # Public: Represents a sound.
     class Sound < Ancestors[:matter]
+      include Requests[:vampyre_bite]
+
       class << self
         def defaults
           {ext: '.wav', raw_ext: '.pcm'}
