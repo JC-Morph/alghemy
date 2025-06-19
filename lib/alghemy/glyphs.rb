@@ -6,7 +6,7 @@ module Alghemy
   module Glyphs
     extend Bandoleer
 
-    equip %i[memory memory_palace option options scroll sijil size skeleton]
+    equip %i[memory memory_palace option options scroll sijil size vampyre]
 
     remember = lambda do |sijil|
       Memories.new Glyphs[:memory_palace].follow_memory(sijil)
