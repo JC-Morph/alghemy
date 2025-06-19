@@ -84,8 +84,8 @@ module Alghemy
 
       # TODO: make analyse method with usable param?
       # Internal: Analyse Matter with designated executable.
-      def perceive( asp )
-        self.class.analyse.this(first, asp)
+      def perceive( aspect )
+        self.class.analyse.this(first, aspect)
       end
 
       def mould( expected, lmnt = self )
