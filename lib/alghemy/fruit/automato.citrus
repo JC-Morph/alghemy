@@ -1,13 +1,18 @@
 grammar Automato
   # Hierarchical syntax
+  rule all
+    data | term
+  end
+
+  rule data
+    (lsqparen csv:/.+.csv/ rsqparen) {
+      File.readlines capture(:csv).to_s
+    }
+  end
+
   rule term
     mod_series | series | additive | factor
   end
-
-#  rule auto_flag
-#    (flag:('a//' term)) {
-#    }
-#  end
 
   rule mod_series
     (series operator:('*' | '/' | '+' | '-') space* prefix) {
@@ -96,7 +101,9 @@ grammar Automato
     [0-9]+ ('_' [0-9]+)* # Numbers may contain underscores.
   end
 
-  rule lparen '(' space* end
-  rule rparen ')' space* end
-  rule space  [ \t\n\r]  end
+  rule lparen   '(' space* end
+  rule rparen   ')' space* end
+  rule lsqparen '[' space* end
+  rule rsqparen ']' space* end
+  rule space    [ \t\n\r]  end
 end
