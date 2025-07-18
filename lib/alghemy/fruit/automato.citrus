@@ -33,10 +33,11 @@ grammar Automato
 
   rule additive
     (factor operator:('+' | '-') space* term) {
-      def value
-        arr = [capture(:operator).to_s, capture(:term).value]
-        capture(:factor).value.send *arr
-      end
+        factor   = capture(:factor).value
+        operator = capture(:operator).value
+        term     = capture(:term).value
+        return factor.send(operator, term) unless term.is_a?(Array)
+        term.map {|val| val.send(operator, factor) }
     }
   end
 
