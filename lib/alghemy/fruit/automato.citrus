@@ -6,7 +6,7 @@ grammar Automato
 
   rule data
     (lsqparen csv:/.+.csv/ rsqparen) {
-      File.readlines capture(:csv).to_s
+      File.readlines(capture(:csv).to_s).map(&:chomp)
     }
   end
 
