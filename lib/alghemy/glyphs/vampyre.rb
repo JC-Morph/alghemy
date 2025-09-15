@@ -23,6 +23,24 @@ module Alghemy
         awaken_vampyre
       end
 
+      # Public: Sink fangs into a juicy sound file and suck out the features.
+      # Returns clan knowledge resulting from the analysis inherent in the type
+      # of the Vampyre.
+      def bite( sound )
+        process = ['sonic-annotator',
+                   ['-t', vampyre_coffin],
+                   sound,
+                   '-w csv',
+                   '--csv-stdout'].flatten
+        data = `#{process * ' '}`
+        out  = "#{File.basename(sound, '.*')}.csv"
+        @result = vampyre_affiliation.new write_to_file(data, out)
+      end
+
+      def read
+        lines.map(&:chomp)
+      end
+
       def edit_rate( rate = 44100 )
         data  = lines
         index = data.index {|line| line[/vamp:plugin /] }.succ
@@ -62,24 +80,6 @@ module Alghemy
         parameters
       end
       alias params parameters
-
-      # Public: Sink fangs into a juicy sound file and suck out the features.
-      # Returns clan knowledge resulting from the analysis inherent in the type
-      # of the Vampyre.
-      def bite( sound )
-        process = ['sonic-annotator',
-                   ['-t', vampyre_coffin],
-                   sound,
-                   '-w csv',
-                   '--csv-stdout'].flatten
-        data = `#{process * ' '}`
-        out  = "#{File.basename(sound, '.*')}.csv"
-        @result = vampyre_affiliation.new write_to_file(data, out)
-      end
-
-      def read
-        lines.map(&:chomp)
-      end
 
       private
 
