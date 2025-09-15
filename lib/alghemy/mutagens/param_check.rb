@@ -1,3 +1,5 @@
+# NOTE: REFERENCE FILE NOT USED PLEASE MIGRATE
+#       SHOULD BE INCORPORATED INTO TRANSMUTATIONS
 # Public: Iterate over parameter values for plugins to get an idea of the
 # effect that they have.
 module ParamCheck

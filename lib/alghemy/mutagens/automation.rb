@@ -1,3 +1,5 @@
+# NOTE: REFERENCE FILE NOT USED PLEASE MIGRATE
+#       SHOULD BE INCORPORATED INTO AUTOMATO
 # Public: Provides methods to create automation templates for vst parameters.
 module Automation
   class << self
