@@ -2,7 +2,6 @@ require 'forwardable'
 require 'alghemy/assistants'
 require 'alghemy/modules'
 require 'alghemy/requests'
-require_relative 'automation'
 
 module Alghemy
   module Mutagens
@@ -10,7 +9,7 @@ module Alghemy
     class Vst
       extend Modules[:archive]
       include Assistants[:vst_info]
-      attr_reader :sijil, :automatons
+      attr_reader :sijil
       alias_method :to_s, :sijil
 
       class << self
@@ -39,11 +38,6 @@ module Alghemy
         match    = list.map(&:downcase).include? plugin.to_s.downcase
         match_error unless match
         @sijil = plugin.to_s
-      end
-
-      def automate( stuff = {} )
-        stuff = stuff.merge(total: params.size)
-        @automatons = Automation.generate stuff
       end
 
       private
