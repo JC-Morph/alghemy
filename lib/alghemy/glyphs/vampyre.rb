@@ -29,10 +29,9 @@ module Alghemy
       def bite( sound )
         process = ['sonic-annotator',
                    ['-t', vampyre_coffin],
-                   sound,
-                   '-w csv',
-                   '--csv-stdout'].flatten
-        data = `#{process * ' '}`
+                   '%{input}',
+                   ['-w csv', '--csv-stdout']].flatten.join(' ')
+        data = Comrades[:invoker].io(process, input: sound)
         out  = "#{File.basename(sound, '.*')}.csv"
         @result = vampyre_affiliation.new write_to_file(data, out)
       end
