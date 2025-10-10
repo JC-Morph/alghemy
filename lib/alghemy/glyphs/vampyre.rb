@@ -17,6 +17,11 @@ module Alghemy
         list - ['LibXtract compiled with ooura FFT']
       end
 
+      def self.rouse_from( coffin )
+        name = File.basename(coffin, '.*').gsub('~', ':')
+        new(name).vampyre_affiliation.new coffin
+      end
+
       def initialize( sijil )
         @sijil = sijil
         @type  = vampyre_type
