@@ -38,4 +38,3 @@ module Alghemy
     equip vials
   end
 end
-
