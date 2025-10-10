@@ -6,7 +6,7 @@ module Alghemy
       include Methods[:alget]
 
       def write_to_file( data, file )
-        file = File.join(alget(:ROOT), file)
+        file = File.join(alget(:ROOT), file) unless file[/^#{alget(:ROOT)}/]
         File.open(file, 'w') do |file|
           file.puts data
         end
