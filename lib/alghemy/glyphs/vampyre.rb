@@ -35,9 +35,9 @@ module Alghemy
                    ['-t', vampyre_coffin],
                    '%{input}',
                    ['-w csv', '--csv-stdout']].flatten.join(' ')
-        data = Comrades[:invoker].io(process, input: sound)
-        out  = "#{File.basename(sound, '.*')}.csv"
-        @result = vampyre_affiliation.new write_to_file(data, out)
+        data   = Comrades[:invoker].io(process, input: sound)
+        coffin = "#{type.split(':')[-2..].join('~')}.csv"
+        @result = vampyre_affiliation.new write_to_file(data, coffin)
       end
 
       def vampyre_affiliation
