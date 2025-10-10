@@ -1,12 +1,15 @@
+require 'alghemy/glyphs'
+
 grammar Automato
   # Hierarchical syntax
   rule all
-    data | term
+    coffin | term
   end
 
-  rule data
-    (lsqparen csv:/.+.csv/ rsqparen) {
-      File.readlines(capture(:csv).to_s).map(&:chomp)
+  rule coffin
+    (lsqparen coffin:/.+.csv/ rsqparen) {
+      coffin = capture(:coffin).to_s
+      Glyphs[:vampyre].rouse_from coffin
     }
   end
 
