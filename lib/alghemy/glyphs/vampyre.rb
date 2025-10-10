@@ -114,7 +114,7 @@ module Alghemy
       # Internal: The resting place of the latest Vampyre. At current we only
       # have one resident Vampyre at a time.
       def vampyre_coffin
-        'vampyre.n3'
+        File.join(alget(:ROOT), 'vampyre.n3')
       end
 
       def lines
