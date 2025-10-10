@@ -23,6 +23,10 @@ module Alghemy
         awaken_vampyre
       end
 
+      def read
+        lines.map(&:chomp)
+      end
+
       # Public: Sink fangs into a juicy sound file and suck out the features.
       # Returns clan knowledge resulting from the analysis inherent in the type
       # of the Vampyre.
@@ -36,8 +40,12 @@ module Alghemy
         @result = vampyre_affiliation.new write_to_file(data, out)
       end
 
-      def read
-        lines.map(&:chomp)
+      def vampyre_affiliation
+        affiliations = Data[:vamp_affiliations]
+        clans = affiliations.keys.select do |clan|
+          affiliations[clan].include?(type[/[\w_-]+:[\w_-]+$/])
+        end
+        alget(clans.first || affiliations.keys.first)
       end
 
       def edit_rate( rate = 44100 )
@@ -81,14 +89,6 @@ module Alghemy
       alias params parameters
 
       private
-
-      def vampyre_affiliation
-        affiliations = Data[:vamp_affiliations]
-        clans = affiliations.keys.select do |clan|
-          affiliations[clan].include?(type[/[\w_-]+:[\w_-]+$/])
-        end
-        alget(clans.first || affiliations.keys.first)
-      end
 
       # Internal: Write the initial file describing the vamp and it's
       # characteristics.
