@@ -35,14 +35,29 @@ module Alghemy
       # Public: Sink fangs into a juicy sound file and suck out the features.
       # Returns clan knowledge resulting from the analysis inherent in the type
       # of the Vampyre.
-      def bite( sound )
-        process = ['sonic-annotator',
-                   ['-t', vampyre_coffin],
-                   '%{input}',
-                   ['-w csv', '--csv-stdout']].flatten.join(' ')
-        data   = Comrades[:invoker].io(process, input: sound)
+      def bite( sound, portions = nil )
+        serve_portions portions
+        ritual = scribe_awakening_ritual sound
+        vamp   = perform ritual
         coffin = "#{type.split(':')[-2..].join('~')}.csv"
-        @result = vampyre_affiliation.new write_to_file(data, coffin)
+        @result = vampyre_affiliation.new lay_to_rest(vamp, coffin)
+      end
+
+      def scribe_awakening_ritual( sound )
+        [
+          'sonic-annotator',
+          ['-t', vampyre_coffin],
+          sound.sijil.to_s,
+          '-w csv',
+          '--csv-stdout'
+        ]
+      end
+
+      def serve_portions( portions )
+        return unless portions
+        clan = vampyre_affiliation
+        block_mul = clan == VampClans[:ample] ? 1 : 2
+        edit_sizes(sound.span / portions, block_mul)
       end
 
       def vampyre_affiliation
