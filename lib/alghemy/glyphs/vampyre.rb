@@ -9,6 +9,7 @@ module Alghemy
       extend Forwardable
       include Methods[:alget]
       include Methods[:write_to_file]
+      alias lay_to_rest write_to_file
       delegate plot: :result
       attr_reader :sijil, :type, :result
 
@@ -68,32 +69,46 @@ module Alghemy
         alget(clans.first || affiliations.keys.first)
       end
 
-      def edit_rate( rate = 44100 )
-        data  = lines
-        index = data.index {|line| line[/vamp:plugin /] }.succ
-        data.insert(index, "    vamp:sample_rate \"#{rate}\"^^xsd:int ;")
+      def edit( var, block_mul = 1 )
+        data = lines
+        send(__callee__[/(?<=edit)\w+$/], var, data)
         convince_vampyre data
       end
+      alias edit_parameters edit
+      alias edit_rate       edit
+      alias edit_samples    edit
 
-      def edit_sizes( int, block_mul = 1 )
-        data = lines
-        %w(block step).each do |type|
-          index    = data.index {|line| line[/vamp:#{type}_size/] }
-          new_val = type == 'block' ? int * block_mul : int
-          data[index].sub!(size_value(type), new_val.to_s)
-        end
-        convince_vampyre data
-      end
-
-      def edit_parameters( lyst )
-        data = lines
+      def _parameters( lyst, data )
         lyst.each do |key, val|
           index = data.index {|line| line[/#{parameter_identity % key}/] }
           data[index.succ].sub!(parameter_value, val.to_s)
         end
+      end
+
+      def _rate( rate, data )
+        index = data.index {|line| line[/vamp:sample_rate/] }
+        return data[index].sub!(rate_value, rate.to_s) if index
+
+        index = data.index {|line| line[/vamp:plugin /] }.succ
+        data.insert(index, "    vamp:sample_rate \"#{rate}\"^^xsd:int ;")
+      end
+
+      def _samples( samples, data )
+        %w[step window].each do |type|
+          index = data.index {|line| line[/#{type}samples/] }
+          data[index].sub!(samples_value(type), samples.to_s)
+        end
+      end
+
+      def edit_sizes( size, block_mul = 1 )
+        data = lines
+        %w[block step].each do |type|
+          index = data.index {|line| line[/vamp:#{type}_size/] }
+          new_size = type == 'block' ? size * block_mul : size
+          data[index].sub!(size_value(type), new_size.to_s)
+        end
         convince_vampyre data
       end
-      alias edit_params edit_parameters
 
       def parameters
         parameters = {}
@@ -105,7 +120,6 @@ module Alghemy
         end
         parameters
       end
-      alias params parameters
 
       private
 
@@ -136,20 +150,28 @@ module Alghemy
         File.readlines vampyre_coffin
       end
 
-      def sizes
-        {block: /vamp:block_size/, step: /vamp:step_size/}
-      end
-
-      def size_value( type )
-        /(?<=#{type}_size \")\d+(?=\")/
+      def parameter_identity
+        ['(?<=vamp:identifier \")', '%s', '(?=\")'].join
       end
 
       def parameter_value
-        /(?<=value \")[\d\.]+(?=\")/
+        /(?<=value \")[\w\.]+(?=\")/
       end
 
-      def parameter_identity
-        ['(?<=vamp:identifier \")', '%s', '(?=\")'].join
+      def rate_value
+        value_wrap 'vamp:sample_rate'
+      end
+
+      def size_value( type )
+        value_wrap "#{type}_size"
+      end
+
+      def samples_value( type )
+        value_wrap "#{type}samples"
+      end
+
+      def value_wrap( ident )
+        /(?<=#{ident} \")\d+(?=\")/
       end
 
       def vampyre_type
