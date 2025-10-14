@@ -36,8 +36,9 @@ module Alghemy
       # Public: Sink fangs into a juicy sound file and suck out the features.
       # Returns clan knowledge resulting from the analysis inherent in the type
       # of the Vampyre.
-      def bite( sound, portions = nil )
-        serve_portions portions
+      def bite( sound, portions = nil, parameters = {} )
+        serve_portions  portions
+        edit_parameters parameters
         ritual = scribe_awakening_ritual sound
         vamp   = perform ritual
         coffin = "#{type.split(':')[-2..].join('~')}.csv"
