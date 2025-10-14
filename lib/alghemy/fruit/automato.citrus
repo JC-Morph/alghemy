@@ -3,11 +3,18 @@ require 'alghemy/glyphs'
 grammar Automato
   # Hierarchical syntax
   rule all
-    coffin | term
+    mod_vampyre | vampyre | term
   end
 
-  rule coffin
-    (lsqparen coffin:/.+.csv/ rsqparen) {
+  rule mod_vampyre
+    (vampyre '*' space* mod:/\w+/) {
+      vamp = capture(:vampyre).value
+      vamp.send capture(:mod).value
+    }
+  end
+
+  rule vampyre
+    (lsqparen coffin:/[\w\/~-]+\.csv/ rsqparen) {
       coffin = capture(:coffin).to_s
       Glyphs[:vampyre].rouse_from coffin
     }

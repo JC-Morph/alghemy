@@ -41,11 +41,13 @@ module Alghemy
           n.finite? ? n : 0.0
         end
       end
+      alias log logalise
 
       def exponise( base = 4, values = data )
         values = values.map {|n| (10 ** base) ** (1.0 / n.abs) }
         normalise values
       end
+      alias exp exponise
 
       private
 
