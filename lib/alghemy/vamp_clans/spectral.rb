@@ -41,7 +41,7 @@ module Alghemy
         end.reverse.join(',')
 
         coords  = write_coordinates values
-        process = [Scripts[:plot_spectral], coords, title, "'#{xtics}'"]
+        process = [Scripts[:plot_spectral], coords, victim, "'#{xtics}'"]
         Comrades[:invoker].cast process
         File.delete coords
       end

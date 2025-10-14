@@ -16,10 +16,14 @@ module Alghemy
         @sijil = csv
       end
 
+      def victim
+        "'#{list[0][0].split('/')[1..-1].join('/').gsub('_', ' ')}'"
+      end
+
       def plot( values = data )
         values  = expand values
         coords  = write_coordinates values
-        process = [Scripts[:plot_ample], coords, title, alget(:ROOT)]
+        process = [Scripts[:plot_ample], coords, victim, alget(:ROOT)]
         Comrades[:invoker].cast process
         File.delete coords
       end
@@ -51,10 +55,6 @@ module Alghemy
 
       def expand( values )
         values.is_a?(Symbol) ? send(values) : values
-      end
-
-      def title
-        "'#{File.basename(sijil, '.*').gsub('_', ' ')}'"
       end
 
       def format
