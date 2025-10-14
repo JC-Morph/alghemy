@@ -37,7 +37,7 @@ module Alghemy
       # Returns clan knowledge resulting from the analysis inherent in the type
       # of the Vampyre.
       def bite( sound, portions = nil, parameters = {} )
-        serve_portions  portions
+        serve_portions(sound, portions)
         edit_parameters parameters
         ritual = scribe_awakening_ritual sound
         vamp   = perform ritual
@@ -55,7 +55,7 @@ module Alghemy
         ]
       end
 
-      def serve_portions( portions )
+      def serve_portions( sound, portions )
         return unless portions
         clan = vampyre_affiliation
         block_mul = clan == VampClans[:ample] ? 1 : 2
