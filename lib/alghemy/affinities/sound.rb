@@ -49,7 +49,7 @@ module Alghemy
         end
 
         def tests
-          [/FAIL/]
+          [/FAIL/, /mp4/]
         end
       end
     end
