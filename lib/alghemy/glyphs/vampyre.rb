@@ -11,7 +11,7 @@ module Alghemy
       include Methods[:write_to_file]
       alias lay_to_rest write_to_file
       delegate plot: :result
-      attr_reader :sijil, :type, :result
+      attr_reader :type, :result
 
       def self.list
         list = Comrades[:invoker].cast('sonic-annotator --list').split("\n")
@@ -23,9 +23,8 @@ module Alghemy
         new(name).vampyre_affiliation.new coffin
       end
 
-      def initialize( sijil )
-        @sijil = sijil
-        @type  = vampyre_type
+      def initialize( sijil = 'spec' )
+        @type  = vampyre_type sijil
         awaken_vampyre
       end
 
@@ -175,7 +174,7 @@ module Alghemy
         /(?<=#{ident} \")\d+(?=\")/
       end
 
-      def vampyre_type
+      def vampyre_type( sijil )
         list  = self.class.list
         found = list.select {|vamp| vamp[/#{sijil}/] }
         if found.size > 1
