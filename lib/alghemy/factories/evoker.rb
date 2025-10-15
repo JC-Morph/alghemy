@@ -33,7 +33,7 @@ module Alghemy
         end
 
         def image( list )
-          list = format(list)
+          list = format list
           affinity = __callee__
           affinity = pluralise(affinity) if list.size > 1
           Affinities[affinity].new list
@@ -41,7 +41,7 @@ module Alghemy
         alias images image
         %i[sound video].each do |aff|
           alias_method aff, :image
-          alias_method aff.to_s.concat('s'), :image
+          alias_method aff.to_s.concat('s'), :images
         end
 
         def sijil( filename )
