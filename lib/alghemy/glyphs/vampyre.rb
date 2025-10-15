@@ -104,7 +104,9 @@ module Alghemy
         data = lines
         %w[block step].each do |type|
           index = data.index {|line| line[/vamp:#{type}_size/] }
-          new_size = type == 'block' ? size * block_mul : size
+
+          new_size  = size.odd? ? (size - 1) : size
+          new_size *= block_mul if type == 'block'
           data[index].sub!(size_value(type), new_size.to_s)
         end
         convince_vampyre data
