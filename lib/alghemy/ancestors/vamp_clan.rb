@@ -9,6 +9,7 @@ module Alghemy
       extend Forwardable
       include Methods[:write_to_file]
       delegate data: :format
+      alias d data
       delegate size: :list
       attr_reader :sijil
 
@@ -32,6 +33,8 @@ module Alghemy
         min, max = bounds(values)
         values.map {|n| (n - min).fdiv(max - min) }
       end
+      alias norm normalise
+      alias n    norm
 
       def logalise( values = data )
         min, max = bounds(values)
@@ -42,12 +45,14 @@ module Alghemy
         end
       end
       alias log logalise
+      alias l   log
 
       def exponise( base = 4, values = data )
         values = values.map {|n| (10 ** base) ** (1.0 / n.abs) }
         normalise values
       end
       alias exp exponise
+      alias e   exp
 
       private
 
