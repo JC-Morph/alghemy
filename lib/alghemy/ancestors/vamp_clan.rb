@@ -8,7 +8,7 @@ module Alghemy
     class VampClan
       extend Forwardable
       include Methods[:write_to_file]
-      delegate data: :format
+      def_delegators :format, :data, :timestamps
       alias d data
       delegate size: :list
       attr_reader :sijil
@@ -69,8 +69,8 @@ module Alghemy
       end
 
       def write_coordinates( data )
-        times  = format[:index].take(size)
-        coords = [times, data].transpose.map {|arr| arr * ' ' }
+        xax    = timestamps.take size
+        coords = [xax, data].transpose.map {|arr| arr * ' ' }
         write_coordinates_to_file coords
       end
 

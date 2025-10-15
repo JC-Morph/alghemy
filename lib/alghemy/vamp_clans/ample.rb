@@ -39,9 +39,9 @@ module Alghemy
         ((term_width * 0.75) / max_count)
       end
 
-      def format( values = list )
-        values = list.transpose[1..2].map {|arr| arr.map(&:to_f) }
-        OpenStruct.new data: values[1], index: values[0]
+      def format( csv = list )
+        values = csv.transpose[1..2].map {|arr| arr.map(&:to_f) }
+        OpenStruct.new data: values[1], timestamps: values[0]
       end
 
       # Internal: Return prettified String for a set of boundaries.
