@@ -7,7 +7,12 @@ module Alghemy
   module Scripts
     extend Bandoleer
 
-    vials = %w[mv_average.js mv_sink.js plot_ample plot_spectral]
+    vials = %w[mv_average.js
+               mv_sink.js
+               plot_ample
+               plot_bands
+               plot_spectral
+               plot_totals]
 
     vials.each do |vial|
       pockets.register(vial) do

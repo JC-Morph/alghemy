@@ -1,0 +1,11 @@
+#!/bin/bash
+
+gnuplot --persist <<- EOP
+	reset
+
+	set autoscale fix
+	set xlabel 'Amplitude'
+	set ylabel 'Occurences'
+	set title  '$2'
+	plot '$1' using 1:2 notitle with lines
+EOP

@@ -4,15 +4,22 @@ require 'alghemy/ancestors'
 module Alghemy
   module VampClans
     class Ample < Ancestors[:vamp_clan]
-      def count( list = data, split = 10 )
-        list     = expand list
-        min, max = bounds list
-        div      = (max - min) / split
+      def plot_totals
+        totals  = tally data
+        xax     = totals.transpose[0].map {|bounds| "#{bounds[0].strip}" }
+        coords  = [xax, totals.transpose[1]].transpose.map {|arr| arr * ' ' }
+        coords  = write_coordinates_to_file coords
+        process = [Scripts[:plot_totals], coords, victim]
+        Comrades[:invoker].cast process
+        File.delete coords
+      end
 
-        tally     = count_bounds(list, min, max, div, split)
-        max_count = tally.transpose[1].max
+      def term_totals( list = data, split = 10 )
+        totals    = tally(list, split)
+        max_count = totals.transpose[1].max
         bar_len   = measure_bar max_count
-        tally.each do |bounds, count|
+
+        totals.each do |bounds, count|
           bar   = '█' * (bar_len * count)
           count = count.to_s.ljust(max_count.size)
           puts bounds.join(' | ') + ": #{count}#{bar}"
@@ -20,6 +27,13 @@ module Alghemy
       end
 
       private
+
+      def tally( list = data, split = 10 )
+        list     = expand list
+        min, max = bounds list
+        div      = (max - min) / split
+        count_bounds(list, min, max, div, split)
+      end
 
       def count_bounds( list, min, max, div, split )
         tally = []

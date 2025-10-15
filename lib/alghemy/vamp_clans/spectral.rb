@@ -4,23 +4,8 @@ require 'alghemy/ancestors'
 module Alghemy
   module VampClans
     class Spectral < Ancestors[:vamp_clan]
-      def count
-        band1 = ''
-        get_totals.each.with_index do |total, i|
-          band2  = 'band_%02d' % i
-          band2 += ":\t#{total}"
-          if i.even?
-            band1 = band2
-            puts band1.concat("\t|") if i.succ == size
-          else
-            puts band1 + "\t|\t" + band2
-          end
-        end
-        size
-      end
-
       def top( n = 2 )
-        totals = get_totals
+        totals = bands
         top    = totals.sort[-n..-1]
         top.map do |total|
           index = totals.index total
@@ -35,16 +20,25 @@ module Alghemy
         File.delete coords
       end
 
+      def plot_bands
+        xax     = (1..bands.size).to_a
+        coords  = [xax, bands].transpose.map {|arr| arr * ' ' }
+        coords  = write_coordinates_to_file coords
+        process = [Scripts[:plot_bands], coords, victim]
+        Comrades[:invoker].cast process
+        File.delete coords
+      end
+
+      def bands
+        data.map {|band| band.map(&:to_i).reduce(:+) }
+      end
+
       private
 
       def format( csv = list )
         csv = csv.transpose.map {|arr| arr.map(&:to_f) }
         values = [csv[2..-1], csv[1]]
         OpenStruct.new data: values[0], timestamps: values[1]
-      end
-
-      def get_totals
-        data.map {|band| band.map(&:to_i).reduce(:+) }
       end
 
       def write_coordinates( data )
